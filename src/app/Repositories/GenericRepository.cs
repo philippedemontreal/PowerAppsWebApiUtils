@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using app.Configuration;
 using app.Entities;
-using app.Foundation.Authentification;
+using app.Security;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -16,7 +16,7 @@ namespace  app.Repositories
     public abstract class GenericRepository<T>: IDisposable  
     where T: class
     {
-        public IConfigurationReader ConfigurationReader { get; private set; }
+        private readonly AuthentificationConfiguration _configuration;
         
         public const string ApplicationJson = "application/json";
 
@@ -24,7 +24,7 @@ namespace  app.Repositories
         public string OdataEntityName { get; private set; }
         public GenericRepository(IConfigurationReader configurationReader, string odataEntityName)
         {
-            ConfigurationReader = configurationReader;
+            _configuration = configurationReader.GetConfiguration();
             OdataEntityName = odataEntityName;
         }
 
@@ -34,6 +34,15 @@ namespace  app.Repositories
             using (var client = GetHttpClient())
             {
                 var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
+                return await DeserializeContent<T>(response);
+            }
+        }
+
+        protected async Task<T> Retrieve(string selector)
+        {                        
+            using (var client = GetHttpClient())
+            {
+                var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
                 return await DeserializeContent<T>(response);
             }
         }
@@ -106,12 +115,10 @@ namespace  app.Repositories
 
         private HttpClient GetHttpClient()
         {
-            var configuration = ConfigurationReader.GetConfiguration();
-            var authentication = new Authentication(configuration);
-            var handler = new AuthenticationMessageHandler(authentication);
+            var handler = new AuthenticationMessageHandler(_configuration);
   
             var httpClient = new HttpClient(handler, true);
-            httpClient.BaseAddress = new Uri(configuration.ApiUrl);
+            httpClient.BaseAddress = new Uri(_configuration.ApiUrl);
             httpClient.Timeout = new TimeSpan(0, 2, 0);
             httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
             httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");

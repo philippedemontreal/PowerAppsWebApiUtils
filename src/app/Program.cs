@@ -13,9 +13,13 @@ namespace app
 
      static void Main(string[] args)
         {
-            var contactRepository = new ContactRepository(new ConfigurationReader());
-            var contact = contactRepository.GetById(Guid.Parse("6cc83de0-0e39-e911-a97c-000d3af490cc"), "firstname, lastname").Result;
-            Console.WriteLine($"Hello World {contact.FirstName} {contact.LastName}!");
+            using (var entityDefinitionRepository = new EntityDefinitionRepository(new ConfigurationReader()))
+            {
+          
+                var contactdefinition = entityDefinitionRepository.GetByLogicalName("ic_deal").Result;
+ 
+            }
+            
          }  
     }
 }

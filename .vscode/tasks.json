@@ -30,7 +30,11 @@
                 "run",
                 "${workspaceFolder}/src/app/app.csproj"
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         }
     ]
 }

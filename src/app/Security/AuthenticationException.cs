@@ -5,7 +5,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace app.Foundation.Authentification
+namespace app.Security
 {
     public class AuthenticationException : Exception
     {
