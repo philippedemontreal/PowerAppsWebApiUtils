@@ -1,14 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Entities
+namespace app.Metadata
 {
-    public class Attribute
+    public sealed class AttributeMetadata
     {
         public Guid MetadataId { get; set; }
 		public bool? HasChanged { get; set; }
 		public string AttributeOf { get; set; }
-		public string AttributeType { get; set; }
+		public AttributeTypeCode AttributeType { get; set; }
 		public int ColumnNumber { get; set; }
 		public string DeprecatedVersion { get; set; }
 		public string IntroducedVersion { get; set; }
@@ -40,8 +40,8 @@ namespace app.Entities
 		public string SourceType { get; set; }
 		public string AutoNumberFormat { get; set; }  		
                 
-        public LocalizedLabelsDefinition Description { get; set; }
-        public LocalizedLabelsDefinition DisplayName { get; set; }
+        public Label Description { get; set; }
+        public Label DisplayName { get; set; }
         public ManagedProperty IsAuditEnabled { get; set; }
         public ManagedProperty IsGlobalFilterEnabled { get; set; }
         public ManagedProperty IsSortableEnabled { get; set; }

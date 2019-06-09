@@ -13,10 +13,12 @@ namespace app
 
      static void Main(string[] args)
         {
-            using (var entityDefinitionRepository = new EntityDefinitionRepository(new ConfigurationReader()))
+            var configuration =  ConfigurationReader.GetConfiguration();
+
+            using (var entityDefinitionRepository = new EntityMetadataRepository(configuration))
             {
           
-                var contactdefinition = entityDefinitionRepository.GetByLogicalName("ic_deal").Result;
+                var definition = entityDefinitionRepository.GetByLogicalName("account").Result;
  
             }
             

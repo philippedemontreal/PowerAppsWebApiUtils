@@ -10,7 +10,7 @@ namespace app.Security
 {
 
 
-    public sealed class AuthentificationConfiguration
+    public sealed class PowerAppsConfiguration
     {
         public string ClientId { get; set; }
         public string ClientSecret { get; set; }

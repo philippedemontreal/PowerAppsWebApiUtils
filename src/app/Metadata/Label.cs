@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Entities
+namespace app.Metadata
 {
         
-    public class LocalizedLabelsDefinition  
+    public class Label  
     {
         public List<LocalizedLabel> LocalizedLabels { get; set; }
         public LocalizedLabel UserLocalizedLabel { get; set; }

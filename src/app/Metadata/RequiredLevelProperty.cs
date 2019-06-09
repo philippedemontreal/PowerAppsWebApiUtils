@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Entities
+namespace app.Metadata
 {
 
-    public enum RequiredLevel
+    public enum AttributeRequiredLevel
     {
-      None,
       ApplicationRequired,
+      None,
+      Recommended,
       SystemRequired,
 
     }
@@ -15,7 +16,7 @@ namespace app.Entities
    
     public class RequiredLevelProperty  
     {
-		public RequiredLevel Value { get; set; }
+		public AttributeRequiredLevel Value { get; set; }
 		public bool CanBeChanged { get; set; }
 		public string ManagedPropertyLogicalName { get; set; }
     }

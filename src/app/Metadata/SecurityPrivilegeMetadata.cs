@@ -1,9 +1,10 @@
 using System;
 
-namespace app.Entities
+namespace app.Metadata
 {
     public enum PrivilegeType
     {
+        None,
         Share,
         Append,
         Assign,
@@ -13,7 +14,7 @@ namespace app.Entities
         Create,
         AppendTo
     }
-    public class Privilege
+    public sealed class SecurityPrivilegeMetadata
     {
         public bool CanBeBasic { get; set; }
 		public bool CanBeDeep { get; set; }

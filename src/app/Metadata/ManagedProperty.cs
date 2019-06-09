@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Entities
+namespace app.Metadata
 {
     public class ManagedProperty  
     {

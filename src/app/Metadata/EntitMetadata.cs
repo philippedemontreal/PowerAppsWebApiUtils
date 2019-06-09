@@ -1,11 +1,21 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Entities
+namespace app.Metadata
 {
-    public class EntityDefinition
+    public enum OwnershipTypes
     {
-        public string ActivityTypeMask { get; set; }
+        BusinessOwned,
+        BusinessParented,
+        None,
+        OrganizationOwned,
+        TeamOwned,
+        UserOwned,
+
+    }
+    public sealed class EntitMetadata
+    {
+        public int? ActivityTypeMask { get; set; }
         public bool AutoRouteToOwnerQueue { get; set; }
         public bool CanTriggerWorkflow { get; set; }
         public bool EntityHelpUrlEnabled{ get; set; }
@@ -47,7 +57,7 @@ namespace app.Entities
         public bool IsQuickCreateEnabled{ get; set; }
         public string LogicalName{ get; set; }
         public int ObjectTypeCode{ get; set; }
-        public string OwnershipType{ get; set; }
+        public OwnershipTypes OwnershipType{ get; set; }
         public string PrimaryNameAttribute{ get; set; }
         public string PrimaryImageAttribute{ get; set; }
         public string PrimaryIdAttribute{ get; set; }
@@ -73,9 +83,9 @@ namespace app.Entities
         public bool IsSolutionAware{ get; set; }
         public Guid MetadataId{ get; set; }
         public bool? HasChanged { get; set; }
-        public LocalizedLabelsDefinition Description { get; set; }
-        public LocalizedLabelsDefinition DisplayCollectionName { get; set; }
-        public LocalizedLabelsDefinition DisplayName { get; set; }
+        public Label Description { get; set; }
+        public Label DisplayCollectionName { get; set; }
+        public Label DisplayName { get; set; }
         public ManagedProperty IsAuditEnabled { get; set; }
         public ManagedProperty IsValidForQueue { get; set; }
         public ManagedProperty IsConnectionsEnabled { get; set; }
@@ -99,9 +109,8 @@ namespace app.Entities
         public ManagedProperty IsVisibleInMobile { get; set; }
         public ManagedProperty IsVisibleInMobileClient { get; set; }
         public ManagedProperty IsOfflineInMobileClient { get; set; }
-        public List<Privilege> Privileges { get; set; }
-
-        public List<Attribute> Attributes { get; set; }       
+        public List<SecurityPrivilegeMetadata> Privileges { get; set; }
+        public List<AttributeMetadata> Attributes { get; set; }       
     
     }
 }

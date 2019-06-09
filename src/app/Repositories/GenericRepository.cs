@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using app.Configuration;
 using app.Entities;
+using app.Metadata;
 using app.Security;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -16,15 +17,15 @@ namespace  app.Repositories
     public abstract class GenericRepository<T>: IDisposable  
     where T: class
     {
-        private readonly AuthentificationConfiguration _configuration;
+        private readonly PowerAppsConfiguration _powerAppsConfiguration;
         
         public const string ApplicationJson = "application/json";
 
 
         public string OdataEntityName { get; private set; }
-        public GenericRepository(IConfigurationReader configurationReader, string odataEntityName)
+        public GenericRepository(PowerAppsConfiguration powerAppsConfiguration, string odataEntityName)
         {
-            _configuration = configurationReader.GetConfiguration();
+            _powerAppsConfiguration = powerAppsConfiguration;
             OdataEntityName = odataEntityName;
         }
 
@@ -44,6 +45,16 @@ namespace  app.Repositories
             {
                 var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
                 return await DeserializeContent<T>(response);
+            }
+        }
+
+                
+        protected async Task<List<T>> RetrieveMultiple(string selector)
+        {                        
+            using (var client = GetHttpClient())
+            {
+                var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
+                return await DeserializeContent<List<T>>(response);
             }
         }
 
@@ -115,10 +126,10 @@ namespace  app.Repositories
 
         private HttpClient GetHttpClient()
         {
-            var handler = new AuthenticationMessageHandler(_configuration);
+            var handler = new AuthenticationMessageHandler(_powerAppsConfiguration);
   
             var httpClient = new HttpClient(handler, true);
-            httpClient.BaseAddress = new Uri(_configuration.ApiUrl);
+            httpClient.BaseAddress = new Uri(_powerAppsConfiguration.ApiUrl);
             httpClient.Timeout = new TimeSpan(0, 2, 0);
             httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
             httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");

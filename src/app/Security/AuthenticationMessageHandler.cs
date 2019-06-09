@@ -13,9 +13,9 @@ namespace app.Security
     {
 
 
-        private readonly AuthentificationConfiguration _configuration;
+        private readonly PowerAppsConfiguration _configuration;
 
-        public AuthenticationMessageHandler(AuthentificationConfiguration configuration) : 
+        public AuthenticationMessageHandler(PowerAppsConfiguration configuration) : 
             base(new HttpClientHandler())
         {
             _configuration = configuration;
