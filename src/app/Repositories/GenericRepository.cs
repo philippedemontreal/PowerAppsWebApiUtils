@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace  app.Repositories
 {
-    public abstract class GenericRepository<T>: IDisposable  
+    public class GenericRepository<T>: IDisposable  
     where T: class
     {
         private readonly PowerAppsConfiguration _powerAppsConfiguration;
@@ -29,9 +29,9 @@ namespace  app.Repositories
             OdataEntityName = odataEntityName;
         }
 
-        public async Task<T> GetById(Guid entityId, string fields)
+        public async Task<T> GetById(Guid entityId, string fields = null)
         {
-            var getQuery = $"{OdataEntityName}({entityId})?$select={fields}";
+            var getQuery = string.IsNullOrEmpty(fields) ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
             using (var client = GetHttpClient())
             {
                 var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);

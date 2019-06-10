@@ -13,7 +13,7 @@ namespace app.Metadata
         UserOwned,
 
     }
-    public sealed class EntitMetadata
+    public sealed class EntityMetadata
     {
         public int? ActivityTypeMask { get; set; }
         public bool AutoRouteToOwnerQueue { get; set; }
