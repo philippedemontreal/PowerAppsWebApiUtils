@@ -46,14 +46,30 @@ namespace app.codegen
             return returnValue;
         }
 
-        public CodeTypeDeclaration CreateType (string name)
+        public CodeTypeDeclaration CreateType (EntityMetadata entitMetadata)
         {
-            var result =  new CodeTypeDeclaration(name)
+            var result =  new CodeTypeDeclaration(entitMetadata.SchemaName)
             {
                 IsClass = true,
                 IsPartial = true,
             };
             result.BaseTypes.Add(new CodeTypeReference(typeof(ExtendedEntity)));
+
+            var member = 
+                new CodeMemberField 
+                { 
+                    Type = new CodeTypeReference(typeof(string)),  
+                    Name = "EntityLogicalName", 
+                    Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                    InitExpression = new CodePrimitiveExpression(entitMetadata.SchemaName)
+                    };
+            result.Members.Add(member);
+
+            result.Comments.Add(new CodeCommentStatement("<summary>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Description: {entitMetadata.Description.UserLocalizedLabel.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {entitMetadata.DisplayName.UserLocalizedLabel.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement("</summary>", true));
+
 
             return result;
         }
@@ -61,10 +77,18 @@ namespace app.codegen
 
         public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, Type propertyType) 
         {
+            var schemaName = attributeMetadata.SchemaName;
+           
+            if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
+                return null;
+
+            if (!string.IsNullOrEmpty(attributeMetadata.AttributeOf))
+                return null;
+
             var result = new CodeMemberProperty()
             {
                 Attributes = MemberAttributes.Public | MemberAttributes.Final,
-                Name = attributeMetadata.SchemaName,
+                Name = schemaName,
                 Type = new CodeTypeReference(propertyType),
                 CustomAttributes = 
                 {
@@ -72,17 +96,20 @@ namespace app.codegen
                 }      
             };
 
-            result.GetStatements.Add(
-                new CodeMethodReturnStatement(
-                    new CodeMethodInvokeExpression(
-                        new CodeMethodReferenceExpression(
-                        new CodeBaseReferenceExpression(),
-                            "GetAttributeValue",
-                            new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
-                            new CodePrimitiveExpression(attributeMetadata.LogicalName))                            
-            ));
+            if (attributeMetadata.IsValidForRead || attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
+            {
+                result.GetStatements.Add(
+                    new CodeMethodReturnStatement(
+                        new CodeMethodInvokeExpression(
+                            new CodeMethodReferenceExpression(
+                            new CodeBaseReferenceExpression(),
+                                "GetAttributeValue",
+                                new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
+                                new CodePrimitiveExpression(attributeMetadata.LogicalName))                            
+                ));
+            }
 
-            if (attributeMetadata.IsValidForUpdate)
+            if (attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
             {
                 result.SetStatements.Add(
                         new CodeMethodInvokeExpression(
@@ -95,6 +122,11 @@ namespace app.codegen
                                 ) 
                 );
             }
+
+            result.Comments.Add(new CodeCommentStatement("<summary>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Description: {attributeMetadata.Description?.UserLocalizedLabel?.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {attributeMetadata.DisplayName?.UserLocalizedLabel?.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement("</summary>", true));
 
 
             return result;
@@ -133,7 +165,7 @@ namespace app.codegen
 
         private void MakeEntity(EntityMetadata entitMetadata, CodeNamespace ns)
         {
-            var genType = CreateType(entitMetadata.SchemaName);
+            var genType = CreateType(entitMetadata);
             var primary = entitMetadata.Attributes.Where(p => p.IsPrimaryId).FirstOrDefault();
             var prop = CreateProperty(primary, typeof(Guid));
             genType.Members.Add(prop);
@@ -148,7 +180,8 @@ namespace app.codegen
                     continue;
 
                 var genProp = CreateProperty(attribute, _refMap[attribute.AttributeType]);
-                genType.Members.Add(genProp);
+                if (genProp != null)
+                    genType.Members.Add(genProp);
             }
             ns.Types.Add(genType);
             }

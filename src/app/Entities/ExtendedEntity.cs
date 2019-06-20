@@ -14,8 +14,8 @@ namespace app.entities
             var typeT = typeof(T); 
             var value = this[key];
 
-        // if (typeT == typeof(Guid) || typeT == typeof(Guid?))
-            //return (T)((object)Guid.Parse(this[key]));
+            if (typeT == typeof(Guid) || typeT == typeof(Guid?))
+                return (T)((object)Guid.Parse((string)this[key]));
 
             if (typeT == typeof(int)|| typeT == typeof(int?))
                 return (T)((object)Convert.ToInt32(this[key]));

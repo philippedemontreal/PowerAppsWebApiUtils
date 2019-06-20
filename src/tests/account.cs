@@ -13,8 +13,17 @@ namespace webapi.entities
    using System;
    using System.Runtime.Serialization;
    
+   /// <summary>
+   /// <para>Description: Business that represents a customer or potential customer. The company that is billed in business transactions.</para>
+   /// <para>Display Name: Legal Name</para>
+   /// </summary>
    public partial class Account : app.entities.ExtendedEntity
    {
+      public const string EntityLogicalName = "Account";
+      /// <summary>
+      /// <para>Description: Unique identifier of the account.</para>
+      /// <para>Display Name: Account</para>
+      /// </summary>
       [DataMember(Name="accountid")]
       public System.Guid AccountId
       {
@@ -22,7 +31,15 @@ namespace webapi.entities
          {
             return base.GetAttributeValue<System.Guid>("accountid");
          }
+         set
+         {
+            base.SetAttributeValue<System.Guid>("accountid", value);
+         }
       }
+      /// <summary>
+      /// <para>Description: Type an ID number or code for the account to quickly search and identify the account in system views.</para>
+      /// <para>Display Name: Account Number</para>
+      /// </summary>
       [DataMember(Name="accountnumber")]
       public string AccountNumber
       {
@@ -35,6 +52,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("accountnumber", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the city for the primary address.</para>
+      /// <para>Display Name: Address 1: City</para>
+      /// </summary>
       [DataMember(Name="address1_city")]
       public string Address1_City
       {
@@ -47,6 +68,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_city", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the complete primary address.</para>
+      /// <para>Display Name: Address 1</para>
+      /// </summary>
       [DataMember(Name="address1_composite")]
       public string Address1_Composite
       {
@@ -55,6 +80,10 @@ namespace webapi.entities
             return base.GetAttributeValue<string>("address1_composite");
          }
       }
+      /// <summary>
+      /// <para>Description: Type the country or region for the primary address.</para>
+      /// <para>Display Name: Address 1: Country/Region</para>
+      /// </summary>
       [DataMember(Name="address1_country")]
       public string Address1_Country
       {
@@ -67,6 +96,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_country", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the county for the primary address.</para>
+      /// <para>Display Name: Address 1: County</para>
+      /// </summary>
       [DataMember(Name="address1_county")]
       public string Address1_County
       {
@@ -79,6 +112,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_county", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the fax number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Fax</para>
+      /// </summary>
       [DataMember(Name="address1_fax")]
       public string Address1_Fax
       {
@@ -91,6 +128,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_fax", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the latitude value for the primary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 1: Latitude</para>
+      /// </summary>
       [DataMember(Name="address1_latitude")]
       public System.Nullable<double> Address1_Latitude
       {
@@ -103,6 +144,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<double>>("address1_latitude", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the first line of the primary address.</para>
+      /// <para>Display Name: Address 1: Street 1</para>
+      /// </summary>
       [DataMember(Name="address1_line1")]
       public string Address1_Line1
       {
@@ -115,6 +160,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_line1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the second line of the primary address.</para>
+      /// <para>Display Name: Address 1: Street 2</para>
+      /// </summary>
       [DataMember(Name="address1_line2")]
       public string Address1_Line2
       {
@@ -127,6 +176,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_line2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the third line of the primary address.</para>
+      /// <para>Display Name: Address 1: Street 3</para>
+      /// </summary>
       [DataMember(Name="address1_line3")]
       public string Address1_Line3
       {
@@ -139,6 +192,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_line3", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the longitude value for the primary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 1: Longitude</para>
+      /// </summary>
       [DataMember(Name="address1_longitude")]
       public System.Nullable<double> Address1_Longitude
       {
@@ -151,6 +208,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<double>>("address1_longitude", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a descriptive name for the primary address, such as Corporate Headquarters.</para>
+      /// <para>Display Name: Address 1: Name</para>
+      /// </summary>
       [DataMember(Name="address1_name")]
       public string Address1_Name
       {
@@ -163,6 +224,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_name", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the ZIP Code or postal code for the primary address.</para>
+      /// <para>Display Name: Address 1: ZIP/Postal Code</para>
+      /// </summary>
       [DataMember(Name="address1_postalcode")]
       public string Address1_PostalCode
       {
@@ -175,6 +240,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_postalcode", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the post office box number of the primary address.</para>
+      /// <para>Display Name: Address 1: Post Office Box</para>
+      /// </summary>
       [DataMember(Name="address1_postofficebox")]
       public string Address1_PostOfficeBox
       {
@@ -187,6 +256,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_postofficebox", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the name of the main contact at the account's primary address.</para>
+      /// <para>Display Name: Address 1: Primary Contact Name</para>
+      /// </summary>
       [DataMember(Name="address1_primarycontactname")]
       public string Address1_PrimaryContactName
       {
@@ -199,6 +272,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_primarycontactname", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the state or province of the primary address.</para>
+      /// <para>Display Name: Address 1: State/Province</para>
+      /// </summary>
       [DataMember(Name="address1_stateorprovince")]
       public string Address1_StateOrProvince
       {
@@ -211,6 +288,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_stateorprovince", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the main phone number associated with the primary address.</para>
+      /// <para>Display Name: Address Phone</para>
+      /// </summary>
       [DataMember(Name="address1_telephone1")]
       public string Address1_Telephone1
       {
@@ -223,6 +304,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_telephone1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a second phone number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Telephone 2</para>
+      /// </summary>
       [DataMember(Name="address1_telephone2")]
       public string Address1_Telephone2
       {
@@ -235,6 +320,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_telephone2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a third phone number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Telephone 3</para>
+      /// </summary>
       [DataMember(Name="address1_telephone3")]
       public string Address1_Telephone3
       {
@@ -247,6 +336,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_telephone3", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the UPS zone of the primary address to make sure shipping charges are calculated correctly and deliveries are made promptly, if shipped by UPS.</para>
+      /// <para>Display Name: Address 1: UPS Zone</para>
+      /// </summary>
       [DataMember(Name="address1_upszone")]
       public string Address1_UPSZone
       {
@@ -259,6 +352,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address1_upszone", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select the time zone, or UTC offset, for this address so that other people can reference it when they contact someone at this address.</para>
+      /// <para>Display Name: Address 1: UTC Offset</para>
+      /// </summary>
       [DataMember(Name="address1_utcoffset")]
       public System.Nullable<int> Address1_UTCOffset
       {
@@ -271,6 +368,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("address1_utcoffset", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the city for the secondary address.</para>
+      /// <para>Display Name: Address 2: City</para>
+      /// </summary>
       [DataMember(Name="address2_city")]
       public string Address2_City
       {
@@ -283,6 +384,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_city", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the complete secondary address.</para>
+      /// <para>Display Name: Address 2</para>
+      /// </summary>
       [DataMember(Name="address2_composite")]
       public string Address2_Composite
       {
@@ -291,6 +396,10 @@ namespace webapi.entities
             return base.GetAttributeValue<string>("address2_composite");
          }
       }
+      /// <summary>
+      /// <para>Description: Type the country or region for the secondary address.</para>
+      /// <para>Display Name: Address 2: Country/Region</para>
+      /// </summary>
       [DataMember(Name="address2_country")]
       public string Address2_Country
       {
@@ -303,6 +412,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_country", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the county for the secondary address.</para>
+      /// <para>Display Name: Address 2: County</para>
+      /// </summary>
       [DataMember(Name="address2_county")]
       public string Address2_County
       {
@@ -315,6 +428,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_county", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the fax number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Fax</para>
+      /// </summary>
       [DataMember(Name="address2_fax")]
       public string Address2_Fax
       {
@@ -327,6 +444,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_fax", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the latitude value for the secondary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 2: Latitude</para>
+      /// </summary>
       [DataMember(Name="address2_latitude")]
       public System.Nullable<double> Address2_Latitude
       {
@@ -339,6 +460,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<double>>("address2_latitude", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the first line of the secondary address.</para>
+      /// <para>Display Name: Address 2: Street 1</para>
+      /// </summary>
       [DataMember(Name="address2_line1")]
       public string Address2_Line1
       {
@@ -351,6 +476,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_line1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the second line of the secondary address.</para>
+      /// <para>Display Name: Address 2: Street 2</para>
+      /// </summary>
       [DataMember(Name="address2_line2")]
       public string Address2_Line2
       {
@@ -363,6 +492,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_line2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the third line of the secondary address.</para>
+      /// <para>Display Name: Address 2: Street 3</para>
+      /// </summary>
       [DataMember(Name="address2_line3")]
       public string Address2_Line3
       {
@@ -375,6 +508,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_line3", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the longitude value for the secondary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 2: Longitude</para>
+      /// </summary>
       [DataMember(Name="address2_longitude")]
       public System.Nullable<double> Address2_Longitude
       {
@@ -387,6 +524,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<double>>("address2_longitude", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a descriptive name for the secondary address, such as Corporate Headquarters.</para>
+      /// <para>Display Name: Address 2: Name</para>
+      /// </summary>
       [DataMember(Name="address2_name")]
       public string Address2_Name
       {
@@ -399,6 +540,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_name", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the ZIP Code or postal code for the secondary address.</para>
+      /// <para>Display Name: Address 2: ZIP/Postal Code</para>
+      /// </summary>
       [DataMember(Name="address2_postalcode")]
       public string Address2_PostalCode
       {
@@ -411,6 +556,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_postalcode", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the post office box number of the secondary address.</para>
+      /// <para>Display Name: Address 2: Post Office Box</para>
+      /// </summary>
       [DataMember(Name="address2_postofficebox")]
       public string Address2_PostOfficeBox
       {
@@ -423,6 +572,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_postofficebox", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the name of the main contact at the account's secondary address.</para>
+      /// <para>Display Name: Address 2: Primary Contact Name</para>
+      /// </summary>
       [DataMember(Name="address2_primarycontactname")]
       public string Address2_PrimaryContactName
       {
@@ -435,6 +588,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_primarycontactname", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the state or province of the secondary address.</para>
+      /// <para>Display Name: Address 2: State/Province</para>
+      /// </summary>
       [DataMember(Name="address2_stateorprovince")]
       public string Address2_StateOrProvince
       {
@@ -447,6 +604,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_stateorprovince", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the main phone number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Telephone 1</para>
+      /// </summary>
       [DataMember(Name="address2_telephone1")]
       public string Address2_Telephone1
       {
@@ -459,6 +620,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_telephone1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a second phone number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Telephone 2</para>
+      /// </summary>
       [DataMember(Name="address2_telephone2")]
       public string Address2_Telephone2
       {
@@ -471,6 +636,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_telephone2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a third phone number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Telephone 3</para>
+      /// </summary>
       [DataMember(Name="address2_telephone3")]
       public string Address2_Telephone3
       {
@@ -483,6 +652,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_telephone3", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the UPS zone of the secondary address to make sure shipping charges are calculated correctly and deliveries are made promptly, if shipped by UPS.</para>
+      /// <para>Display Name: Address 2: UPS Zone</para>
+      /// </summary>
       [DataMember(Name="address2_upszone")]
       public string Address2_UPSZone
       {
@@ -495,6 +668,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("address2_upszone", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select the time zone, or UTC offset, for this address so that other people can reference it when they contact someone at this address.</para>
+      /// <para>Display Name: Address 2: UTC Offset</para>
+      /// </summary>
       [DataMember(Name="address2_utcoffset")]
       public System.Nullable<int> Address2_UTCOffset
       {
@@ -507,6 +684,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("address2_utcoffset", value);
          }
       }
+      /// <summary>
+      /// <para>Description: For system use only.</para>
+      /// <para>Display Name: Aging 30</para>
+      /// </summary>
       [DataMember(Name="aging30")]
       public System.Nullable<decimal> Aging30
       {
@@ -515,6 +696,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("aging30");
          }
       }
+      /// <summary>
+      /// <para>Description: The base currency equivalent of the aging 30 field.</para>
+      /// <para>Display Name: Aging 30 (Base)</para>
+      /// </summary>
       [DataMember(Name="aging30_base")]
       public System.Nullable<decimal> Aging30_Base
       {
@@ -523,6 +708,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("aging30_base");
          }
       }
+      /// <summary>
+      /// <para>Description: For system use only.</para>
+      /// <para>Display Name: Aging 60</para>
+      /// </summary>
       [DataMember(Name="aging60")]
       public System.Nullable<decimal> Aging60
       {
@@ -531,6 +720,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("aging60");
          }
       }
+      /// <summary>
+      /// <para>Description: The base currency equivalent of the aging 60 field.</para>
+      /// <para>Display Name: Aging 60 (Base)</para>
+      /// </summary>
       [DataMember(Name="aging60_base")]
       public System.Nullable<decimal> Aging60_Base
       {
@@ -539,6 +732,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("aging60_base");
          }
       }
+      /// <summary>
+      /// <para>Description: For system use only.</para>
+      /// <para>Display Name: Aging 90</para>
+      /// </summary>
       [DataMember(Name="aging90")]
       public System.Nullable<decimal> Aging90
       {
@@ -547,6 +744,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("aging90");
          }
       }
+      /// <summary>
+      /// <para>Description: The base currency equivalent of the aging 90 field.</para>
+      /// <para>Display Name: Aging 90 (Base)</para>
+      /// </summary>
       [DataMember(Name="aging90_base")]
       public System.Nullable<decimal> Aging90_Base
       {
@@ -555,38 +756,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("aging90_base");
          }
       }
-      [DataMember(Name="createdbyexternalpartyname")]
-      public string CreatedByExternalPartyName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("createdbyexternalpartyname");
-         }
-      }
-      [DataMember(Name="createdbyexternalpartyyominame")]
-      public string CreatedByExternalPartyYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("createdbyexternalpartyyominame");
-         }
-      }
-      [DataMember(Name="createdbyname")]
-      public string CreatedByName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("createdbyname");
-         }
-      }
-      [DataMember(Name="createdbyyominame")]
-      public string CreatedByYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("createdbyyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.</para>
+      /// <para>Display Name: Created On</para>
+      /// </summary>
       [DataMember(Name="createdon")]
       public System.Nullable<System.DateTime> CreatedOn
       {
@@ -595,22 +768,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
          }
       }
-      [DataMember(Name="createdonbehalfbyname")]
-      public string CreatedOnBehalfByName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("createdonbehalfbyname");
-         }
-      }
-      [DataMember(Name="createdonbehalfbyyominame")]
-      public string CreatedOnBehalfByYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("createdonbehalfbyyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Type the credit limit of the account. This is a useful reference when you address invoice and accounting issues with the customer.</para>
+      /// <para>Display Name: Credit Limit</para>
+      /// </summary>
       [DataMember(Name="creditlimit")]
       public System.Nullable<decimal> CreditLimit
       {
@@ -623,6 +784,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<decimal>>("creditlimit", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the credit limit converted to the system's default base currency for reporting purposes.</para>
+      /// <para>Display Name: Credit Limit (Base)</para>
+      /// </summary>
       [DataMember(Name="creditlimit_base")]
       public System.Nullable<decimal> CreditLimit_Base
       {
@@ -631,6 +796,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("creditlimit_base");
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the credit for the account is on hold. This is a useful reference while addressing the invoice and accounting issues with the customer.</para>
+      /// <para>Display Name: Credit Hold</para>
+      /// </summary>
       [DataMember(Name="creditonhold")]
       public System.Nullable<bool> CreditOnHold
       {
@@ -643,14 +812,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("creditonhold", value);
          }
       }
-      [DataMember(Name="defaultpricelevelidname")]
-      public string DefaultPriceLevelIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("defaultpricelevelidname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Type additional information to describe the account, such as an excerpt from the company's website.</para>
+      /// <para>Display Name: Description</para>
+      /// </summary>
       [DataMember(Name="description")]
       public string Description
       {
@@ -663,6 +828,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("description", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account allows bulk email sent through campaigns. If Do Not Allow is selected, the account can be added to marketing lists, but is excluded from email.</para>
+      /// <para>Display Name: Do not allow Bulk Emails</para>
+      /// </summary>
       [DataMember(Name="donotbulkemail")]
       public System.Nullable<bool> DoNotBulkEMail
       {
@@ -675,6 +844,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotbulkemail", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account allows bulk postal mail sent through marketing campaigns or quick campaigns. If Do Not Allow is selected, the account can be added to marketing lists, but will be excluded from the postal mail.</para>
+      /// <para>Display Name: Do not allow Bulk Mails</para>
+      /// </summary>
       [DataMember(Name="donotbulkpostalmail")]
       public System.Nullable<bool> DoNotBulkPostalMail
       {
@@ -687,6 +860,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotbulkpostalmail", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account allows direct email sent from Microsoft Dynamics 365.</para>
+      /// <para>Display Name: Do not allow Emails</para>
+      /// </summary>
       [DataMember(Name="donotemail")]
       public System.Nullable<bool> DoNotEMail
       {
@@ -699,6 +876,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotemail", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account allows faxes. If Do Not Allow is selected, the account will be excluded from fax activities distributed in marketing campaigns.</para>
+      /// <para>Display Name: Do not allow Faxes</para>
+      /// </summary>
       [DataMember(Name="donotfax")]
       public System.Nullable<bool> DoNotFax
       {
@@ -711,6 +892,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotfax", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account allows phone calls. If Do Not Allow is selected, the account will be excluded from phone call activities distributed in marketing campaigns.</para>
+      /// <para>Display Name: Do not allow Phone Calls</para>
+      /// </summary>
       [DataMember(Name="donotphone")]
       public System.Nullable<bool> DoNotPhone
       {
@@ -723,6 +908,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotphone", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account allows direct mail. If Do Not Allow is selected, the account will be excluded from letter activities distributed in marketing campaigns.</para>
+      /// <para>Display Name: Do not allow Mails</para>
+      /// </summary>
       [DataMember(Name="donotpostalmail")]
       public System.Nullable<bool> DoNotPostalMail
       {
@@ -735,6 +924,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotpostalmail", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Select whether the account accepts marketing materials, such as brochures or catalogs.</para>
+      /// <para>Display Name: Send Marketing Materials</para>
+      /// </summary>
       [DataMember(Name="donotsendmm")]
       public System.Nullable<bool> DoNotSendMM
       {
@@ -747,6 +940,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("donotsendmm", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the primary email address for the account.</para>
+      /// <para>Display Name: Email</para>
+      /// </summary>
       [DataMember(Name="emailaddress1")]
       public string EMailAddress1
       {
@@ -759,6 +956,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("emailaddress1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the secondary email address for the account.</para>
+      /// <para>Display Name: Email Address 2</para>
+      /// </summary>
       [DataMember(Name="emailaddress2")]
       public string EMailAddress2
       {
@@ -771,6 +972,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("emailaddress2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type an alternate email address for the account.</para>
+      /// <para>Display Name: Email Address 3</para>
+      /// </summary>
       [DataMember(Name="emailaddress3")]
       public string EMailAddress3
       {
@@ -783,22 +988,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("emailaddress3", value);
          }
       }
-      [DataMember(Name="entityimage_timestamp")]
-      public System.Nullable<long> EntityImage_Timestamp
-      {
-         get
-         {
-            return base.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
-         }
-      }
-      [DataMember(Name="entityimage_url")]
-      public string EntityImage_URL
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("entityimage_url");
-         }
-      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: Entity Image Id</para>
+      /// </summary>
       [DataMember(Name="entityimageid")]
       public System.Nullable<System.Guid> EntityImageId
       {
@@ -807,6 +1000,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.</para>
+      /// <para>Display Name: Exchange Rate</para>
+      /// </summary>
       [DataMember(Name="exchangerate")]
       public System.Nullable<decimal> ExchangeRate
       {
@@ -815,6 +1012,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
          }
       }
+      /// <summary>
+      /// <para>Description: Type the fax number for the account.</para>
+      /// <para>Display Name: Fax</para>
+      /// </summary>
       [DataMember(Name="fax")]
       public string Fax
       {
@@ -827,6 +1028,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("fax", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Information about whether to allow following email activity like opens, attachment views and link clicks for emails sent to the account.</para>
+      /// <para>Display Name: Follow Email Activity</para>
+      /// </summary>
       [DataMember(Name="followemail")]
       public System.Nullable<bool> FollowEmail
       {
@@ -839,6 +1044,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("followemail", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the URL for the account's FTP site to enable users to access data and share documents.</para>
+      /// <para>Display Name: FTP Site</para>
+      /// </summary>
       [DataMember(Name="ftpsiteurl")]
       public string FtpSiteURL
       {
@@ -851,6 +1060,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ftpsiteurl", value);
          }
       }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: Business Key</para>
+      /// </summary>
       [DataMember(Name="ic_businesskey")]
       public string ic_BusinessKey
       {
@@ -863,6 +1076,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_businesskey", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the city for the primary address.</para>
+      /// <para>Display Name: City</para>
+      /// </summary>
       [DataMember(Name="ic_city")]
       public string ic_City
       {
@@ -875,22 +1092,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_city", value);
          }
       }
-      [DataMember(Name="ic_cityidname")]
-      public string ic_CityIDName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_cityidname");
-         }
-      }
-      [DataMember(Name="ic_countryidname")]
-      public string ic_CountryIDName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_countryidname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: External ID</para>
+      /// <para>Display Name: External ID</para>
+      /// </summary>
       [DataMember(Name="ic_externalid")]
       public string ic_ExternalID
       {
@@ -903,14 +1108,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_externalid", value);
          }
       }
-      [DataMember(Name="ic_franchiseeidname")]
-      public string ic_FranchiseeIDName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_franchiseeidname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Enter the GST/HST Number.</para>
+      /// <para>Display Name: GST/HST Number</para>
+      /// </summary>
       [DataMember(Name="ic_gstumber")]
       public string ic_gstumber
       {
@@ -923,6 +1124,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_gstumber", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the mailing name for the Legal Name.</para>
+      /// <para>Display Name: Mailing Name</para>
+      /// </summary>
       [DataMember(Name="ic_mailingname")]
       public string ic_MailingName
       {
@@ -935,6 +1140,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_mailingname", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Enter the PST Number.</para>
+      /// <para>Display Name: PST Number</para>
+      /// </summary>
       [DataMember(Name="ic_pstnumber")]
       public string ic_pstnumber
       {
@@ -947,14 +1156,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_pstnumber", value);
          }
       }
-      [DataMember(Name="ic_stateprovinceidname")]
-      public string ic_StateProvinceIDName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_stateprovinceidname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Type the first line of the primary address.</para>
+      /// <para>Display Name: Street 1</para>
+      /// </summary>
       [DataMember(Name="ic_street1")]
       public string ic_Street1
       {
@@ -967,6 +1172,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_street1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the second line of the primary address.</para>
+      /// <para>Display Name: Street 2</para>
+      /// </summary>
       [DataMember(Name="ic_street2")]
       public string ic_Street2
       {
@@ -979,6 +1188,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_street2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the third line of the primary address.</para>
+      /// <para>Display Name: Street 3</para>
+      /// </summary>
       [DataMember(Name="ic_street3")]
       public string ic_Street3
       {
@@ -991,6 +1204,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_street3", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the fourth line of the primary address.</para>
+      /// <para>Display Name: Street 4</para>
+      /// </summary>
       [DataMember(Name="ic_street4")]
       public string ic_Street4
       {
@@ -1003,6 +1220,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_street4", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Synchronization Remarks</para>
+      /// <para>Display Name: Synchronization Remarks</para>
+      /// </summary>
       [DataMember(Name="ic_synchronizationremarks")]
       public string ic_SynchronizationRemarks
       {
@@ -1015,6 +1236,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_synchronizationremarks", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Enter comments on the health review.</para>
+      /// <para>Display Name: zzz_Legal Name Health Review Comments</para>
+      /// </summary>
       [DataMember(Name="ic_tenanthealthreviewcomments")]
       public string ic_TenantHealthReviewComments
       {
@@ -1027,6 +1252,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_tenanthealthreviewcomments", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Check if the health review is complete.</para>
+      /// <para>Display Name: zzz_Legal Name Health Review Complete</para>
+      /// </summary>
       [DataMember(Name="ic_tenanthealthreviewcomplete")]
       public System.Nullable<bool> ic_TenantHealthReviewComplete
       {
@@ -1039,6 +1268,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("ic_tenanthealthreviewcomplete", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Enter the review date.</para>
+      /// <para>Display Name: zzz_Legal Name Health Review Date</para>
+      /// </summary>
       [DataMember(Name="ic_tenanthealthreviewdate")]
       public System.Nullable<System.DateTime> ic_TenantHealthReviewDate
       {
@@ -1051,6 +1284,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<System.DateTime>>("ic_tenanthealthreviewdate", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the ZIP code or postal code of the primary address.</para>
+      /// <para>Display Name: ZIP/Postal Code</para>
+      /// </summary>
       [DataMember(Name="ic_zippostalcode")]
       public string ic_ZIPPostalCode
       {
@@ -1063,6 +1300,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("ic_zippostalcode", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Unique identifier of the data import or data migration that created this record.</para>
+      /// <para>Display Name: Import Sequence Number</para>
+      /// </summary>
       [DataMember(Name="importsequencenumber")]
       public System.Nullable<int> ImportSequenceNumber
       {
@@ -1070,7 +1311,15 @@ namespace webapi.entities
          {
             return base.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
          }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("importsequencenumber", value);
+         }
       }
+      /// <summary>
+      /// <para>Description: Contains the date and time stamp of the last on hold time.</para>
+      /// <para>Display Name: Last On Hold Time</para>
+      /// </summary>
       [DataMember(Name="lastonholdtime")]
       public System.Nullable<System.DateTime> LastOnHoldTime
       {
@@ -1083,6 +1332,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the date when the account was last included in a marketing campaign or quick campaign.</para>
+      /// <para>Display Name: Last Date Included in Campaign</para>
+      /// </summary>
       [DataMember(Name="lastusedincampaign")]
       public System.Nullable<System.DateTime> LastUsedInCampaign
       {
@@ -1095,6 +1348,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<System.DateTime>>("lastusedincampaign", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the market capitalization of the account to identify the company's equity, used as an indicator in financial performance analysis.</para>
+      /// <para>Display Name: Market Capitalization</para>
+      /// </summary>
       [DataMember(Name="marketcap")]
       public System.Nullable<decimal> MarketCap
       {
@@ -1107,6 +1364,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<decimal>>("marketcap", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the market capitalization converted to the system's default base currency.</para>
+      /// <para>Display Name: Market Capitalization (Base)</para>
+      /// </summary>
       [DataMember(Name="marketcap_base")]
       public System.Nullable<decimal> MarketCap_Base
       {
@@ -1115,6 +1376,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("marketcap_base");
          }
       }
+      /// <summary>
+      /// <para>Description: Whether is only for marketing</para>
+      /// <para>Display Name: Marketing Only</para>
+      /// </summary>
       [DataMember(Name="marketingonly")]
       public System.Nullable<bool> MarketingOnly
       {
@@ -1127,22 +1392,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("marketingonly", value);
          }
       }
-      [DataMember(Name="masteraccountidname")]
-      public string MasterAccountIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("masteraccountidname");
-         }
-      }
-      [DataMember(Name="masteraccountidyominame")]
-      public string MasterAccountIdYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("masteraccountidyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Shows whether the account has been merged with another account.</para>
+      /// <para>Display Name: Merged</para>
+      /// </summary>
       [DataMember(Name="merged")]
       public System.Nullable<bool> Merged
       {
@@ -1151,38 +1404,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<bool>>("merged");
          }
       }
-      [DataMember(Name="modifiedbyexternalpartyname")]
-      public string ModifiedByExternalPartyName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("modifiedbyexternalpartyname");
-         }
-      }
-      [DataMember(Name="modifiedbyexternalpartyyominame")]
-      public string ModifiedByExternalPartyYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("modifiedbyexternalpartyyominame");
-         }
-      }
-      [DataMember(Name="modifiedbyname")]
-      public string ModifiedByName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("modifiedbyname");
-         }
-      }
-      [DataMember(Name="modifiedbyyominame")]
-      public string ModifiedByYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("modifiedbyyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.</para>
+      /// <para>Display Name: Modified On</para>
+      /// </summary>
       [DataMember(Name="modifiedon")]
       public System.Nullable<System.DateTime> ModifiedOn
       {
@@ -1191,22 +1416,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
          }
       }
-      [DataMember(Name="modifiedonbehalfbyname")]
-      public string ModifiedOnBehalfByName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("modifiedonbehalfbyname");
-         }
-      }
-      [DataMember(Name="modifiedonbehalfbyyominame")]
-      public string ModifiedOnBehalfByYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("modifiedonbehalfbyyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Type the company or business name.</para>
+      /// <para>Display Name: Name</para>
+      /// </summary>
       [DataMember(Name="name")]
       public string Name
       {
@@ -1219,6 +1432,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("name", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the number of employees that work at the account for use in marketing segmentation and demographic analysis.</para>
+      /// <para>Display Name: Number of Employees</para>
+      /// </summary>
       [DataMember(Name="numberofemployees")]
       public System.Nullable<int> NumberOfEmployees
       {
@@ -1231,6 +1448,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("numberofemployees", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows how long, in minutes, that the record was on hold.</para>
+      /// <para>Display Name: On Hold Time (Minutes)</para>
+      /// </summary>
       [DataMember(Name="onholdtime")]
       public System.Nullable<int> OnHoldTime
       {
@@ -1239,6 +1460,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<int>>("onholdtime");
          }
       }
+      /// <summary>
+      /// <para>Description: Number of open opportunities against an account and its child accounts.</para>
+      /// <para>Display Name: Open Deals</para>
+      /// </summary>
       [DataMember(Name="opendeals")]
       public System.Nullable<int> OpenDeals
       {
@@ -1247,6 +1472,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<int>>("opendeals");
          }
       }
+      /// <summary>
+      /// <para>Description: Last Updated time of rollup field Open Deals.</para>
+      /// <para>Display Name: Open Deals (Last Updated On)</para>
+      /// </summary>
       [DataMember(Name="opendeals_date")]
       public System.Nullable<System.DateTime> OpenDeals_Date
       {
@@ -1255,6 +1484,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("opendeals_date");
          }
       }
+      /// <summary>
+      /// <para>Description: State of rollup field Open Deals.</para>
+      /// <para>Display Name: Open Deals (State)</para>
+      /// </summary>
       [DataMember(Name="opendeals_state")]
       public System.Nullable<int> OpenDeals_State
       {
@@ -1263,6 +1496,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<int>>("opendeals_state");
          }
       }
+      /// <summary>
+      /// <para>Description: Sum of open revenue against an account and its child accounts.</para>
+      /// <para>Display Name: Open Revenue</para>
+      /// </summary>
       [DataMember(Name="openrevenue")]
       public System.Nullable<decimal> OpenRevenue
       {
@@ -1271,6 +1508,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("openrevenue");
          }
       }
+      /// <summary>
+      /// <para>Description: Value of the Open Revenue in base currency.</para>
+      /// <para>Display Name: Open Revenue (Base)</para>
+      /// </summary>
       [DataMember(Name="openrevenue_base")]
       public System.Nullable<decimal> OpenRevenue_Base
       {
@@ -1279,6 +1520,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("openrevenue_base");
          }
       }
+      /// <summary>
+      /// <para>Description: Last Updated time of rollup field Open Revenue.</para>
+      /// <para>Display Name: Open Revenue (Last Updated On)</para>
+      /// </summary>
       [DataMember(Name="openrevenue_date")]
       public System.Nullable<System.DateTime> OpenRevenue_Date
       {
@@ -1287,6 +1532,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("openrevenue_date");
          }
       }
+      /// <summary>
+      /// <para>Description: State of rollup field Open Revenue.</para>
+      /// <para>Display Name: Open Revenue (State)</para>
+      /// </summary>
       [DataMember(Name="openrevenue_state")]
       public System.Nullable<int> OpenRevenue_State
       {
@@ -1295,22 +1544,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<int>>("openrevenue_state");
          }
       }
-      [DataMember(Name="originatingleadidname")]
-      public string OriginatingLeadIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("originatingleadidname");
-         }
-      }
-      [DataMember(Name="originatingleadidyominame")]
-      public string OriginatingLeadIdYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("originatingleadidyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Date and time that the record was migrated.</para>
+      /// <para>Display Name: Record Created On</para>
+      /// </summary>
       [DataMember(Name="overriddencreatedon")]
       public System.Nullable<System.DateTime> OverriddenCreatedOn
       {
@@ -1318,51 +1555,15 @@ namespace webapi.entities
          {
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
          }
-      }
-      [DataMember(Name="owneridname")]
-      public string OwnerIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("owneridname");
-         }
-      }
-      [DataMember(Name="owneridtype")]
-      public string OwnerIdType
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("owneridtype");
-         }
          set
          {
-            base.SetAttributeValue<string>("owneridtype", value);
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon", value);
          }
       }
-      [DataMember(Name="owneridyominame")]
-      public string OwnerIdYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("owneridyominame");
-         }
-      }
-      [DataMember(Name="parentaccountidname")]
-      public string ParentAccountIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("parentaccountidname");
-         }
-      }
-      [DataMember(Name="parentaccountidyominame")]
-      public string ParentAccountIdYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("parentaccountidyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: For system use only. Legacy Microsoft Dynamics CRM 3.0 workflow data.</para>
+      /// <para>Display Name: Participates in Workflow</para>
+      /// </summary>
       [DataMember(Name="participatesinworkflow")]
       public System.Nullable<bool> ParticipatesInWorkflow
       {
@@ -1375,54 +1576,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<bool>>("participatesinworkflow", value);
          }
       }
-      [DataMember(Name="preferredequipmentidname")]
-      public string PreferredEquipmentIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("preferredequipmentidname");
-         }
-      }
-      [DataMember(Name="preferredserviceidname")]
-      public string PreferredServiceIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("preferredserviceidname");
-         }
-      }
-      [DataMember(Name="preferredsystemuseridname")]
-      public string PreferredSystemUserIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("preferredsystemuseridname");
-         }
-      }
-      [DataMember(Name="preferredsystemuseridyominame")]
-      public string PreferredSystemUserIdYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("preferredsystemuseridyominame");
-         }
-      }
-      [DataMember(Name="primarycontactidname")]
-      public string PrimaryContactIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("primarycontactidname");
-         }
-      }
-      [DataMember(Name="primarycontactidyominame")]
-      public string PrimaryContactIdYomiName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("primarycontactidyominame");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Primary Satori ID for Account</para>
+      /// <para>Display Name: Primary Satori ID</para>
+      /// </summary>
       [DataMember(Name="primarysatoriid")]
       public string PrimarySatoriId
       {
@@ -1435,6 +1592,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("primarysatoriid", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Primary Twitter ID for Account</para>
+      /// <para>Display Name: Primary Twitter ID</para>
+      /// </summary>
       [DataMember(Name="primarytwitterid")]
       public string PrimaryTwitterId
       {
@@ -1447,6 +1608,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("primarytwitterid", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the ID of the process.</para>
+      /// <para>Display Name: Process</para>
+      /// </summary>
       [DataMember(Name="processid")]
       public System.Nullable<System.Guid> ProcessId
       {
@@ -1459,6 +1624,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<System.Guid>>("processid", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the annual revenue for the account, used as an indicator in financial performance analysis.</para>
+      /// <para>Display Name: Annual Revenue</para>
+      /// </summary>
       [DataMember(Name="revenue")]
       public System.Nullable<decimal> Revenue
       {
@@ -1471,6 +1640,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<decimal>>("revenue", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Shows the annual revenue converted to the system's default base currency. The calculations use the exchange rate specified in the Currencies area.</para>
+      /// <para>Display Name: Annual Revenue (Base)</para>
+      /// </summary>
       [DataMember(Name="revenue_base")]
       public System.Nullable<decimal> Revenue_Base
       {
@@ -1479,6 +1652,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<decimal>>("revenue_base");
          }
       }
+      /// <summary>
+      /// <para>Description: Type the number of shares available to the public for the account. This number is used as an indicator in financial performance analysis.</para>
+      /// <para>Display Name: Shares Outstanding</para>
+      /// </summary>
       [DataMember(Name="sharesoutstanding")]
       public System.Nullable<int> SharesOutstanding
       {
@@ -1491,6 +1668,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("sharesoutstanding", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the Standard Industrial Classification (SIC) code that indicates the account's primary industry of business, for use in marketing segmentation and demographic analysis.</para>
+      /// <para>Display Name: SIC Code</para>
+      /// </summary>
       [DataMember(Name="sic")]
       public string SIC
       {
@@ -1503,22 +1684,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("sic", value);
          }
       }
-      [DataMember(Name="slainvokedidname")]
-      public string SLAInvokedIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("slainvokedidname");
-         }
-      }
-      [DataMember(Name="slaname")]
-      public string SLAName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("slaname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Shows the ID of the stage.</para>
+      /// <para>Display Name: (Deprecated) Process Stage</para>
+      /// </summary>
       [DataMember(Name="stageid")]
       public System.Nullable<System.Guid> StageId
       {
@@ -1531,6 +1700,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<System.Guid>>("stageid", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the stock exchange at which the account is listed to track their stock and financial performance of the company.</para>
+      /// <para>Display Name: Stock Exchange</para>
+      /// </summary>
       [DataMember(Name="stockexchange")]
       public string StockExchange
       {
@@ -1543,6 +1716,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("stockexchange", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Number of users or conversations followed the record</para>
+      /// <para>Display Name: TeamsFollowed</para>
+      /// </summary>
       [DataMember(Name="teamsfollowed")]
       public System.Nullable<int> TeamsFollowed
       {
@@ -1555,6 +1732,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("teamsfollowed", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the main phone number for this account.</para>
+      /// <para>Display Name: Main Phone</para>
+      /// </summary>
       [DataMember(Name="telephone1")]
       public string Telephone1
       {
@@ -1567,6 +1748,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("telephone1", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a second phone number for this account.</para>
+      /// <para>Display Name: Other Phone</para>
+      /// </summary>
       [DataMember(Name="telephone2")]
       public string Telephone2
       {
@@ -1579,6 +1764,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("telephone2", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type a third phone number for this account.</para>
+      /// <para>Display Name: Telephone 3</para>
+      /// </summary>
       [DataMember(Name="telephone3")]
       public string Telephone3
       {
@@ -1591,14 +1780,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("telephone3", value);
          }
       }
-      [DataMember(Name="territoryidname")]
-      public string TerritoryIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("territoryidname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: Type the stock exchange symbol for the account to track financial performance of the company. You can click the code entered in this field to access the latest trading information from MSN Money.</para>
+      /// <para>Display Name: Ticker Symbol</para>
+      /// </summary>
       [DataMember(Name="tickersymbol")]
       public string TickerSymbol
       {
@@ -1611,6 +1796,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("tickersymbol", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Total time spent for emails (read and write) and meetings by me in relation to account record.</para>
+      /// <para>Display Name: Time Spent by me</para>
+      /// </summary>
       [DataMember(Name="timespentbymeonemailandmeetings")]
       public string TimeSpentByMeOnEmailAndMeetings
       {
@@ -1619,6 +1808,10 @@ namespace webapi.entities
             return base.GetAttributeValue<string>("timespentbymeonemailandmeetings");
          }
       }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: Time Zone Rule Version Number</para>
+      /// </summary>
       [DataMember(Name="timezoneruleversionnumber")]
       public System.Nullable<int> TimeZoneRuleVersionNumber
       {
@@ -1631,14 +1824,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber", value);
          }
       }
-      [DataMember(Name="transactioncurrencyidname")]
-      public string TransactionCurrencyIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("transactioncurrencyidname");
-         }
-      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: (Deprecated) Traversed Path</para>
+      /// </summary>
       [DataMember(Name="traversedpath")]
       public string TraversedPath
       {
@@ -1651,6 +1840,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("traversedpath", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Time zone code that was in use when the record was created.</para>
+      /// <para>Display Name: UTC Conversion Time Zone Code</para>
+      /// </summary>
       [DataMember(Name="utcconversiontimezonecode")]
       public System.Nullable<int> UTCConversionTimeZoneCode
       {
@@ -1663,6 +1856,10 @@ namespace webapi.entities
             base.SetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Version number of the account.</para>
+      /// <para>Display Name: Version Number</para>
+      /// </summary>
       [DataMember(Name="versionnumber")]
       public System.Nullable<long> VersionNumber
       {
@@ -1671,6 +1868,10 @@ namespace webapi.entities
             return base.GetAttributeValue<System.Nullable<long>>("versionnumber");
          }
       }
+      /// <summary>
+      /// <para>Description: Type the account's website URL to get quick details about the company profile.</para>
+      /// <para>Display Name: Website</para>
+      /// </summary>
       [DataMember(Name="websiteurl")]
       public string WebSiteURL
       {
@@ -1683,6 +1884,10 @@ namespace webapi.entities
             base.SetAttributeValue<string>("websiteurl", value);
          }
       }
+      /// <summary>
+      /// <para>Description: Type the phonetic spelling of the company name, if specified in Japanese, to make sure the name is pronounced correctly in phone calls and other communications.</para>
+      /// <para>Display Name: Yomi Account Name</para>
+      /// </summary>
       [DataMember(Name="yominame")]
       public string YomiName
       {
