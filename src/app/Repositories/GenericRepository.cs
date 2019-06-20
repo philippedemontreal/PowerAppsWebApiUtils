@@ -29,6 +29,30 @@ namespace  app.Repositories
             OdataEntityName = odataEntityName;
         }
 
+        public async Task<List<T>> GetList()
+        {
+            List<T> result = null;
+
+           using (var client = GetHttpClient())
+            {
+                    var getQuery = $"{OdataEntityName}";
+                    var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
+                    var rootValues = await DeserializeContent<RootObject<T>>(response);
+                                        
+                    if (rootValues != null)
+                    {
+                        if (result == null)
+                            result = rootValues.Value;
+                        else
+                            result.AddRange(rootValues.Value);
+                    }
+                    else
+                        throw new Exception("RootValues not set");
+            }
+
+            return result;            
+        }
+
         public async Task<T> GetById(Guid entityId, string fields = null)
         {
             var getQuery = string.IsNullOrEmpty(fields) ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
