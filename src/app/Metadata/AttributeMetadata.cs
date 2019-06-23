@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Metadata
+namespace Microsoft.Dynamics.CRM
 {
     public sealed class AttributeMetadata
     {
@@ -42,14 +42,14 @@ namespace app.Metadata
                 
         public Label Description { get; set; }
         public Label DisplayName { get; set; }
-        public ManagedProperty IsAuditEnabled { get; set; }
-        public ManagedProperty IsGlobalFilterEnabled { get; set; }
-        public ManagedProperty IsSortableEnabled { get; set; }
-        public ManagedProperty IsCustomizable { get; set; }
-        public ManagedProperty IsRenameable { get; set; }
-        public ManagedProperty IsValidForAdvancedFind { get; set; }
+        public BooleanManagedProperty IsAuditEnabled { get; set; }
+        public BooleanManagedProperty IsGlobalFilterEnabled { get; set; }
+        public BooleanManagedProperty IsSortableEnabled { get; set; }
+        public BooleanManagedProperty IsCustomizable { get; set; }
+        public BooleanManagedProperty IsRenameable { get; set; }
+        public BooleanManagedProperty IsValidForAdvancedFind { get; set; }
         public RequiredLevelProperty RequiredLevel { get; set; }
-        public ManagedProperty CanModifyAdditionalSettings { get; set; }
+        public BooleanManagedProperty CanModifyAdditionalSettings { get; set; }
 
     }
 }

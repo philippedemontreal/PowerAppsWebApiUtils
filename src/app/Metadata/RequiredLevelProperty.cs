@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Metadata
+namespace Microsoft.Dynamics.CRM
 {
 
     public enum AttributeRequiredLevel
@@ -14,7 +14,7 @@ namespace app.Metadata
     }
     
    
-    public class RequiredLevelProperty  
+    public sealed class RequiredLevelProperty  
     {
 		public AttributeRequiredLevel Value { get; set; }
 		public bool CanBeChanged { get; set; }

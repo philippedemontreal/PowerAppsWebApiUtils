@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using app.Metadata;
 using System.CodeDom;
 using System;
 using System.Linq;
 using System.CodeDom.Compiler;
 using System.Text;
 using System.IO;
-using Newtonsoft.Json.Serialization;
-using System.Dynamic;
 using app.entities;
+using System.Text.RegularExpressions;
+using Microsoft.Dynamics.CRM;
 
 namespace app.codegen
 {
@@ -30,6 +29,8 @@ namespace app.codegen
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Double, typeof(double?)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Decimal, typeof(decimal?)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Integer, typeof(int?)),
+                    
+                    //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Picklist, typeof(string)),
                     //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Lookup, typeof(string)),
                     //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Customer, typeof(string)),
                     //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Owner, typeof(string)),
@@ -45,6 +46,7 @@ namespace app.codegen
             returnValue.Imports.Add(new CodeNamespaceImport ("System.Runtime.Serialization"));
             return returnValue;
         }
+
 
         public CodeTypeDeclaration CreateType (EntityMetadata entitMetadata)
         {
@@ -75,14 +77,13 @@ namespace app.codegen
         }
 
 
-        public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, Type propertyType) 
+       public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, Type propertyType)
+        => CreateProperty(attributeMetadata, propertyType.FullName);
+        public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, string propertyType) 
         {
             var schemaName = attributeMetadata.SchemaName;
            
             if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
-                return null;
-
-            if (!string.IsNullOrEmpty(attributeMetadata.AttributeOf))
                 return null;
 
             var result = new CodeMemberProperty()
@@ -134,17 +135,27 @@ namespace app.codegen
 
 
 
-        public void Execute(List<EntityMetadata> entitMetadatas)
+        public void Execute(string namespacename, List<EntityMetadata> entitMetadatas, Dictionary<string, PicklistAttributeMetadata> picklists)
         {
 
             var provider = new Microsoft.CSharp.CSharpCodeProvider();                             
             var codeGeneratorOptions = new CodeGeneratorOptions();
-            var ns = CreateNameSpace("webapi.entities");
 
+            var ns = CreateNameSpace(namespacename);
             foreach (var entitMetadata in entitMetadatas.OrderBy(p => p.SchemaName))
             {
-                MakeEntity(entitMetadata, ns);
+                MakeEntity(entitMetadata, ns, picklists);
             }
+
+            var generatedOptionsets = new List<string>();
+            foreach (var picklist in picklists.Values.OrderBy(p => p.LogicalName))
+            {
+                if (generatedOptionsets.Contains(picklist.OptionSet.Name))
+                    continue;
+                generatedOptionsets.Add(picklist.OptionSet.Name);
+                MakOptionSet(picklist, ns);
+            }
+
 
             var cu = new CodeCompileUnit();
             cu.Namespaces.Add(ns);
@@ -163,7 +174,40 @@ namespace app.codegen
 
         }
 
-        private void MakeEntity(EntityMetadata entitMetadata, CodeNamespace ns)
+        private string Sanitize(string enumName)
+        {
+            if (string.IsNullOrEmpty(enumName))
+                return "_EmptyString";
+            
+            var result = Regex.Replace(enumName, @"[^\w]", "");
+            result = Regex.Replace(result, @"^(\d)", @"_$1");
+
+            return result;
+        }
+
+        private void MakOptionSet(PicklistAttributeMetadata picklist, CodeNamespace ns)
+        {
+            var result =  new CodeTypeDeclaration(picklist.OptionSet.Name) { IsEnum = true };
+
+            foreach (var optionset in picklist.OptionSet.Options)
+            {
+                var option = new CodeMemberField(picklist.OptionSet.Name, Sanitize(optionset.Label.UserLocalizedLabel.Label)) 
+                { 
+                    InitExpression = new CodePrimitiveExpression(optionset.Value)
+                };
+
+                result.Members.Add(option);
+            }
+
+            result.Comments.Add(new CodeCommentStatement("<summary>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Description: {picklist.Description.UserLocalizedLabel.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {picklist.DisplayName.UserLocalizedLabel.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement("</summary>", true));
+
+           ns.Types.Add(result);
+         }
+
+        private void MakeEntity(EntityMetadata entitMetadata, CodeNamespace ns,  Dictionary<string, PicklistAttributeMetadata> picklists)
         {
             var genType = CreateType(entitMetadata);
             var primary = entitMetadata.Attributes.Where(p => p.IsPrimaryId).FirstOrDefault();
@@ -176,14 +220,28 @@ namespace app.codegen
                 if (!attribute.IsValidForRead || attribute.IsPrimaryId)       
                     continue;
 
-                if (!_refMap.ContainsKey(attribute.AttributeType))
-                    continue;
 
-                var genProp = CreateProperty(attribute, _refMap[attribute.AttributeType]);
-                if (genProp != null)
-                    genType.Members.Add(genProp);
+                if (attribute.AttributeType == AttributeTypeCode.Picklist || attribute.AttributeType == AttributeTypeCode.State || attribute.AttributeType == AttributeTypeCode.Status)
+                {
+                    var picklist = picklists.Select(p => p.Value).Where(p => p.LogicalName == attribute.LogicalName&& p.EntityLogicalName == entitMetadata.LogicalName).FirstOrDefault();
+                    if (picklist != null)
+                    {
+                        genType.Members.Add(CreateProperty(attribute, $"{picklist.OptionSet.Name}?"));
+                    }
+                    continue;
+                }
+                else {
+                                    
+                    if (!_refMap.ContainsKey(attribute.AttributeType))
+                        continue;
+                    var genProp = CreateProperty(attribute, _refMap[attribute.AttributeType]);
+                    if (genProp != null)
+                        genType.Members.Add(genProp);
+
+                }
+
             }
             ns.Types.Add(genType);
-            }
         }
+    }
 }

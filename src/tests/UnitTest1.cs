@@ -17,7 +17,7 @@ namespace tests
             var repo = new GenericRepository<Account>(config, "accounts");
             var account = repo.GetById(Guid.Parse("BB7F2EEC-A38C-E911-A985-000D3AF49637")).Result;
             Assert.IsNotNull(account);
-                        
+            Assert.AreEqual(account_statecode.Active, account.StateCode);            
             Assert.AreNotEqual(Guid.Empty, account.AccountId);
             Assert.IsNull(account.LastOnHoldTime);
             Assert.IsNotNull(account.ModifiedOn);

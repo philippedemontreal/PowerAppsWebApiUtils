@@ -1,18 +1,20 @@
 using System;
 using System.Collections.Generic;
 
-namespace app.Metadata
-{
+namespace Microsoft.Dynamics.CRM
+{   
+
+    ///<chref="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/ownershiptypes?view=dynamics-ce-odata-9"/>
     public enum OwnershipTypes
     {
-        BusinessOwned,
-        BusinessParented,
-        None,
-        OrganizationOwned,
-        TeamOwned,
-        UserOwned,
-
+        None = 	0, //	The entity does not have an owner. For internal use only.
+        UserOwned = 1, //	The entity is owned by a system user.
+        TeamOwned = 2, //	The entity is owned by a team. For internal use only.
+        BusinessOwned = 4, //	The entity is owned by a business unit. For internal use only.
+        OrganizationOwned = 8, //	The entity is owned by an organization.
+        BusinessParented = 16, //	The entity is parented by a business unit. For internal use only.
     }
+
     public sealed class EntityMetadata
     {
         public int? ActivityTypeMask { get; set; }
@@ -86,29 +88,29 @@ namespace app.Metadata
         public Label Description { get; set; }
         public Label DisplayCollectionName { get; set; }
         public Label DisplayName { get; set; }
-        public ManagedProperty IsAuditEnabled { get; set; }
-        public ManagedProperty IsValidForQueue { get; set; }
-        public ManagedProperty IsConnectionsEnabled { get; set; }
-        public ManagedProperty IsCustomizable { get; set; }
-        public ManagedProperty IsRenameable { get; set; }
-        public ManagedProperty IsMappable { get; set; }
-        public ManagedProperty IsDuplicateDetectionEnabled { get; set; }
-        public ManagedProperty CanCreateAttributes { get; set; }
-        public ManagedProperty CanCreateForms { get; set; }
-        public ManagedProperty CanCreateViews { get; set; }
-        public ManagedProperty CanCreateCharts { get; set; }
-        public ManagedProperty CanBeRelatedEntityInRelationship { get; set; }
-        public ManagedProperty CanBePrimaryEntityInRelationship { get; set; }
-        public ManagedProperty CanBeInManyToMany { get; set; }
-        public ManagedProperty CanBeInCustomEntityAssociation { get; set; }
-        public ManagedProperty CanEnableSyncToExternalSearchIndex { get; set; }
-        public ManagedProperty CanModifyAdditionalSettings { get; set; }
-        public ManagedProperty CanChangeHierarchicalRelationship { get; set; }
-        public ManagedProperty CanChangeTrackingBeEnabled { get; set; }
-        public ManagedProperty IsMailMergeEnabled { get; set; }
-        public ManagedProperty IsVisibleInMobile { get; set; }
-        public ManagedProperty IsVisibleInMobileClient { get; set; }
-        public ManagedProperty IsOfflineInMobileClient { get; set; }
+        public BooleanManagedProperty IsAuditEnabled { get; set; }
+        public BooleanManagedProperty IsValidForQueue { get; set; }
+        public BooleanManagedProperty IsConnectionsEnabled { get; set; }
+        public BooleanManagedProperty IsCustomizable { get; set; }
+        public BooleanManagedProperty IsRenameable { get; set; }
+        public BooleanManagedProperty IsMappable { get; set; }
+        public BooleanManagedProperty IsDuplicateDetectionEnabled { get; set; }
+        public BooleanManagedProperty CanCreateAttributes { get; set; }
+        public BooleanManagedProperty CanCreateForms { get; set; }
+        public BooleanManagedProperty CanCreateViews { get; set; }
+        public BooleanManagedProperty CanCreateCharts { get; set; }
+        public BooleanManagedProperty CanBeRelatedEntityInRelationship { get; set; }
+        public BooleanManagedProperty CanBePrimaryEntityInRelationship { get; set; }
+        public BooleanManagedProperty CanBeInManyToMany { get; set; }
+        public BooleanManagedProperty CanBeInCustomEntityAssociation { get; set; }
+        public BooleanManagedProperty CanEnableSyncToExternalSearchIndex { get; set; }
+        public BooleanManagedProperty CanModifyAdditionalSettings { get; set; }
+        public BooleanManagedProperty CanChangeHierarchicalRelationship { get; set; }
+        public BooleanManagedProperty CanChangeTrackingBeEnabled { get; set; }
+        public BooleanManagedProperty IsMailMergeEnabled { get; set; }
+        public BooleanManagedProperty IsVisibleInMobile { get; set; }
+        public BooleanManagedProperty IsVisibleInMobileClient { get; set; }
+        public BooleanManagedProperty IsOfflineInMobileClient { get; set; }
         public List<SecurityPrivilegeMetadata> Privileges { get; set; }
         public List<AttributeMetadata> Attributes { get; set; }       
     

@@ -1,6 +1,6 @@
 using System;
 
-namespace app.Metadata
+namespace Microsoft.Dynamics.CRM
 {
     public enum PrivilegeType
     {

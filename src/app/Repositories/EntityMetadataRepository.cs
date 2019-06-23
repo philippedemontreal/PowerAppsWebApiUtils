@@ -1,6 +1,5 @@
-using app.Configuration;
-using app.Metadata;
 using app.Security;
+using Microsoft.Dynamics.CRM;
 using System;
 using System.Threading.Tasks;
 
@@ -17,5 +16,6 @@ namespace app.Repositories
         {
             return await Retrieve($"{OdataEntityName}(LogicalName='{logicalName}')?$expand=Attributes");     
         }
+
     }
 }

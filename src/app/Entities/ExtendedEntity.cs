@@ -26,6 +26,9 @@ namespace app.entities
             if (typeT == typeof(DateTime)|| typeT == typeof(DateTime?))
                 return (T)((object)Convert.ToDateTime(this[key]));
 
+            if (typeT.BaseType == typeof(ValueType) && typeT.GenericTypeArguments.Length == 1)
+                return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], (Int64)this[key]));
+
             return  default(T);
         } 
 

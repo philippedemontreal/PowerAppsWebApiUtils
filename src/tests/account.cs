@@ -37,6 +37,38 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select a category to indicate whether the customer account is standard or preferred.</para>
+      /// <para>Display Name: Category</para>
+      /// </summary>
+      [DataMember(Name="accountcategorycode")]
+      public account_accountcategorycode? AccountCategoryCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_accountcategorycode?>("accountcategorycode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_accountcategorycode?>("accountcategorycode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a classification code to indicate the potential value of the customer account based on the projected return on investment, cooperation level, sales cycle length or other criteria.</para>
+      /// <para>Display Name: Classification</para>
+      /// </summary>
+      [DataMember(Name="accountclassificationcode")]
+      public account_accountclassificationcode? AccountClassificationCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_accountclassificationcode?>("accountclassificationcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_accountclassificationcode?>("accountclassificationcode", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Type an ID number or code for the account to quickly search and identify the account in system views.</para>
       /// <para>Display Name: Account Number</para>
       /// </summary>
@@ -50,6 +82,38 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("accountnumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a rating to indicate the value of the customer account.</para>
+      /// <para>Display Name: Account Rating</para>
+      /// </summary>
+      [DataMember(Name="accountratingcode")]
+      public account_accountratingcode? AccountRatingCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_accountratingcode?>("accountratingcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_accountratingcode?>("accountratingcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the primary address type.</para>
+      /// <para>Display Name: Address 1: Address Type</para>
+      /// </summary>
+      [DataMember(Name="address1_addresstypecode")]
+      public account_address1_addresstypecode? Address1_AddressTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_address1_addresstypecode?>("address1_addresstypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_address1_addresstypecode?>("address1_addresstypecode", value);
          }
       }
       /// <summary>
@@ -126,6 +190,22 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("address1_fax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the freight terms for the primary address to make sure shipping orders are processed correctly.</para>
+      /// <para>Display Name: Address 1: Freight Terms</para>
+      /// </summary>
+      [DataMember(Name="address1_freighttermscode")]
+      public account_address1_freighttermscode? Address1_FreightTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_address1_freighttermscode?>("address1_freighttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_address1_freighttermscode?>("address1_freighttermscode", value);
          }
       }
       /// <summary>
@@ -273,6 +353,22 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+      /// <para>Display Name: Address 1: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="address1_shippingmethodcode")]
+      public account_address1_shippingmethodcode? Address1_ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_address1_shippingmethodcode?>("address1_shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_address1_shippingmethodcode?>("address1_shippingmethodcode", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Type the state or province of the primary address.</para>
       /// <para>Display Name: Address 1: State/Province</para>
       /// </summary>
@@ -369,6 +465,22 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select the secondary address type.</para>
+      /// <para>Display Name: Address 2: Address Type</para>
+      /// </summary>
+      [DataMember(Name="address2_addresstypecode")]
+      public account_address2_addresstypecode? Address2_AddressTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_address2_addresstypecode?>("address2_addresstypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_address2_addresstypecode?>("address2_addresstypecode", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Type the city for the secondary address.</para>
       /// <para>Display Name: Address 2: City</para>
       /// </summary>
@@ -442,6 +554,22 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("address2_fax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the freight terms for the secondary address to make sure shipping orders are processed correctly.</para>
+      /// <para>Display Name: Address 2: Freight Terms</para>
+      /// </summary>
+      [DataMember(Name="address2_freighttermscode")]
+      public account_address2_freighttermscode? Address2_FreightTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_address2_freighttermscode?>("address2_freighttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_address2_freighttermscode?>("address2_freighttermscode", value);
          }
       }
       /// <summary>
@@ -586,6 +714,22 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("address2_primarycontactname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+      /// <para>Display Name: Address 2: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="address2_shippingmethodcode")]
+      public account_address2_shippingmethodcode? Address2_ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_address2_shippingmethodcode?>("address2_shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_address2_shippingmethodcode?>("address2_shippingmethodcode", value);
          }
       }
       /// <summary>
@@ -757,6 +901,46 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select the legal designation or other business type of the account for contracts or reporting purposes.</para>
+      /// <para>Display Name: Business Type</para>
+      /// </summary>
+      [DataMember(Name="businesstypecode")]
+      public account_businesstypecode? BusinessTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_businesstypecode?>("businesstypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_businesstypecode?>("businesstypecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="createdbyexternalpartyname")]
+      public string CreatedByExternalPartyName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("createdbyexternalpartyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="createdbyname")]
+      public string CreatedByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("createdbyname");
+         }
+      }
+      /// <summary>
       /// <para>Description: Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.</para>
       /// <para>Display Name: Created On</para>
       /// </summary>
@@ -766,6 +950,18 @@ namespace webapi.entities
          get
          {
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="createdonbehalfbyname")]
+      public string CreatedOnBehalfByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("createdonbehalfbyname");
          }
       }
       /// <summary>
@@ -810,6 +1006,50 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<System.Nullable<bool>>("creditonhold", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the size category or range of the account for segmentation and reporting purposes.</para>
+      /// <para>Display Name: Customer Size</para>
+      /// </summary>
+      [DataMember(Name="customersizecode")]
+      public account_customersizecode? CustomerSizeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_customersizecode?>("customersizecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_customersizecode?>("customersizecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the category that best describes the relationship between the account and your organization.</para>
+      /// <para>Display Name: Relationship Type</para>
+      /// </summary>
+      [DataMember(Name="customertypecode")]
+      public account_customertypecode? CustomerTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_customertypecode?>("customertypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_customertypecode?>("customertypecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="defaultpricelevelidname")]
+      public string DefaultPriceLevelIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("defaultpricelevelidname");
          }
       }
       /// <summary>
@@ -989,6 +1229,30 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="entityimage_timestamp")]
+      public System.Nullable<long> EntityImage_Timestamp
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="entityimage_url")]
+      public string EntityImage_URL
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("entityimage_url");
+         }
+      }
+      /// <summary>
       /// <para>Description: For internal use only.</para>
       /// <para>Display Name: Entity Image Id</para>
       /// </summary>
@@ -1093,6 +1357,30 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_cityidname")]
+      public string ic_CityIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_cityidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_countryidname")]
+      public string ic_CountryIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_countryidname");
+         }
+      }
+      /// <summary>
       /// <para>Description: External ID</para>
       /// <para>Display Name: External ID</para>
       /// </summary>
@@ -1106,6 +1394,18 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("ic_externalid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_franchiseeidname")]
+      public string ic_FranchiseeIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_franchiseeidname");
          }
       }
       /// <summary>
@@ -1154,6 +1454,18 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("ic_pstnumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_stateprovinceidname")]
+      public string ic_StateProvinceIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_stateprovinceidname");
          }
       }
       /// <summary>
@@ -1237,6 +1549,38 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Shows the synchronization status.</para>
+      /// <para>Display Name: Synchronization Status</para>
+      /// </summary>
+      [DataMember(Name="ic_synchronizationstatus")]
+      public ic_synchronizationstatus? ic_SynchronizationStatus
+      {
+         get
+         {
+            return base.GetAttributeValue<ic_synchronizationstatus?>("ic_synchronizationstatus");
+         }
+         set
+         {
+            base.SetAttributeValue<ic_synchronizationstatus?>("ic_synchronizationstatus", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the geographical distribution of the Legal Name.</para>
+      /// <para>Display Name: Legal Name Classification</para>
+      /// </summary>
+      [DataMember(Name="ic_tenantclassification")]
+      public ic_tenantclassification? ic_TenantClassification
+      {
+         get
+         {
+            return base.GetAttributeValue<ic_tenantclassification?>("ic_tenantclassification");
+         }
+         set
+         {
+            base.SetAttributeValue<ic_tenantclassification?>("ic_tenantclassification", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Enter comments on the health review.</para>
       /// <para>Display Name: zzz_Legal Name Health Review Comments</para>
       /// </summary>
@@ -1285,6 +1629,22 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select the category that best describes the relationship between the contact and your organization.</para>
+      /// <para>Display Name: zzz_Type</para>
+      /// </summary>
+      [DataMember(Name="ic_type")]
+      public ic_tenanttype? ic_Type
+      {
+         get
+         {
+            return base.GetAttributeValue<ic_tenanttype?>("ic_type");
+         }
+         set
+         {
+            base.SetAttributeValue<ic_tenanttype?>("ic_type", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Type the ZIP code or postal code of the primary address.</para>
       /// <para>Display Name: ZIP/Postal Code</para>
       /// </summary>
@@ -1314,6 +1674,22 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<System.Nullable<int>>("importsequencenumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the account's primary industry for use in marketing segmentation and demographic analysis.</para>
+      /// <para>Display Name: Industry</para>
+      /// </summary>
+      [DataMember(Name="industrycode")]
+      public account_industrycode? IndustryCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_industrycode?>("industrycode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_industrycode?>("industrycode", value);
          }
       }
       /// <summary>
@@ -1393,6 +1769,18 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="masteraccountidname")]
+      public string MasterAccountIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("masteraccountidname");
+         }
+      }
+      /// <summary>
       /// <para>Description: Shows whether the account has been merged with another account.</para>
       /// <para>Display Name: Merged</para>
       /// </summary>
@@ -1405,6 +1793,30 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="modifiedbyexternalpartyname")]
+      public string ModifiedByExternalPartyName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("modifiedbyexternalpartyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="modifiedbyname")]
+      public string ModifiedByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("modifiedbyname");
+         }
+      }
+      /// <summary>
       /// <para>Description: Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.</para>
       /// <para>Display Name: Modified On</para>
       /// </summary>
@@ -1414,6 +1826,18 @@ namespace webapi.entities
          get
          {
             return base.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="modifiedonbehalfbyname")]
+      public string ModifiedOnBehalfByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("modifiedonbehalfbyname");
          }
       }
       /// <summary>
@@ -1545,6 +1969,18 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="originatingleadidname")]
+      public string OriginatingLeadIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("originatingleadidname");
+         }
+      }
+      /// <summary>
       /// <para>Description: Date and time that the record was migrated.</para>
       /// <para>Display Name: Record Created On</para>
       /// </summary>
@@ -1561,6 +1997,62 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="owneridname")]
+      public string OwnerIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("owneridname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="owneridtype")]
+      public string OwnerIdType
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("owneridtype");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("owneridtype", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the account's ownership structure, such as public or private.</para>
+      /// <para>Display Name: Ownership</para>
+      /// </summary>
+      [DataMember(Name="ownershipcode")]
+      public account_ownershipcode? OwnershipCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_ownershipcode?>("ownershipcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_ownershipcode?>("ownershipcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="parentaccountidname")]
+      public string ParentAccountIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("parentaccountidname");
+         }
+      }
+      /// <summary>
       /// <para>Description: For system use only. Legacy Microsoft Dynamics CRM 3.0 workflow data.</para>
       /// <para>Display Name: Participates in Workflow</para>
       /// </summary>
@@ -1574,6 +2066,118 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<System.Nullable<bool>>("participatesinworkflow", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the payment terms to indicate when the customer needs to pay the total amount.</para>
+      /// <para>Display Name: Payment Terms</para>
+      /// </summary>
+      [DataMember(Name="paymenttermscode")]
+      public account_paymenttermscode? PaymentTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_paymenttermscode?>("paymenttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_paymenttermscode?>("paymenttermscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the preferred day of the week for service appointments.</para>
+      /// <para>Display Name: Preferred Day</para>
+      /// </summary>
+      [DataMember(Name="preferredappointmentdaycode")]
+      public account_preferredappointmentdaycode? PreferredAppointmentDayCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_preferredappointmentdaycode?>("preferredappointmentdaycode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_preferredappointmentdaycode?>("preferredappointmentdaycode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the preferred time of day for service appointments.</para>
+      /// <para>Display Name: Preferred Time</para>
+      /// </summary>
+      [DataMember(Name="preferredappointmenttimecode")]
+      public account_preferredappointmenttimecode? PreferredAppointmentTimeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_preferredappointmenttimecode?>("preferredappointmenttimecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_preferredappointmenttimecode?>("preferredappointmenttimecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the preferred method of contact.</para>
+      /// <para>Display Name: Preferred Method of Contact</para>
+      /// </summary>
+      [DataMember(Name="preferredcontactmethodcode")]
+      public account_preferredcontactmethodcode? PreferredContactMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_preferredcontactmethodcode?>("preferredcontactmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_preferredcontactmethodcode?>("preferredcontactmethodcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="preferredequipmentidname")]
+      public string PreferredEquipmentIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("preferredequipmentidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="preferredserviceidname")]
+      public string PreferredServiceIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("preferredserviceidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="preferredsystemuseridname")]
+      public string PreferredSystemUserIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("preferredsystemuseridname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="primarycontactidname")]
+      public string PrimaryContactIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("primarycontactidname");
          }
       }
       /// <summary>
@@ -1669,6 +2273,22 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to the account's address to designate the preferred carrier or other delivery option.</para>
+      /// <para>Display Name: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="shippingmethodcode")]
+      public account_shippingmethodcode? ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_shippingmethodcode?>("shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_shippingmethodcode?>("shippingmethodcode", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Type the Standard Industrial Classification (SIC) code that indicates the account's primary industry of business, for use in marketing segmentation and demographic analysis.</para>
       /// <para>Display Name: SIC Code</para>
       /// </summary>
@@ -1685,6 +2305,30 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="slainvokedidname")]
+      public string SLAInvokedIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("slainvokedidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="slaname")]
+      public string SLAName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("slaname");
+         }
+      }
+      /// <summary>
       /// <para>Description: Shows the ID of the stage.</para>
       /// <para>Display Name: (Deprecated) Process Stage</para>
       /// </summary>
@@ -1698,6 +2342,38 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<System.Nullable<System.Guid>>("stageid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows whether the account is active or inactive. Inactive accounts are read-only and can't be edited unless they are reactivated.</para>
+      /// <para>Display Name: Status</para>
+      /// </summary>
+      [DataMember(Name="statecode")]
+      public account_statecode? StateCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_statecode?>("statecode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_statecode?>("statecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the account's status.</para>
+      /// <para>Display Name: Status Reason</para>
+      /// </summary>
+      [DataMember(Name="statuscode")]
+      public account_statuscode? StatusCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_statuscode?>("statuscode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_statuscode?>("statuscode", value);
          }
       }
       /// <summary>
@@ -1781,6 +2457,34 @@ namespace webapi.entities
          }
       }
       /// <summary>
+      /// <para>Description: Select a region or territory for the account for use in segmentation and analysis.</para>
+      /// <para>Display Name: Territory Code</para>
+      /// </summary>
+      [DataMember(Name="territorycode")]
+      public account_territorycode? TerritoryCode
+      {
+         get
+         {
+            return base.GetAttributeValue<account_territorycode?>("territorycode");
+         }
+         set
+         {
+            base.SetAttributeValue<account_territorycode?>("territorycode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="territoryidname")]
+      public string TerritoryIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("territoryidname");
+         }
+      }
+      /// <summary>
       /// <para>Description: Type the stock exchange symbol for the account to track financial performance of the company. You can click the code entered in this field to access the latest trading information from MSN Money.</para>
       /// <para>Display Name: Ticker Symbol</para>
       /// </summary>
@@ -1822,6 +2526,18 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="transactioncurrencyidname")]
+      public string TransactionCurrencyIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("transactioncurrencyidname");
          }
       }
       /// <summary>
@@ -1900,5 +2616,3637 @@ namespace webapi.entities
             base.SetAttributeValue<string>("yominame", value);
          }
       }
+   }
+   /// <summary>
+   /// <para>Description: Person with whom a business unit has a relationship, such as customer, supplier, and colleague.</para>
+   /// <para>Display Name: Contact</para>
+   /// </summary>
+   public partial class Contact : app.entities.ExtendedEntity
+   {
+      public const string EntityLogicalName = "Contact";
+      /// <summary>
+      /// <para>Description: Unique identifier of the contact.</para>
+      /// <para>Display Name: Contact</para>
+      /// </summary>
+      [DataMember(Name="contactid")]
+      public System.Guid ContactId
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Guid>("contactid");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Guid>("contactid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="accountidname")]
+      public string AccountIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("accountidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the contact's role within the company or sales process, such as decision maker, employee, or influencer.</para>
+      /// <para>Display Name: Role</para>
+      /// </summary>
+      [DataMember(Name="accountrolecode")]
+      public contact_accountrolecode? AccountRoleCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_accountrolecode?>("accountrolecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_accountrolecode?>("accountrolecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the primary address type.</para>
+      /// <para>Display Name: Address 1: Address Type</para>
+      /// </summary>
+      [DataMember(Name="address1_addresstypecode")]
+      public contact_address1_addresstypecode? Address1_AddressTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address1_addresstypecode?>("address1_addresstypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address1_addresstypecode?>("address1_addresstypecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the city for the primary address.</para>
+      /// <para>Display Name: Address 1: City</para>
+      /// </summary>
+      [DataMember(Name="address1_city")]
+      public string Address1_City
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_city");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_city", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the complete primary address.</para>
+      /// <para>Display Name: Address 1</para>
+      /// </summary>
+      [DataMember(Name="address1_composite")]
+      public string Address1_Composite
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_composite");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the country or region for the primary address.</para>
+      /// <para>Display Name: Address 1: Country/Region</para>
+      /// </summary>
+      [DataMember(Name="address1_country")]
+      public string Address1_Country
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_country");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_country", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the county for the primary address.</para>
+      /// <para>Display Name: Address 1: County</para>
+      /// </summary>
+      [DataMember(Name="address1_county")]
+      public string Address1_County
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_county");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_county", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the fax number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Fax</para>
+      /// </summary>
+      [DataMember(Name="address1_fax")]
+      public string Address1_Fax
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_fax");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_fax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the freight terms for the primary address to make sure shipping orders are processed correctly.</para>
+      /// <para>Display Name: Address 1: Freight Terms</para>
+      /// </summary>
+      [DataMember(Name="address1_freighttermscode")]
+      public contact_address1_freighttermscode? Address1_FreightTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address1_freighttermscode?>("address1_freighttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address1_freighttermscode?>("address1_freighttermscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the latitude value for the primary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 1: Latitude</para>
+      /// </summary>
+      [DataMember(Name="address1_latitude")]
+      public System.Nullable<double> Address1_Latitude
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<double>>("address1_latitude");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<double>>("address1_latitude", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the first line of the primary address.</para>
+      /// <para>Display Name: Address 1: Street 1</para>
+      /// </summary>
+      [DataMember(Name="address1_line1")]
+      public string Address1_Line1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_line1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_line1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the second line of the primary address.</para>
+      /// <para>Display Name: Address 1: Street 2</para>
+      /// </summary>
+      [DataMember(Name="address1_line2")]
+      public string Address1_Line2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_line2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_line2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the third line of the primary address.</para>
+      /// <para>Display Name: Address 1: Street 3</para>
+      /// </summary>
+      [DataMember(Name="address1_line3")]
+      public string Address1_Line3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_line3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_line3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the longitude value for the primary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 1: Longitude</para>
+      /// </summary>
+      [DataMember(Name="address1_longitude")]
+      public System.Nullable<double> Address1_Longitude
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<double>>("address1_longitude");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<double>>("address1_longitude", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a descriptive name for the primary address, such as Corporate Headquarters.</para>
+      /// <para>Display Name: Address 1: Name</para>
+      /// </summary>
+      [DataMember(Name="address1_name")]
+      public string Address1_Name
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_name");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_name", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the ZIP Code or postal code for the primary address.</para>
+      /// <para>Display Name: Address 1: ZIP/Postal Code</para>
+      /// </summary>
+      [DataMember(Name="address1_postalcode")]
+      public string Address1_PostalCode
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_postalcode");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_postalcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the post office box number of the primary address.</para>
+      /// <para>Display Name: Address 1: Post Office Box</para>
+      /// </summary>
+      [DataMember(Name="address1_postofficebox")]
+      public string Address1_PostOfficeBox
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_postofficebox");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_postofficebox", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the name of the main contact at the account's primary address.</para>
+      /// <para>Display Name: Address 1: Primary Contact Name</para>
+      /// </summary>
+      [DataMember(Name="address1_primarycontactname")]
+      public string Address1_PrimaryContactName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_primarycontactname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_primarycontactname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+      /// <para>Display Name: Address 1: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="address1_shippingmethodcode")]
+      public contact_address1_shippingmethodcode? Address1_ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address1_shippingmethodcode?>("address1_shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address1_shippingmethodcode?>("address1_shippingmethodcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the state or province of the primary address.</para>
+      /// <para>Display Name: Address 1: State/Province</para>
+      /// </summary>
+      [DataMember(Name="address1_stateorprovince")]
+      public string Address1_StateOrProvince
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_stateorprovince");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_stateorprovince", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the main phone number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Phone</para>
+      /// </summary>
+      [DataMember(Name="address1_telephone1")]
+      public string Address1_Telephone1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_telephone1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_telephone1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a second phone number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Telephone 2</para>
+      /// </summary>
+      [DataMember(Name="address1_telephone2")]
+      public string Address1_Telephone2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_telephone2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_telephone2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a third phone number associated with the primary address.</para>
+      /// <para>Display Name: Address 1: Telephone 3</para>
+      /// </summary>
+      [DataMember(Name="address1_telephone3")]
+      public string Address1_Telephone3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_telephone3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_telephone3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the UPS zone of the primary address to make sure shipping charges are calculated correctly and deliveries are made promptly, if shipped by UPS.</para>
+      /// <para>Display Name: Address 1: UPS Zone</para>
+      /// </summary>
+      [DataMember(Name="address1_upszone")]
+      public string Address1_UPSZone
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address1_upszone");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address1_upszone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the time zone, or UTC offset, for this address so that other people can reference it when they contact someone at this address.</para>
+      /// <para>Display Name: Address 1: UTC Offset</para>
+      /// </summary>
+      [DataMember(Name="address1_utcoffset")]
+      public System.Nullable<int> Address1_UTCOffset
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("address1_utcoffset");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("address1_utcoffset", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the secondary address type.</para>
+      /// <para>Display Name: Address 2: Address Type</para>
+      /// </summary>
+      [DataMember(Name="address2_addresstypecode")]
+      public contact_address2_addresstypecode? Address2_AddressTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address2_addresstypecode?>("address2_addresstypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address2_addresstypecode?>("address2_addresstypecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the city for the secondary address.</para>
+      /// <para>Display Name: Address 2: City</para>
+      /// </summary>
+      [DataMember(Name="address2_city")]
+      public string Address2_City
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_city");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_city", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the complete secondary address.</para>
+      /// <para>Display Name: Address 2</para>
+      /// </summary>
+      [DataMember(Name="address2_composite")]
+      public string Address2_Composite
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_composite");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the country or region for the secondary address.</para>
+      /// <para>Display Name: Address 2: Country/Region</para>
+      /// </summary>
+      [DataMember(Name="address2_country")]
+      public string Address2_Country
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_country");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_country", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the county for the secondary address.</para>
+      /// <para>Display Name: Address 2: County</para>
+      /// </summary>
+      [DataMember(Name="address2_county")]
+      public string Address2_County
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_county");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_county", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the fax number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Fax</para>
+      /// </summary>
+      [DataMember(Name="address2_fax")]
+      public string Address2_Fax
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_fax");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_fax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the freight terms for the secondary address to make sure shipping orders are processed correctly.</para>
+      /// <para>Display Name: Address 2: Freight Terms</para>
+      /// </summary>
+      [DataMember(Name="address2_freighttermscode")]
+      public contact_address2_freighttermscode? Address2_FreightTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address2_freighttermscode?>("address2_freighttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address2_freighttermscode?>("address2_freighttermscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the latitude value for the secondary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 2: Latitude</para>
+      /// </summary>
+      [DataMember(Name="address2_latitude")]
+      public System.Nullable<double> Address2_Latitude
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<double>>("address2_latitude");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<double>>("address2_latitude", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the first line of the secondary address.</para>
+      /// <para>Display Name: Address 2: Street 1</para>
+      /// </summary>
+      [DataMember(Name="address2_line1")]
+      public string Address2_Line1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_line1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_line1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the second line of the secondary address.</para>
+      /// <para>Display Name: Address 2: Street 2</para>
+      /// </summary>
+      [DataMember(Name="address2_line2")]
+      public string Address2_Line2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_line2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_line2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the third line of the secondary address.</para>
+      /// <para>Display Name: Address 2: Street 3</para>
+      /// </summary>
+      [DataMember(Name="address2_line3")]
+      public string Address2_Line3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_line3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_line3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the longitude value for the secondary address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 2: Longitude</para>
+      /// </summary>
+      [DataMember(Name="address2_longitude")]
+      public System.Nullable<double> Address2_Longitude
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<double>>("address2_longitude");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<double>>("address2_longitude", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a descriptive name for the secondary address, such as Corporate Headquarters.</para>
+      /// <para>Display Name: Address 2: Name</para>
+      /// </summary>
+      [DataMember(Name="address2_name")]
+      public string Address2_Name
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_name");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_name", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the ZIP Code or postal code for the secondary address.</para>
+      /// <para>Display Name: Address 2: ZIP/Postal Code</para>
+      /// </summary>
+      [DataMember(Name="address2_postalcode")]
+      public string Address2_PostalCode
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_postalcode");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_postalcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the post office box number of the secondary address.</para>
+      /// <para>Display Name: Address 2: Post Office Box</para>
+      /// </summary>
+      [DataMember(Name="address2_postofficebox")]
+      public string Address2_PostOfficeBox
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_postofficebox");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_postofficebox", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the name of the main contact at the account's secondary address.</para>
+      /// <para>Display Name: Address 2: Primary Contact Name</para>
+      /// </summary>
+      [DataMember(Name="address2_primarycontactname")]
+      public string Address2_PrimaryContactName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_primarycontactname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_primarycontactname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+      /// <para>Display Name: Address 2: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="address2_shippingmethodcode")]
+      public contact_address2_shippingmethodcode? Address2_ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address2_shippingmethodcode?>("address2_shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address2_shippingmethodcode?>("address2_shippingmethodcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the state or province of the secondary address.</para>
+      /// <para>Display Name: Address 2: State/Province</para>
+      /// </summary>
+      [DataMember(Name="address2_stateorprovince")]
+      public string Address2_StateOrProvince
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_stateorprovince");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_stateorprovince", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the main phone number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Telephone 1</para>
+      /// </summary>
+      [DataMember(Name="address2_telephone1")]
+      public string Address2_Telephone1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_telephone1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_telephone1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a second phone number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Telephone 2</para>
+      /// </summary>
+      [DataMember(Name="address2_telephone2")]
+      public string Address2_Telephone2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_telephone2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_telephone2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a third phone number associated with the secondary address.</para>
+      /// <para>Display Name: Address 2: Telephone 3</para>
+      /// </summary>
+      [DataMember(Name="address2_telephone3")]
+      public string Address2_Telephone3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_telephone3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_telephone3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the UPS zone of the secondary address to make sure shipping charges are calculated correctly and deliveries are made promptly, if shipped by UPS.</para>
+      /// <para>Display Name: Address 2: UPS Zone</para>
+      /// </summary>
+      [DataMember(Name="address2_upszone")]
+      public string Address2_UPSZone
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address2_upszone");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address2_upszone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the time zone, or UTC offset, for this address so that other people can reference it when they contact someone at this address.</para>
+      /// <para>Display Name: Address 2: UTC Offset</para>
+      /// </summary>
+      [DataMember(Name="address2_utcoffset")]
+      public System.Nullable<int> Address2_UTCOffset
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("address2_utcoffset");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("address2_utcoffset", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the third address type.</para>
+      /// <para>Display Name: Address 3: Address Type</para>
+      /// </summary>
+      [DataMember(Name="address3_addresstypecode")]
+      public contact_address3_addresstypecode? Address3_AddressTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address3_addresstypecode?>("address3_addresstypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address3_addresstypecode?>("address3_addresstypecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the city for the 3rd address.</para>
+      /// <para>Display Name: Address 3: City</para>
+      /// </summary>
+      [DataMember(Name="address3_city")]
+      public string Address3_City
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_city");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_city", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the complete third address.</para>
+      /// <para>Display Name: Address 3</para>
+      /// </summary>
+      [DataMember(Name="address3_composite")]
+      public string Address3_Composite
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_composite");
+         }
+      }
+      /// <summary>
+      /// <para>Description: the country or region for the 3rd address.</para>
+      /// <para>Display Name: Address3: Country/Region</para>
+      /// </summary>
+      [DataMember(Name="address3_country")]
+      public string Address3_Country
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_country");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_country", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the county for the third address.</para>
+      /// <para>Display Name: Address 3: County</para>
+      /// </summary>
+      [DataMember(Name="address3_county")]
+      public string Address3_County
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_county");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_county", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the fax number associated with the third address.</para>
+      /// <para>Display Name: Address 3: Fax</para>
+      /// </summary>
+      [DataMember(Name="address3_fax")]
+      public string Address3_Fax
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_fax");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_fax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the freight terms for the third address to make sure shipping orders are processed correctly.</para>
+      /// <para>Display Name: Address 3: Freight Terms</para>
+      /// </summary>
+      [DataMember(Name="address3_freighttermscode")]
+      public contact_address3_freighttermscode? Address3_FreightTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address3_freighttermscode?>("address3_freighttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address3_freighttermscode?>("address3_freighttermscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the latitude value for the third address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 3: Latitude</para>
+      /// </summary>
+      [DataMember(Name="address3_latitude")]
+      public System.Nullable<double> Address3_Latitude
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<double>>("address3_latitude");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<double>>("address3_latitude", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: the first line of the 3rd address.</para>
+      /// <para>Display Name: Address3: Street 1</para>
+      /// </summary>
+      [DataMember(Name="address3_line1")]
+      public string Address3_Line1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_line1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_line1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: the second line of the 3rd address.</para>
+      /// <para>Display Name: Address3: Street 2</para>
+      /// </summary>
+      [DataMember(Name="address3_line2")]
+      public string Address3_Line2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_line2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_line2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: the third line of the 3rd address.</para>
+      /// <para>Display Name: Address3: Street 3</para>
+      /// </summary>
+      [DataMember(Name="address3_line3")]
+      public string Address3_Line3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_line3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_line3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the longitude value for the third address for use in mapping and other applications.</para>
+      /// <para>Display Name: Address 3: Longitude</para>
+      /// </summary>
+      [DataMember(Name="address3_longitude")]
+      public System.Nullable<double> Address3_Longitude
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<double>>("address3_longitude");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<double>>("address3_longitude", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a descriptive name for the third address, such as Corporate Headquarters.</para>
+      /// <para>Display Name: Address 3: Name</para>
+      /// </summary>
+      [DataMember(Name="address3_name")]
+      public string Address3_Name
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_name");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_name", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: the ZIP Code or postal code for the 3rd address.</para>
+      /// <para>Display Name: Address3: ZIP/Postal Code</para>
+      /// </summary>
+      [DataMember(Name="address3_postalcode")]
+      public string Address3_PostalCode
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_postalcode");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_postalcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: the post office box number of the 3rd address.</para>
+      /// <para>Display Name: Address 3: Post Office Box</para>
+      /// </summary>
+      [DataMember(Name="address3_postofficebox")]
+      public string Address3_PostOfficeBox
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_postofficebox");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_postofficebox", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the name of the main contact at the account's third address.</para>
+      /// <para>Display Name: Address 3: Primary Contact Name</para>
+      /// </summary>
+      [DataMember(Name="address3_primarycontactname")]
+      public string Address3_PrimaryContactName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_primarycontactname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_primarycontactname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+      /// <para>Display Name: Address 3: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="address3_shippingmethodcode")]
+      public contact_address3_shippingmethodcode? Address3_ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_address3_shippingmethodcode?>("address3_shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_address3_shippingmethodcode?>("address3_shippingmethodcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: the state or province of the third address.</para>
+      /// <para>Display Name: Address3: State/Province</para>
+      /// </summary>
+      [DataMember(Name="address3_stateorprovince")]
+      public string Address3_StateOrProvince
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_stateorprovince");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_stateorprovince", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the main phone number associated with the third address.</para>
+      /// <para>Display Name: Address 3: Telephone1</para>
+      /// </summary>
+      [DataMember(Name="address3_telephone1")]
+      public string Address3_Telephone1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_telephone1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_telephone1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a second phone number associated with the third address.</para>
+      /// <para>Display Name: Address 3: Telephone2</para>
+      /// </summary>
+      [DataMember(Name="address3_telephone2")]
+      public string Address3_Telephone2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_telephone2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_telephone2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a third phone number associated with the primary address.</para>
+      /// <para>Display Name: Address 3: Telephone3</para>
+      /// </summary>
+      [DataMember(Name="address3_telephone3")]
+      public string Address3_Telephone3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_telephone3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_telephone3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the UPS zone of the third address to make sure shipping charges are calculated correctly and deliveries are made promptly, if shipped by UPS.</para>
+      /// <para>Display Name: Address 3: UPS Zone</para>
+      /// </summary>
+      [DataMember(Name="address3_upszone")]
+      public string Address3_UPSZone
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("address3_upszone");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("address3_upszone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the time zone, or UTC offset, for this address so that other people can reference it when they contact someone at this address.</para>
+      /// <para>Display Name: Address 3: UTC Offset</para>
+      /// </summary>
+      [DataMember(Name="address3_utcoffset")]
+      public System.Nullable<int> Address3_UTCOffset
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("address3_utcoffset");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("address3_utcoffset", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: For system use only.</para>
+      /// <para>Display Name: Aging 30</para>
+      /// </summary>
+      [DataMember(Name="aging30")]
+      public System.Nullable<decimal> Aging30
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("aging30");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the Aging 30 field converted to the system's default base currency. The calculations use the exchange rate specified in the Currencies area.</para>
+      /// <para>Display Name: Aging 30 (Base)</para>
+      /// </summary>
+      [DataMember(Name="aging30_base")]
+      public System.Nullable<decimal> Aging30_Base
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("aging30_base");
+         }
+      }
+      /// <summary>
+      /// <para>Description: For system use only.</para>
+      /// <para>Display Name: Aging 60</para>
+      /// </summary>
+      [DataMember(Name="aging60")]
+      public System.Nullable<decimal> Aging60
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("aging60");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the Aging 60 field converted to the system's default base currency. The calculations use the exchange rate specified in the Currencies area.</para>
+      /// <para>Display Name: Aging 60 (Base)</para>
+      /// </summary>
+      [DataMember(Name="aging60_base")]
+      public System.Nullable<decimal> Aging60_Base
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("aging60_base");
+         }
+      }
+      /// <summary>
+      /// <para>Description: For system use only.</para>
+      /// <para>Display Name: Aging 90</para>
+      /// </summary>
+      [DataMember(Name="aging90")]
+      public System.Nullable<decimal> Aging90
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("aging90");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the Aging 90 field converted to the system's default base currency. The calculations use the exchange rate specified in the Currencies area.</para>
+      /// <para>Display Name: Aging 90 (Base)</para>
+      /// </summary>
+      [DataMember(Name="aging90_base")]
+      public System.Nullable<decimal> Aging90_Base
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("aging90_base");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter the date of the contact's wedding or service anniversary for use in customer gift programs or other communications.</para>
+      /// <para>Display Name: Anniversary</para>
+      /// </summary>
+      [DataMember(Name="anniversary")]
+      public System.Nullable<System.DateTime> Anniversary
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("anniversary");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("anniversary", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the contact's annual income for use in profiling and financial analysis.</para>
+      /// <para>Display Name: Annual Income</para>
+      /// </summary>
+      [DataMember(Name="annualincome")]
+      public System.Nullable<decimal> AnnualIncome
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("annualincome");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<decimal>>("annualincome", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the Annual Income field converted to the system's default base currency. The calculations use the exchange rate specified in the Currencies area.</para>
+      /// <para>Display Name: Annual Income (Base)</para>
+      /// </summary>
+      [DataMember(Name="annualincome_base")]
+      public System.Nullable<decimal> AnnualIncome_Base
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("annualincome_base");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the name of the contact's assistant.</para>
+      /// <para>Display Name: Assistant</para>
+      /// </summary>
+      [DataMember(Name="assistantname")]
+      public string AssistantName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("assistantname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("assistantname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the phone number for the contact's assistant.</para>
+      /// <para>Display Name: Assistant Phone</para>
+      /// </summary>
+      [DataMember(Name="assistantphone")]
+      public string AssistantPhone
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("assistantphone");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("assistantphone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter the contact's birthday for use in customer gift programs or other communications.</para>
+      /// <para>Display Name: Birthday</para>
+      /// </summary>
+      [DataMember(Name="birthdate")]
+      public System.Nullable<System.DateTime> BirthDate
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("birthdate");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("birthdate", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a second business phone number for this contact.</para>
+      /// <para>Display Name: Business Phone 2</para>
+      /// </summary>
+      [DataMember(Name="business2")]
+      public string Business2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("business2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("business2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a callback phone number for this contact.</para>
+      /// <para>Display Name: Callback Number</para>
+      /// </summary>
+      [DataMember(Name="callback")]
+      public string Callback
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("callback");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("callback", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the names of the contact's children for reference in communications and client programs.</para>
+      /// <para>Display Name: Children's Names</para>
+      /// </summary>
+      [DataMember(Name="childrensnames")]
+      public string ChildrensNames
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("childrensnames");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("childrensnames", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the company phone of the contact.</para>
+      /// <para>Display Name: Company Phone</para>
+      /// </summary>
+      [DataMember(Name="company")]
+      public string Company
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("company");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("company", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="createdbyexternalpartyname")]
+      public string CreatedByExternalPartyName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("createdbyexternalpartyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="createdbyname")]
+      public string CreatedByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("createdbyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.</para>
+      /// <para>Display Name: Created On</para>
+      /// </summary>
+      [DataMember(Name="createdon")]
+      public System.Nullable<System.DateTime> CreatedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="createdonbehalfbyname")]
+      public string CreatedOnBehalfByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("createdonbehalfbyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the credit limit of the contact for reference when you address invoice and accounting issues with the customer.</para>
+      /// <para>Display Name: Credit Limit</para>
+      /// </summary>
+      [DataMember(Name="creditlimit")]
+      public System.Nullable<decimal> CreditLimit
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("creditlimit");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<decimal>>("creditlimit", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the Credit Limit field converted to the system's default base currency for reporting purposes. The calculations use the exchange rate specified in the Currencies area.</para>
+      /// <para>Display Name: Credit Limit (Base)</para>
+      /// </summary>
+      [DataMember(Name="creditlimit_base")]
+      public System.Nullable<decimal> CreditLimit_Base
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("creditlimit_base");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact is on a credit hold, for reference when addressing invoice and accounting issues.</para>
+      /// <para>Display Name: Credit Hold</para>
+      /// </summary>
+      [DataMember(Name="creditonhold")]
+      public System.Nullable<bool> CreditOnHold
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("creditonhold");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("creditonhold", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the size of the contact's company for segmentation and reporting purposes.</para>
+      /// <para>Display Name: Customer Size</para>
+      /// </summary>
+      [DataMember(Name="customersizecode")]
+      public contact_customersizecode? CustomerSizeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_customersizecode?>("customersizecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_customersizecode?>("customersizecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the category that best describes the relationship between the contact and your organization.</para>
+      /// <para>Display Name: Relationship Type</para>
+      /// </summary>
+      [DataMember(Name="customertypecode")]
+      public contact_customertypecode? CustomerTypeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_customertypecode?>("customertypecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_customertypecode?>("customertypecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="defaultpricelevelidname")]
+      public string DefaultPriceLevelIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("defaultpricelevelidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the department or business unit where the contact works in the parent company or business.</para>
+      /// <para>Display Name: zzz_Department</para>
+      /// </summary>
+      [DataMember(Name="department")]
+      public string Department
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("department");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("department", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type additional information to describe the contact, such as an excerpt from the company's website.</para>
+      /// <para>Display Name: Personal Notes</para>
+      /// </summary>
+      [DataMember(Name="description")]
+      public string Description
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("description");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("description", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact accepts bulk email sent through marketing campaigns or quick campaigns. If Do Not Allow is selected, the contact can be added to marketing lists, but will be excluded from the email.</para>
+      /// <para>Display Name: Do not allow Bulk Emails</para>
+      /// </summary>
+      [DataMember(Name="donotbulkemail")]
+      public System.Nullable<bool> DoNotBulkEMail
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotbulkemail");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotbulkemail", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact accepts bulk postal mail sent through marketing campaigns or quick campaigns. If Do Not Allow is selected, the contact can be added to marketing lists, but will be excluded from the letters.</para>
+      /// <para>Display Name: Do not allow Bulk Mails</para>
+      /// </summary>
+      [DataMember(Name="donotbulkpostalmail")]
+      public System.Nullable<bool> DoNotBulkPostalMail
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotbulkpostalmail");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotbulkpostalmail", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact allows direct email sent from Microsoft Dynamics 365. If Do Not Allow is selected, Microsoft Dynamics 365 will not send the email.</para>
+      /// <para>Display Name: Do not allow Emails</para>
+      /// </summary>
+      [DataMember(Name="donotemail")]
+      public System.Nullable<bool> DoNotEMail
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotemail");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotemail", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact allows faxes. If Do Not Allow is selected, the contact will be excluded from any fax activities distributed in marketing campaigns.</para>
+      /// <para>Display Name: Do not allow Faxes</para>
+      /// </summary>
+      [DataMember(Name="donotfax")]
+      public System.Nullable<bool> DoNotFax
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotfax");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotfax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact accepts phone calls. If Do Not Allow is selected, the contact will be excluded from any phone call activities distributed in marketing campaigns.</para>
+      /// <para>Display Name: Do not allow Phone Calls</para>
+      /// </summary>
+      [DataMember(Name="donotphone")]
+      public System.Nullable<bool> DoNotPhone
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotphone");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotphone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact allows direct mail. If Do Not Allow is selected, the contact will be excluded from letter activities distributed in marketing campaigns.</para>
+      /// <para>Display Name: Do not allow Mails</para>
+      /// </summary>
+      [DataMember(Name="donotpostalmail")]
+      public System.Nullable<bool> DoNotPostalMail
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotpostalmail");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotpostalmail", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact accepts marketing materials, such as brochures or catalogs. Contacts that opt out can be excluded from marketing initiatives.</para>
+      /// <para>Display Name: Send Marketing Materials</para>
+      /// </summary>
+      [DataMember(Name="donotsendmm")]
+      public System.Nullable<bool> DoNotSendMM
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("donotsendmm");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("donotsendmm", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the contact's highest level of education for use in segmentation and analysis.</para>
+      /// <para>Display Name: Education</para>
+      /// </summary>
+      [DataMember(Name="educationcode")]
+      public contact_educationcode? EducationCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_educationcode?>("educationcode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_educationcode?>("educationcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the primary email address for the contact.</para>
+      /// <para>Display Name: Email</para>
+      /// </summary>
+      [DataMember(Name="emailaddress1")]
+      public string EMailAddress1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("emailaddress1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("emailaddress1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the secondary email address for the contact.</para>
+      /// <para>Display Name: Email Address 2</para>
+      /// </summary>
+      [DataMember(Name="emailaddress2")]
+      public string EMailAddress2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("emailaddress2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("emailaddress2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type an alternate email address for the contact.</para>
+      /// <para>Display Name: Email Address 3</para>
+      /// </summary>
+      [DataMember(Name="emailaddress3")]
+      public string EMailAddress3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("emailaddress3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("emailaddress3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the employee ID or number for the contact for reference in orders, service cases, or other communications with the contact's organization.</para>
+      /// <para>Display Name: Employee</para>
+      /// </summary>
+      [DataMember(Name="employeeid")]
+      public string EmployeeId
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("employeeid");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("employeeid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="entityimage_timestamp")]
+      public System.Nullable<long> EntityImage_Timestamp
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<long>>("entityimage_timestamp");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="entityimage_url")]
+      public string EntityImage_URL
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("entityimage_url");
+         }
+      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: Entity Image Id</para>
+      /// </summary>
+      [DataMember(Name="entityimageid")]
+      public System.Nullable<System.Guid> EntityImageId
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.</para>
+      /// <para>Display Name: Exchange Rate</para>
+      /// </summary>
+      [DataMember(Name="exchangerate")]
+      public System.Nullable<decimal> ExchangeRate
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Identifier for an external user.</para>
+      /// <para>Display Name: External User Identifier</para>
+      /// </summary>
+      [DataMember(Name="externaluseridentifier")]
+      public string ExternalUserIdentifier
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("externaluseridentifier");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("externaluseridentifier", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the marital status of the contact for reference in follow-up phone calls and other communications.</para>
+      /// <para>Display Name: Marital Status</para>
+      /// </summary>
+      [DataMember(Name="familystatuscode")]
+      public contact_familystatuscode? FamilyStatusCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_familystatuscode?>("familystatuscode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_familystatuscode?>("familystatuscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the fax number for the contact.</para>
+      /// <para>Display Name: Fax</para>
+      /// </summary>
+      [DataMember(Name="fax")]
+      public string Fax
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("fax");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("fax", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the contact's first name to make sure the contact is addressed correctly in sales calls, email, and marketing campaigns.</para>
+      /// <para>Display Name: First Name</para>
+      /// </summary>
+      [DataMember(Name="firstname")]
+      public string FirstName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("firstname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("firstname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Information about whether to allow following email activity like opens, attachment views and link clicks for emails sent to the contact.</para>
+      /// <para>Display Name: Follow Email Activity</para>
+      /// </summary>
+      [DataMember(Name="followemail")]
+      public System.Nullable<bool> FollowEmail
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("followemail");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("followemail", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the URL for the contact's FTP site to enable users to access data and share documents.</para>
+      /// <para>Display Name: FTP Site</para>
+      /// </summary>
+      [DataMember(Name="ftpsiteurl")]
+      public string FtpSiteUrl
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ftpsiteurl");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ftpsiteurl", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Combines and shows the contact's first and last names so that the full name can be displayed in views and reports.</para>
+      /// <para>Display Name: Full Name</para>
+      /// </summary>
+      [DataMember(Name="fullname")]
+      public string FullName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("fullname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the contact's gender to make sure the contact is addressed correctly in sales calls, email, and marketing campaigns.</para>
+      /// <para>Display Name: Gender</para>
+      /// </summary>
+      [DataMember(Name="gendercode")]
+      public contact_gendercode? GenderCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_gendercode?>("gendercode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_gendercode?>("gendercode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the passport number or other government ID for the contact for use in documents or reports.</para>
+      /// <para>Display Name: Government</para>
+      /// </summary>
+      [DataMember(Name="governmentid")]
+      public string GovernmentId
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("governmentid");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("governmentid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact has any children for reference in follow-up phone calls and other communications.</para>
+      /// <para>Display Name: Has Children</para>
+      /// </summary>
+      [DataMember(Name="haschildrencode")]
+      public contact_haschildrencode? HasChildrenCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_haschildrencode?>("haschildrencode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_haschildrencode?>("haschildrencode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a second home phone number for this contact.</para>
+      /// <para>Display Name: Home Phone 2</para>
+      /// </summary>
+      [DataMember(Name="home2")]
+      public string Home2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("home2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("home2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique Key</para>
+      /// <para>Display Name: Business Key</para>
+      /// </summary>
+      [DataMember(Name="ic_businesskey")]
+      public string ic_BusinessKey
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_businesskey");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ic_businesskey", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_cityidname")]
+      public string ic_CityIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_cityidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_companyidname")]
+      public string ic_CompanyIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_companyidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_countryidname")]
+      public string ic_CountryIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_countryidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the language of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
+      /// <para>Display Name: Language</para>
+      /// </summary>
+      [DataMember(Name="ic_language")]
+      public ic_language? ic_Language
+      {
+         get
+         {
+            return base.GetAttributeValue<ic_language?>("ic_language");
+         }
+         set
+         {
+            base.SetAttributeValue<ic_language?>("ic_language", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the salutation of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
+      /// <para>Display Name: Salutation</para>
+      /// </summary>
+      [DataMember(Name="ic_salutation")]
+      public ic_salutation? ic_Salutation
+      {
+         get
+         {
+            return base.GetAttributeValue<ic_salutation?>("ic_salutation");
+         }
+         set
+         {
+            base.SetAttributeValue<ic_salutation?>("ic_salutation", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="ic_stateprovinceidname")]
+      public string ic_StateProvinceIDName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_stateprovinceidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter address line 1.</para>
+      /// <para>Display Name: Street 1</para>
+      /// </summary>
+      [DataMember(Name="ic_street1")]
+      public string ic_Street1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_street1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ic_street1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter address line 2.</para>
+      /// <para>Display Name: Street 2</para>
+      /// </summary>
+      [DataMember(Name="ic_street2")]
+      public string ic_Street2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_street2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ic_street2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter address line 3.</para>
+      /// <para>Display Name: Street 3</para>
+      /// </summary>
+      [DataMember(Name="ic_street3")]
+      public string ic_Street3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_street3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ic_street3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter address line 4.</para>
+      /// <para>Display Name: Street 4</para>
+      /// </summary>
+      [DataMember(Name="ic_street4")]
+      public string ic_Street4
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_street4");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ic_street4", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Enter a ZIP/Postal Code.</para>
+      /// <para>Display Name: ZIP/Postal Code</para>
+      /// </summary>
+      [DataMember(Name="ic_zippostalcode")]
+      public string ic_ZIPPostalCode
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("ic_zippostalcode");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("ic_zippostalcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the data import or data migration that created this record.</para>
+      /// <para>Display Name: Import Sequence Number</para>
+      /// </summary>
+      [DataMember(Name="importsequencenumber")]
+      public System.Nullable<int> ImportSequenceNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("importsequencenumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select whether the contact exists in a separate accounting or other system, such as Microsoft Dynamics GP or another ERP database, for use in integration processes.</para>
+      /// <para>Display Name: Back Office Customer</para>
+      /// </summary>
+      [DataMember(Name="isbackofficecustomer")]
+      public System.Nullable<bool> IsBackofficeCustomer
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("isbackofficecustomer");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("isbackofficecustomer", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the job title of the contact to make sure the contact is addressed correctly in sales calls, email, and marketing campaigns.</para>
+      /// <para>Display Name: Job Title</para>
+      /// </summary>
+      [DataMember(Name="jobtitle")]
+      public string JobTitle
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("jobtitle");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("jobtitle", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the contact's last name to make sure the contact is addressed correctly in sales calls, email, and marketing campaigns.</para>
+      /// <para>Display Name: Last Name</para>
+      /// </summary>
+      [DataMember(Name="lastname")]
+      public string LastName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("lastname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("lastname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Contains the date and time stamp of the last on hold time.</para>
+      /// <para>Display Name: Last On Hold Time</para>
+      /// </summary>
+      [DataMember(Name="lastonholdtime")]
+      public System.Nullable<System.DateTime> LastOnHoldTime
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("lastonholdtime", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the date when the contact was last included in a marketing campaign or quick campaign.</para>
+      /// <para>Display Name: Last Date Included in Campaign</para>
+      /// </summary>
+      [DataMember(Name="lastusedincampaign")]
+      public System.Nullable<System.DateTime> LastUsedInCampaign
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("lastusedincampaign");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("lastusedincampaign", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the primary marketing source that directed the contact to your organization.</para>
+      /// <para>Display Name: Lead Source</para>
+      /// </summary>
+      [DataMember(Name="leadsourcecode")]
+      public contact_leadsourcecode? LeadSourceCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_leadsourcecode?>("leadsourcecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_leadsourcecode?>("leadsourcecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the name of the contact's manager for use in escalating issues or other follow-up communications with the contact.</para>
+      /// <para>Display Name: Manager</para>
+      /// </summary>
+      [DataMember(Name="managername")]
+      public string ManagerName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("managername");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("managername", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the phone number for the contact's manager.</para>
+      /// <para>Display Name: Manager Phone</para>
+      /// </summary>
+      [DataMember(Name="managerphone")]
+      public string ManagerPhone
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("managerphone");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("managerphone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Whether is only for marketing</para>
+      /// <para>Display Name: Marketing Only</para>
+      /// </summary>
+      [DataMember(Name="marketingonly")]
+      public System.Nullable<bool> MarketingOnly
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("marketingonly");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("marketingonly", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="mastercontactidname")]
+      public string MasterContactIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("mastercontactidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows whether the account has been merged with a master contact.</para>
+      /// <para>Display Name: Merged</para>
+      /// </summary>
+      [DataMember(Name="merged")]
+      public System.Nullable<bool> Merged
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("merged");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the contact's middle name or initial to make sure the contact is addressed correctly.</para>
+      /// <para>Display Name: Middle Name</para>
+      /// </summary>
+      [DataMember(Name="middlename")]
+      public string MiddleName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("middlename");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("middlename", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the mobile phone number for the contact.</para>
+      /// <para>Display Name: Mobile Phone</para>
+      /// </summary>
+      [DataMember(Name="mobilephone")]
+      public string MobilePhone
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("mobilephone");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("mobilephone", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="modifiedbyexternalpartyname")]
+      public string ModifiedByExternalPartyName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("modifiedbyexternalpartyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="modifiedbyname")]
+      public string ModifiedByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("modifiedbyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics 365 options.</para>
+      /// <para>Display Name: Modified On</para>
+      /// </summary>
+      [DataMember(Name="modifiedon")]
+      public System.Nullable<System.DateTime> ModifiedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="modifiedonbehalfbyname")]
+      public string ModifiedOnBehalfByName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("modifiedonbehalfbyname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Describes whether contact is opted out or not</para>
+      /// <para>Display Name: GDPR Optout</para>
+      /// </summary>
+      [DataMember(Name="msdyn_gdproptout")]
+      public System.Nullable<bool> msdyn_gdproptout
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("msdyn_gdproptout");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("msdyn_gdproptout", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Whether or not the contact belongs to the associated account</para>
+      /// <para>Display Name: Org Change Status</para>
+      /// </summary>
+      [DataMember(Name="msdyn_orgchangestatus")]
+      public contact_msdyn_orgchangestatus? msdyn_orgchangestatus
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_msdyn_orgchangestatus?>("msdyn_orgchangestatus");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_msdyn_orgchangestatus?>("msdyn_orgchangestatus", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the contact's nickname.</para>
+      /// <para>Display Name: Nickname</para>
+      /// </summary>
+      [DataMember(Name="nickname")]
+      public string NickName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("nickname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("nickname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the number of children the contact has for reference in follow-up phone calls and other communications.</para>
+      /// <para>Display Name: No. of Children</para>
+      /// </summary>
+      [DataMember(Name="numberofchildren")]
+      public System.Nullable<int> NumberOfChildren
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("numberofchildren");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("numberofchildren", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows how long, in minutes, that the record was on hold.</para>
+      /// <para>Display Name: On Hold Time (Minutes)</para>
+      /// </summary>
+      [DataMember(Name="onholdtime")]
+      public System.Nullable<int> OnHoldTime
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("onholdtime");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="originatingleadidname")]
+      public string OriginatingLeadIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("originatingleadidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time that the record was migrated.</para>
+      /// <para>Display Name: Record Created On</para>
+      /// </summary>
+      [DataMember(Name="overriddencreatedon")]
+      public System.Nullable<System.DateTime> OverriddenCreatedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="owneridname")]
+      public string OwnerIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("owneridname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="owneridtype")]
+      public string OwnerIdType
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("owneridtype");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("owneridtype", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the pager number for the contact.</para>
+      /// <para>Display Name: Pager</para>
+      /// </summary>
+      [DataMember(Name="pager")]
+      public string Pager
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("pager");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("pager", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="parentcontactidname")]
+      public string ParentContactIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("parentcontactidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="parentcustomeridname")]
+      public string ParentCustomerIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("parentcustomeridname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: Parent Customer Type</para>
+      /// </summary>
+      [DataMember(Name="parentcustomeridtype")]
+      public string ParentCustomerIdType
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("parentcustomeridtype");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("parentcustomeridtype", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows whether the contact participates in workflow rules.</para>
+      /// <para>Display Name: Participates in Workflow</para>
+      /// </summary>
+      [DataMember(Name="participatesinworkflow")]
+      public System.Nullable<bool> ParticipatesInWorkflow
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<bool>>("participatesinworkflow");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<bool>>("participatesinworkflow", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the payment terms to indicate when the customer needs to pay the total amount.</para>
+      /// <para>Display Name: Payment Terms</para>
+      /// </summary>
+      [DataMember(Name="paymenttermscode")]
+      public contact_paymenttermscode? PaymentTermsCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_paymenttermscode?>("paymenttermscode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_paymenttermscode?>("paymenttermscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the preferred day of the week for service appointments.</para>
+      /// <para>Display Name: Preferred Day</para>
+      /// </summary>
+      [DataMember(Name="preferredappointmentdaycode")]
+      public contact_preferredappointmentdaycode? PreferredAppointmentDayCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_preferredappointmentdaycode?>("preferredappointmentdaycode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_preferredappointmentdaycode?>("preferredappointmentdaycode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the preferred time of day for service appointments.</para>
+      /// <para>Display Name: Preferred Time</para>
+      /// </summary>
+      [DataMember(Name="preferredappointmenttimecode")]
+      public contact_preferredappointmenttimecode? PreferredAppointmentTimeCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_preferredappointmenttimecode?>("preferredappointmenttimecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_preferredappointmenttimecode?>("preferredappointmenttimecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the preferred method of contact.</para>
+      /// <para>Display Name: Preferred Method of Contact</para>
+      /// </summary>
+      [DataMember(Name="preferredcontactmethodcode")]
+      public contact_preferredcontactmethodcode? PreferredContactMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_preferredcontactmethodcode?>("preferredcontactmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_preferredcontactmethodcode?>("preferredcontactmethodcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="preferredequipmentidname")]
+      public string PreferredEquipmentIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("preferredequipmentidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="preferredserviceidname")]
+      public string PreferredServiceIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("preferredserviceidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="preferredsystemuseridname")]
+      public string PreferredSystemUserIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("preferredsystemuseridname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the ID of the process.</para>
+      /// <para>Display Name: Process</para>
+      /// </summary>
+      [DataMember(Name="processid")]
+      public System.Nullable<System.Guid> ProcessId
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("processid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the salutation of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
+      /// <para>Display Name: Salutation</para>
+      /// </summary>
+      [DataMember(Name="salutation")]
+      public string Salutation
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("salutation");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("salutation", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+      /// <para>Display Name: Shipping Method</para>
+      /// </summary>
+      [DataMember(Name="shippingmethodcode")]
+      public contact_shippingmethodcode? ShippingMethodCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_shippingmethodcode?>("shippingmethodcode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_shippingmethodcode?>("shippingmethodcode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="slainvokedidname")]
+      public string SLAInvokedIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("slainvokedidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="slaname")]
+      public string SLAName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("slaname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the name of the contact's spouse or partner for reference during calls, events, or other communications with the contact.</para>
+      /// <para>Display Name: Spouse/Partner Name</para>
+      /// </summary>
+      [DataMember(Name="spousesname")]
+      public string SpousesName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("spousesname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("spousesname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the ID of the stage.</para>
+      /// <para>Display Name: (Deprecated) Process Stage</para>
+      /// </summary>
+      [DataMember(Name="stageid")]
+      public System.Nullable<System.Guid> StageId
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("stageid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows whether the contact is active or inactive. Inactive contacts are read-only and can't be edited unless they are reactivated.</para>
+      /// <para>Display Name: Status</para>
+      /// </summary>
+      [DataMember(Name="statecode")]
+      public contact_statecode? StateCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_statecode?>("statecode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_statecode?>("statecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select the contact's status.</para>
+      /// <para>Display Name: Status Reason</para>
+      /// </summary>
+      [DataMember(Name="statuscode")]
+      public contact_statuscode? StatusCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_statuscode?>("statuscode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_statuscode?>("statuscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the suffix used in the contact's name, such as Jr. or Sr. to make sure the contact is addressed correctly in sales calls, email, and marketing campaigns.</para>
+      /// <para>Display Name: Suffix</para>
+      /// </summary>
+      [DataMember(Name="suffix")]
+      public string Suffix
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("suffix");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("suffix", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Number of users or conversations followed the record</para>
+      /// <para>Display Name: TeamsFollowed</para>
+      /// </summary>
+      [DataMember(Name="teamsfollowed")]
+      public System.Nullable<int> TeamsFollowed
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("teamsfollowed");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("teamsfollowed", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the main phone number for this contact.</para>
+      /// <para>Display Name: Business Phone</para>
+      /// </summary>
+      [DataMember(Name="telephone1")]
+      public string Telephone1
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("telephone1");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("telephone1", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a second phone number for this contact.</para>
+      /// <para>Display Name: Home Phone</para>
+      /// </summary>
+      [DataMember(Name="telephone2")]
+      public string Telephone2
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("telephone2");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("telephone2", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type a third phone number for this contact.</para>
+      /// <para>Display Name: Telephone 3</para>
+      /// </summary>
+      [DataMember(Name="telephone3")]
+      public string Telephone3
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("telephone3");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("telephone3", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Select a region or territory for the contact for use in segmentation and analysis.</para>
+      /// <para>Display Name: Territory</para>
+      /// </summary>
+      [DataMember(Name="territorycode")]
+      public contact_territorycode? TerritoryCode
+      {
+         get
+         {
+            return base.GetAttributeValue<contact_territorycode?>("territorycode");
+         }
+         set
+         {
+            base.SetAttributeValue<contact_territorycode?>("territorycode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Total time spent for emails (read and write) and meetings by me in relation to the contact record.</para>
+      /// <para>Display Name: Time Spent by me</para>
+      /// </summary>
+      [DataMember(Name="timespentbymeonemailandmeetings")]
+      public string TimeSpentByMeOnEmailAndMeetings
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("timespentbymeonemailandmeetings");
+         }
+      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: Time Zone Rule Version Number</para>
+      /// </summary>
+      [DataMember(Name="timezoneruleversionnumber")]
+      public System.Nullable<int> TimeZoneRuleVersionNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: </para>
+      /// </summary>
+      [DataMember(Name="transactioncurrencyidname")]
+      public string TransactionCurrencyIdName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("transactioncurrencyidname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: (Deprecated) Traversed Path</para>
+      /// </summary>
+      [DataMember(Name="traversedpath")]
+      public string TraversedPath
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("traversedpath");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("traversedpath", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Time zone code that was in use when the record was created.</para>
+      /// <para>Display Name: UTC Conversion Time Zone Code</para>
+      /// </summary>
+      [DataMember(Name="utcconversiontimezonecode")]
+      public System.Nullable<int> UTCConversionTimeZoneCode
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Version number of the contact.</para>
+      /// <para>Display Name: Version Number</para>
+      /// </summary>
+      [DataMember(Name="versionnumber")]
+      public System.Nullable<long> VersionNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<long>>("versionnumber");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the contact's professional or personal website or blog URL.</para>
+      /// <para>Display Name: Website</para>
+      /// </summary>
+      [DataMember(Name="websiteurl")]
+      public string WebSiteUrl
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("websiteurl");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("websiteurl", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the phonetic spelling of the contact's first name, if the name is specified in Japanese, to make sure the name is pronounced correctly in phone calls with the contact.</para>
+      /// <para>Display Name: Yomi First Name</para>
+      /// </summary>
+      [DataMember(Name="yomifirstname")]
+      public string YomiFirstName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("yomifirstname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("yomifirstname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Shows the combined Yomi first and last names of the contact so that the full phonetic name can be displayed in views and reports.</para>
+      /// <para>Display Name: Yomi Full Name</para>
+      /// </summary>
+      [DataMember(Name="yomifullname")]
+      public string YomiFullName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("yomifullname");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the phonetic spelling of the contact's last name, if the name is specified in Japanese, to make sure the name is pronounced correctly in phone calls with the contact.</para>
+      /// <para>Display Name: Yomi Last Name</para>
+      /// </summary>
+      [DataMember(Name="yomilastname")]
+      public string YomiLastName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("yomilastname");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("yomilastname", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Type the phonetic spelling of the contact's middle name, if the name is specified in Japanese, to make sure the name is pronounced correctly in phone calls with the contact.</para>
+      /// <para>Display Name: Yomi Middle Name</para>
+      /// </summary>
+      [DataMember(Name="yomimiddlename")]
+      public string YomiMiddleName
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("yomimiddlename");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("yomimiddlename", value);
+         }
+      }
+   }
+   /// <summary>
+   /// <para>Description: Select a category to indicate whether the customer account is standard or preferred.</para>
+   /// <para>Display Name: Category</para>
+   /// </summary>
+   public enum account_accountcategorycode
+   {
+      PreferredCustomer = 1,
+      Standard = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select a classification code to indicate the potential value of the customer account based on the projected return on investment, cooperation level, sales cycle length or other criteria.</para>
+   /// <para>Display Name: Classification</para>
+   /// </summary>
+   public enum account_accountclassificationcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a rating to indicate the value of the customer account.</para>
+   /// <para>Display Name: Account Rating</para>
+   /// </summary>
+   public enum account_accountratingcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the contact's role within the company or sales process, such as decision maker, employee, or influencer.</para>
+   /// <para>Display Name: Role</para>
+   /// </summary>
+   public enum contact_accountrolecode
+   {
+      DecisionMaker = 1,
+      Employee = 2,
+      Influencer = 3,
+   }
+   /// <summary>
+   /// <para>Description: Select the primary address type.</para>
+   /// <para>Display Name: Address 1: Address Type</para>
+   /// </summary>
+   public enum account_address1_addresstypecode
+   {
+      BillTo = 1,
+      ShipTo = 2,
+      Primary = 3,
+      Other = 4,
+   }
+   /// <summary>
+   /// <para>Description: Select the primary address type.</para>
+   /// <para>Display Name: Address 1: Address Type</para>
+   /// </summary>
+   public enum contact_address1_addresstypecode
+   {
+      BillTo = 1,
+      ShipTo = 2,
+      Primary = 3,
+      Other = 4,
+   }
+   /// <summary>
+   /// <para>Description: Select the freight terms for the primary address to make sure shipping orders are processed correctly.</para>
+   /// <para>Display Name: Address 1: Freight Terms</para>
+   /// </summary>
+   public enum account_address1_freighttermscode
+   {
+      FOB = 1,
+      NoCharge = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select the freight terms for the primary address to make sure shipping orders are processed correctly.</para>
+   /// <para>Display Name: Address 1: Freight Terms</para>
+   /// </summary>
+   public enum contact_address1_freighttermscode
+   {
+      FOB = 1,
+      NoCharge = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Address 1: Shipping Method</para>
+   /// </summary>
+   public enum account_address1_shippingmethodcode
+   {
+      Airborne = 1,
+      DHL = 2,
+      FedEx = 3,
+      UPS = 4,
+      PostalMail = 5,
+      FullLoad = 6,
+      WillCall = 7,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Address 1: Shipping Method</para>
+   /// </summary>
+   public enum contact_address1_shippingmethodcode
+   {
+      Airborne = 1,
+      DHL = 2,
+      FedEx = 3,
+      UPS = 4,
+      PostalMail = 5,
+      FullLoad = 6,
+      WillCall = 7,
+   }
+   /// <summary>
+   /// <para>Description: Select the secondary address type.</para>
+   /// <para>Display Name: Address 2: Address Type</para>
+   /// </summary>
+   public enum account_address2_addresstypecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the secondary address type.</para>
+   /// <para>Display Name: Address 2: Address Type</para>
+   /// </summary>
+   public enum contact_address2_addresstypecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the freight terms for the secondary address to make sure shipping orders are processed correctly.</para>
+   /// <para>Display Name: Address 2: Freight Terms</para>
+   /// </summary>
+   public enum account_address2_freighttermscode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the freight terms for the secondary address to make sure shipping orders are processed correctly.</para>
+   /// <para>Display Name: Address 2: Freight Terms</para>
+   /// </summary>
+   public enum contact_address2_freighttermscode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Address 2: Shipping Method</para>
+   /// </summary>
+   public enum account_address2_shippingmethodcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Address 2: Shipping Method</para>
+   /// </summary>
+   public enum contact_address2_shippingmethodcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the third address type.</para>
+   /// <para>Display Name: Address 3: Address Type</para>
+   /// </summary>
+   public enum contact_address3_addresstypecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the freight terms for the third address to make sure shipping orders are processed correctly.</para>
+   /// <para>Display Name: Address 3: Freight Terms</para>
+   /// </summary>
+   public enum contact_address3_freighttermscode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Address 3: Shipping Method</para>
+   /// </summary>
+   public enum contact_address3_shippingmethodcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the legal designation or other business type of the account for contracts or reporting purposes.</para>
+   /// <para>Display Name: Business Type</para>
+   /// </summary>
+   public enum account_businesstypecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the size category or range of the account for segmentation and reporting purposes.</para>
+   /// <para>Display Name: Customer Size</para>
+   /// </summary>
+   public enum account_customersizecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the size of the contact's company for segmentation and reporting purposes.</para>
+   /// <para>Display Name: Customer Size</para>
+   /// </summary>
+   public enum contact_customersizecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the category that best describes the relationship between the account and your organization.</para>
+   /// <para>Display Name: Relationship Type</para>
+   /// </summary>
+   public enum account_customertypecode
+   {
+      Competitor = 1,
+      Consultant = 2,
+      Customer = 3,
+      Investor = 4,
+      Partner = 5,
+      Influencer = 6,
+      Press = 7,
+      Prospect = 8,
+      Reseller = 9,
+      Supplier = 10,
+      Vendor = 11,
+      Other = 12,
+   }
+   /// <summary>
+   /// <para>Description: Select the category that best describes the relationship between the contact and your organization.</para>
+   /// <para>Display Name: Relationship Type</para>
+   /// </summary>
+   public enum contact_customertypecode
+   {
+      Prospect = 1,
+      Customer = 948060000,
+   }
+   /// <summary>
+   /// <para>Description: Select the contact's highest level of education for use in segmentation and analysis.</para>
+   /// <para>Display Name: Education</para>
+   /// </summary>
+   public enum contact_educationcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the marital status of the contact for reference in follow-up phone calls and other communications.</para>
+   /// <para>Display Name: Marital Status</para>
+   /// </summary>
+   public enum contact_familystatuscode
+   {
+      Single = 1,
+      Married = 2,
+      Divorced = 3,
+      Widowed = 4,
+   }
+   /// <summary>
+   /// <para>Description: Select the contact's gender to make sure the contact is addressed correctly in sales calls, email, and marketing campaigns.</para>
+   /// <para>Display Name: Gender</para>
+   /// </summary>
+   public enum contact_gendercode
+   {
+      Male = 1,
+      Female = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select whether the contact has any children for reference in follow-up phone calls and other communications.</para>
+   /// <para>Display Name: Has Children</para>
+   /// </summary>
+   public enum contact_haschildrencode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the language of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
+   /// <para>Display Name: Language</para>
+   /// </summary>
+   public enum ic_language
+   {
+      French = 948060000,
+      English = 948060001,
+   }
+   /// <summary>
+   /// <para>Description: Select the salutation of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
+   /// <para>Display Name: Salutation</para>
+   /// </summary>
+   public enum ic_salutation
+   {
+      Mr = 948060000,
+      Mrs = 948060001,
+      Ms = 948060002,
+   }
+   /// <summary>
+   /// <para>Description: Shows the synchronization status.</para>
+   /// <para>Display Name: Synchronization Status</para>
+   /// </summary>
+   public enum ic_synchronizationstatus
+   {
+      New = 948060000,
+      Waiting = 948060001,
+      Pending = 948060002,
+      Rejected = 948060003,
+      Synchronized = 948060004,
+   }
+   /// <summary>
+   /// <para>Description: Select the geographical distribution of the Legal Name.</para>
+   /// <para>Display Name: Legal Name Classification</para>
+   /// </summary>
+   public enum ic_tenantclassification
+   {
+      Local = 948060000,
+      Major = 948060003,
+      National = 948060002,
+      Regional = 948060001,
+      SpecialtyLeasing = 948060004,
+   }
+   /// <summary>
+   /// <para>Description: Select the category that best describes the relationship between the contact and your organization.</para>
+   /// <para>Display Name: zzz_Type</para>
+   /// </summary>
+   public enum ic_tenanttype
+   {
+      LegalName = 948060000,
+   }
+   /// <summary>
+   /// <para>Description: Select the account's primary industry for use in marketing segmentation and demographic analysis.</para>
+   /// <para>Display Name: Industry</para>
+   /// </summary>
+   public enum account_industrycode
+   {
+      Accounting = 1,
+      AgricultureandNonpetrolNaturalResourceExtraction = 2,
+      BroadcastingPrintingandPublishing = 3,
+      Brokers = 4,
+      BuildingSupplyRetail = 5,
+      BusinessServices = 6,
+      Consulting = 7,
+      ConsumerServices = 8,
+      DesignDirectionandCreativeManagement = 9,
+      DistributorsDispatchersandProcessors = 10,
+      DoctorsOfficesandClinics = 11,
+      DurableManufacturing = 12,
+      EatingandDrinkingPlaces = 13,
+      EntertainmentRetail = 14,
+      EquipmentRentalandLeasing = 15,
+      Financial = 16,
+      FoodandTobaccoProcessing = 17,
+      InboundCapitalIntensiveProcessing = 18,
+      InboundRepairandServices = 19,
+      Insurance = 20,
+      LegalServices = 21,
+      NonDurableMerchandiseRetail = 22,
+      OutboundConsumerService = 23,
+      PetrochemicalExtractionandDistribution = 24,
+      ServiceRetail = 25,
+      SIGAffiliations = 26,
+      SocialServices = 27,
+      SpecialOutboundTradeContractors = 28,
+      SpecialtyRealty = 29,
+      Transportation = 30,
+      UtilityCreationandDistribution = 31,
+      VehicleRetail = 32,
+      Wholesale = 33,
+   }
+   /// <summary>
+   /// <para>Description: Select the primary marketing source that directed the contact to your organization.</para>
+   /// <para>Display Name: Lead Source</para>
+   /// </summary>
+   public enum contact_leadsourcecode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Whether or not the contact belongs to the associated account</para>
+   /// <para>Display Name: Org Change Status</para>
+   /// </summary>
+   public enum contact_msdyn_orgchangestatus
+   {
+      No = 0,
+      Yes = 1,
+      Ignore = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select the account's ownership structure, such as public or private.</para>
+   /// <para>Display Name: Ownership</para>
+   /// </summary>
+   public enum account_ownershipcode
+   {
+      Public = 1,
+      Private = 2,
+      Subsidiary = 3,
+      Other = 4,
+   }
+   /// <summary>
+   /// <para>Description: Select the payment terms to indicate when the customer needs to pay the total amount.</para>
+   /// <para>Display Name: Payment Terms</para>
+   /// </summary>
+   public enum account_paymenttermscode
+   {
+      Net30 = 1,
+      _210Net30 = 2,
+      Net45 = 3,
+      Net60 = 4,
+   }
+   /// <summary>
+   /// <para>Description: Select the payment terms to indicate when the customer needs to pay the total amount.</para>
+   /// <para>Display Name: Payment Terms</para>
+   /// </summary>
+   public enum contact_paymenttermscode
+   {
+      Net30 = 1,
+      _210Net30 = 2,
+      Net45 = 3,
+      Net60 = 4,
+   }
+   /// <summary>
+   /// <para>Description: Select the preferred day of the week for service appointments.</para>
+   /// <para>Display Name: Preferred Day</para>
+   /// </summary>
+   public enum account_preferredappointmentdaycode
+   {
+      Sunday = 0,
+      Monday = 1,
+      Tuesday = 2,
+      Wednesday = 3,
+      Thursday = 4,
+      Friday = 5,
+      Saturday = 6,
+   }
+   /// <summary>
+   /// <para>Description: Select the preferred day of the week for service appointments.</para>
+   /// <para>Display Name: Preferred Day</para>
+   /// </summary>
+   public enum contact_preferredappointmentdaycode
+   {
+      Sunday = 0,
+      Monday = 1,
+      Tuesday = 2,
+      Wednesday = 3,
+      Thursday = 4,
+      Friday = 5,
+      Saturday = 6,
+   }
+   /// <summary>
+   /// <para>Description: Select the preferred time of day for service appointments.</para>
+   /// <para>Display Name: Preferred Time</para>
+   /// </summary>
+   public enum account_preferredappointmenttimecode
+   {
+      Morning = 1,
+      Afternoon = 2,
+      Evening = 3,
+   }
+   /// <summary>
+   /// <para>Description: Select the preferred time of day for service appointments.</para>
+   /// <para>Display Name: Preferred Time</para>
+   /// </summary>
+   public enum contact_preferredappointmenttimecode
+   {
+      Morning = 1,
+      Afternoon = 2,
+      Evening = 3,
+   }
+   /// <summary>
+   /// <para>Description: Select the preferred method of contact.</para>
+   /// <para>Display Name: Preferred Method of Contact</para>
+   /// </summary>
+   public enum account_preferredcontactmethodcode
+   {
+      Any = 1,
+      Email = 2,
+      Phone = 3,
+      Fax = 4,
+      Mail = 5,
+   }
+   /// <summary>
+   /// <para>Description: Select the preferred method of contact.</para>
+   /// <para>Display Name: Preferred Method of Contact</para>
+   /// </summary>
+   public enum contact_preferredcontactmethodcode
+   {
+      Email = 2,
+      Phone = 3,
+      Fax = 4,
+      Mail = 5,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to the account's address to designate the preferred carrier or other delivery option.</para>
+   /// <para>Display Name: Shipping Method</para>
+   /// </summary>
+   public enum account_shippingmethodcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Shipping Method</para>
+   /// </summary>
+   public enum contact_shippingmethodcode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Shows whether the account is active or inactive. Inactive accounts are read-only and can't be edited unless they are reactivated.</para>
+   /// <para>Display Name: Status</para>
+   /// </summary>
+   public enum account_statecode
+   {
+      Active = 0,
+      Inactive = 1,
+   }
+   /// <summary>
+   /// <para>Description: Shows whether the contact is active or inactive. Inactive contacts are read-only and can't be edited unless they are reactivated.</para>
+   /// <para>Display Name: Status</para>
+   /// </summary>
+   public enum contact_statecode
+   {
+      Active = 0,
+      Inactive = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select the account's status.</para>
+   /// <para>Display Name: Status Reason</para>
+   /// </summary>
+   public enum account_statuscode
+   {
+      Active = 1,
+      Inactive = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select the contact's status.</para>
+   /// <para>Display Name: Status Reason</para>
+   /// </summary>
+   public enum contact_statuscode
+   {
+      Active = 1,
+      Inactive = 2,
+   }
+   /// <summary>
+   /// <para>Description: Select a region or territory for the account for use in segmentation and analysis.</para>
+   /// <para>Display Name: Territory Code</para>
+   /// </summary>
+   public enum account_territorycode
+   {
+      DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a region or territory for the contact for use in segmentation and analysis.</para>
+   /// <para>Display Name: Territory</para>
+   /// </summary>
+   public enum contact_territorycode
+   {
+      DefaultValue = 1,
    }
 }
