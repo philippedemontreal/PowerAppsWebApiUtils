@@ -17,9 +17,11 @@ namespace webapi.entities
    /// <para>Description: Business that represents a customer or potential customer. The company that is billed in business transactions.</para>
    /// <para>Display Name: Legal Name</para>
    /// </summary>
+   [DataContract(Name="account")]
    public partial class Account : app.entities.ExtendedEntity
    {
-      public const string EntityLogicalName = "Account";
+      public const string LogicalName = "account";
+      public const string LogicalCollectionName = "accounts";
       /// <summary>
       /// <para>Description: Unique identifier of the account.</para>
       /// <para>Display Name: Account</para>
@@ -2621,9 +2623,11 @@ namespace webapi.entities
    /// <para>Description: Person with whom a business unit has a relationship, such as customer, supplier, and colleague.</para>
    /// <para>Display Name: Contact</para>
    /// </summary>
+   [DataContract(Name="contact")]
    public partial class Contact : app.entities.ExtendedEntity
    {
-      public const string EntityLogicalName = "Contact";
+      public const string LogicalName = "contact";
+      public const string LogicalCollectionName = "contacts";
       /// <summary>
       /// <para>Description: Unique identifier of the contact.</para>
       /// <para>Display Name: Contact</para>

@@ -1,5 +1,7 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,6 +11,8 @@ using app.Entities;
 using app.Security;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Runtime.Serialization;
+using System.Text;
 
 namespace  app.Repositories
 {
@@ -51,9 +55,46 @@ namespace  app.Repositories
             return result;            
         }
 
-        public async Task<T> GetById(Guid entityId, string fields = null)
+        public async Task<T> GetById(Guid entityId, Expression<Func<T, object>>[] exprs = null)
         {
-            var getQuery = string.IsNullOrEmpty(fields) ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
+            var fields = new StringBuilder();
+            var typeT = typeof(T);
+
+            foreach (var expr in exprs)
+            {
+                var binding = (UnaryExpression)expr.Body;
+                var propName = ((MemberExpression)binding.Operand).Member.Name;
+
+                var field = typeT.GetProperty(propName);
+                if (field == null)
+                    throw new InvalidOperationException();
+                
+                var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
+                if (dm == null)
+                    throw new InvalidOperationException();                
+                 if (fields.Length > 0)
+                     fields.Append(",");
+
+                fields.Append(dm.Name);
+            }
+
+            // foreach (MemberBinding binding in ((MemberInitExpression)expr.Body).Bindings)
+            // {
+            //     if (fields.Length > 0)
+            //         fields.Append(",");
+
+            //     var field = typeT.GetProperty(binding.Member.Name);
+            //     if (field == null)
+            //         throw new InvalidOperationException();
+                
+            //     var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
+            //     if (dm == null)
+            //         throw new InvalidOperationException();                
+
+            //     fields.Append(dm.Name);
+            // }
+
+            var getQuery = exprs == null ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
             using (var client = GetHttpClient())
             {
                 var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);

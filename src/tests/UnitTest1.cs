@@ -1,4 +1,5 @@
 using System;
+using System.Linq.Expressions;
 using app.Configuration;
 using app.Repositories;
 using app.Security;
@@ -14,10 +15,21 @@ namespace tests
         public void GetOneTest()
         {
             var config = ConfigurationReader.GetConfiguration();
-            var repo = new GenericRepository<Account>(config, "accounts");
-            var account = repo.GetById(Guid.Parse("BB7F2EEC-A38C-E911-A985-000D3AF49637")).Result;
+            var repo = new GenericRepository<Account>(config, Account.LogicalCollectionName);
+            var entityId = Guid.Parse("BB7F2EEC-A38C-E911-A985-000D3AF49637");
+            var account = repo.GetById(entityId, 
+            new Expression<Func<Account, object>>[]
+            {
+                p => p.AccountId, 
+                p => p.StateCode, 
+                p => p.StatusCode,
+                p => p.LastOnHoldTime,
+                p => p.ModifiedOn,
+                p => p.CreatedOn,
+            }
+            ).Result;
             Assert.IsNotNull(account);
-            Assert.AreNotEqual(Guid.Empty, account.AccountId);
+            Assert.AreEqual(entityId, account.AccountId);
             Assert.AreEqual<account_statecode?>(account_statecode.Active, account.StateCode);            
             Assert.AreEqual<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
             Assert.IsNull(account.LastOnHoldTime);

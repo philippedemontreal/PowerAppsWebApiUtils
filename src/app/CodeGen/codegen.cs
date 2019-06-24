@@ -54,18 +54,28 @@ namespace app.codegen
             {
                 IsClass = true,
                 IsPartial = true,
+                CustomAttributes = 
+                {
+                    new CodeAttributeDeclaration("DataContract", new CodeAttributeArgument("Name", new CodePrimitiveExpression(entitMetadata.LogicalName)))
+                }                  
             };
             result.BaseTypes.Add(new CodeTypeReference(typeof(ExtendedEntity)));
 
-            var member = 
-                new CodeMemberField 
+
+            result.Members.Add(new CodeMemberField 
                 { 
                     Type = new CodeTypeReference(typeof(string)),  
-                    Name = "EntityLogicalName", 
+                    Name = "LogicalName", 
                     Attributes = MemberAttributes.Public | MemberAttributes.Const,
-                    InitExpression = new CodePrimitiveExpression(entitMetadata.SchemaName)
-                    };
-            result.Members.Add(member);
+                    InitExpression = new CodePrimitiveExpression(entitMetadata.LogicalName)
+                });
+            result.Members.Add(new CodeMemberField 
+                { 
+                    Type = new CodeTypeReference(typeof(string)),  
+                    Name = "LogicalCollectionName", 
+                    Attributes = MemberAttributes.Public | MemberAttributes.Const,
+                    InitExpression = new CodePrimitiveExpression(entitMetadata.LogicalCollectionName)
+                });
 
             result.Comments.Add(new CodeCommentStatement("<summary>", true));
             result.Comments.Add(new CodeCommentStatement($"<para>Description: {entitMetadata.Description.UserLocalizedLabel.Label}</para>", true));
