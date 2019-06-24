@@ -19,6 +19,7 @@ namespace Microsoft.Dynamics.CRM
 		public bool IsValidForCreate { get; set; }
 		public bool IsValidForRead { get; set; }
 		public bool IsValidForUpdate { get; set; }
+		public bool IsValidODataAttribute { get; set; }
 		public bool CanBeSecuredForRead { get; set; }
 		public bool CanBeSecuredForCreate { get; set; }
 		public bool CanBeSecuredForUpdate { get; set; }

@@ -919,27 +919,27 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who created the record.</para>
+      /// <para>Display Name: Created By</para>
       /// </summary>
-      [DataMember(Name="createdbyexternalpartyname")]
-      public string CreatedByExternalPartyName
+      [DataMember(Name="_createdby_value")]
+      public System.Nullable<System.Guid> CreatedBy
       {
          get
          {
-            return base.GetAttributeValue<string>("createdbyexternalpartyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_createdby_value");
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the external party who created the record.</para>
+      /// <para>Display Name: Created By (External Party)</para>
       /// </summary>
-      [DataMember(Name="createdbyname")]
-      public string CreatedByName
+      [DataMember(Name="_createdbyexternalparty_value")]
+      public System.Nullable<System.Guid> CreatedByExternalParty
       {
          get
          {
-            return base.GetAttributeValue<string>("createdbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_createdbyexternalparty_value");
          }
       }
       /// <summary>
@@ -955,15 +955,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who created the record on behalf of another user.</para>
+      /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
-      [DataMember(Name="createdonbehalfbyname")]
-      public string CreatedOnBehalfByName
+      [DataMember(Name="_createdonbehalfby_value")]
+      public System.Nullable<System.Guid> CreatedOnBehalfBy
       {
          get
          {
-            return base.GetAttributeValue<string>("createdonbehalfbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_createdonbehalfby_value");
          }
       }
       /// <summary>
@@ -1043,15 +1043,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the default price list associated with the account to make sure the correct product prices for this customer are applied in sales opportunities, quotes, and orders.</para>
+      /// <para>Display Name: Price List</para>
       /// </summary>
-      [DataMember(Name="defaultpricelevelidname")]
-      public string DefaultPriceLevelIdName
+      [DataMember(Name="_defaultpricelevelid_value")]
+      public System.Nullable<System.Guid> DefaultPriceLevelId
       {
          get
          {
-            return base.GetAttributeValue<string>("defaultpricelevelidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_defaultpricelevelid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_defaultpricelevelid_value", value);
          }
       }
       /// <summary>
@@ -1359,27 +1363,35 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Select a city.</para>
+      /// <para>Display Name: City</para>
       /// </summary>
-      [DataMember(Name="ic_cityidname")]
-      public string ic_CityIDName
+      [DataMember(Name="_ic_cityid_value")]
+      public System.Nullable<System.Guid> ic_CityID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_cityidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_cityid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_cityid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Select the country or region of the primary address.</para>
+      /// <para>Display Name: Country</para>
       /// </summary>
-      [DataMember(Name="ic_countryidname")]
-      public string ic_CountryIDName
+      [DataMember(Name="_ic_countryid_value")]
+      public System.Nullable<System.Guid> ic_CountryID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_countryidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_countryid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_countryid_value", value);
          }
       }
       /// <summary>
@@ -1399,15 +1411,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Unique identifier for Trade Name associated with Legal Name.</para>
+      /// <para>Display Name: zzz_Franchisee</para>
       /// </summary>
-      [DataMember(Name="ic_franchiseeidname")]
-      public string ic_FranchiseeIDName
+      [DataMember(Name="_ic_franchiseeid_value")]
+      public System.Nullable<System.Guid> ic_FranchiseeID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_franchiseeidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_franchiseeid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_franchiseeid_value", value);
          }
       }
       /// <summary>
@@ -1459,15 +1475,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Select the state or province of the primary address.</para>
+      /// <para>Display Name: State/Province</para>
       /// </summary>
-      [DataMember(Name="ic_stateprovinceidname")]
-      public string ic_StateProvinceIDName
+      [DataMember(Name="_ic_stateprovinceid_value")]
+      public System.Nullable<System.Guid> ic_StateProvinceID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_stateprovinceidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_stateprovinceid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_stateprovinceid_value", value);
          }
       }
       /// <summary>
@@ -1771,15 +1791,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the master account that the account was merged with.</para>
+      /// <para>Display Name: Master ID</para>
       /// </summary>
-      [DataMember(Name="masteraccountidname")]
-      public string MasterAccountIdName
+      [DataMember(Name="_masterid_value")]
+      public System.Nullable<System.Guid> MasterId
       {
          get
          {
-            return base.GetAttributeValue<string>("masteraccountidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_masterid_value");
          }
       }
       /// <summary>
@@ -1795,27 +1815,27 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who last updated the record.</para>
+      /// <para>Display Name: Modified By</para>
       /// </summary>
-      [DataMember(Name="modifiedbyexternalpartyname")]
-      public string ModifiedByExternalPartyName
+      [DataMember(Name="_modifiedby_value")]
+      public System.Nullable<System.Guid> ModifiedBy
       {
          get
          {
-            return base.GetAttributeValue<string>("modifiedbyexternalpartyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_modifiedby_value");
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the external party who modified the record.</para>
+      /// <para>Display Name: Modified By (External Party)</para>
       /// </summary>
-      [DataMember(Name="modifiedbyname")]
-      public string ModifiedByName
+      [DataMember(Name="_modifiedbyexternalparty_value")]
+      public System.Nullable<System.Guid> ModifiedByExternalParty
       {
          get
          {
-            return base.GetAttributeValue<string>("modifiedbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_modifiedbyexternalparty_value");
          }
       }
       /// <summary>
@@ -1831,15 +1851,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who created the record on behalf of another user.</para>
+      /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
-      [DataMember(Name="modifiedonbehalfbyname")]
-      public string ModifiedOnBehalfByName
+      [DataMember(Name="_modifiedonbehalfby_value")]
+      public System.Nullable<System.Guid> ModifiedOnBehalfBy
       {
          get
          {
-            return base.GetAttributeValue<string>("modifiedonbehalfbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_modifiedonbehalfby_value");
          }
       }
       /// <summary>
@@ -1971,15 +1991,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the lead that the account was created from if the account was created by converting a lead in Microsoft Dynamics 365. This is used to relate the account to data on the originating lead for use in reporting and analytics.</para>
+      /// <para>Display Name: Originating Lead</para>
       /// </summary>
-      [DataMember(Name="originatingleadidname")]
-      public string OriginatingLeadIdName
+      [DataMember(Name="_originatingleadid_value")]
+      public System.Nullable<System.Guid> OriginatingLeadId
       {
          get
          {
-            return base.GetAttributeValue<string>("originatingleadidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_originatingleadid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_originatingleadid_value", value);
          }
       }
       /// <summary>
@@ -1999,31 +2023,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Enter the user or team who is assigned to manage the record. This field is updated every time the record is assigned to a different user.</para>
+      /// <para>Display Name: Owner</para>
       /// </summary>
-      [DataMember(Name="owneridname")]
-      public string OwnerIdName
+      [DataMember(Name="_ownerid_value")]
+      public System.Nullable<System.Guid> OwnerId
       {
          get
          {
-            return base.GetAttributeValue<string>("owneridname");
-         }
-      }
-      /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
-      /// </summary>
-      [DataMember(Name="owneridtype")]
-      public string OwnerIdType
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("owneridtype");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ownerid_value");
          }
          set
          {
-            base.SetAttributeValue<string>("owneridtype", value);
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ownerid_value", value);
          }
       }
       /// <summary>
@@ -2043,15 +2055,55 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the business unit that the record owner belongs to.</para>
+      /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
-      [DataMember(Name="parentaccountidname")]
-      public string ParentAccountIdName
+      [DataMember(Name="_owningbusinessunit_value")]
+      public System.Nullable<System.Guid> OwningBusinessUnit
       {
          get
          {
-            return base.GetAttributeValue<string>("parentaccountidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_owningbusinessunit_value");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the team who owns the account.</para>
+      /// <para>Display Name: Owning Team</para>
+      /// </summary>
+      [DataMember(Name="_owningteam_value")]
+      public System.Nullable<System.Guid> OwningTeam
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_owningteam_value");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the user who owns the account.</para>
+      /// <para>Display Name: Owning User</para>
+      /// </summary>
+      [DataMember(Name="_owninguser_value")]
+      public System.Nullable<System.Guid> OwningUser
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_owninguser_value");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Choose the parent account associated with this account to show parent and child businesses in reporting and analytics.</para>
+      /// <para>Display Name: Parent Account</para>
+      /// </summary>
+      [DataMember(Name="_parentaccountid_value")]
+      public System.Nullable<System.Guid> ParentAccountId
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_parentaccountid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_parentaccountid_value", value);
          }
       }
       /// <summary>
@@ -2135,51 +2187,67 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the account's preferred service facility or equipment to make sure services are scheduled correctly for the customer.</para>
+      /// <para>Display Name: Preferred Facility/Equipment</para>
       /// </summary>
-      [DataMember(Name="preferredequipmentidname")]
-      public string PreferredEquipmentIdName
+      [DataMember(Name="_preferredequipmentid_value")]
+      public System.Nullable<System.Guid> PreferredEquipmentId
       {
          get
          {
-            return base.GetAttributeValue<string>("preferredequipmentidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_preferredequipmentid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_preferredequipmentid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the account's preferred service for reference when you schedule service activities.</para>
+      /// <para>Display Name: Preferred Service</para>
       /// </summary>
-      [DataMember(Name="preferredserviceidname")]
-      public string PreferredServiceIdName
+      [DataMember(Name="_preferredserviceid_value")]
+      public System.Nullable<System.Guid> PreferredServiceId
       {
          get
          {
-            return base.GetAttributeValue<string>("preferredserviceidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_preferredserviceid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_preferredserviceid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the preferred service representative for reference when you schedule service activities for the account.</para>
+      /// <para>Display Name: Preferred User</para>
       /// </summary>
-      [DataMember(Name="preferredsystemuseridname")]
-      public string PreferredSystemUserIdName
+      [DataMember(Name="_preferredsystemuserid_value")]
+      public System.Nullable<System.Guid> PreferredSystemUserId
       {
          get
          {
-            return base.GetAttributeValue<string>("preferredsystemuseridname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_preferredsystemuserid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_preferredsystemuserid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the primary contact for the account to provide quick access to contact details.</para>
+      /// <para>Display Name: Primary Contact</para>
       /// </summary>
-      [DataMember(Name="primarycontactidname")]
-      public string PrimaryContactIdName
+      [DataMember(Name="_primarycontactid_value")]
+      public System.Nullable<System.Guid> PrimaryContactId
       {
          get
          {
-            return base.GetAttributeValue<string>("primarycontactidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_primarycontactid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_primarycontactid_value", value);
          }
       }
       /// <summary>
@@ -2307,27 +2375,31 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the service level agreement (SLA) that you want to apply to the Account record.</para>
+      /// <para>Display Name: SLA</para>
       /// </summary>
-      [DataMember(Name="slainvokedidname")]
-      public string SLAInvokedIdName
+      [DataMember(Name="_slaid_value")]
+      public System.Nullable<System.Guid> SLAId
       {
          get
          {
-            return base.GetAttributeValue<string>("slainvokedidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_slaid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_slaid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Last SLA that was applied to this case. This field is for internal use only.</para>
+      /// <para>Display Name: Last SLA applied</para>
       /// </summary>
-      [DataMember(Name="slaname")]
-      public string SLAName
+      [DataMember(Name="_slainvokedid_value")]
+      public System.Nullable<System.Guid> SLAInvokedId
       {
          get
          {
-            return base.GetAttributeValue<string>("slaname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_slainvokedid_value");
          }
       }
       /// <summary>
@@ -2475,15 +2547,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the sales region or territory for the account to make sure the account is assigned to the correct representative and for use in segmentation and analysis.</para>
+      /// <para>Display Name: Territory</para>
       /// </summary>
-      [DataMember(Name="territoryidname")]
-      public string TerritoryIdName
+      [DataMember(Name="_territoryid_value")]
+      public System.Nullable<System.Guid> TerritoryId
       {
          get
          {
-            return base.GetAttributeValue<string>("territoryidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_territoryid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_territoryid_value", value);
          }
       }
       /// <summary>
@@ -2531,15 +2607,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the local currency for the record to make sure budgets are reported in the correct currency.</para>
+      /// <para>Display Name: Currency</para>
       /// </summary>
-      [DataMember(Name="transactioncurrencyidname")]
-      public string TransactionCurrencyIdName
+      [DataMember(Name="_transactioncurrencyid_value")]
+      public System.Nullable<System.Guid> TransactionCurrencyId
       {
          get
          {
-            return base.GetAttributeValue<string>("transactioncurrencyidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_transactioncurrencyid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_transactioncurrencyid_value", value);
          }
       }
       /// <summary>
@@ -2645,15 +2725,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Unique identifier of the account with which the contact is associated.</para>
+      /// <para>Display Name: Account</para>
       /// </summary>
-      [DataMember(Name="accountidname")]
-      public string AccountIdName
+      [DataMember(Name="_accountid_value")]
+      public System.Nullable<System.Guid> AccountId
       {
          get
          {
-            return base.GetAttributeValue<string>("accountidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_accountid_value");
          }
       }
       /// <summary>
@@ -3993,27 +4073,27 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who created the record.</para>
+      /// <para>Display Name: Created By</para>
       /// </summary>
-      [DataMember(Name="createdbyexternalpartyname")]
-      public string CreatedByExternalPartyName
+      [DataMember(Name="_createdby_value")]
+      public System.Nullable<System.Guid> CreatedBy
       {
          get
          {
-            return base.GetAttributeValue<string>("createdbyexternalpartyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_createdby_value");
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the external party who created the record.</para>
+      /// <para>Display Name: Created By (External Party)</para>
       /// </summary>
-      [DataMember(Name="createdbyname")]
-      public string CreatedByName
+      [DataMember(Name="_createdbyexternalparty_value")]
+      public System.Nullable<System.Guid> CreatedByExternalParty
       {
          get
          {
-            return base.GetAttributeValue<string>("createdbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_createdbyexternalparty_value");
          }
       }
       /// <summary>
@@ -4029,15 +4109,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who created the record on behalf of another user.</para>
+      /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
-      [DataMember(Name="createdonbehalfbyname")]
-      public string CreatedOnBehalfByName
+      [DataMember(Name="_createdonbehalfby_value")]
+      public System.Nullable<System.Guid> CreatedOnBehalfBy
       {
          get
          {
-            return base.GetAttributeValue<string>("createdonbehalfbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_createdonbehalfby_value");
          }
       }
       /// <summary>
@@ -4117,15 +4197,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the default price list associated with the contact to make sure the correct product prices for this customer are applied in sales opportunities, quotes, and orders.</para>
+      /// <para>Display Name: Price List</para>
       /// </summary>
-      [DataMember(Name="defaultpricelevelidname")]
-      public string DefaultPriceLevelIdName
+      [DataMember(Name="_defaultpricelevelid_value")]
+      public System.Nullable<System.Guid> DefaultPriceLevelId
       {
          get
          {
-            return base.GetAttributeValue<string>("defaultpricelevelidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_defaultpricelevelid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_defaultpricelevelid_value", value);
          }
       }
       /// <summary>
@@ -4589,39 +4673,51 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Select a City.</para>
+      /// <para>Display Name: City</para>
       /// </summary>
-      [DataMember(Name="ic_cityidname")]
-      public string ic_CityIDName
+      [DataMember(Name="_ic_cityid_value")]
+      public System.Nullable<System.Guid> ic_CityID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_cityidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_cityid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_cityid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Unique identifier for Legal Name associated with Contact.</para>
+      /// <para>Display Name: Company</para>
       /// </summary>
-      [DataMember(Name="ic_companyidname")]
-      public string ic_CompanyIDName
+      [DataMember(Name="_ic_companyid_value")]
+      public System.Nullable<System.Guid> ic_CompanyID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_companyidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_companyid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_companyid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Select a Country.</para>
+      /// <para>Display Name: Country</para>
       /// </summary>
-      [DataMember(Name="ic_countryidname")]
-      public string ic_CountryIDName
+      [DataMember(Name="_ic_countryid_value")]
+      public System.Nullable<System.Guid> ic_CountryID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_countryidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_countryid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_countryid_value", value);
          }
       }
       /// <summary>
@@ -4657,15 +4753,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Select a State/Province.</para>
+      /// <para>Display Name: State/Province</para>
       /// </summary>
-      [DataMember(Name="ic_stateprovinceidname")]
-      public string ic_StateProvinceIDName
+      [DataMember(Name="_ic_stateprovinceid_value")]
+      public System.Nullable<System.Guid> ic_StateProvinceID
       {
          get
          {
-            return base.GetAttributeValue<string>("ic_stateprovinceidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ic_stateprovinceid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ic_stateprovinceid_value", value);
          }
       }
       /// <summary>
@@ -4909,15 +5009,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Unique identifier of the master contact for merge.</para>
+      /// <para>Display Name: Master ID</para>
       /// </summary>
-      [DataMember(Name="mastercontactidname")]
-      public string MasterContactIdName
+      [DataMember(Name="_masterid_value")]
+      public System.Nullable<System.Guid> MasterId
       {
          get
          {
-            return base.GetAttributeValue<string>("mastercontactidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_masterid_value");
          }
       }
       /// <summary>
@@ -4965,27 +5065,27 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who last updated the record.</para>
+      /// <para>Display Name: Modified By</para>
       /// </summary>
-      [DataMember(Name="modifiedbyexternalpartyname")]
-      public string ModifiedByExternalPartyName
+      [DataMember(Name="_modifiedby_value")]
+      public System.Nullable<System.Guid> ModifiedBy
       {
          get
          {
-            return base.GetAttributeValue<string>("modifiedbyexternalpartyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_modifiedby_value");
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the external party who modified the record.</para>
+      /// <para>Display Name: Modified By (External Party)</para>
       /// </summary>
-      [DataMember(Name="modifiedbyname")]
-      public string ModifiedByName
+      [DataMember(Name="_modifiedbyexternalparty_value")]
+      public System.Nullable<System.Guid> ModifiedByExternalParty
       {
          get
          {
-            return base.GetAttributeValue<string>("modifiedbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_modifiedbyexternalparty_value");
          }
       }
       /// <summary>
@@ -5001,15 +5101,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows who last updated the record on behalf of another user.</para>
+      /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
-      [DataMember(Name="modifiedonbehalfbyname")]
-      public string ModifiedOnBehalfByName
+      [DataMember(Name="_modifiedonbehalfby_value")]
+      public System.Nullable<System.Guid> ModifiedOnBehalfBy
       {
          get
          {
-            return base.GetAttributeValue<string>("modifiedonbehalfbyname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_modifiedonbehalfby_value");
          }
       }
       /// <summary>
@@ -5089,15 +5189,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Shows the lead that the contact was created if the contact was created by converting a lead in Microsoft Dynamics 365. This is used to relate the contact to the data on the originating lead for use in reporting and analytics.</para>
+      /// <para>Display Name: Originating Lead</para>
       /// </summary>
-      [DataMember(Name="originatingleadidname")]
-      public string OriginatingLeadIdName
+      [DataMember(Name="_originatingleadid_value")]
+      public System.Nullable<System.Guid> OriginatingLeadId
       {
          get
          {
-            return base.GetAttributeValue<string>("originatingleadidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_originatingleadid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_originatingleadid_value", value);
          }
       }
       /// <summary>
@@ -5117,31 +5221,55 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Enter the user or team who is assigned to manage the record. This field is updated every time the record is assigned to a different user.</para>
+      /// <para>Display Name: Owner</para>
       /// </summary>
-      [DataMember(Name="owneridname")]
-      public string OwnerIdName
+      [DataMember(Name="_ownerid_value")]
+      public System.Nullable<System.Guid> OwnerId
       {
          get
          {
-            return base.GetAttributeValue<string>("owneridname");
-         }
-      }
-      /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
-      /// </summary>
-      [DataMember(Name="owneridtype")]
-      public string OwnerIdType
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("owneridtype");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_ownerid_value");
          }
          set
          {
-            base.SetAttributeValue<string>("owneridtype", value);
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_ownerid_value", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the business unit that owns the contact.</para>
+      /// <para>Display Name: Owning Business Unit</para>
+      /// </summary>
+      [DataMember(Name="_owningbusinessunit_value")]
+      public System.Nullable<System.Guid> OwningBusinessUnit
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_owningbusinessunit_value");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the team who owns the contact.</para>
+      /// <para>Display Name: Owning Team</para>
+      /// </summary>
+      [DataMember(Name="_owningteam_value")]
+      public System.Nullable<System.Guid> OwningTeam
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_owningteam_value");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the user who owns the contact.</para>
+      /// <para>Display Name: Owning User</para>
+      /// </summary>
+      [DataMember(Name="_owninguser_value")]
+      public System.Nullable<System.Guid> OwningUser
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_owninguser_value");
          }
       }
       /// <summary>
@@ -5161,43 +5289,15 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Unique identifier of the parent contact.</para>
+      /// <para>Display Name: Parent Contact</para>
       /// </summary>
-      [DataMember(Name="parentcontactidname")]
-      public string ParentContactIdName
+      [DataMember(Name="_parentcontactid_value")]
+      public System.Nullable<System.Guid> ParentContactId
       {
          get
          {
-            return base.GetAttributeValue<string>("parentcontactidname");
-         }
-      }
-      /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
-      /// </summary>
-      [DataMember(Name="parentcustomeridname")]
-      public string ParentCustomerIdName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("parentcustomeridname");
-         }
-      }
-      /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: Parent Customer Type</para>
-      /// </summary>
-      [DataMember(Name="parentcustomeridtype")]
-      public string ParentCustomerIdType
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("parentcustomeridtype");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("parentcustomeridtype", value);
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_parentcontactid_value");
          }
       }
       /// <summary>
@@ -5281,39 +5381,51 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the contact's preferred service facility or equipment to make sure services are scheduled correctly for the customer.</para>
+      /// <para>Display Name: Preferred Facility/Equipment</para>
       /// </summary>
-      [DataMember(Name="preferredequipmentidname")]
-      public string PreferredEquipmentIdName
+      [DataMember(Name="_preferredequipmentid_value")]
+      public System.Nullable<System.Guid> PreferredEquipmentId
       {
          get
          {
-            return base.GetAttributeValue<string>("preferredequipmentidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_preferredequipmentid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_preferredequipmentid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the contact's preferred service to make sure services are scheduled correctly for the customer.</para>
+      /// <para>Display Name: Preferred Service</para>
       /// </summary>
-      [DataMember(Name="preferredserviceidname")]
-      public string PreferredServiceIdName
+      [DataMember(Name="_preferredserviceid_value")]
+      public System.Nullable<System.Guid> PreferredServiceId
       {
          get
          {
-            return base.GetAttributeValue<string>("preferredserviceidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_preferredserviceid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_preferredserviceid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the regular or preferred customer service representative for reference when scheduling service activities for the contact.</para>
+      /// <para>Display Name: Preferred User</para>
       /// </summary>
-      [DataMember(Name="preferredsystemuseridname")]
-      public string PreferredSystemUserIdName
+      [DataMember(Name="_preferredsystemuserid_value")]
+      public System.Nullable<System.Guid> PreferredSystemUserId
       {
          get
          {
-            return base.GetAttributeValue<string>("preferredsystemuseridname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_preferredsystemuserid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_preferredsystemuserid_value", value);
          }
       }
       /// <summary>
@@ -5365,27 +5477,31 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the service level agreement (SLA) that you want to apply to the Contact record.</para>
+      /// <para>Display Name: SLA</para>
       /// </summary>
-      [DataMember(Name="slainvokedidname")]
-      public string SLAInvokedIdName
+      [DataMember(Name="_slaid_value")]
+      public System.Nullable<System.Guid> SLAId
       {
          get
          {
-            return base.GetAttributeValue<string>("slainvokedidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_slaid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_slaid_value", value);
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Last SLA that was applied to this case. This field is for internal use only.</para>
+      /// <para>Display Name: Last SLA applied</para>
       /// </summary>
-      [DataMember(Name="slaname")]
-      public string SLAName
+      [DataMember(Name="_slainvokedid_value")]
+      public System.Nullable<System.Guid> SLAInvokedId
       {
          get
          {
-            return base.GetAttributeValue<string>("slaname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_slainvokedid_value");
          }
       }
       /// <summary>
@@ -5577,15 +5693,19 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: </para>
+      /// <para>Description: Choose the local currency for the record to make sure budgets are reported in the correct currency.</para>
+      /// <para>Display Name: Currency</para>
       /// </summary>
-      [DataMember(Name="transactioncurrencyidname")]
-      public string TransactionCurrencyIdName
+      [DataMember(Name="_transactioncurrencyid_value")]
+      public System.Nullable<System.Guid> TransactionCurrencyId
       {
          get
          {
-            return base.GetAttributeValue<string>("transactioncurrencyidname");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("_transactioncurrencyid_value");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.Guid>>("_transactioncurrencyid_value", value);
          }
       }
       /// <summary>

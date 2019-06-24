@@ -78,8 +78,8 @@ namespace app.codegen
                 });
 
             result.Comments.Add(new CodeCommentStatement("<summary>", true));
-            result.Comments.Add(new CodeCommentStatement($"<para>Description: {entitMetadata.Description.UserLocalizedLabel.Label}</para>", true));
-            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {entitMetadata.DisplayName.UserLocalizedLabel.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Description: {entitMetadata.Description?.UserLocalizedLabel?.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {entitMetadata.DisplayName?.UserLocalizedLabel?.Label}</para>", true));
             result.Comments.Add(new CodeCommentStatement("</summary>", true));
 
 
@@ -87,14 +87,20 @@ namespace app.codegen
         }
 
 
-       public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, Type propertyType)
-        => CreateProperty(attributeMetadata, propertyType.FullName);
+        public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, Type propertyType)
+            => CreateProperty(attributeMetadata, propertyType.FullName);
+
         public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, string propertyType) 
         {
             var schemaName = attributeMetadata.SchemaName;
            
             if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
                 return null;
+
+            var attributeName = attributeMetadata.AttributeType == 
+                AttributeTypeCode.Lookup || attributeMetadata.AttributeType == AttributeTypeCode.Owner  ? 
+                $"_{attributeMetadata.LogicalName}_value" : 
+                attributeMetadata.LogicalName;
 
             var result = new CodeMemberProperty()
             {
@@ -103,7 +109,9 @@ namespace app.codegen
                 Type = new CodeTypeReference(propertyType),
                 CustomAttributes = 
                 {
-                    new CodeAttributeDeclaration("DataMember", new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeMetadata.LogicalName)))
+                    new CodeAttributeDeclaration(
+                        "DataMember", 
+                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName)))
                 }      
             };
 
@@ -116,7 +124,7 @@ namespace app.codegen
                             new CodeBaseReferenceExpression(),
                                 "GetAttributeValue",
                                 new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
-                                new CodePrimitiveExpression(attributeMetadata.LogicalName))                            
+                                new CodePrimitiveExpression(attributeName))                            
                 ));
             }
 
@@ -128,7 +136,7 @@ namespace app.codegen
                             new CodeBaseReferenceExpression(),
                                 "SetAttributeValue",
                                 new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
-                                new CodePrimitiveExpression(attributeMetadata.LogicalName),
+                                new CodePrimitiveExpression(attributeName),
                                 new CodeVariableReferenceExpression("value")
                                 ) 
                 );
@@ -201,7 +209,7 @@ namespace app.codegen
 
             foreach (var optionset in picklist.OptionSet.Options)
             {
-                var option = new CodeMemberField(picklist.OptionSet.Name, Sanitize(optionset.Label.UserLocalizedLabel.Label)) 
+                var option = new CodeMemberField(picklist.OptionSet.Name, Sanitize(optionset.Label?.UserLocalizedLabel?.Label)) 
                 { 
                     InitExpression = new CodePrimitiveExpression(optionset.Value)
                 };
@@ -210,8 +218,8 @@ namespace app.codegen
             }
 
             result.Comments.Add(new CodeCommentStatement("<summary>", true));
-            result.Comments.Add(new CodeCommentStatement($"<para>Description: {picklist.Description.UserLocalizedLabel.Label}</para>", true));
-            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {picklist.DisplayName.UserLocalizedLabel.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Description: {picklist.Description?.UserLocalizedLabel?.Label}</para>", true));
+            result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {picklist.DisplayName?.UserLocalizedLabel?.Label}</para>", true));
             result.Comments.Add(new CodeCommentStatement("</summary>", true));
 
            ns.Types.Add(result);
@@ -227,29 +235,35 @@ namespace app.codegen
 
             foreach (var attribute in entitMetadata.Attributes.OrderBy(p => p.SchemaName.ToLowerInvariant()))
             {            
-                if (!attribute.IsValidForRead || attribute.IsPrimaryId)       
+                if (!attribute.IsValidForRead || attribute.IsPrimaryId || !attribute.IsValidODataAttribute)       
                     continue;
 
-
-                if (attribute.AttributeType == AttributeTypeCode.Picklist || attribute.AttributeType == AttributeTypeCode.State || attribute.AttributeType == AttributeTypeCode.Status)
+                switch (attribute.AttributeType) 
                 {
-                    var picklist = picklists.Select(p => p.Value).Where(p => p.LogicalName == attribute.LogicalName&& p.EntityLogicalName == entitMetadata.LogicalName).FirstOrDefault();
-                    if (picklist != null)
-                    {
+                    case AttributeTypeCode.Picklist:
+                    case AttributeTypeCode.State:
+                    case AttributeTypeCode.Status:
+                        var picklist = picklists.Select(p => p.Value).Where(p => p.LogicalName == attribute.LogicalName && p.EntityLogicalName == entitMetadata.LogicalName).FirstOrDefault();
+                        if (picklist == null)
+                            throw new InvalidOperationException();
+                            
                         genType.Members.Add(CreateProperty(attribute, $"{picklist.OptionSet.Name}?"));
-                    }
-                    continue;
-                }
-                else {
-                                    
-                    if (!_refMap.ContainsKey(attribute.AttributeType))
-                        continue;
-                    var genProp = CreateProperty(attribute, _refMap[attribute.AttributeType]);
-                    if (genProp != null)
-                        genType.Members.Add(genProp);
+                        break;
 
-                }
+                    case AttributeTypeCode.Owner:
+                    case AttributeTypeCode.Lookup:
+                        genType.Members.Add(CreateProperty(attribute, typeof(Guid?)));
+                        break;
 
+                    default:
+                        if (!_refMap.ContainsKey(attribute.AttributeType))
+                            continue;
+                        var genProp = CreateProperty(attribute, _refMap[attribute.AttributeType]);
+                        if (genProp != null)
+                            genType.Members.Add(genProp);
+
+                        break;
+                }
             }
             ns.Types.Add(genType);
         }

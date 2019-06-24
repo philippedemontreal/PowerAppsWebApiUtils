@@ -62,8 +62,22 @@ namespace  app.Repositories
 
             foreach (var expr in exprs)
             {
-                var binding = (UnaryExpression)expr.Body;
-                var propName = ((MemberExpression)binding.Operand).Member.Name;
+                var propName = "";
+
+                if (expr.Body is UnaryExpression)
+                {
+                    var binding = (UnaryExpression)expr.Body;
+                    propName = ((MemberExpression)binding.Operand).Member.Name;
+                }
+                else if (expr.Body is MemberExpression)
+                {
+                    propName = ((MemberExpression)expr.Body).Member.Name;
+                }
+                else 
+                {
+                    throw new NotImplementedException();
+                }
+
 
                 var field = typeT.GetProperty(propName);
                 if (field == null)
