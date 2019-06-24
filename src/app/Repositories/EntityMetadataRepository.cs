@@ -14,7 +14,7 @@ namespace app.Repositories
                     
         public async Task<EntityMetadata> GetByLogicalName(string logicalName)
         {
-            return await Retrieve($"{OdataEntityName}(LogicalName='{logicalName}')?$expand=Attributes");     
+            return await Retrieve($"{OdataEntityName}(LogicalName='{logicalName}')?$expand=Attributes,Keys,ManyToManyRelationships,ManyToOneRelationships,OneToManyRelationships");     
         }
 
     }
