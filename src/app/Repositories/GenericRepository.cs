@@ -19,15 +19,15 @@ namespace  app.Repositories
     public class GenericRepository<T>: IDisposable  
     where T: class
     {
-        private readonly PowerAppsConfiguration _powerAppsConfiguration;
+        private readonly AuthenticationMessageHandler _tokenProvider;
         
         public const string ApplicationJson = "application/json";
 
 
         public string OdataEntityName { get; private set; }
-        public GenericRepository(PowerAppsConfiguration powerAppsConfiguration, string odataEntityName)
+        public GenericRepository(AuthenticationMessageHandler tokenProvider, string odataEntityName)
         {
-            _powerAppsConfiguration = powerAppsConfiguration;
+            _tokenProvider = tokenProvider;
             OdataEntityName = odataEntityName;
         }
 
@@ -124,7 +124,6 @@ namespace  app.Repositories
                 return await DeserializeContent<T>(response);
             }
         }
-
                 
         protected async Task<List<T>> RetrieveMultiple(string selector)
         {                        
@@ -135,6 +134,65 @@ namespace  app.Repositories
             }
         }
 
+        public async Task<Guid> Create(T entity)
+        {
+            using (var client = GetHttpClient())
+            {
+                var json = JObject.FromObject(entity).ToString(Newtonsoft.Json.Formatting.None);
+                var request = new HttpRequestMessage(HttpMethod.Post, OdataEntityName)
+                {
+                    Content =
+                        new StringContent(
+                            json,
+                            Encoding.Default,
+                            ApplicationJson)
+                };
+
+                var response = await client.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    using (var reader = response.Content)
+                    {
+                        var content = await reader.ReadAsStringAsync();
+                        var exData = JObject.Parse(content);
+                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
+                    }
+                }
+
+                var entityId = response.Headers.GetValues("OData-EntityId").FirstOrDefault();
+                return Guid.Parse(entityId.Split('(', ')')[1]);            
+            }            
+        }
+
+          protected async Task UpdateRequest(Guid entityId, T entity)
+        {
+            using (var client = GetHttpClient())
+            {
+                var json = JObject.FromObject(entity).ToString(Newtonsoft.Json.Formatting.None);
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, entityId))
+                {
+                    Content =
+                        new StringContent(
+                            json,
+                            Encoding.Default,
+                            ApplicationJson)
+                };
+
+                var response = await client.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    using (var reader = response.Content)
+                    {
+                        var content = await reader.ReadAsStringAsync();
+                        var exData = JObject.Parse(content);
+                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
+                    }
+                }
+
+            }
+        }
         private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
             where P: class
         {
@@ -203,10 +261,9 @@ namespace  app.Repositories
 
         private HttpClient GetHttpClient()
         {
-            var handler = new AuthenticationMessageHandler(_powerAppsConfiguration);
   
-            var httpClient = new HttpClient(handler, true);
-            httpClient.BaseAddress = new Uri(_powerAppsConfiguration.ApiUrl);
+            var httpClient = new HttpClient(_tokenProvider, false);
+            httpClient.BaseAddress = new Uri(_tokenProvider.ApiUrl);
             httpClient.Timeout = new TimeSpan(0, 2, 0);
             httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
             httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");

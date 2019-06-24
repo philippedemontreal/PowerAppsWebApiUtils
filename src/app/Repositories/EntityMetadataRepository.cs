@@ -7,8 +7,8 @@ namespace app.Repositories
 {
     public class EntityMetadataRepository : GenericRepository<EntityMetadata>
     {
-        public EntityMetadataRepository(PowerAppsConfiguration powerAppsConfiguration) : 
-        base(powerAppsConfiguration, "EntityDefinitions")
+        public EntityMetadataRepository(AuthenticationMessageHandler tokenProvider) : 
+        base(tokenProvider, "EntityDefinitions")
         {
         }
                     

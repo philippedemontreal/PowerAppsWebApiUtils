@@ -15,7 +15,9 @@ namespace tests
         public void GetOneTest()
         {
             var config = ConfigurationReader.GetConfiguration();
-            var repo = new GenericRepository<Account>(config, Account.LogicalCollectionName);
+            var tokenProvider = new AuthenticationMessageHandler(config);
+
+            var repo = new GenericRepository<Account>(tokenProvider, Account.LogicalCollectionName);
             var entityId = Guid.Parse("BB7F2EEC-A38C-E911-A985-000D3AF49637");
             var account = repo.GetById(entityId, 
             new Expression<Func<Account, object>>[]
@@ -42,13 +44,69 @@ namespace tests
             Assert.IsNotNull(account.CreatedOn);
         }
 
-                [TestMethod]
+        [TestMethod]
         public void GetMultipleTest()
         {
             var config = ConfigurationReader.GetConfiguration();
-            var repo = new GenericRepository<Account>(config, "accounts");
-            var accounts = repo.GetList().Result;
-            Assert.IsNotNull(accounts);
+            
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
+            using(var repo = new GenericRepository<Account>(tokenProvider, Account.LogicalCollectionName))
+            {
+                var accounts = repo.GetList().Result;
+                Assert.IsNotNull(accounts);
+            }
+        }
+
+        
+        [TestMethod]
+        public void CreateAccountTest()
+        {
+            var config = ConfigurationReader.GetConfiguration();
+
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
+            using(var repo = new GenericRepository<Account>(tokenProvider, Account.LogicalCollectionName))
+            {
+                var account = new Account 
+                {
+                    Name = Guid.NewGuid().ToString(),
+                    AccountCategoryCode = account_accountcategorycode.Standard,
+                    AccountClassificationCode = account_accountclassificationcode.DefaultValue,
+                    AccountRatingCode = account_accountratingcode.DefaultValue,
+                    AccountNumber = "11111111",
+                    Address1_AddressTypeCode = account_address1_addresstypecode.Primary,
+                    Address1_City = "Montreal",
+                    Address1_Country = "Canada",
+                    Address1_PostalCode = "H1H 1H1",
+                    Address1_StateOrProvince = "QC",
+                    DoNotEMail = true,
+                    DoNotPhone = false,
+                    CreditLimit = 500000.99m,
+                    EMailAddress1 = string.Empty,
+                    Telephone1 = "Telephone1",
+                    Fax = "Fax",
+                    WebSiteURL = "WebSiteURL",
+                    LastOnHoldTime = new DateTime(2019, 1, 1, 0, 0, 0)
+                };      
+                var accountid = repo.Create(account).Result;
+                Assert.IsNotNull(accountid);
+
+                account = repo.GetById(accountid, 
+                new Expression<Func<Account, object>>[]
+                {
+                    p => p.AccountId, 
+                    p => p.StateCode, 
+                    p => p.StatusCode,
+                    p => p.LastOnHoldTime,
+                    p => p.ModifiedOn,
+                    p => p.CreatedOn,
+                    p => p.CreatedBy,
+                    p => p.OwnerId,
+                    p => p.ParentAccountId,
+                    p => p.Telephone1,
+                }
+                ).Result;
+            }
+
         }
     }
 }

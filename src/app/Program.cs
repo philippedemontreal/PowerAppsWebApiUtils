@@ -5,6 +5,7 @@ using app.codegen;
 using app.Configuration;
 using app.Repositories;
 using Microsoft.Dynamics.CRM;
+using app.Security;
 
 namespace app
 {
@@ -14,10 +15,11 @@ namespace app
 
      static void Main(string[] args)
         {
-            var configuration =  ConfigurationReader.GetConfiguration();
-           
-            using (var entityDefinitionRepository = new EntityMetadataRepository(configuration))
-            using (var picklistRepository = new OptionSetMetadataRepository(configuration))
+            var config =  ConfigurationReader.GetConfiguration();
+            
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
+            using (var entityDefinitionRepository = new EntityMetadataRepository(tokenProvider))
+            using (var picklistRepository = new OptionSetMetadataRepository(tokenProvider))
             {
           
                 var entities = new List<EntityMetadata>();
@@ -44,10 +46,7 @@ namespace app
 
                 var codeGen = new CodeGen();
                 codeGen.Execute("webapi.entities", entities, pickLists);
-
- 
-            }
-            
+            }            
          }  
     }
 }

@@ -8,8 +8,8 @@ namespace app.Repositories
 {
     public class OptionSetMetadataRepository : GenericRepository<PicklistAttributeMetadata>
     {
-        public OptionSetMetadataRepository(PowerAppsConfiguration powerAppsConfiguration) : 
-        base(powerAppsConfiguration, "EntityDefinitions")
+        public OptionSetMetadataRepository(AuthenticationMessageHandler tokenProvider) : 
+        base(tokenProvider, "EntityDefinitions")
         {
         }
                     
