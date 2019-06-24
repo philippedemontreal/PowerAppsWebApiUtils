@@ -130,7 +130,7 @@ namespace Microsoft.Dynamics.CRM
         public Guid MetadataId { get; set; }
 
         //The property that determines the data entry requirement level enforced for the attribute.
-        public RequiredLevelProperty RequiredLevel	{ get; set; }	
+        public AttributeRequiredLevelManagedProperty RequiredLevel	{ get; set; }	
 
         //The schema name for the attribute.
         public string SchemaName { get; set; }

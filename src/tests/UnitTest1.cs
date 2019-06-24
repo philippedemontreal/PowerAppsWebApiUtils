@@ -28,14 +28,12 @@ namespace tests
                 p => p.CreatedOn,
                 p => p.CreatedBy,
                 p => p.OwnerId,
-                //p => p.OwnerIdType,
                 p => p.ParentAccountId,
                 p => p.Telephone1,
             }
             ).Result;
             Assert.IsNotNull(account);
             Assert.IsNotNull(account.OwnerId);
-            //Assert.IsNotNull(account.OwnerIdType);
             Assert.AreEqual(entityId, account.AccountId);
             Assert.AreEqual<account_statecode?>(account_statecode.Active, account.StateCode);            
             Assert.AreEqual<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
