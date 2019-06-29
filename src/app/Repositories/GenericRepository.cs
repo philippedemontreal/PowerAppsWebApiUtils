@@ -89,11 +89,15 @@ namespace  app.Repositories
                     
                     var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
                     if (dm == null)
-                        throw new InvalidOperationException();                
+                        throw new InvalidOperationException();
+
                     if (fields.Length > 0)
                         fields.Append(",");
 
-                    fields.Append(dm.Name);
+                    if (field.PropertyType == typeof(NavigationProperty))
+                        fields.Append($"_{dm.Name}_value");
+                    else                    
+                        fields.Append(dm.Name);
                 }
             }
 
@@ -219,7 +223,7 @@ namespace  app.Repositories
                 if (typeof(IExtendedEntity).IsAssignableFrom(typeof(T)))
                 {
                     var result = Activator.CreateInstance(typeof(T)) as IExtendedEntity;
-                    result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content);
+                    result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content, new JsonSerializerSettings { ContractResolver = DictionaryContractResolver.Instance } );
                     return (P)result;
                 }
 

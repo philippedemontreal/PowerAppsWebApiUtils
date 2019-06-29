@@ -13,42 +13,42 @@ namespace app.entities
 
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
-            JsonProperty property = base.CreateProperty(member, memberSerialization);
+            var property = base.CreateProperty(member, memberSerialization);
 
-        if (property.DeclaringType.IsSubclassOf(typeof(ExtendedEntity)))
-        {
-            
-            property.ShouldSerialize =
-                instance =>
-                {                    
-                    var attributes = (instance as ExtendedEntity).Attributes;
-                    if (!attributes.ContainsKey(property.PropertyName))
-                        return false;
+            if (property.DeclaringType.IsSubclassOf(typeof(ExtendedEntity)))
+            {
+                
+                property.ShouldSerialize =
+                    instance =>
+                    {                    
+                        var attributes = (instance as ExtendedEntity).Attributes;
+                        if (!attributes.ContainsKey(property.PropertyName))
+                            return false;
 
-                    if ((member as PropertyInfo).PropertyType == typeof(NavigationProperty))
-                    {
-                        var attr = member.GetCustomAttributes(typeof(NavigationPropertyTargetsAttribute), false).FirstOrDefault() as NavigationPropertyTargetsAttribute;
-                        if (attr != null)
+                        if ((member as PropertyInfo).PropertyType == typeof(NavigationProperty))
                         {
-                            if (attr.Targets.Length > 1)
+                            var attr = member.GetCustomAttributes(typeof(NavigationPropertyTargetsAttribute), false).FirstOrDefault() as NavigationPropertyTargetsAttribute;
+                            if (attr != null)
                             {
-                                var navigationProperty = (member as PropertyInfo).GetGetMethod().Invoke(instance, null) as NavigationProperty;
-                                property.PropertyName +=  $"_{navigationProperty.EntityLogicalName}";
+                                if (attr.Targets.Length > 1)
+                                {
+                                    var navigationProperty = (member as PropertyInfo).GetGetMethod().Invoke(instance, null) as NavigationProperty;
+                                    property.PropertyName +=  $"_{navigationProperty.EntityLogicalName}";
+                                }
                             }
+
+                            property.PropertyName +=  "@odata.bind";
+
+
                         }
 
-                        property.PropertyName +=  "@odata.bind";
+                        
 
-
-                    }
-
-                    
-
-                    return true;
-                };
-        }
-
-        return property;
+                        return true;
+                    };
+            }
+            
+            return property;
         }
         protected override JsonContract CreateContract(Type objectType)
         {
