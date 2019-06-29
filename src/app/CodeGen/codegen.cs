@@ -30,7 +30,6 @@ namespace app.codegen
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Decimal, typeof(decimal?)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Integer, typeof(int?)),
                     
-                    //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Picklist, typeof(string)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Lookup, typeof(NavigationProperty)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Customer, typeof(NavigationProperty)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Owner, typeof(NavigationProperty)),
@@ -61,22 +60,39 @@ namespace app.codegen
                 }                  
             };
             result.BaseTypes.Add(new CodeTypeReference(typeof(ExtendedEntity)));
-
+ 
+            result.Members.Add(new CodeConstructor{ Attributes = MemberAttributes.Public });
+            result.Members.Add(new CodeConstructor{ Attributes = MemberAttributes.Public, Parameters = { new CodeParameterDeclarationExpression(typeof(Guid), "id") }, BaseConstructorArgs = { new CodeVariableReferenceExpression("id")} });
 
             result.Members.Add(new CodeMemberField 
                 { 
                     Type = new CodeTypeReference(typeof(string)),  
-                    Name = "LogicalName", 
+                    Name = "EntityName", 
                     Attributes = MemberAttributes.Public | MemberAttributes.Const,
                     InitExpression = new CodePrimitiveExpression(entitMetadata.LogicalName)
                 });
             result.Members.Add(new CodeMemberField 
                 { 
                     Type = new CodeTypeReference(typeof(string)),  
-                    Name = "LogicalCollectionName", 
+                    Name = "CollectionName", 
                     Attributes = MemberAttributes.Public | MemberAttributes.Const,
                     InitExpression = new CodePrimitiveExpression(entitMetadata.LogicalCollectionName)
                 });
+
+            result.Members.Add(new CodeMemberProperty 
+                { 
+                    Type = new CodeTypeReference(typeof(string)),  
+                    Name = "EntityLogicalName", 
+                    Attributes = MemberAttributes.Public | MemberAttributes.Override,
+                    GetStatements = { new CodeMethodReturnStatement(new CodeVariableReferenceExpression("EntityName")  ) }
+                });
+            result.Members.Add(new CodeMemberProperty 
+                { 
+                    Type = new CodeTypeReference(typeof(string)),  
+                    Name = "EntityCollectionName", 
+                    Attributes = MemberAttributes.Public | MemberAttributes.Override,
+                    GetStatements = { new CodeMethodReturnStatement(new CodeVariableReferenceExpression("CollectionName")  ) } 
+                });                
 
             result.Comments.Add(new CodeCommentStatement("<summary>", true));
             result.Comments.Add(new CodeCommentStatement($"<para>Description: {entitMetadata.Description?.UserLocalizedLabel?.Label}</para>", true));
@@ -98,11 +114,6 @@ namespace app.codegen
             if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
                 return null;
 
-            // var attributeName = attributeMetadata.AttributeType == 
-            //     AttributeTypeCode.Lookup || attributeMetadata.AttributeType == AttributeTypeCode.Owner  ? 
-            //     $"_{attributeMetadata.LogicalName}_value" : 
-            //     attributeMetadata.LogicalName;
-
             var attributeName = attributeMetadata.LogicalName;
 
             var result = new CodeMemberProperty()
@@ -114,9 +125,17 @@ namespace app.codegen
                 {
                     new CodeAttributeDeclaration(
                         "DataMember", 
-                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName)))
-                }      
+                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName))),
+
+                }                      
             };
+
+            if (propertyType == typeof(NavigationProperty).FullName)
+                result.CustomAttributes.Add(                    
+                    new CodeAttributeDeclaration(
+                        "NavigationPropertyTargets", 
+                        new CodeAttributeArgument(new CodePrimitiveExpression(attributeName))));
+
 
             if (attributeMetadata.IsValidForRead || attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
             {

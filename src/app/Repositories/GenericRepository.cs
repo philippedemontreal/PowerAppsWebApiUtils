@@ -14,22 +14,23 @@ using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
 using System.Text;
 using app.entities;
+using Microsoft.Dynamics.CRM;
 
 namespace  app.Repositories
 {
     public class GenericRepository<T>: IDisposable  
-    where T: class
+    where T: crmbaseentity
     {
         private readonly AuthenticationMessageHandler _tokenProvider;
         
         public const string ApplicationJson = "application/json";
 
 
-        public string OdataEntityName { get; private set; }
-        public GenericRepository(AuthenticationMessageHandler tokenProvider, string odataEntityName)
+        public readonly string OdataEntityName;
+        public GenericRepository(AuthenticationMessageHandler tokenProvider)
         {
             _tokenProvider = tokenProvider;
-            OdataEntityName = odataEntityName;
+            OdataEntityName = Activator.CreateInstance<T>().EntityCollectionName;
         }
 
         public async Task<List<T>> GetList()
@@ -171,12 +172,12 @@ namespace  app.Repositories
             }            
         }
 
-        public async Task Update(Guid entityId, T entity)
+        public async Task Update(T entity)
         {
             using (var client = GetHttpClient())
             {
                 var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = ExtendedEntityContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
-                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, entityId))
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, entity.Id))
                 {
                     Content =
                         new StringContent(

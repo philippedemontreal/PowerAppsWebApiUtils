@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using app.entities;
 
 namespace Microsoft.Dynamics.CRM
 {   
@@ -16,8 +17,15 @@ namespace Microsoft.Dynamics.CRM
     }
 
     ///<chref="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/entitymetadata?view=dynamics-ce-odata-9"/>
-    public sealed class EntityMetadata
+    public sealed class EntityMetadata: crmbaseentity
     {
+         public override string EntityCollectionName
+        {
+            get
+            {
+                return "EntityDefinitions";
+            }
+        }
         public int ActivityTypeMask { get; set; }	
         //Whether a custom activity should appear in the activity menus in the Web application.
 

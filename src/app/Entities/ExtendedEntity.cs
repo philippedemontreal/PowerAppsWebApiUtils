@@ -14,18 +14,35 @@ namespace app.entities
         Dictionary<string, object> Attributes { get; set; }
     }  
  
-    public class ExtendedEntity: IExtendedEntity, IExtensibleDataObject
+    public class ExtendedEntity: crmbaseentity, IExtendedEntity, IExtensibleDataObject
     {
-            
+
+        public ExtendedEntity()
+        {
+           
+            Attributes = new Dictionary<string, object>();
+        }
+
+        public ExtendedEntity(Guid id)
+        : this()
+        {
+            Id = id;
+        }
+
+      
+        [JsonIgnore]
+        public virtual string EntityLogicalName { get;  }   
+
+    
  
         [JsonIgnore]
         public Dictionary<string, object> Attributes { get; set; }
         public ExtensionDataObject ExtensionData { get ; set; }
 
-        public ExtendedEntity()
-        {
-            Attributes = new Dictionary<string, object>();
-        }
+   
+        public NavigationProperty ToNavigationProperty()
+            => new NavigationProperty { Id = Id, EntityLogicalName = EntityLogicalName, LogicalCollectionName =  EntityCollectionName } ;
+
 
         protected T GetAttributeValue<T>(string key) 
         {
@@ -43,6 +60,7 @@ namespace app.entities
                     Id = ((Guid)Attributes[key]),
                     Name = (string)Attributes[$"{key}@OData.Community.Display.V1.FormattedValue"],
                     EntityLogicalName = (string)Attributes[$"{key}@Microsoft.Dynamics.CRM.lookuplogicalname"],
+                    LogicalCollectionName= (string)Attributes[$"{key}@LogicalCollectionName"],
                 });
             }
 
@@ -75,7 +93,7 @@ namespace app.entities
                 return (T)((object)Convert.ToDateTime(Attributes[key]));
 
             if (typeT.BaseType == typeof(ValueType) && typeT.GenericTypeArguments.Length == 1)
-                return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], (Int64)Attributes[key]));
+                return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], (int)Attributes[key]));
 
 
 
@@ -91,6 +109,7 @@ namespace app.entities
                 SetAttributeValue<Guid>($"{key}", navigationProperty.Id);
                 SetAttributeValue<string>($"{key}@OData.Community.Display.V1.FormattedValue", navigationProperty.Name);
                 SetAttributeValue<string>($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname", navigationProperty.EntityLogicalName);
+                SetAttributeValue<string>($"{key}@LogicalCollectionName", navigationProperty.LogicalCollectionName);
                 return;
             } 
 

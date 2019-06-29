@@ -9,7 +9,7 @@ namespace app.Repositories
     public class OptionSetMetadataRepository : GenericRepository<PicklistAttributeMetadata>
     {
         public OptionSetMetadataRepository(AuthenticationMessageHandler tokenProvider) : 
-        base(tokenProvider, "EntityDefinitions")
+        base(tokenProvider)
         {
         }
                     
