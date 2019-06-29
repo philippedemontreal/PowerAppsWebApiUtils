@@ -25,6 +25,7 @@ namespace app
                 var entities = new List<EntityMetadata>();
                 var pickLists = new Dictionary<string, PicklistAttributeMetadata>();
 
+                entities.Add(entityDefinitionRepository.GetByLogicalName("customeraddress").Result);
                 entities.Add(entityDefinitionRepository.GetByLogicalName("account").Result);
                 entities.Add(entityDefinitionRepository.GetByLogicalName("contact").Result);
                 

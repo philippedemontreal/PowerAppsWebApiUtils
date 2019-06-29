@@ -31,11 +31,11 @@ namespace app.codegen
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Integer, typeof(int?)),
                     
                     //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Picklist, typeof(string)),
-                    //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Lookup, typeof(string)),
-                    //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Customer, typeof(string)),
-                    //new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Owner, typeof(string)),
+                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Lookup, typeof(NavigationProperty)),
+                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Customer, typeof(NavigationProperty)),
+                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Owner, typeof(NavigationProperty)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Money, typeof(decimal?)),
-                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Uniqueidentifier, typeof(Guid?)),
+                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Uniqueidentifier, typeof(NavigationProperty)),
                 }); 
 
         }
@@ -44,6 +44,7 @@ namespace app.codegen
             var returnValue = new CodeNamespace(nameSpaceName);
             returnValue.Imports.Add(new CodeNamespaceImport ("System"));
             returnValue.Imports.Add(new CodeNamespaceImport ("System.Runtime.Serialization"));
+            returnValue.Imports.Add(new CodeNamespaceImport ("app.entities"));
             return returnValue;
         }
 
@@ -97,10 +98,12 @@ namespace app.codegen
             if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
                 return null;
 
-            var attributeName = attributeMetadata.AttributeType == 
-                AttributeTypeCode.Lookup || attributeMetadata.AttributeType == AttributeTypeCode.Owner  ? 
-                $"_{attributeMetadata.LogicalName}_value" : 
-                attributeMetadata.LogicalName;
+            // var attributeName = attributeMetadata.AttributeType == 
+            //     AttributeTypeCode.Lookup || attributeMetadata.AttributeType == AttributeTypeCode.Owner  ? 
+            //     $"_{attributeMetadata.LogicalName}_value" : 
+            //     attributeMetadata.LogicalName;
+
+            var attributeName = attributeMetadata.LogicalName;
 
             var result = new CodeMemberProperty()
             {
@@ -187,7 +190,7 @@ namespace app.codegen
             var stringWriter = new StringWriter(code);
             provider.GenerateCodeFromCompileUnit(cu, stringWriter, codeGeneratorOptions);
 
-            var result = code.ToString();
+            var result = code.ToString().Replace("app.entities.", "");
             System.IO.File.WriteAllText(@"C:\Users\Philippe\Documents\Projects\Ts\DynCEWebApiEarlyBound\src\tests\account.cs", result);
 
         }
@@ -250,10 +253,10 @@ namespace app.codegen
                         genType.Members.Add(CreateProperty(attribute, $"{picklist.OptionSet.Name}?"));
                         break;
 
-                    case AttributeTypeCode.Owner:
-                    case AttributeTypeCode.Lookup:
-                        genType.Members.Add(CreateProperty(attribute, typeof(Guid?)));
-                        break;
+                    // case AttributeTypeCode.Owner:
+                    // case AttributeTypeCode.Lookup:
+                    //     genType.Members.Add(CreateProperty(attribute, typeof(Guid?)));
+                    //     break;
 
                     default:
                         if (!_refMap.ContainsKey(attribute.AttributeType))

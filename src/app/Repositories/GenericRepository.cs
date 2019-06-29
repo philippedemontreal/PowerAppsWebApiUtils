@@ -13,6 +13,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Runtime.Serialization;
 using System.Text;
+using app.entities;
 
 namespace  app.Repositories
 {
@@ -60,37 +61,42 @@ namespace  app.Repositories
             var fields = new StringBuilder();
             var typeT = typeof(T);
 
-            foreach (var expr in exprs)
+            if (exprs != null)
             {
-                var propName = "";
-
-                if (expr.Body is UnaryExpression)
+                foreach (var expr in exprs)
                 {
-                    var binding = (UnaryExpression)expr.Body;
-                    propName = ((MemberExpression)binding.Operand).Member.Name;
-                }
-                else if (expr.Body is MemberExpression)
-                {
-                    propName = ((MemberExpression)expr.Body).Member.Name;
-                }
-                else 
-                {
-                    throw new NotImplementedException();
-                }
+                    var propName = "";
+
+                    if (expr.Body is UnaryExpression)
+                    {
+                        var binding = (UnaryExpression)expr.Body;
+                        propName = ((MemberExpression)binding.Operand).Member.Name;
+                    }
+                    else if (expr.Body is MemberExpression)
+                    {
+                        propName = ((MemberExpression)expr.Body).Member.Name;
+                    }
+                    else 
+                    {
+                        throw new NotImplementedException();
+                    }
 
 
-                var field = typeT.GetProperty(propName);
-                if (field == null)
-                    throw new InvalidOperationException();
-                
-                var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
-                if (dm == null)
-                    throw new InvalidOperationException();                
-                 if (fields.Length > 0)
-                     fields.Append(",");
+                    var field = typeT.GetProperty(propName);
+                    if (field == null)
+                        throw new InvalidOperationException();
+                    
+                    var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
+                    if (dm == null)
+                        throw new InvalidOperationException();                
+                    if (fields.Length > 0)
+                        fields.Append(",");
 
-                fields.Append(dm.Name);
+                    fields.Append(dm.Name);
+                }
             }
+
+
 
             // foreach (MemberBinding binding in ((MemberInitExpression)expr.Body).Bindings)
             // {
@@ -138,7 +144,7 @@ namespace  app.Repositories
         {
             using (var client = GetHttpClient())
             {
-                var json = JObject.FromObject(entity).ToString(Newtonsoft.Json.Formatting.None);
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = ExtendedEntityContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = new HttpRequestMessage(HttpMethod.Post, OdataEntityName)
                 {
                     Content =
@@ -165,11 +171,11 @@ namespace  app.Repositories
             }            
         }
 
-          protected async Task UpdateRequest(Guid entityId, T entity)
+        public async Task Update(Guid entityId, T entity)
         {
             using (var client = GetHttpClient())
             {
-                var json = JObject.FromObject(entity).ToString(Newtonsoft.Json.Formatting.None);
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = ExtendedEntityContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, entityId))
                 {
                     Content =
@@ -193,8 +199,8 @@ namespace  app.Repositories
 
             }
         }
-        private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
-            where P: class
+        private async Task<T> DeserializeContent<T>(HttpResponseMessage response)
+            where T: class
         {
             using (var reader = response.Content)
             {
@@ -209,7 +215,14 @@ namespace  app.Repositories
                     throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
                 }
 
-                return JsonConvert.DeserializeObject<P>(content);
+                if (typeof(IExtendedEntity).IsAssignableFrom(typeof(T)))
+                {
+                    var result = Activator.CreateInstance(typeof(T)) as IExtendedEntity;
+                    result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content);
+                    return (T)result;
+                }
+
+                return JsonConvert.DeserializeObject<T>(content);
             }
         }
 
@@ -260,15 +273,20 @@ namespace  app.Repositories
         }
 
         private HttpClient GetHttpClient()
-        {
-  
-            var httpClient = new HttpClient(_tokenProvider, false);
-            httpClient.BaseAddress = new Uri(_tokenProvider.ApiUrl);
-            httpClient.Timeout = new TimeSpan(0, 2, 0);
-            httpClient.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
-            httpClient.DefaultRequestHeaders.Add("OData-Version", "4.0");
+        {  
+            var httpClient = new HttpClient(_tokenProvider, false)
+            {
+                BaseAddress = new Uri(_tokenProvider.ApiUrl),
+                Timeout = new TimeSpan(0, 2, 0),
+                DefaultRequestHeaders = 
+                {
+                    {"OData-MaxVersion", "4.0"},
+                    {"OData-Version", "4.0"},
+                    {"Prefer", "odata.include-annotations=\"*\"" }
+                }
+            };
+
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJson));
-            httpClient.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations=\"*\"");
 
             return httpClient;
         }
