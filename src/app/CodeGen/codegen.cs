@@ -124,6 +124,12 @@ namespace app.codegen
                     
             };
 
+            if (attributeMetadata.IsPrimaryId )
+            {
+                result.Name = "Id";
+                result.Attributes =  MemberAttributes.Public | MemberAttributes.Override;
+            }
+
             if (propertyType == typeof(NavigationProperty).FullName)
             {
                 result.CustomAttributes.Add(                    
@@ -281,11 +287,6 @@ namespace app.codegen
                             
                         genType.Members.Add(CreateProperty(attribute, $"{picklist.OptionSet.Name}?"));
                         break;
-
-                    // case AttributeTypeCode.Owner:
-                    // case AttributeTypeCode.Lookup:
-                    //     genType.Members.Add(CreateProperty(attribute, typeof(Guid?)));
-                    //     break;
 
                     default:
                         if (!_refMap.ContainsKey(attribute.AttributeType))

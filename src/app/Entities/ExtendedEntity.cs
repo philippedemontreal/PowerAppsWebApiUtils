@@ -58,9 +58,13 @@ namespace app.entities
                 if (!Attributes.ContainsKey(key))
                     return default(T);
                 
+                var id = Attributes[key]?.ToString(); 
+                if (string.IsNullOrEmpty(id))
+                    return default(T);
+
                 return (T)((object)new NavigationProperty 
                 { 
-                    Id = Attributes[key].GetType() == typeof(string) ? Guid.Parse((string)Attributes[key]): ((Guid)Attributes[key]),
+                    Id = Guid.Parse((string)Attributes[key]),
                     Name = Attributes.ContainsKey($"{key}@OData.Community.Display.V1.FormattedValue") ? (string)Attributes[$"{key}@OData.Community.Display.V1.FormattedValue"] : null,
                     EntityLogicalName = Attributes.ContainsKey($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname") ? (string)Attributes[$"{key}@Microsoft.Dynamics.CRM.lookuplogicalname"] : null,
                     LogicalCollectionName= Attributes.ContainsKey($"{key}@LogicalCollectionName") ? (string)Attributes[$"{key}@LogicalCollectionName"] : null,

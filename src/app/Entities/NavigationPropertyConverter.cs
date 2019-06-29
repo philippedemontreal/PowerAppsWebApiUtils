@@ -11,19 +11,13 @@ namespace app.entities
         
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            var guid = (string)reader.Value;
-            if (reader == null)
-                return null;
+            => throw new NotImplementedException();
 
-            return new NavigationProperty { Id = Guid.Parse(guid) };
-        }
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            writer.WriteValue((value as NavigationProperty).ToString());
-            //throw new NotImplementedException();
-        }
+            => writer.WriteValue((value as NavigationProperty).ToString());
+        
+        
     }
 
     

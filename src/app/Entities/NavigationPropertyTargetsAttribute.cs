@@ -1,10 +1,4 @@
 using System;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Collections.Generic;
-using Microsoft.Dynamics.CRM;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace app.entities
 {

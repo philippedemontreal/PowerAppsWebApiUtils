@@ -49,7 +49,7 @@ namespace webapi.entities
       /// <para>Display Name: Account</para>
       /// </summary>
       [DataMember(Name="accountid")]
-      public System.Guid AccountId
+      public override System.Guid Id
       {
          get
          {
@@ -2785,7 +2785,7 @@ namespace webapi.entities
       /// <para>Display Name: Contact</para>
       /// </summary>
       [DataMember(Name="contactid")]
-      public System.Guid ContactId
+      public override System.Guid Id
       {
          get
          {
@@ -5981,7 +5981,7 @@ namespace webapi.entities
       /// <para>Display Name: Address</para>
       /// </summary>
       [DataMember(Name="customeraddressid")]
-      public System.Guid CustomerAddressId
+      public override System.Guid Id
       {
          get
          {
