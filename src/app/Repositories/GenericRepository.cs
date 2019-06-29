@@ -200,8 +200,8 @@ namespace  app.Repositories
 
             }
         }
-        private async Task<T> DeserializeContent<T>(HttpResponseMessage response)
-            where T: class
+        private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
+            where P: class
         {
             using (var reader = response.Content)
             {
@@ -220,10 +220,10 @@ namespace  app.Repositories
                 {
                     var result = Activator.CreateInstance(typeof(T)) as IExtendedEntity;
                     result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content);
-                    return (T)result;
+                    return (P)result;
                 }
 
-                return JsonConvert.DeserializeObject<T>(content);
+                return JsonConvert.DeserializeObject<P>(content);
             }
         }
 

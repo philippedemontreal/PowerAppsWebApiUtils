@@ -48,19 +48,22 @@ namespace app.entities
         {
                         
             var typeT = typeof(T);
-                        
+                       
             if (typeT == typeof(NavigationProperty))
             {
                 key = $"{key}";
                 if (!Attributes.ContainsKey(key))
-                    return default(T);
+                    key = $"_{key}_value";
 
+                if (!Attributes.ContainsKey(key))
+                    return default(T);
+                
                 return (T)((object)new NavigationProperty 
                 { 
-                    Id = ((Guid)Attributes[key]),
-                    Name = (string)Attributes[$"{key}@OData.Community.Display.V1.FormattedValue"],
-                    EntityLogicalName = (string)Attributes[$"{key}@Microsoft.Dynamics.CRM.lookuplogicalname"],
-                    LogicalCollectionName= (string)Attributes[$"{key}@LogicalCollectionName"],
+                    Id = Attributes[key].GetType() == typeof(string) ? Guid.Parse((string)Attributes[key]): ((Guid)Attributes[key]),
+                    Name = Attributes.ContainsKey($"{key}@OData.Community.Display.V1.FormattedValue") ? (string)Attributes[$"{key}@OData.Community.Display.V1.FormattedValue"] : null,
+                    EntityLogicalName = Attributes.ContainsKey($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname") ? (string)Attributes[$"{key}@Microsoft.Dynamics.CRM.lookuplogicalname"] : null,
+                    LogicalCollectionName= Attributes.ContainsKey($"{key}@LogicalCollectionName") ? (string)Attributes[$"{key}@LogicalCollectionName"] : null,
                 });
             }
 
@@ -93,7 +96,7 @@ namespace app.entities
                 return (T)((object)Convert.ToDateTime(Attributes[key]));
 
             if (typeT.BaseType == typeof(ValueType) && typeT.GenericTypeArguments.Length == 1)
-                return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], (int)Attributes[key]));
+                return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], Attributes[key]));
 
 
 

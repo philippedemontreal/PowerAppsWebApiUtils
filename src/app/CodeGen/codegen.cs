@@ -121,20 +121,30 @@ namespace app.codegen
                 Attributes = MemberAttributes.Public | MemberAttributes.Final,
                 Name = schemaName,
                 Type = new CodeTypeReference(propertyType),
-                CustomAttributes = 
-                {
-                    new CodeAttributeDeclaration(
-                        "DataMember", 
-                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName))),
-
-                }                      
+                    
             };
 
             if (propertyType == typeof(NavigationProperty).FullName)
+            {
+                result.CustomAttributes.Add(                    
+                    new CodeAttributeDeclaration(
+                        "DataMember", 
+                        new CodeAttributeArgument("Name", new CodePrimitiveExpression($"_{attributeName}_value"))));
+
                 result.CustomAttributes.Add(                    
                     new CodeAttributeDeclaration(
                         "NavigationPropertyTargets", 
                         new CodeAttributeArgument(new CodePrimitiveExpression(attributeName))));
+
+            }
+            else
+            {
+                result.CustomAttributes.Add(                    
+                    new CodeAttributeDeclaration(
+                        "DataMember", 
+                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName))));
+
+            }
 
 
             if (attributeMetadata.IsValidForRead || attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)

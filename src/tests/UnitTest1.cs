@@ -17,7 +17,7 @@ namespace tests
         [TestMethod]
         public void GetOneTest()
         {
-            var config = ConfigurationReader.GetConfiguration();
+            var config = PowerAppsConfigurationReader.GetConfiguration();
             var tokenProvider = new AuthenticationMessageHandler(config);
 
             var repo = new GenericRepository<Account>(tokenProvider);
@@ -53,7 +53,7 @@ namespace tests
         [TestMethod]
         public void GetMultipleTest()
         {
-            var config = ConfigurationReader.GetConfiguration();
+            var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
@@ -67,40 +67,40 @@ namespace tests
         [TestMethod]
         public async Task CreateAccountTest()
         {
-            var config = ConfigurationReader.GetConfiguration();
+            var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
             {
-                var account = new Account 
-                {
-                    Name = Guid.NewGuid().ToString(),
-                    AccountCategoryCode = account_accountcategorycode.Standard,
-                    AccountClassificationCode = account_accountclassificationcode.DefaultValue,
-                    AccountRatingCode = account_accountratingcode.DefaultValue,
-                    AccountNumber = "11111111",
-                    Address1_AddressTypeCode = account_address1_addresstypecode.Primary,
-                    Address1_City = "Montreal",
-                    Address1_Country = "Canada",
-                    Address1_PostalCode = "H1H 1H1",
-                    Address1_StateOrProvince = "QC",
-                    DoNotEMail = true,
-                    DoNotPhone = false,
-                    CreditLimit = 500000.99m,
-                    EMailAddress1 = string.Empty,
-                    Telephone1 = "Telephone1",
-                    Fax = "Fax",
-                    WebSiteURL = "WebSiteURL",
-                    LastOnHoldTime = new DateTime(2019, 1, 1, 0, 0, 0)
-                };  
+                // var account = new Account 
+                // {
+                //     Name = Guid.NewGuid().ToString(),
+                //     AccountCategoryCode = account_accountcategorycode.Standard,
+                //     AccountClassificationCode = account_accountclassificationcode.DefaultValue,
+                //     AccountRatingCode = account_accountratingcode.DefaultValue,
+                //     AccountNumber = "11111111",
+                //     Address1_AddressTypeCode = account_address1_addresstypecode.Primary,
+                //     Address1_City = "Montreal",
+                //     Address1_Country = "Canada",
+                //     Address1_PostalCode = "H1H 1H1",
+                //     Address1_StateOrProvince = "QC",
+                //     DoNotEMail = true,
+                //     DoNotPhone = false,
+                //     CreditLimit = 500000.99m,
+                //     EMailAddress1 = string.Empty,
+                //     Telephone1 = "Telephone1",
+                //     Fax = "Fax",
+                //     WebSiteURL = "WebSiteURL",
+                //     LastOnHoldTime = new DateTime(2019, 1, 1, 0, 0, 0)
+                // };  
 
-                var accountid = await repo.Create(account);
+                // var accountid = await repo.Create(account);
 
-                Assert.IsNotNull(accountid);
+                //Assert.IsNotNull(accountid);
 
-                account = 
+                var account = 
                     await repo.GetById(
-                        accountid, 
+                        Guid.Parse("72e4bfa0-836a-e911-a98a-000d3af49373"), 
                         new Expression<Func<Account, object>>[]
                         {
                             p => p.AccountId, 
@@ -114,6 +114,8 @@ namespace tests
                             p => p.ParentAccountId,
                             p => p.Telephone1,
                         });
+
+                var owner = account.OwnerId;
             }
 
         }
@@ -121,7 +123,7 @@ namespace tests
          [TestMethod]
         public async Task UpdateAdressParentAccountTest()
         {
-            var config = ConfigurationReader.GetConfiguration();
+            var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<CustomerAddress>(tokenProvider))
@@ -141,7 +143,7 @@ namespace tests
         [TestMethod]
         public async Task GetcustomerAddressesTest()
         {
-            var config = ConfigurationReader.GetConfiguration();
+            var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))

@@ -15,7 +15,7 @@ namespace app
 
      static void Main(string[] args)
         {
-            var config =  ConfigurationReader.GetConfiguration();
+            var config =  PowerAppsConfigurationReader.GetConfiguration();
             
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using (var entityDefinitionRepository = new EntityMetadataRepository(tokenProvider))
