@@ -16,7 +16,7 @@ namespace app.entities
         {
             if (objectType == typeof(Dictionary<string, object>))
             {
-                var contract =base.CreateContract(objectType);
+                var contract = base.CreateContract(objectType);
                 contract.Converter = new DictionaryConverter();
                 return contract;
             }

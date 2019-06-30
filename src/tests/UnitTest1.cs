@@ -36,9 +36,11 @@ namespace tests
                 p => p.OwnerId,
                 p => p.ParentAccountId,
                 p => p.Telephone1,
+                p => p.Name,
             }
             ).Result;
             Assert.IsNotNull(account);
+            Assert.IsNotNull(account.Name);
             Assert.IsNotNull(account.CreatedBy);
             Assert.IsNotNull(account.OwnerId);
             Assert.AreEqual(entityId, account.Id);
@@ -48,7 +50,7 @@ namespace tests
             Assert.IsNotNull(account.ModifiedOn);
             Assert.IsNotNull(account.CreatedOn);
 
-            var json = JObject.FromObject(account, new JsonSerializer{ ContractResolver = ExtendedEntityContractResolver.Instance });
+            var json = JObject.FromObject(account, new JsonSerializer{ ContractResolver = new NavigationPropertyContractResolver() });
         }
 
         [TestMethod]

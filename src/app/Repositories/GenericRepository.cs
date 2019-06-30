@@ -180,7 +180,7 @@ namespace  app.Repositories
         {
             using (var client = GetHttpClient())
             {
-                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = ExtendedEntityContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, entity.Id))
                 {
                     Content =
@@ -220,14 +220,14 @@ namespace  app.Repositories
                     throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
                 }
 
-                if (typeof(IExtendedEntity).IsAssignableFrom(typeof(T)))
-                {
-                    var result = Activator.CreateInstance(typeof(T)) as IExtendedEntity;
-                    result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content, new JsonSerializerSettings { ContractResolver = DictionaryContractResolver.Instance } );
-                    return (P)result;
-                }
+                // if (typeof(IExtendedEntity).IsAssignableFrom(typeof(P)))
+                // {
+                //     var result = Activator.CreateInstance(typeof(P)) as IExtendedEntity;
+                //     result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content, new JsonSerializerSettings { ContractResolver = DictionaryContractResolver.Instance } );
+                //     return (P)result;
+                // }
 
-                return JsonConvert.DeserializeObject<P>(content);
+                return JsonConvert.DeserializeObject<P>(content, new JsonSerializerSettings { ContractResolver = ExtendedEntityContractResolver.Instance });
             }
         }
 

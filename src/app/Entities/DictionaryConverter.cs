@@ -22,8 +22,9 @@ namespace app.entities
                 var value = token.Value.ToObject<object>();
                 if (token.Value.Type == JTokenType.String)
                 {
-                    if (Regex.IsMatch((string)value, @"(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}"))
-                        value = Guid.Parse((string)value);
+                    Guid identifier;
+                    if (Guid.TryParse((string)value, out identifier))
+                        value = identifier;
                 }
 
                 if (!token.Name.StartsWith("@odata"))

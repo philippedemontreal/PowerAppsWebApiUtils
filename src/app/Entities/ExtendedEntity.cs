@@ -110,9 +110,10 @@ namespace app.entities
         protected void SetAttributeValue<T>(string key, T value) 
         {
                         
-            if (typeof(T) == typeof(NavigationProperty))
+            if (typeof(T) == typeof(NavigationProperty) && value != null)
             {
                 var navigationProperty = value as NavigationProperty;
+                
                 SetAttributeValue<Guid>($"{key}", navigationProperty.Id);
                 SetAttributeValue<string>($"{key}@OData.Community.Display.V1.FormattedValue", navigationProperty.Name);
                 SetAttributeValue<string>($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname", navigationProperty.EntityLogicalName);
