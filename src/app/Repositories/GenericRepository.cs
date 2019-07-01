@@ -220,13 +220,6 @@ namespace  app.Repositories
                     throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
                 }
 
-                // if (typeof(IExtendedEntity).IsAssignableFrom(typeof(P)))
-                // {
-                //     var result = Activator.CreateInstance(typeof(P)) as IExtendedEntity;
-                //     result.Attributes = JsonConvert.DeserializeObject<Dictionary<string, object>>(content, new JsonSerializerSettings { ContractResolver = DictionaryContractResolver.Instance } );
-                //     return (P)result;
-                // }
-
                 return JsonConvert.DeserializeObject<P>(content, new JsonSerializerSettings { ContractResolver = ExtendedEntityContractResolver.Instance });
             }
         }

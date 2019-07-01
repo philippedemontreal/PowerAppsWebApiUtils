@@ -1,11 +1,10 @@
 using System;
-using System.Collections.Generic;
 
 namespace Microsoft.Dynamics.CRM
 {
 	///<chref="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/attributemetadata?view=dynamics-ce-odata-9" />
 	///<para>Attribute IsValidODataAttribute is not documented</para>
-    public sealed class AttributeMetadata
+    public class AttributeMetadata
     {
 		//Undocumented attribute
 		public bool IsValidODataAttribute	{ get; set; }

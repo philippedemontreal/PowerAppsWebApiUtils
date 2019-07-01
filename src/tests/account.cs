@@ -945,7 +945,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By</para>
       /// </summary>
       [DataMember(Name="createdby")]
-      [NavigationPropertyTargets("createdby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedBy
       {
          get
@@ -958,7 +958,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By (External Party)</para>
       /// </summary>
       [DataMember(Name="createdbyexternalparty")]
-      [NavigationPropertyTargets("createdbyexternalparty")]
+      [NavigationPropertyTargets("externalparty")]
       public NavigationProperty CreatedByExternalParty
       {
          get
@@ -983,7 +983,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
       [DataMember(Name="createdonbehalfby")]
-      [NavigationPropertyTargets("createdonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedOnBehalfBy
       {
          get
@@ -1072,7 +1072,7 @@ namespace webapi.entities
       /// <para>Display Name: Price List</para>
       /// </summary>
       [DataMember(Name="defaultpricelevelid")]
-      [NavigationPropertyTargets("defaultpricelevelid")]
+      [NavigationPropertyTargets("pricelevel")]
       public NavigationProperty DefaultPriceLevelId
       {
          get
@@ -1289,12 +1289,11 @@ namespace webapi.entities
       /// <para>Display Name: Entity Image Id</para>
       /// </summary>
       [DataMember(Name="entityimageid")]
-      [NavigationPropertyTargets("entityimageid")]
-      public NavigationProperty EntityImageId
+      public System.Nullable<System.Guid> EntityImageId
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("entityimageid");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
          }
       }
       /// <summary>
@@ -1394,7 +1393,7 @@ namespace webapi.entities
       /// <para>Display Name: City</para>
       /// </summary>
       [DataMember(Name="ic_cityid")]
-      [NavigationPropertyTargets("ic_cityid")]
+      [NavigationPropertyTargets("ic_city")]
       public NavigationProperty ic_CityID
       {
          get
@@ -1411,7 +1410,7 @@ namespace webapi.entities
       /// <para>Display Name: Country</para>
       /// </summary>
       [DataMember(Name="ic_countryid")]
-      [NavigationPropertyTargets("ic_countryid")]
+      [NavigationPropertyTargets("ic_country")]
       public NavigationProperty ic_CountryID
       {
          get
@@ -1444,7 +1443,7 @@ namespace webapi.entities
       /// <para>Display Name: zzz_Franchisee</para>
       /// </summary>
       [DataMember(Name="ic_franchiseeid")]
-      [NavigationPropertyTargets("ic_franchiseeid")]
+      [NavigationPropertyTargets("ic_tradename")]
       public NavigationProperty ic_FranchiseeID
       {
          get
@@ -1509,7 +1508,7 @@ namespace webapi.entities
       /// <para>Display Name: State/Province</para>
       /// </summary>
       [DataMember(Name="ic_stateprovinceid")]
-      [NavigationPropertyTargets("ic_stateprovinceid")]
+      [NavigationPropertyTargets("ic_stateprovince")]
       public NavigationProperty ic_StateProvinceID
       {
          get
@@ -1826,7 +1825,7 @@ namespace webapi.entities
       /// <para>Display Name: Master ID</para>
       /// </summary>
       [DataMember(Name="masterid")]
-      [NavigationPropertyTargets("masterid")]
+      [NavigationPropertyTargets("account")]
       public NavigationProperty MasterId
       {
          get
@@ -1851,7 +1850,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By</para>
       /// </summary>
       [DataMember(Name="modifiedby")]
-      [NavigationPropertyTargets("modifiedby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedBy
       {
          get
@@ -1864,7 +1863,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By (External Party)</para>
       /// </summary>
       [DataMember(Name="modifiedbyexternalparty")]
-      [NavigationPropertyTargets("modifiedbyexternalparty")]
+      [NavigationPropertyTargets("externalparty")]
       public NavigationProperty ModifiedByExternalParty
       {
          get
@@ -1889,7 +1888,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
       [DataMember(Name="modifiedonbehalfby")]
-      [NavigationPropertyTargets("modifiedonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedOnBehalfBy
       {
          get
@@ -2030,7 +2029,7 @@ namespace webapi.entities
       /// <para>Display Name: Originating Lead</para>
       /// </summary>
       [DataMember(Name="originatingleadid")]
-      [NavigationPropertyTargets("originatingleadid")]
+      [NavigationPropertyTargets("lead")]
       public NavigationProperty OriginatingLeadId
       {
          get
@@ -2063,7 +2062,7 @@ namespace webapi.entities
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="ownerid")]
-      [NavigationPropertyTargets("ownerid")]
+      [NavigationPropertyTargets("systemuser", "team")]
       public NavigationProperty OwnerId
       {
          get
@@ -2096,7 +2095,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
       [DataMember(Name="owningbusinessunit")]
-      [NavigationPropertyTargets("owningbusinessunit")]
+      [NavigationPropertyTargets("businessunit")]
       public NavigationProperty OwningBusinessUnit
       {
          get
@@ -2109,7 +2108,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning Team</para>
       /// </summary>
       [DataMember(Name="owningteam")]
-      [NavigationPropertyTargets("owningteam")]
+      [NavigationPropertyTargets("team")]
       public NavigationProperty OwningTeam
       {
          get
@@ -2122,7 +2121,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning User</para>
       /// </summary>
       [DataMember(Name="owninguser")]
-      [NavigationPropertyTargets("owninguser")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty OwningUser
       {
          get
@@ -2135,7 +2134,7 @@ namespace webapi.entities
       /// <para>Display Name: Parent Account</para>
       /// </summary>
       [DataMember(Name="parentaccountid")]
-      [NavigationPropertyTargets("parentaccountid")]
+      [NavigationPropertyTargets("account")]
       public NavigationProperty ParentAccountId
       {
          get
@@ -2232,7 +2231,7 @@ namespace webapi.entities
       /// <para>Display Name: Preferred Facility/Equipment</para>
       /// </summary>
       [DataMember(Name="preferredequipmentid")]
-      [NavigationPropertyTargets("preferredequipmentid")]
+      [NavigationPropertyTargets("equipment")]
       public NavigationProperty PreferredEquipmentId
       {
          get
@@ -2249,7 +2248,7 @@ namespace webapi.entities
       /// <para>Display Name: Preferred Service</para>
       /// </summary>
       [DataMember(Name="preferredserviceid")]
-      [NavigationPropertyTargets("preferredserviceid")]
+      [NavigationPropertyTargets("service")]
       public NavigationProperty PreferredServiceId
       {
          get
@@ -2266,7 +2265,7 @@ namespace webapi.entities
       /// <para>Display Name: Preferred User</para>
       /// </summary>
       [DataMember(Name="preferredsystemuserid")]
-      [NavigationPropertyTargets("preferredsystemuserid")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty PreferredSystemUserId
       {
          get
@@ -2283,7 +2282,7 @@ namespace webapi.entities
       /// <para>Display Name: Primary Contact</para>
       /// </summary>
       [DataMember(Name="primarycontactid")]
-      [NavigationPropertyTargets("primarycontactid")]
+      [NavigationPropertyTargets("contact")]
       public NavigationProperty PrimaryContactId
       {
          get
@@ -2332,16 +2331,15 @@ namespace webapi.entities
       /// <para>Display Name: Process</para>
       /// </summary>
       [DataMember(Name="processid")]
-      [NavigationPropertyTargets("processid")]
-      public NavigationProperty ProcessId
+      public System.Nullable<System.Guid> ProcessId
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("processid");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("processid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("processid", value);
+            base.SetAttributeValue<System.Nullable<System.Guid>>("processid", value);
          }
       }
       /// <summary>
@@ -2425,7 +2423,7 @@ namespace webapi.entities
       /// <para>Display Name: SLA</para>
       /// </summary>
       [DataMember(Name="slaid")]
-      [NavigationPropertyTargets("slaid")]
+      [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAId
       {
          get
@@ -2442,7 +2440,7 @@ namespace webapi.entities
       /// <para>Display Name: Last SLA applied</para>
       /// </summary>
       [DataMember(Name="slainvokedid")]
-      [NavigationPropertyTargets("slainvokedid")]
+      [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAInvokedId
       {
          get
@@ -2455,16 +2453,15 @@ namespace webapi.entities
       /// <para>Display Name: (Deprecated) Process Stage</para>
       /// </summary>
       [DataMember(Name="stageid")]
-      [NavigationPropertyTargets("stageid")]
-      public NavigationProperty StageId
+      public System.Nullable<System.Guid> StageId
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("stageid");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("stageid", value);
+            base.SetAttributeValue<System.Nullable<System.Guid>>("stageid", value);
          }
       }
       /// <summary>
@@ -2600,7 +2597,7 @@ namespace webapi.entities
       /// <para>Display Name: Territory</para>
       /// </summary>
       [DataMember(Name="territoryid")]
-      [NavigationPropertyTargets("territoryid")]
+      [NavigationPropertyTargets("territory")]
       public NavigationProperty TerritoryId
       {
          get
@@ -2661,7 +2658,7 @@ namespace webapi.entities
       /// <para>Display Name: Currency</para>
       /// </summary>
       [DataMember(Name="transactioncurrencyid")]
-      [NavigationPropertyTargets("transactioncurrencyid")]
+      [NavigationPropertyTargets("transactioncurrency")]
       public NavigationProperty TransactionCurrencyId
       {
          get
@@ -2801,7 +2798,7 @@ namespace webapi.entities
       /// <para>Display Name: Account</para>
       /// </summary>
       [DataMember(Name="accountid")]
-      [NavigationPropertyTargets("accountid")]
+      [NavigationPropertyTargets("account")]
       public NavigationProperty AccountId
       {
          get
@@ -4150,7 +4147,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By</para>
       /// </summary>
       [DataMember(Name="createdby")]
-      [NavigationPropertyTargets("createdby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedBy
       {
          get
@@ -4163,7 +4160,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By (External Party)</para>
       /// </summary>
       [DataMember(Name="createdbyexternalparty")]
-      [NavigationPropertyTargets("createdbyexternalparty")]
+      [NavigationPropertyTargets("externalparty")]
       public NavigationProperty CreatedByExternalParty
       {
          get
@@ -4188,7 +4185,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
       [DataMember(Name="createdonbehalfby")]
-      [NavigationPropertyTargets("createdonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedOnBehalfBy
       {
          get
@@ -4277,7 +4274,7 @@ namespace webapi.entities
       /// <para>Display Name: Price List</para>
       /// </summary>
       [DataMember(Name="defaultpricelevelid")]
-      [NavigationPropertyTargets("defaultpricelevelid")]
+      [NavigationPropertyTargets("pricelevel")]
       public NavigationProperty DefaultPriceLevelId
       {
          get
@@ -4542,12 +4539,11 @@ namespace webapi.entities
       /// <para>Display Name: Entity Image Id</para>
       /// </summary>
       [DataMember(Name="entityimageid")]
-      [NavigationPropertyTargets("entityimageid")]
-      public NavigationProperty EntityImageId
+      public System.Nullable<System.Guid> EntityImageId
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("entityimageid");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("entityimageid");
          }
       }
       /// <summary>
@@ -4755,7 +4751,7 @@ namespace webapi.entities
       /// <para>Display Name: City</para>
       /// </summary>
       [DataMember(Name="ic_cityid")]
-      [NavigationPropertyTargets("ic_cityid")]
+      [NavigationPropertyTargets("ic_city")]
       public NavigationProperty ic_CityID
       {
          get
@@ -4772,7 +4768,7 @@ namespace webapi.entities
       /// <para>Display Name: Company</para>
       /// </summary>
       [DataMember(Name="ic_companyid")]
-      [NavigationPropertyTargets("ic_companyid")]
+      [NavigationPropertyTargets("account")]
       public NavigationProperty ic_CompanyID
       {
          get
@@ -4789,7 +4785,7 @@ namespace webapi.entities
       /// <para>Display Name: Country</para>
       /// </summary>
       [DataMember(Name="ic_countryid")]
-      [NavigationPropertyTargets("ic_countryid")]
+      [NavigationPropertyTargets("ic_country")]
       public NavigationProperty ic_CountryID
       {
          get
@@ -4838,7 +4834,7 @@ namespace webapi.entities
       /// <para>Display Name: State/Province</para>
       /// </summary>
       [DataMember(Name="ic_stateprovinceid")]
-      [NavigationPropertyTargets("ic_stateprovinceid")]
+      [NavigationPropertyTargets("ic_stateprovince")]
       public NavigationProperty ic_StateProvinceID
       {
          get
@@ -5095,7 +5091,7 @@ namespace webapi.entities
       /// <para>Display Name: Master ID</para>
       /// </summary>
       [DataMember(Name="masterid")]
-      [NavigationPropertyTargets("masterid")]
+      [NavigationPropertyTargets("contact")]
       public NavigationProperty MasterId
       {
          get
@@ -5152,7 +5148,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By</para>
       /// </summary>
       [DataMember(Name="modifiedby")]
-      [NavigationPropertyTargets("modifiedby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedBy
       {
          get
@@ -5165,7 +5161,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By (External Party)</para>
       /// </summary>
       [DataMember(Name="modifiedbyexternalparty")]
-      [NavigationPropertyTargets("modifiedbyexternalparty")]
+      [NavigationPropertyTargets("externalparty")]
       public NavigationProperty ModifiedByExternalParty
       {
          get
@@ -5190,7 +5186,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
       [DataMember(Name="modifiedonbehalfby")]
-      [NavigationPropertyTargets("modifiedonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedOnBehalfBy
       {
          get
@@ -5279,7 +5275,7 @@ namespace webapi.entities
       /// <para>Display Name: Originating Lead</para>
       /// </summary>
       [DataMember(Name="originatingleadid")]
-      [NavigationPropertyTargets("originatingleadid")]
+      [NavigationPropertyTargets("lead")]
       public NavigationProperty OriginatingLeadId
       {
          get
@@ -5312,7 +5308,7 @@ namespace webapi.entities
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="ownerid")]
-      [NavigationPropertyTargets("ownerid")]
+      [NavigationPropertyTargets("systemuser", "team")]
       public NavigationProperty OwnerId
       {
          get
@@ -5329,7 +5325,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
       [DataMember(Name="owningbusinessunit")]
-      [NavigationPropertyTargets("owningbusinessunit")]
+      [NavigationPropertyTargets("businessunit")]
       public NavigationProperty OwningBusinessUnit
       {
          get
@@ -5342,7 +5338,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning Team</para>
       /// </summary>
       [DataMember(Name="owningteam")]
-      [NavigationPropertyTargets("owningteam")]
+      [NavigationPropertyTargets("team")]
       public NavigationProperty OwningTeam
       {
          get
@@ -5355,7 +5351,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning User</para>
       /// </summary>
       [DataMember(Name="owninguser")]
-      [NavigationPropertyTargets("owninguser")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty OwningUser
       {
          get
@@ -5384,7 +5380,7 @@ namespace webapi.entities
       /// <para>Display Name: Parent Contact</para>
       /// </summary>
       [DataMember(Name="parentcontactid")]
-      [NavigationPropertyTargets("parentcontactid")]
+      [NavigationPropertyTargets("contact")]
       public NavigationProperty ParentContactId
       {
          get
@@ -5397,7 +5393,7 @@ namespace webapi.entities
       /// <para>Display Name: Legal Name</para>
       /// </summary>
       [DataMember(Name="parentcustomerid")]
-      [NavigationPropertyTargets("parentcustomerid")]
+      [NavigationPropertyTargets("account", "contact")]
       public NavigationProperty ParentCustomerId
       {
          get
@@ -5494,7 +5490,7 @@ namespace webapi.entities
       /// <para>Display Name: Preferred Facility/Equipment</para>
       /// </summary>
       [DataMember(Name="preferredequipmentid")]
-      [NavigationPropertyTargets("preferredequipmentid")]
+      [NavigationPropertyTargets("equipment")]
       public NavigationProperty PreferredEquipmentId
       {
          get
@@ -5511,7 +5507,7 @@ namespace webapi.entities
       /// <para>Display Name: Preferred Service</para>
       /// </summary>
       [DataMember(Name="preferredserviceid")]
-      [NavigationPropertyTargets("preferredserviceid")]
+      [NavigationPropertyTargets("service")]
       public NavigationProperty PreferredServiceId
       {
          get
@@ -5528,7 +5524,7 @@ namespace webapi.entities
       /// <para>Display Name: Preferred User</para>
       /// </summary>
       [DataMember(Name="preferredsystemuserid")]
-      [NavigationPropertyTargets("preferredsystemuserid")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty PreferredSystemUserId
       {
          get
@@ -5545,16 +5541,15 @@ namespace webapi.entities
       /// <para>Display Name: Process</para>
       /// </summary>
       [DataMember(Name="processid")]
-      [NavigationPropertyTargets("processid")]
-      public NavigationProperty ProcessId
+      public System.Nullable<System.Guid> ProcessId
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("processid");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("processid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("processid", value);
+            base.SetAttributeValue<System.Nullable<System.Guid>>("processid", value);
          }
       }
       /// <summary>
@@ -5594,7 +5589,7 @@ namespace webapi.entities
       /// <para>Display Name: SLA</para>
       /// </summary>
       [DataMember(Name="slaid")]
-      [NavigationPropertyTargets("slaid")]
+      [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAId
       {
          get
@@ -5611,7 +5606,7 @@ namespace webapi.entities
       /// <para>Display Name: Last SLA applied</para>
       /// </summary>
       [DataMember(Name="slainvokedid")]
-      [NavigationPropertyTargets("slainvokedid")]
+      [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAInvokedId
       {
          get
@@ -5640,16 +5635,15 @@ namespace webapi.entities
       /// <para>Display Name: (Deprecated) Process Stage</para>
       /// </summary>
       [DataMember(Name="stageid")]
-      [NavigationPropertyTargets("stageid")]
-      public NavigationProperty StageId
+      public System.Nullable<System.Guid> StageId
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("stageid");
+            return base.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("stageid", value);
+            base.SetAttributeValue<System.Nullable<System.Guid>>("stageid", value);
          }
       }
       /// <summary>
@@ -5813,7 +5807,7 @@ namespace webapi.entities
       /// <para>Display Name: Currency</para>
       /// </summary>
       [DataMember(Name="transactioncurrencyid")]
-      [NavigationPropertyTargets("transactioncurrencyid")]
+      [NavigationPropertyTargets("transactioncurrency")]
       public NavigationProperty TransactionCurrencyId
       {
          get
@@ -6089,7 +6083,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By</para>
       /// </summary>
       [DataMember(Name="createdby")]
-      [NavigationPropertyTargets("createdby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedBy
       {
          get
@@ -6114,7 +6108,7 @@ namespace webapi.entities
       /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
       [DataMember(Name="createdonbehalfby")]
-      [NavigationPropertyTargets("createdonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedOnBehalfBy
       {
          get
@@ -6267,7 +6261,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By</para>
       /// </summary>
       [DataMember(Name="modifiedby")]
-      [NavigationPropertyTargets("modifiedby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedBy
       {
          get
@@ -6292,7 +6286,7 @@ namespace webapi.entities
       /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
       [DataMember(Name="modifiedonbehalfby")]
-      [NavigationPropertyTargets("modifiedonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedOnBehalfBy
       {
          get
@@ -6353,7 +6347,7 @@ namespace webapi.entities
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="ownerid")]
-      [NavigationPropertyTargets("ownerid")]
+      [NavigationPropertyTargets("systemuser", "team")]
       public NavigationProperty OwnerId
       {
          get
@@ -6366,7 +6360,7 @@ namespace webapi.entities
       /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
       [DataMember(Name="owningbusinessunit")]
-      [NavigationPropertyTargets("owningbusinessunit")]
+      [NavigationPropertyTargets("businessunit")]
       public NavigationProperty OwningBusinessUnit
       {
          get
@@ -6379,7 +6373,7 @@ namespace webapi.entities
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="owninguser")]
-      [NavigationPropertyTargets("owninguser")]
+      [NavigationPropertyTargets("systemuser")]
       public NavigationProperty OwningUser
       {
          get
@@ -6553,7 +6547,7 @@ namespace webapi.entities
       /// <para>Display Name: Currency</para>
       /// </summary>
       [DataMember(Name="transactioncurrencyid")]
-      [NavigationPropertyTargets("transactioncurrencyid")]
+      [NavigationPropertyTargets("transactioncurrency")]
       public NavigationProperty TransactionCurrencyId
       {
          get

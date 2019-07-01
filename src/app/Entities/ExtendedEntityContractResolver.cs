@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using Microsoft.Dynamics.CRM;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
@@ -20,6 +21,12 @@ namespace app.entities
             {
                 contract.Converter = new ExtendedEntityConverter();
             }
+
+            if (objectType == typeof(AttributeMetadata))
+            {
+                contract.Converter = new AttributeMetadataConverter();
+            }
+            
                 
 
             return contract;

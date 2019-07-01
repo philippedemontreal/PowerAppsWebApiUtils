@@ -34,7 +34,7 @@ namespace app.codegen
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Customer, typeof(NavigationProperty)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Owner, typeof(NavigationProperty)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Money, typeof(decimal?)),
-                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Uniqueidentifier, typeof(NavigationProperty)),
+                    new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Uniqueidentifier, typeof(Guid?)),
                 }); 
 
         }
@@ -137,11 +137,13 @@ namespace app.codegen
 
             if (propertyType == typeof(NavigationProperty).FullName)
             {
+                var lookup = attributeMetadata as LookupAttributeMetadata;
+
                 result.CustomAttributes.Add(                    
                     new CodeAttributeDeclaration(
                         "NavigationPropertyTargets", 
-                        new CodeAttributeArgument(new CodePrimitiveExpression(attributeName))));
-            }
+                        lookup.Targets.Select(p => new CodeAttributeArgument(new CodePrimitiveExpression(p))).ToArray()));
+           }
 
 
             if (attributeMetadata.IsValidForRead || attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
