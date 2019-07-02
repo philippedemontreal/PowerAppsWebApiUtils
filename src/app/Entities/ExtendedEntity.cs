@@ -1,25 +1,14 @@
 using System;
-using System.Linq;
-using System.Runtime.Serialization;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using Microsoft.Dynamics.CRM;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
 
 namespace app.entities
 {
-
-    public interface IExtendedEntity
+    public class ExtendedEntity: crmbaseentity 
     {
-        Dictionary<string, object> Attributes { get; set; }
-    }  
- 
-    public class ExtendedEntity: crmbaseentity, IExtendedEntity, IExtensibleDataObject
-    {
-
         public ExtendedEntity()
-        {
-           
+        {           
             Attributes = new Dictionary<string, object>();
         }
 
@@ -28,53 +17,51 @@ namespace app.entities
         {
             Id = id;
         }
-
-      
-        [JsonIgnore]
-        public virtual string EntityLogicalName { get;  }   
-
     
- 
-        [JsonIgnore]
+        [IgnoreDataMember]
         public Dictionary<string, object> Attributes { get; set; }
-        public ExtensionDataObject ExtensionData { get ; set; }
-
    
         public NavigationProperty ToNavigationProperty()
-            => new NavigationProperty { Id = Id, EntityLogicalName = EntityLogicalName, LogicalCollectionName =  EntityCollectionName } ;
+            => new NavigationProperty { Id = Id, EntityLogicalName = EntityLogicalName, LogicalCollectionName = EntityCollectionName };
 
-
-        protected T GetAttributeValue<T>(string key) 
+        protected NavigationProperty GetNavigationAttribute(string key) 
         {
-                        
-            var typeT = typeof(T);
-                       
-            if (typeT == typeof(NavigationProperty))
-            {
-                key = $"{key}";
                 if (!Attributes.ContainsKey(key))
-                    key = $"_{key}_value";
-
-                if (!Attributes.ContainsKey(key))
-                    return default(T);
+                    return null;
                 
                 var id = Attributes[key]; 
                 if (id == null)
-                    return default(T);
+                    return null;
 
-                return (T)((object)new NavigationProperty 
+                return new NavigationProperty 
                 { 
                     Id = (Guid)Attributes[key],
                     Name = Attributes.ContainsKey($"{key}@OData.Community.Display.V1.FormattedValue") ? (string)Attributes[$"{key}@OData.Community.Display.V1.FormattedValue"] : null,
                     EntityLogicalName = Attributes.ContainsKey($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname") ? (string)Attributes[$"{key}@Microsoft.Dynamics.CRM.lookuplogicalname"] : null,
-                    LogicalCollectionName= Attributes.ContainsKey($"{key}@LogicalCollectionName") ? (string)Attributes[$"{key}@LogicalCollectionName"] : null,
-                });
-            }
+                    LogicalCollectionName= Attributes.ContainsKey($"{key}/LogicalCollectionName") ? (string)Attributes[$"{key}/LogicalCollectionName"] : null,
+                };
+        }
 
+        protected void SetNavigationAttribute(string key, NavigationProperty value) 
+        {
+                        
+            var navigationProperty = value as NavigationProperty;
+            
+            SetAttributeValue<Guid?>($"{key}", navigationProperty?.Id);
+            SetAttributeValue<string>($"{key}@OData.Community.Display.V1.FormattedValue", navigationProperty?.Name);
+            SetAttributeValue<string>($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname", navigationProperty?.EntityLogicalName);
+            SetAttributeValue<string>($"{key}/LogicalCollectionName", navigationProperty?.LogicalCollectionName);
+            return;
+        }
+
+        protected T GetAttributeValue<T>(string key) 
+        {
             if (!Attributes.ContainsKey(key) || Attributes[key] == null)
                 return default(T);
-
+                        
+            var typeT = typeof(T);
             var value = Attributes[key];
+
             if (typeT == typeof(string))
                 return (T)((object)Attributes[key]);
 
@@ -102,26 +89,11 @@ namespace app.entities
             if (typeT.BaseType == typeof(ValueType) && typeT.GenericTypeArguments.Length == 1)
                 return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], Attributes[key]));
 
-
-
             return  default(T);
         } 
 
         protected void SetAttributeValue<T>(string key, T value) 
-        {
-                        
-            if (typeof(T) == typeof(NavigationProperty) && value != null)
-            {
-                var navigationProperty = value as NavigationProperty;
-                
-                SetAttributeValue<Guid>($"{key}", navigationProperty.Id);
-                SetAttributeValue<string>($"{key}@OData.Community.Display.V1.FormattedValue", navigationProperty.Name);
-                SetAttributeValue<string>($"{key}@Microsoft.Dynamics.CRM.lookuplogicalname", navigationProperty.EntityLogicalName);
-                SetAttributeValue<string>($"{key}@LogicalCollectionName", navigationProperty.LogicalCollectionName);
-                return;
-            } 
-
-
+        {                       
             if (!Attributes.ContainsKey(key))
                 Attributes.Add(key, value);
             else

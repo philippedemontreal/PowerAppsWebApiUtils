@@ -1,10 +1,11 @@
 using System;
 using System.Linq;
 using System.Reflection;
+using app.entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace app.entities
+namespace app.Json
 {
 
     public class NavigationPropertyContractResolver: DefaultContractResolver

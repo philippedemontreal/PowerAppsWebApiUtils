@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using app.Configuration;
 using app.entities;
+using app.Json;
 using app.Repositories;
 using app.Security;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -16,14 +17,14 @@ namespace tests
     public class UnitTest1
     {
         [TestMethod]
-        public void GetOneTest()
+        public async Task GetOneTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
             var tokenProvider = new AuthenticationMessageHandler(config);
 
             var repo = new GenericRepository<Account>(tokenProvider);
             var entityId = Guid.Parse("BB7F2EEC-A38C-E911-A985-000D3AF49637");
-            var account = repo.GetById(entityId, //null
+            var account = await repo.GetById(entityId, //null
             new Expression<Func<Account, object>>[]
             {
                 p => p.Id, 
@@ -38,7 +39,7 @@ namespace tests
                 p => p.Telephone1,
                 p => p.Name,
             }
-            ).Result;
+            );
             Assert.IsNotNull(account);
             Assert.IsNotNull(account.Name);
             Assert.IsNotNull(account.CreatedBy);
@@ -54,14 +55,14 @@ namespace tests
         }
 
         [TestMethod]
-        public void GetMultipleTest()
+        public async Task GetMultipleTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
             {
-                var accounts = repo.GetList().Result;
+                var accounts = await repo.GetList();
                 Assert.IsNotNull(accounts);
             }
         }

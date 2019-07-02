@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
+using app.entities;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace app.entities
+namespace app.Json
 {
 
     public class ExtendedEntityConverter : JsonConverter

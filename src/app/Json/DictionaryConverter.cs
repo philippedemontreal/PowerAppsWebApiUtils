@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace app.entities
+namespace app.Json
 {
 
     public class DictionaryConverter : JsonConverter

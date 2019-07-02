@@ -950,7 +950,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdby");
+            return base.GetNavigationAttribute("createdby");
          }
       }
       /// <summary>
@@ -963,7 +963,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdbyexternalparty");
+            return base.GetNavigationAttribute("createdbyexternalparty");
          }
       }
       /// <summary>
@@ -988,7 +988,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdonbehalfby");
+            return base.GetNavigationAttribute("createdonbehalfby");
          }
       }
       /// <summary>
@@ -1077,11 +1077,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("defaultpricelevelid");
+            return base.GetNavigationAttribute("defaultpricelevelid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("defaultpricelevelid", value);
+            base.SetNavigationAttribute("defaultpricelevelid", value);
          }
       }
       /// <summary>
@@ -1398,11 +1398,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_cityid");
+            return base.GetNavigationAttribute("ic_cityid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_cityid", value);
+            base.SetNavigationAttribute("ic_cityid", value);
          }
       }
       /// <summary>
@@ -1415,11 +1415,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_countryid");
+            return base.GetNavigationAttribute("ic_countryid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_countryid", value);
+            base.SetNavigationAttribute("ic_countryid", value);
          }
       }
       /// <summary>
@@ -1448,11 +1448,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_franchiseeid");
+            return base.GetNavigationAttribute("ic_franchiseeid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_franchiseeid", value);
+            base.SetNavigationAttribute("ic_franchiseeid", value);
          }
       }
       /// <summary>
@@ -1513,11 +1513,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_stateprovinceid");
+            return base.GetNavigationAttribute("ic_stateprovinceid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_stateprovinceid", value);
+            base.SetNavigationAttribute("ic_stateprovinceid", value);
          }
       }
       /// <summary>
@@ -1830,7 +1830,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("masterid");
+            return base.GetNavigationAttribute("masterid");
          }
       }
       /// <summary>
@@ -1855,7 +1855,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedby");
+            return base.GetNavigationAttribute("modifiedby");
          }
       }
       /// <summary>
@@ -1868,7 +1868,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedbyexternalparty");
+            return base.GetNavigationAttribute("modifiedbyexternalparty");
          }
       }
       /// <summary>
@@ -1893,7 +1893,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedonbehalfby");
+            return base.GetNavigationAttribute("modifiedonbehalfby");
          }
       }
       /// <summary>
@@ -2034,11 +2034,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("originatingleadid");
+            return base.GetNavigationAttribute("originatingleadid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("originatingleadid", value);
+            base.SetNavigationAttribute("originatingleadid", value);
          }
       }
       /// <summary>
@@ -2067,11 +2067,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ownerid");
+            return base.GetNavigationAttribute("ownerid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ownerid", value);
+            base.SetNavigationAttribute("ownerid", value);
          }
       }
       /// <summary>
@@ -2100,7 +2100,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owningbusinessunit");
+            return base.GetNavigationAttribute("owningbusinessunit");
          }
       }
       /// <summary>
@@ -2113,7 +2113,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owningteam");
+            return base.GetNavigationAttribute("owningteam");
          }
       }
       /// <summary>
@@ -2126,7 +2126,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owninguser");
+            return base.GetNavigationAttribute("owninguser");
          }
       }
       /// <summary>
@@ -2139,11 +2139,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("parentaccountid");
+            return base.GetNavigationAttribute("parentaccountid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("parentaccountid", value);
+            base.SetNavigationAttribute("parentaccountid", value);
          }
       }
       /// <summary>
@@ -2236,11 +2236,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("preferredequipmentid");
+            return base.GetNavigationAttribute("preferredequipmentid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("preferredequipmentid", value);
+            base.SetNavigationAttribute("preferredequipmentid", value);
          }
       }
       /// <summary>
@@ -2253,11 +2253,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("preferredserviceid");
+            return base.GetNavigationAttribute("preferredserviceid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("preferredserviceid", value);
+            base.SetNavigationAttribute("preferredserviceid", value);
          }
       }
       /// <summary>
@@ -2270,11 +2270,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("preferredsystemuserid");
+            return base.GetNavigationAttribute("preferredsystemuserid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("preferredsystemuserid", value);
+            base.SetNavigationAttribute("preferredsystemuserid", value);
          }
       }
       /// <summary>
@@ -2287,11 +2287,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("primarycontactid");
+            return base.GetNavigationAttribute("primarycontactid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("primarycontactid", value);
+            base.SetNavigationAttribute("primarycontactid", value);
          }
       }
       /// <summary>
@@ -2428,11 +2428,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("slaid");
+            return base.GetNavigationAttribute("slaid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("slaid", value);
+            base.SetNavigationAttribute("slaid", value);
          }
       }
       /// <summary>
@@ -2445,7 +2445,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("slainvokedid");
+            return base.GetNavigationAttribute("slainvokedid");
          }
       }
       /// <summary>
@@ -2602,11 +2602,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("territoryid");
+            return base.GetNavigationAttribute("territoryid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("territoryid", value);
+            base.SetNavigationAttribute("territoryid", value);
          }
       }
       /// <summary>
@@ -2663,11 +2663,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("transactioncurrencyid");
+            return base.GetNavigationAttribute("transactioncurrencyid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("transactioncurrencyid", value);
+            base.SetNavigationAttribute("transactioncurrencyid", value);
          }
       }
       /// <summary>
@@ -2803,7 +2803,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("accountid");
+            return base.GetNavigationAttribute("accountid");
          }
       }
       /// <summary>
@@ -4152,7 +4152,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdby");
+            return base.GetNavigationAttribute("createdby");
          }
       }
       /// <summary>
@@ -4165,7 +4165,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdbyexternalparty");
+            return base.GetNavigationAttribute("createdbyexternalparty");
          }
       }
       /// <summary>
@@ -4190,7 +4190,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdonbehalfby");
+            return base.GetNavigationAttribute("createdonbehalfby");
          }
       }
       /// <summary>
@@ -4279,11 +4279,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("defaultpricelevelid");
+            return base.GetNavigationAttribute("defaultpricelevelid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("defaultpricelevelid", value);
+            base.SetNavigationAttribute("defaultpricelevelid", value);
          }
       }
       /// <summary>
@@ -4756,11 +4756,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_cityid");
+            return base.GetNavigationAttribute("ic_cityid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_cityid", value);
+            base.SetNavigationAttribute("ic_cityid", value);
          }
       }
       /// <summary>
@@ -4773,11 +4773,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_companyid");
+            return base.GetNavigationAttribute("ic_companyid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_companyid", value);
+            base.SetNavigationAttribute("ic_companyid", value);
          }
       }
       /// <summary>
@@ -4790,11 +4790,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_countryid");
+            return base.GetNavigationAttribute("ic_countryid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_countryid", value);
+            base.SetNavigationAttribute("ic_countryid", value);
          }
       }
       /// <summary>
@@ -4839,11 +4839,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ic_stateprovinceid");
+            return base.GetNavigationAttribute("ic_stateprovinceid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ic_stateprovinceid", value);
+            base.SetNavigationAttribute("ic_stateprovinceid", value);
          }
       }
       /// <summary>
@@ -5096,7 +5096,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("masterid");
+            return base.GetNavigationAttribute("masterid");
          }
       }
       /// <summary>
@@ -5153,7 +5153,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedby");
+            return base.GetNavigationAttribute("modifiedby");
          }
       }
       /// <summary>
@@ -5166,7 +5166,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedbyexternalparty");
+            return base.GetNavigationAttribute("modifiedbyexternalparty");
          }
       }
       /// <summary>
@@ -5191,7 +5191,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedonbehalfby");
+            return base.GetNavigationAttribute("modifiedonbehalfby");
          }
       }
       /// <summary>
@@ -5280,11 +5280,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("originatingleadid");
+            return base.GetNavigationAttribute("originatingleadid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("originatingleadid", value);
+            base.SetNavigationAttribute("originatingleadid", value);
          }
       }
       /// <summary>
@@ -5313,11 +5313,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ownerid");
+            return base.GetNavigationAttribute("ownerid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("ownerid", value);
+            base.SetNavigationAttribute("ownerid", value);
          }
       }
       /// <summary>
@@ -5330,7 +5330,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owningbusinessunit");
+            return base.GetNavigationAttribute("owningbusinessunit");
          }
       }
       /// <summary>
@@ -5343,7 +5343,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owningteam");
+            return base.GetNavigationAttribute("owningteam");
          }
       }
       /// <summary>
@@ -5356,7 +5356,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owninguser");
+            return base.GetNavigationAttribute("owninguser");
          }
       }
       /// <summary>
@@ -5385,7 +5385,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("parentcontactid");
+            return base.GetNavigationAttribute("parentcontactid");
          }
       }
       /// <summary>
@@ -5398,11 +5398,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("parentcustomerid");
+            return base.GetNavigationAttribute("parentcustomerid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("parentcustomerid", value);
+            base.SetNavigationAttribute("parentcustomerid", value);
          }
       }
       /// <summary>
@@ -5495,11 +5495,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("preferredequipmentid");
+            return base.GetNavigationAttribute("preferredequipmentid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("preferredequipmentid", value);
+            base.SetNavigationAttribute("preferredequipmentid", value);
          }
       }
       /// <summary>
@@ -5512,11 +5512,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("preferredserviceid");
+            return base.GetNavigationAttribute("preferredserviceid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("preferredserviceid", value);
+            base.SetNavigationAttribute("preferredserviceid", value);
          }
       }
       /// <summary>
@@ -5529,11 +5529,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("preferredsystemuserid");
+            return base.GetNavigationAttribute("preferredsystemuserid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("preferredsystemuserid", value);
+            base.SetNavigationAttribute("preferredsystemuserid", value);
          }
       }
       /// <summary>
@@ -5594,11 +5594,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("slaid");
+            return base.GetNavigationAttribute("slaid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("slaid", value);
+            base.SetNavigationAttribute("slaid", value);
          }
       }
       /// <summary>
@@ -5611,7 +5611,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("slainvokedid");
+            return base.GetNavigationAttribute("slainvokedid");
          }
       }
       /// <summary>
@@ -5812,11 +5812,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("transactioncurrencyid");
+            return base.GetNavigationAttribute("transactioncurrencyid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("transactioncurrencyid", value);
+            base.SetNavigationAttribute("transactioncurrencyid", value);
          }
       }
       /// <summary>
@@ -6088,7 +6088,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdby");
+            return base.GetNavigationAttribute("createdby");
          }
       }
       /// <summary>
@@ -6113,7 +6113,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("createdonbehalfby");
+            return base.GetNavigationAttribute("createdonbehalfby");
          }
       }
       /// <summary>
@@ -6266,7 +6266,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedby");
+            return base.GetNavigationAttribute("modifiedby");
          }
       }
       /// <summary>
@@ -6291,7 +6291,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("modifiedonbehalfby");
+            return base.GetNavigationAttribute("modifiedonbehalfby");
          }
       }
       /// <summary>
@@ -6352,7 +6352,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("ownerid");
+            return base.GetNavigationAttribute("ownerid");
          }
       }
       /// <summary>
@@ -6365,7 +6365,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owningbusinessunit");
+            return base.GetNavigationAttribute("owningbusinessunit");
          }
       }
       /// <summary>
@@ -6378,7 +6378,7 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("owninguser");
+            return base.GetNavigationAttribute("owninguser");
          }
       }
       /// <summary>
@@ -6391,11 +6391,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("parentid");
+            return base.GetNavigationAttribute("parentid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("parentid", value);
+            base.SetNavigationAttribute("parentid", value);
          }
       }
       /// <summary>
@@ -6552,11 +6552,11 @@ namespace webapi.entities
       {
          get
          {
-            return base.GetAttributeValue<NavigationProperty>("transactioncurrencyid");
+            return base.GetNavigationAttribute("transactioncurrencyid");
          }
          set
          {
-            base.SetAttributeValue<NavigationProperty>("transactioncurrencyid", value);
+            base.SetNavigationAttribute("transactioncurrencyid", value);
          }
       }
       /// <summary>

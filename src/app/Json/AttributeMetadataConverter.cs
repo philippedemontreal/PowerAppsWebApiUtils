@@ -4,7 +4,7 @@ using Microsoft.Dynamics.CRM;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace app.entities
+namespace app.Json
 {
 
     public class AttributeMetadataConverter : JsonConverter

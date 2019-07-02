@@ -1,7 +1,8 @@
 using System;
+using app.entities;
 using Newtonsoft.Json;
 
-namespace app.entities
+namespace app.Json
 {
 
     public class NavigationPropertyConverter : JsonConverter

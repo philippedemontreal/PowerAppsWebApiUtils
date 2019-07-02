@@ -1,11 +1,9 @@
 using System;
-using System.Linq;
-using System.Reflection;
+using app.entities;
 using Microsoft.Dynamics.CRM;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace app.entities
+namespace app.Json
 {
 
     public class ExtendedEntityContractResolver: NavigationPropertyContractResolver

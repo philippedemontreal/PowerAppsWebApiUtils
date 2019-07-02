@@ -148,29 +148,52 @@ namespace app.codegen
 
             if (attributeMetadata.IsValidForRead || attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
             {
-                result.GetStatements.Add(
-                    new CodeMethodReturnStatement(
-                        new CodeMethodInvokeExpression(
-                            new CodeMethodReferenceExpression(
-                            new CodeBaseReferenceExpression(),
-                                "GetAttributeValue",
-                                new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
-                                new CodePrimitiveExpression(attributeName))                            
-                ));
+                if (propertyType == typeof(NavigationProperty).FullName)
+                    result.GetStatements.Add(
+                        new CodeMethodReturnStatement(
+                            new CodeMethodInvokeExpression(
+                                new CodeMethodReferenceExpression(
+                                new CodeBaseReferenceExpression(),
+                                    "GetNavigationAttribute",
+                                    new CodeTypeReference[] { }),
+                                    new CodePrimitiveExpression(attributeName))
+                    ));                
+                else
+                    result.GetStatements.Add(
+                        new CodeMethodReturnStatement(
+                            new CodeMethodInvokeExpression(
+                                new CodeMethodReferenceExpression(
+                                new CodeBaseReferenceExpression(),
+                                    "GetAttributeValue",
+                                    new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
+                                    new CodePrimitiveExpression(attributeName))                            
+                    ));
             }
 
             if (attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
             {
-                result.SetStatements.Add(
-                        new CodeMethodInvokeExpression(
-                            new CodeMethodReferenceExpression(
-                            new CodeBaseReferenceExpression(),
-                                "SetAttributeValue",
-                                new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
-                                new CodePrimitiveExpression(attributeName),
-                                new CodeVariableReferenceExpression("value")
-                                ) 
-                );
+                if (propertyType == typeof(NavigationProperty).FullName)
+                    result.SetStatements.Add(
+                            new CodeMethodInvokeExpression(
+                                new CodeMethodReferenceExpression(
+                                new CodeBaseReferenceExpression(),
+                                    "SetNavigationAttribute",
+                                    new CodeTypeReference[] { }),
+                                    new CodePrimitiveExpression(attributeName),
+                                    new CodeVariableReferenceExpression("value")
+                                    ) 
+                    );
+                else                
+                    result.SetStatements.Add(
+                            new CodeMethodInvokeExpression(
+                                new CodeMethodReferenceExpression(
+                                new CodeBaseReferenceExpression(),
+                                    "SetAttributeValue",
+                                    new CodeTypeReference[] { new CodeTypeReference(propertyType) }),
+                                    new CodePrimitiveExpression(attributeName),
+                                    new CodeVariableReferenceExpression("value")
+                                    ) 
+                    );
             }
 
             result.Comments.Add(new CodeCommentStatement("<summary>", true));
