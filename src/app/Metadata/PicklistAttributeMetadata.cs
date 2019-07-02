@@ -54,7 +54,7 @@ namespace Microsoft.Dynamics.CRM
         public Label DisplayName { get; set; }
 
         //The logical name of the entity that contains the attribute.
-        public string EntityLogicalName { get; set; }
+        public new string EntityLogicalName { get; set; }
 
         public string ExternalName { get; set; }
         //The formula definition for calculated and rollup attributes.

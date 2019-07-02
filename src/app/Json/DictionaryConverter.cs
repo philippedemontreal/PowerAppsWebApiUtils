@@ -27,15 +27,14 @@ namespace app.Json
                         value = identifier;
                 }
 
-                if (!token.Name.StartsWith("@odata"))
-                {
-                    var match = Regex.Match(token.Name, @"_(.+)_value(.*)");
-                    if (match.Success)
-                        result.Add(match.Groups[1].Value + (match.Groups.Count > 2 ? match.Groups[2].Value : string.Empty) , value);
-                    else
-                        result.Add(token.Name, value);
-
-                }
+                if (token.Name.StartsWith("@odata"))
+                    continue;
+                
+                var match = Regex.Match(token.Name, @"_(.+)_value(.*)");
+                if (match.Success)
+                    result.Add(match.Groups[1].Value + (match.Groups.Count > 2 ? match.Groups[2].Value : string.Empty) , value);
+                else
+                    result.Add(token.Name, value);               
             }
             return result;
         }
