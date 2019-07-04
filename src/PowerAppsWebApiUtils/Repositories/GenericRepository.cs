@@ -14,13 +14,12 @@ using System.Text;
 using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Entities;
 using PowerAppsWebApiUtils.Security;
-using PowerAppsWebApiUtils.Entities;
 using PowerAppsWebApiUtils.Json;
+using PowerAppsWebApiUtils.Linq;
 
 namespace PowerAppsWebApiUtils.Repositories
 {
     public class GenericRepository<T>: IDisposable  
-    where T: crmbaseentity
     {
         private readonly AuthenticationMessageHandler _tokenProvider;
         
@@ -31,8 +30,12 @@ namespace PowerAppsWebApiUtils.Repositories
         public GenericRepository(AuthenticationMessageHandler tokenProvider)
         {
             _tokenProvider = tokenProvider;
-            OdataEntityName = Activator.CreateInstance<T>().EntityCollectionName;
+            OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
         }
+
+        // public PowerAppsWebApiQuery CreateQuery()
+        //   => new PowerAppsWebApiQuery(new PowerAppsWebApiQueryProvider());
+        
 
         public async Task<List<T>> GetList()
         {
@@ -128,7 +131,7 @@ namespace PowerAppsWebApiUtils.Repositories
             }
         }
 
-        protected async Task<T> Retrieve(string selector)
+        public async Task<T> Retrieve(string selector)
         {                        
             using (var client = GetHttpClient())
             {
@@ -137,12 +140,13 @@ namespace PowerAppsWebApiUtils.Repositories
             }
         }
                 
-        protected async Task<List<T>> RetrieveMultiple(string selector)
+        public async Task<List<T>> RetrieveMultiple(string selector)
         {                        
             using (var client = GetHttpClient())
             {
                 var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
-                return await DeserializeContent<List<T>>(response);
+                var result = await DeserializeContent<RootObject<T>>(response);
+                return result.Value ?? new List<T>();
             }
         }
 
@@ -182,7 +186,7 @@ namespace PowerAppsWebApiUtils.Repositories
             using (var client = GetHttpClient())
             {
                 var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
-                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, entity.Id))
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, (entity as crmbaseentity).Id))
                 {
                     Content =
                         new StringContent(
@@ -206,7 +210,6 @@ namespace PowerAppsWebApiUtils.Repositories
             }
         }
         private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
-            where P: class
         {
             using (var reader = response.Content)
             {
@@ -215,7 +218,7 @@ namespace PowerAppsWebApiUtils.Repositories
                 if (!response.IsSuccessStatusCode)
                 {
                     if (response.StatusCode == HttpStatusCode.NotFound)
-                        return null;
+                        return default(P);
 
                     var exData = JObject.Parse(content);
                     throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);

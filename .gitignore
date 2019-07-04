@@ -332,4 +332,4 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
-src/app/Configuration/PowerAppsConfigurationReader.cs
+src/PowerAppsWebApiUtils/Configuration/PowerAppsConfigurationReader.cs

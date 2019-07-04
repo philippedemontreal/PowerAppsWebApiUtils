@@ -10,10 +10,10 @@ using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
 using webapi.entities;
 
-namespace tests
+namespace PowerAppsWebApiUtils.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class GenericRepositoryTests
     {
         [TestMethod]
         public async Task GetOneTest()
