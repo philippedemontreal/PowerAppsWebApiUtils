@@ -33,11 +33,7 @@ namespace PowerAppsWebApiUtils.Repositories
             OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
         }
 
-        // public PowerAppsWebApiQuery CreateQuery()
-        //   => new PowerAppsWebApiQuery(new PowerAppsWebApiQueryProvider());
-        
-
-        public async Task<List<T>> GetList()
+          public async Task<List<T>> GetList()
         {
             List<T> result = null;
 
