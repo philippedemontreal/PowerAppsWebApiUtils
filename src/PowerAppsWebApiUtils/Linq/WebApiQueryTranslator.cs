@@ -5,17 +5,20 @@ using System.Reflection;
 using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Dynamics.CRM;
+using PowerAppsWebApiUtils.Entities;
 
 namespace PowerAppsWebApiUtils.Linq
 {
     public class WebApiQueryTranslator: ExpressionVisitor 
     {
-        private StringBuilder _sb;
+        private StringBuilder _sbMainClause;
+        private StringBuilder _sbFilterClause;
         public string Translate(Expression expression)
         {
-            _sb = new StringBuilder();
+            _sbMainClause = new StringBuilder();
+            _sbFilterClause = new StringBuilder();
             Visit(expression);
-            return _sb.ToString();
+            return _sbMainClause.ToString() + (_sbFilterClause.Length == 0 ? "" : "?") + _sbFilterClause.ToString();
         }
 
         protected override Expression VisitMethodCall(MethodCallExpression m)
@@ -23,8 +26,14 @@ namespace PowerAppsWebApiUtils.Linq
             if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "Where") 
             {
                 Visit(m.Arguments[0]);
-                _sb.Append("?$filter=");
+
+                if (_sbFilterClause.Length == 0)
+                    _sbFilterClause.Append("$filter=(");
+                else
+                    _sbFilterClause.Append(" and (");
+
                 Visit(m.Arguments[1]);
+                 _sbFilterClause.Append(")");
                 return m;
             }
 
@@ -37,25 +46,29 @@ namespace PowerAppsWebApiUtils.Linq
             {
                 var genericArgumentType = c.Value.GetType().GetGenericArguments()[0];
                 var baseentity = Activator.CreateInstance(genericArgumentType, false) as crmbaseentity;
-                _sb.Append(baseentity.EntityCollectionName);
+                _sbMainClause.Append(baseentity.EntityCollectionName);
             }
             else if (c.Value == null) 
             {
-                _sb.Append("null");
+                _sbFilterClause.Append("null");
             }
             else 
             {
-                switch (Type.GetTypeCode(c.Value.GetType())) {
-                    // case TypeCode.Boolean:
-                    //     _sb.Append(((bool)c.Value) ? 1 : 0);
-                    //     break;
+                switch (Type.GetTypeCode(c.Value.GetType())) 
+                {
+                    case TypeCode.Int32:
+                        _sbFilterClause.Append((int)c.Value);
+                        break;                    
                     case TypeCode.String:
-                        _sb.Append($"'{c.Value}'");
+                        _sbFilterClause.Append($"'{c.Value}'");
                         break;
                     case TypeCode.Object:
-                        throw new NotSupportedException(string.Format("The constant for '{0}' is not supported", c.Value));
+                        if (c.Value.GetType() != typeof(NavigationProperty))
+                            throw new NotSupportedException(string.Format("The constant for '{0}' is not supported", c.Value));
+                        _sbFilterClause.Append($"'{((NavigationProperty)c.Value).Id}'");
+                        break;
                     default:
-                        _sb.Append(c.Value);
+                        _sbFilterClause.Append(c.Value);
                         break;
                 }
             }
@@ -69,35 +82,37 @@ namespace PowerAppsWebApiUtils.Linq
             switch (b.NodeType) 
             {
                 case ExpressionType.And:
-                    _sb.Append(" and ");
+                case ExpressionType.AndAlso:
+                    _sbFilterClause.Append(" and ");
                     break;
 
                 case ExpressionType.Or:
-                    _sb.Append(" or ");
+                case ExpressionType.OrElse:
+                    _sbFilterClause.Append(" or ");
                     break;
 
                 case ExpressionType.Equal:
-                    _sb.Append(" eq ");
+                    _sbFilterClause.Append(" eq ");
                     break;
 
                 case ExpressionType.NotEqual:
-                    _sb.Append(" not ");
+                    _sbFilterClause.Append(" not ");
                     break;
 
                 case ExpressionType.LessThan:
-                    _sb.Append(" lt ");
+                    _sbFilterClause.Append(" lt ");
                     break;
 
                 case ExpressionType.LessThanOrEqual:
-                    _sb.Append(" le ");
+                    _sbFilterClause.Append(" le ");
                     break;
 
                 case ExpressionType.GreaterThan:
-                    _sb.Append(" gt ");
+                    _sbFilterClause.Append(" gt ");
                     break;
 
                 case ExpressionType.GreaterThanOrEqual:
-                    _sb.Append(" ge ");
+                    _sbFilterClause.Append(" ge ");
                     break;
 
                 default:
@@ -108,19 +123,26 @@ namespace PowerAppsWebApiUtils.Linq
             return b;
         }
 
-            protected override Expression VisitMember(MemberExpression m) 
+        protected override Expression VisitMember(MemberExpression m) 
+        {
+            if (m.Expression != null && m.Expression.NodeType == ExpressionType.Parameter) 
             {
-                if (m.Expression != null && m.Expression.NodeType == ExpressionType.Parameter) 
+                var attr = m.Member.GetCustomAttribute(typeof(DataMemberAttribute), false) as DataMemberAttribute;
+                if (attr == null)
+                    throw new NotSupportedException(string.Format("The member '{0}' has no attribute of type DataMember which is not supported", m.Member.Name));
+
+                if ((m.Member as PropertyInfo).PropertyType == typeof(NavigationProperty))
                 {
-                    var attr = m.Member.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
-                    if (attr == null)
-                        throw new NotSupportedException(string.Format("The member '{0}' has no attribute of type DataMember which is not supported", m.Member.Name));
-
-                    _sb.Append(attr.Name);
-                    return m;
+                        _sbFilterClause.Append($"_{attr.Name}_value");
                 }
-
-                throw new NotSupportedException(string.Format("The member '{0}' is not supported", m.Member.Name));
+                else
+                {
+                    _sbFilterClause.Append(attr.Name);
+                }
+                return m;
             }
+
+            throw new NotSupportedException(string.Format("The member '{0}' is not supported", m.Member.Name));
+        }
     }
 }

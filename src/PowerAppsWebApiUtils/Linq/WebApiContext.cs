@@ -1,10 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Threading.Tasks;
-using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
 
@@ -21,8 +17,10 @@ namespace PowerAppsWebApiUtils.Linq
         }
     
         private string Translate(Expression expression)
-            => new WebApiQueryTranslator().Translate(expression);
-
+        {
+            expression = Evaluator.PartialEval(expression);
+            return new WebApiQueryTranslator().Translate(expression);
+        }
             
         public override T Execute<T>(Expression expression)
         {
