@@ -10,14 +10,15 @@
 
 namespace webapi.entities
 {
-    using System.Runtime.Serialization;
-    using PowerAppsWebApiUtils.Entities;
-
-    /// <summary>
-    /// <para>Description: Business that represents a customer or potential customer. The company that is billed in business transactions.</para>
-    /// <para>Display Name: Legal Name</para>
-    /// </summary>
-    [DataContract(Name="account")]
+   using System;
+   using System.Runtime.Serialization;
+   using PowerAppsWebApiUtils.Entities;
+   
+   /// <summary>
+   /// <para>Description: Business that represents a customer or potential customer. The company that is billed in business transactions.</para>
+   /// <para>Display Name: Legal Name</para>
+   /// </summary>
+   [DataContract(Name="account")]
    public partial class Account : ExtendedEntity
    {
       public const string EntityName = "account";

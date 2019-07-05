@@ -43,7 +43,7 @@ namespace PowerAppsWebApiUtils.Codegen
             var returnValue = new CodeNamespace(nameSpaceName);
             returnValue.Imports.Add(new CodeNamespaceImport ("System"));
             returnValue.Imports.Add(new CodeNamespaceImport ("System.Runtime.Serialization"));
-            returnValue.Imports.Add(new CodeNamespaceImport ("app.entities"));
+            returnValue.Imports.Add(new CodeNamespaceImport ("PowerAppsWebApiUtils.Entities"));
             return returnValue;
         }
 
@@ -241,8 +241,8 @@ namespace PowerAppsWebApiUtils.Codegen
             var stringWriter = new StringWriter(code);
             provider.GenerateCodeFromCompileUnit(cu, stringWriter, codeGeneratorOptions);
 
-            var result = code.ToString().Replace("app.entities.", "");
-            System.IO.File.WriteAllText(@"C:\Users\Philippe\Documents\Projects\Ts\DynCEWebApiEarlyBound\src\tests\account.cs", result);
+            var result = code.ToString().Replace("PowerAppsWebApiUtils.Entities.", "");
+            System.IO.File.WriteAllText(@"C:\Users\Philippe\Documents\Projects\Ts\DynCEWebApiEarlyBound\src\PowerAppsWebApiUtils.Tests\account.cs", result);
 
         }
 

@@ -17,8 +17,7 @@ namespace PowerAppsWebApiUtils.Json
             var property = base.CreateProperty(member, memberSerialization);
 
             if (property.DeclaringType.IsSubclassOf(typeof(ExtendedEntity)))
-            {
-                
+            {                
                 property.ShouldSerialize =
                     instance =>
                     {                    
@@ -31,7 +30,7 @@ namespace PowerAppsWebApiUtils.Json
 
                         if ((member as PropertyInfo).PropertyType == typeof(NavigationProperty))
                         {
-                            var attr = member.GetCustomAttributes(typeof(NavigationPropertyTargetsAttribute), false).FirstOrDefault() as NavigationPropertyTargetsAttribute;
+                            var attr = member.GetCustomAttribute<NavigationPropertyTargetsAttribute>();
                             if (attr != null)
                             {
                                 if (attr.Targets.Length > 1)
@@ -42,9 +41,7 @@ namespace PowerAppsWebApiUtils.Json
                             }
 
                             property.PropertyName +=  "@odata.bind";
-                        }
-
-                        
+                        }                     
 
                         return true;
                     };

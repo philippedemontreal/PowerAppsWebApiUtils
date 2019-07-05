@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 
 namespace Microsoft.Dynamics.CRM
 {
-    public class crmbaseentity
+    public abstract class crmbaseentity
     {
         [IgnoreDataMember]
         public virtual string EntityLogicalName { get;  }

@@ -13,28 +13,53 @@ namespace PowerAppsWebApiUtils.Linq
     {
         private StringBuilder _sbMainClause;
         private StringBuilder _sbFilterClause;
+        private StringBuilder _sbSelectClause;
+
+        private ParameterExpression _row;
+
+
+        private ColumnProjection _projection;
         public string Translate(Expression expression)
         {
             _sbMainClause = new StringBuilder();
             _sbFilterClause = new StringBuilder();
+            _sbSelectClause = new StringBuilder();
+            _row = Expression.Parameter(typeof(ProjectionRow), "row");
+
             Visit(expression);
-            return _sbMainClause.ToString() + (_sbFilterClause.Length == 0 ? "" : "?") + _sbFilterClause.ToString();
+
+            return 
+                _sbMainClause.ToString() +
+               (_sbSelectClause.Length == 0 ? "" : "?" + _sbSelectClause.ToString()) + 
+                (_sbFilterClause.Length == 0 ? "" : (_sbSelectClause.Length == 0 ? "?" : "&") + _sbFilterClause.ToString());
         }
 
         protected override Expression VisitMethodCall(MethodCallExpression m)
         {
-            if (m.Method.DeclaringType == typeof(Queryable) && m.Method.Name == "Where") 
+            if (m.Method.DeclaringType == typeof(Queryable))
             {
-                Visit(m.Arguments[0]);
+                switch (m.Method.Name)
+                {
+                    case "Where":
+                        Visit(m.Arguments[0]);
 
-                if (_sbFilterClause.Length == 0)
-                    _sbFilterClause.Append("$filter=(");
-                else
-                    _sbFilterClause.Append(" and (");
+                        if (_sbFilterClause.Length == 0)
+                            _sbFilterClause.Append("$filter=(");
+                        else
+                            _sbFilterClause.Append(" and (");
 
-                Visit(m.Arguments[1]);
-                 _sbFilterClause.Append(")");
-                return m;
+                        Visit(m.Arguments[1]);
+                        _sbFilterClause.Append(")");
+                        return m;
+
+                    case "Select":
+                        var projection = new ColumnProjector().ProjectColumns(m.Arguments[1], _row);
+                        _sbSelectClause.Append($"$select={projection.Columns}");
+                        Visit(m.Arguments[0]);
+                        _projection = projection;
+
+                        return m;
+                }
             }
 
             throw new NotSupportedException(string.Format("The method '{0}' is not supported", m.Method.Name));
@@ -127,7 +152,7 @@ namespace PowerAppsWebApiUtils.Linq
         {
             if (m.Expression != null && m.Expression.NodeType == ExpressionType.Parameter) 
             {
-                var attr = m.Member.GetCustomAttribute(typeof(DataMemberAttribute), false) as DataMemberAttribute;
+                var attr = m.Member.GetCustomAttribute<DataMemberAttribute>();
                 if (attr == null)
                     throw new NotSupportedException(string.Format("The member '{0}' has no attribute of type DataMember which is not supported", m.Member.Name));
 

@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/src/app/bin/Debug/netcoreapp2.1/app.dll",
+            "program": "${workspaceFolder}/src/PowerAppsWebApiUtils/bin/Debug/netcoreapp2.1/PowerAppsWebApiUtils.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/app",
+            "cwd": "${workspaceFolder}/src/PowerAppsWebApiUtils",
             // For more information about the 'console' field, see https://github.com/OmniSharp/omnisharp-vscode/blob/master/debugger-launchjson.md#console-terminal-window
             "console": "internalConsole",
             "stopAtEntry": false

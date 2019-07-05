@@ -12,7 +12,7 @@ namespace PowerAppsWebApiUtils.Tests
         public class LinqProviderQueryTextTests
         {
             [TestMethod]
-            public void Test1()
+            public void WhereTest1()
             {
                 var context = new WebApiContext(null);
                 var query = new Query<Account>(context);
@@ -22,7 +22,7 @@ namespace PowerAppsWebApiUtils.Tests
             }
 
             [TestMethod]
-            public void Test2()
+            public void WhereTest2()
             {
                 var context = new WebApiContext(null);
                 var query = new Query<Account>(context).Where(p => p.Name == "Test");
@@ -32,7 +32,7 @@ namespace PowerAppsWebApiUtils.Tests
             }
 
             [TestMethod]
-            public void Test3()
+            public void WhereTest3()
             {
                 var context = new WebApiContext(null);
                 var query = new Query<Account>(context).Where(p => p.StateCode == account_statecode.Active);
@@ -42,7 +42,7 @@ namespace PowerAppsWebApiUtils.Tests
             }
            
             [TestMethod]
-            public void Test4()
+            public void WhereTest4()
             {
                 var context = new WebApiContext(null);
                 var query = 
@@ -57,7 +57,7 @@ namespace PowerAppsWebApiUtils.Tests
 
                        
             [TestMethod]
-            public void Test5()
+            public void WhereTest5()
             {
                 var context = new WebApiContext(null);
                 var query =
@@ -72,7 +72,7 @@ namespace PowerAppsWebApiUtils.Tests
 
 
             [TestMethod]
-            public void Test6()
+            public void WhereTest6()
             {
                 var context = new WebApiContext(null);
                 var guid = Guid.NewGuid();
@@ -84,6 +84,20 @@ namespace PowerAppsWebApiUtils.Tests
                 var command = context.GetQueryText(query.Expression);
 
                 Assert.AreEqual($"customeraddresses?$filter=(_parentid_value eq '{guid}') and (shippingmethodcode eq 1 and country eq 'Canada')", command);
+            }
+
+            [TestMethod]
+            public void SelectTest1()
+            {
+                var context = new WebApiContext(null);
+                var guid = Guid.NewGuid();
+                var query =
+                    new Query<CustomerAddress>(context)
+                    .Where(p => p.ParentId == new Account(guid).ToNavigationProperty())
+                    .Select(p => new { Id = p.Id, OwnerId = p.OwnerId });
+
+                var command = context.GetQueryText(query.Expression);
+                Assert.AreEqual($"customeraddresses?$select=customeraddressid,_ownerid_value&$filter=(_parentid_value eq '{guid}')", command);
             }
         }
     }
