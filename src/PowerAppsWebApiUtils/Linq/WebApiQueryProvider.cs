@@ -6,12 +6,12 @@ using PowerAppsWebApiUtils.Security;
 
 namespace PowerAppsWebApiUtils.Linq
 {
-    public class WebApiContext: QueryProvider
+    public class WebApiQueryProvider: QueryProvider
     {
 
         private readonly AuthenticationMessageHandler _authenticationMessageHandler;
    
-        public WebApiContext(AuthenticationMessageHandler authenticationMessageHandler)
+        public WebApiQueryProvider(AuthenticationMessageHandler authenticationMessageHandler)
         {
             _authenticationMessageHandler = authenticationMessageHandler;            
         }

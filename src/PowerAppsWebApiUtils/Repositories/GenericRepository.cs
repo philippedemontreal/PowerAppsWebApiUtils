@@ -150,7 +150,7 @@ namespace PowerAppsWebApiUtils.Repositories
         {
             using (var client = GetHttpClient())
             {
-                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = ExtendedEntityContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = new HttpRequestMessage(HttpMethod.Post, OdataEntityName)
                 {
                     Content =

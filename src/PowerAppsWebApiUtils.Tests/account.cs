@@ -16,7 +16,7 @@ namespace webapi.entities
    
    /// <summary>
    /// <para>Description: Business that represents a customer or potential customer. The company that is billed in business transactions.</para>
-   /// <para>Display Name: Legal Name</para>
+   /// <para>Display Name: Account</para>
    /// </summary>
    [DataContract(Name="account")]
    public partial class Account : ExtendedEntity
@@ -1357,362 +1357,6 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: </para>
-      /// <para>Display Name: Business Key</para>
-      /// </summary>
-      [DataMember(Name="ic_businesskey")]
-      public string ic_BusinessKey
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_businesskey");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_businesskey", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the city for the primary address.</para>
-      /// <para>Display Name: zzz_City</para>
-      /// </summary>
-      [DataMember(Name="ic_city")]
-      public string ic_City
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_city");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_city", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select a city.</para>
-      /// <para>Display Name: City</para>
-      /// </summary>
-      [DataMember(Name="ic_cityid")]
-      [NavigationPropertyTargets("ic_city")]
-      public NavigationProperty ic_CityID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_cityid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_cityid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select the country or region of the primary address.</para>
-      /// <para>Display Name: Country</para>
-      /// </summary>
-      [DataMember(Name="ic_countryid")]
-      [NavigationPropertyTargets("ic_country")]
-      public NavigationProperty ic_CountryID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_countryid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_countryid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: External ID</para>
-      /// <para>Display Name: External ID</para>
-      /// </summary>
-      [DataMember(Name="ic_externalid")]
-      public string ic_ExternalID
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_externalid");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_externalid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Unique identifier for Trade Name associated with Legal Name.</para>
-      /// <para>Display Name: zzz_Franchisee</para>
-      /// </summary>
-      [DataMember(Name="ic_franchiseeid")]
-      [NavigationPropertyTargets("ic_tradename")]
-      public NavigationProperty ic_FranchiseeID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_franchiseeid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_franchiseeid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter the GST/HST Number.</para>
-      /// <para>Display Name: GST/HST Number</para>
-      /// </summary>
-      [DataMember(Name="ic_gstumber")]
-      public string ic_gstumber
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_gstumber");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_gstumber", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the mailing name for the Legal Name.</para>
-      /// <para>Display Name: Mailing Name</para>
-      /// </summary>
-      [DataMember(Name="ic_mailingname")]
-      public string ic_MailingName
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_mailingname");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_mailingname", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter the PST Number.</para>
-      /// <para>Display Name: PST Number</para>
-      /// </summary>
-      [DataMember(Name="ic_pstnumber")]
-      public string ic_pstnumber
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_pstnumber");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_pstnumber", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select the state or province of the primary address.</para>
-      /// <para>Display Name: State/Province</para>
-      /// </summary>
-      [DataMember(Name="ic_stateprovinceid")]
-      [NavigationPropertyTargets("ic_stateprovince")]
-      public NavigationProperty ic_StateProvinceID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_stateprovinceid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_stateprovinceid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the first line of the primary address.</para>
-      /// <para>Display Name: Street 1</para>
-      /// </summary>
-      [DataMember(Name="ic_street1")]
-      public string ic_Street1
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street1");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street1", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the second line of the primary address.</para>
-      /// <para>Display Name: Street 2</para>
-      /// </summary>
-      [DataMember(Name="ic_street2")]
-      public string ic_Street2
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street2");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street2", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the third line of the primary address.</para>
-      /// <para>Display Name: Street 3</para>
-      /// </summary>
-      [DataMember(Name="ic_street3")]
-      public string ic_Street3
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street3");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street3", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the fourth line of the primary address.</para>
-      /// <para>Display Name: Street 4</para>
-      /// </summary>
-      [DataMember(Name="ic_street4")]
-      public string ic_Street4
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street4");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street4", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Synchronization Remarks</para>
-      /// <para>Display Name: Synchronization Remarks</para>
-      /// </summary>
-      [DataMember(Name="ic_synchronizationremarks")]
-      public string ic_SynchronizationRemarks
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_synchronizationremarks");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_synchronizationremarks", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Shows the synchronization status.</para>
-      /// <para>Display Name: Synchronization Status</para>
-      /// </summary>
-      [DataMember(Name="ic_synchronizationstatus")]
-      public ic_synchronizationstatus? ic_SynchronizationStatus
-      {
-         get
-         {
-            return base.GetAttributeValue<ic_synchronizationstatus?>("ic_synchronizationstatus");
-         }
-         set
-         {
-            base.SetAttributeValue<ic_synchronizationstatus?>("ic_synchronizationstatus", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select the geographical distribution of the Legal Name.</para>
-      /// <para>Display Name: Legal Name Classification</para>
-      /// </summary>
-      [DataMember(Name="ic_tenantclassification")]
-      public ic_tenantclassification? ic_TenantClassification
-      {
-         get
-         {
-            return base.GetAttributeValue<ic_tenantclassification?>("ic_tenantclassification");
-         }
-         set
-         {
-            base.SetAttributeValue<ic_tenantclassification?>("ic_tenantclassification", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter comments on the health review.</para>
-      /// <para>Display Name: zzz_Legal Name Health Review Comments</para>
-      /// </summary>
-      [DataMember(Name="ic_tenanthealthreviewcomments")]
-      public string ic_TenantHealthReviewComments
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_tenanthealthreviewcomments");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_tenanthealthreviewcomments", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Check if the health review is complete.</para>
-      /// <para>Display Name: zzz_Legal Name Health Review Complete</para>
-      /// </summary>
-      [DataMember(Name="ic_tenanthealthreviewcomplete")]
-      public System.Nullable<bool> ic_TenantHealthReviewComplete
-      {
-         get
-         {
-            return base.GetAttributeValue<System.Nullable<bool>>("ic_tenanthealthreviewcomplete");
-         }
-         set
-         {
-            base.SetAttributeValue<System.Nullable<bool>>("ic_tenanthealthreviewcomplete", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter the review date.</para>
-      /// <para>Display Name: zzz_Legal Name Health Review Date</para>
-      /// </summary>
-      [DataMember(Name="ic_tenanthealthreviewdate")]
-      public System.Nullable<System.DateTime> ic_TenantHealthReviewDate
-      {
-         get
-         {
-            return base.GetAttributeValue<System.Nullable<System.DateTime>>("ic_tenanthealthreviewdate");
-         }
-         set
-         {
-            base.SetAttributeValue<System.Nullable<System.DateTime>>("ic_tenanthealthreviewdate", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select the category that best describes the relationship between the contact and your organization.</para>
-      /// <para>Display Name: zzz_Type</para>
-      /// </summary>
-      [DataMember(Name="ic_type")]
-      public ic_tenanttype? ic_Type
-      {
-         get
-         {
-            return base.GetAttributeValue<ic_tenanttype?>("ic_type");
-         }
-         set
-         {
-            base.SetAttributeValue<ic_tenanttype?>("ic_type", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Type the ZIP code or postal code of the primary address.</para>
-      /// <para>Display Name: ZIP/Postal Code</para>
-      /// </summary>
-      [DataMember(Name="ic_zippostalcode")]
-      public string ic_ZIPPostalCode
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_zippostalcode");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_zippostalcode", value);
-         }
-      }
-      /// <summary>
       /// <para>Description: Unique identifier of the data import or data migration that created this record.</para>
       /// <para>Display Name: Import Sequence Number</para>
       /// </summary>
@@ -1898,7 +1542,7 @@ namespace webapi.entities
       }
       /// <summary>
       /// <para>Description: Type the company or business name.</para>
-      /// <para>Display Name: Name</para>
+      /// <para>Display Name: Account Name</para>
       /// </summary>
       [DataMember(Name="name")]
       public string Name
@@ -4288,7 +3932,7 @@ namespace webapi.entities
       }
       /// <summary>
       /// <para>Description: Type the department or business unit where the contact works in the parent company or business.</para>
-      /// <para>Display Name: zzz_Department</para>
+      /// <para>Display Name: Department</para>
       /// </summary>
       [DataMember(Name="department")]
       public string Department
@@ -4304,7 +3948,7 @@ namespace webapi.entities
       }
       /// <summary>
       /// <para>Description: Type additional information to describe the contact, such as an excerpt from the company's website.</para>
-      /// <para>Display Name: Personal Notes</para>
+      /// <para>Display Name: Description</para>
       /// </summary>
       [DataMember(Name="description")]
       public string Description
@@ -4728,202 +4372,6 @@ namespace webapi.entities
          set
          {
             base.SetAttributeValue<string>("home2", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Unique Key</para>
-      /// <para>Display Name: Business Key</para>
-      /// </summary>
-      [DataMember(Name="ic_businesskey")]
-      public string ic_BusinessKey
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_businesskey");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_businesskey", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select a City.</para>
-      /// <para>Display Name: City</para>
-      /// </summary>
-      [DataMember(Name="ic_cityid")]
-      [NavigationPropertyTargets("ic_city")]
-      public NavigationProperty ic_CityID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_cityid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_cityid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Unique identifier for Legal Name associated with Contact.</para>
-      /// <para>Display Name: Company</para>
-      /// </summary>
-      [DataMember(Name="ic_companyid")]
-      [NavigationPropertyTargets("account")]
-      public NavigationProperty ic_CompanyID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_companyid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_companyid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select a Country.</para>
-      /// <para>Display Name: Country</para>
-      /// </summary>
-      [DataMember(Name="ic_countryid")]
-      [NavigationPropertyTargets("ic_country")]
-      public NavigationProperty ic_CountryID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_countryid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_countryid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select the language of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
-      /// <para>Display Name: Language</para>
-      /// </summary>
-      [DataMember(Name="ic_language")]
-      public ic_language? ic_Language
-      {
-         get
-         {
-            return base.GetAttributeValue<ic_language?>("ic_language");
-         }
-         set
-         {
-            base.SetAttributeValue<ic_language?>("ic_language", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select the salutation of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
-      /// <para>Display Name: Salutation</para>
-      /// </summary>
-      [DataMember(Name="ic_salutation")]
-      public ic_salutation? ic_Salutation
-      {
-         get
-         {
-            return base.GetAttributeValue<ic_salutation?>("ic_salutation");
-         }
-         set
-         {
-            base.SetAttributeValue<ic_salutation?>("ic_salutation", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Select a State/Province.</para>
-      /// <para>Display Name: State/Province</para>
-      /// </summary>
-      [DataMember(Name="ic_stateprovinceid")]
-      [NavigationPropertyTargets("ic_stateprovince")]
-      public NavigationProperty ic_StateProvinceID
-      {
-         get
-         {
-            return base.GetNavigationAttribute("ic_stateprovinceid");
-         }
-         set
-         {
-            base.SetNavigationAttribute("ic_stateprovinceid", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter address line 1.</para>
-      /// <para>Display Name: Street 1</para>
-      /// </summary>
-      [DataMember(Name="ic_street1")]
-      public string ic_Street1
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street1");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street1", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter address line 2.</para>
-      /// <para>Display Name: Street 2</para>
-      /// </summary>
-      [DataMember(Name="ic_street2")]
-      public string ic_Street2
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street2");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street2", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter address line 3.</para>
-      /// <para>Display Name: Street 3</para>
-      /// </summary>
-      [DataMember(Name="ic_street3")]
-      public string ic_Street3
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street3");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street3", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter address line 4.</para>
-      /// <para>Display Name: Street 4</para>
-      /// </summary>
-      [DataMember(Name="ic_street4")]
-      public string ic_Street4
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_street4");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_street4", value);
-         }
-      }
-      /// <summary>
-      /// <para>Description: Enter a ZIP/Postal Code.</para>
-      /// <para>Display Name: ZIP/Postal Code</para>
-      /// </summary>
-      [DataMember(Name="ic_zippostalcode")]
-      public string ic_ZIPPostalCode
-      {
-         get
-         {
-            return base.GetAttributeValue<string>("ic_zippostalcode");
-         }
-         set
-         {
-            base.SetAttributeValue<string>("ic_zippostalcode", value);
          }
       }
       /// <summary>
@@ -5389,8 +4837,8 @@ namespace webapi.entities
          }
       }
       /// <summary>
-      /// <para>Description: Select the parent legal name or parent contact for the contact to provide a quick link to additional details, such as financial information, activities, and opportunities.</para>
-      /// <para>Display Name: Legal Name</para>
+      /// <para>Description: Select the parent account or parent contact for the contact to provide a quick link to additional details, such as financial information, activities, and opportunities.</para>
+      /// <para>Display Name: Company Name</para>
       /// </summary>
       [DataMember(Name="parentcustomerid")]
       [NavigationPropertyTargets("account", "contact")]
@@ -6855,8 +6303,7 @@ namespace webapi.entities
    /// </summary>
    public enum contact_customertypecode
    {
-      Prospect = 1,
-      Customer = 948060000,
+      DefaultValue = 1,
    }
    /// <summary>
    /// <para>Description: Select the contact's highest level of education for use in segmentation and analysis.</para>
@@ -6902,57 +6349,6 @@ namespace webapi.entities
    public enum contact_haschildrencode
    {
       DefaultValue = 1,
-   }
-   /// <summary>
-   /// <para>Description: Select the language of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
-   /// <para>Display Name: Language</para>
-   /// </summary>
-   public enum ic_language
-   {
-      French = 948060000,
-      English = 948060001,
-   }
-   /// <summary>
-   /// <para>Description: Select the salutation of the contact to make sure the contact is addressed correctly in sales calls, email messages, and marketing campaigns.</para>
-   /// <para>Display Name: Salutation</para>
-   /// </summary>
-   public enum ic_salutation
-   {
-      Mr = 948060000,
-      Mrs = 948060001,
-      Ms = 948060002,
-   }
-   /// <summary>
-   /// <para>Description: Shows the synchronization status.</para>
-   /// <para>Display Name: Synchronization Status</para>
-   /// </summary>
-   public enum ic_synchronizationstatus
-   {
-      New = 948060000,
-      Waiting = 948060001,
-      Pending = 948060002,
-      Rejected = 948060003,
-      Synchronized = 948060004,
-   }
-   /// <summary>
-   /// <para>Description: Select the geographical distribution of the Legal Name.</para>
-   /// <para>Display Name: Legal Name Classification</para>
-   /// </summary>
-   public enum ic_tenantclassification
-   {
-      Local = 948060000,
-      Major = 948060003,
-      National = 948060002,
-      Regional = 948060001,
-      SpecialtyLeasing = 948060004,
-   }
-   /// <summary>
-   /// <para>Description: Select the category that best describes the relationship between the contact and your organization.</para>
-   /// <para>Display Name: zzz_Type</para>
-   /// </summary>
-   public enum ic_tenanttype
-   {
-      LegalName = 948060000,
    }
    /// <summary>
    /// <para>Description: Select the account's primary industry for use in marketing segmentation and demographic analysis.</para>
@@ -7111,6 +6507,7 @@ namespace webapi.entities
    /// </summary>
    public enum contact_preferredcontactmethodcode
    {
+      Any = 1,
       Email = 2,
       Phone = 3,
       Fax = 4,

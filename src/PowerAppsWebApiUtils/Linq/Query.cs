@@ -8,11 +8,11 @@ namespace PowerAppsWebApiUtils.Linq
 {
     public class Query<T> : IOrderedQueryable<T>
     {
-         private readonly QueryProvider _provider;
+         private readonly IQueryProvider _provider;
 
         private readonly Expression _expression;
 
-        public Query(QueryProvider provider) 
+        public Query(IQueryProvider provider) 
         {
             if (provider == null) 
                 throw new ArgumentNullException(nameof(provider));
@@ -54,7 +54,5 @@ namespace PowerAppsWebApiUtils.Linq
         IEnumerator IEnumerable.GetEnumerator()
             => ((IEnumerable)Provider.Execute(_expression)).GetEnumerator();
 
-        // public override string ToString() 
-        //     => Provider.GetQueryText(_expression);
     }
 }

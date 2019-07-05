@@ -75,35 +75,35 @@ namespace PowerAppsWebApiUtils.Tests
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
             {
-                // var account = new Account 
-                // {
-                //     Name = Guid.NewGuid().ToString(),
-                //     AccountCategoryCode = account_accountcategorycode.Standard,
-                //     AccountClassificationCode = account_accountclassificationcode.DefaultValue,
-                //     AccountRatingCode = account_accountratingcode.DefaultValue,
-                //     AccountNumber = "11111111",
-                //     Address1_AddressTypeCode = account_address1_addresstypecode.Primary,
-                //     Address1_City = "Montreal",
-                //     Address1_Country = "Canada",
-                //     Address1_PostalCode = "H1H 1H1",
-                //     Address1_StateOrProvince = "QC",
-                //     DoNotEMail = true,
-                //     DoNotPhone = false,
-                //     CreditLimit = 500000.99m,
-                //     EMailAddress1 = string.Empty,
-                //     Telephone1 = "Telephone1",
-                //     Fax = "Fax",
-                //     WebSiteURL = "WebSiteURL",
-                //     LastOnHoldTime = new DateTime(2019, 1, 1, 0, 0, 0)
-                // };  
+                var account = new Account 
+                {
+                    Name = Guid.NewGuid().ToString(),
+                    AccountCategoryCode = account_accountcategorycode.Standard,
+                    AccountClassificationCode = account_accountclassificationcode.DefaultValue,
+                    AccountRatingCode = account_accountratingcode.DefaultValue,
+                    AccountNumber = "11111111",
+                    Address1_AddressTypeCode = account_address1_addresstypecode.Primary,
+                    Address1_City = "Montreal",
+                    Address1_Country = "Canada",
+                    Address1_PostalCode = "H1H 1H1",
+                    Address1_StateOrProvince = "QC",
+                    DoNotEMail = true,
+                    DoNotPhone = false,
+                    CreditLimit = 500000.99m,
+                    EMailAddress1 = string.Empty,
+                    Telephone1 = "Telephone1",
+                    Fax = "Fax",
+                    WebSiteURL = "WebSiteURL",
+                    LastOnHoldTime = new DateTime(2019, 1, 1, 0, 0, 0)
+                };  
 
-                // var accountid = await repo.Create(account);
+                var accountid = await repo.Create(account);
 
-                //Assert.IsNotNull(accountid);
-
-                var account = 
+                Assert.IsNotNull(accountid);
+                //var 
+                account = 
                     await repo.GetById(
-                        Guid.Parse("72e4bfa0-836a-e911-a98a-000d3af49373"), 
+                        accountid, //Guid.Parse("72e4bfa0-836a-e911-a98a-000d3af49373"), 
                         new Expression<Func<Account, object>>[]
                         {
                             p => p.Id, 
