@@ -59,6 +59,9 @@ namespace PowerAppsWebApiUtils.Linq
             return base.Visit(exp);
         }
 
+        protected override Expression VisitMemberInit(MemberInitExpression exp)
+            => throw new NotSupportedException();
+            
         private Expression Evaluate(Expression e) 
         {
             if (e.NodeType == ExpressionType.Constant) 

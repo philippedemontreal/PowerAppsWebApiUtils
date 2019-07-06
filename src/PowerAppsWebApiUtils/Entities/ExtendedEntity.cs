@@ -59,35 +59,35 @@ namespace PowerAppsWebApiUtils.Entities
             if (!Attributes.ContainsKey(key) || Attributes[key] == null)
                 return default(T);
                         
-            var typeT = typeof(T);
+            var typeOfKey = typeof(T);
             var value = Attributes[key];
 
-            if (typeT == typeof(string))
-                return (T)((object)Attributes[key]);
+            if (value.GetType() == typeOfKey || (typeOfKey.IsGenericType &&  typeOfKey.GenericTypeArguments[0] == value.GetType()))
+                return (T)value;
 
-            if (typeT == typeof(Guid) || typeT == typeof(Guid?))
-                return (T)(Attributes[key]);
+            if (typeOfKey == typeof(string))
+                return (T)((object)Convert.ToString(value));
 
-            if (typeT == typeof(int)|| typeT == typeof(int?))
-                return (T)((object)Convert.ToInt32(Attributes[key]));
+            if (typeOfKey == typeof(int)|| typeOfKey == typeof(int?))
+                return (T)((object)Convert.ToInt32(value));
 
-            if (typeT == typeof(long)|| typeT == typeof(long?))
-                return (T)((object)Convert.ToInt64(Attributes[key]));
+            if (typeOfKey == typeof(long)|| typeOfKey == typeof(long?))
+                return (T)((object)Convert.ToInt64(value));
 
-            if (typeT == typeof(bool)|| typeT == typeof(bool?))
-                return (T)((object)Convert.ToBoolean(Attributes[key]));
+            if (typeOfKey == typeof(bool)|| typeOfKey == typeof(bool?))
+                return (T)((object)Convert.ToBoolean(value));
 
-            if (typeT == typeof(decimal)|| typeT == typeof(decimal?))
-                return (T)((object)Convert.ToDecimal(Attributes[key]));
+            if (typeOfKey == typeof(decimal)|| typeOfKey == typeof(decimal?))
+                return (T)((object)Convert.ToDecimal(value));
 
-            if (typeT == typeof(double)|| typeT == typeof(double?))
-                return (T)((object)Convert.ToDouble(Attributes[key]));
+            if (typeOfKey == typeof(double)|| typeOfKey == typeof(double?))
+                return (T)((object)Convert.ToDouble(value));
 
-            if (typeT == typeof(DateTime)|| typeT == typeof(DateTime?))
-                return (T)((object)Convert.ToDateTime(Attributes[key]));
+            if (typeOfKey == typeof(DateTime)|| typeOfKey == typeof(DateTime?))
+                return (T)((object)Convert.ToDateTime(value));
 
-            if (typeT.BaseType == typeof(ValueType) && typeT.GenericTypeArguments.Length == 1)
-                return (T)(Enum.ToObject(typeT.GenericTypeArguments[0], Attributes[key]));
+            if (typeOfKey.BaseType != null && typeOfKey.BaseType == typeof(ValueType) && typeOfKey.GenericTypeArguments.Length == 1)
+                return (T)(Enum.ToObject(typeOfKey.GenericTypeArguments[0], value));
 
             return  default(T);
         } 

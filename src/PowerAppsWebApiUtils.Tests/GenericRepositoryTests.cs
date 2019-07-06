@@ -22,7 +22,7 @@ namespace PowerAppsWebApiUtils.Tests
             var tokenProvider = new AuthenticationMessageHandler(config);
 
             var repo = new GenericRepository<Account>(tokenProvider);
-            var entityId = Guid.Parse("BB7F2EEC-A38C-E911-A985-000D3AF49637");
+            var entityId = Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af");
             var account = await repo.GetById(entityId, //null
             new Expression<Func<Account, object>>[]
             {
@@ -46,7 +46,7 @@ namespace PowerAppsWebApiUtils.Tests
             Assert.AreEqual(entityId, account.Id);
             Assert.AreEqual<account_statecode?>(account_statecode.Active, account.StateCode);            
             Assert.AreEqual<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
-            Assert.IsNull(account.LastOnHoldTime);
+            Assert.IsNotNull(account.LastOnHoldTime);
             Assert.IsNotNull(account.ModifiedOn);
             Assert.IsNotNull(account.CreatedOn);
 
@@ -136,7 +136,7 @@ namespace PowerAppsWebApiUtils.Tests
                     {
                         City = "Montreal",
                         AddressTypeCode = customeraddress_addresstypecode.BillTo,
-                        ParentId = new Account(Guid.Parse("72e4bfa0-836a-e911-a98a-000d3af49373")).ToNavigationProperty(),
+                        ParentId = new Account(Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af")).ToNavigationProperty(),
                     };
 
                  await repo.Update(address);
