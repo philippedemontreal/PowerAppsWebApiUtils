@@ -14,6 +14,12 @@ namespace PowerAppsWebApiUtils.Linq
         ///<chref="https://blogs.msdn.microsoft.com/mattwar/2007/08/01/linq-building-an-iqueryable-provider-part-iii/"/>
         public static Expression PartialEval(Expression expression, Func<Expression, bool> fnCanBeEvaluated) 
         {
+            if (expression is MethodCallExpression && ((MethodCallExpression)expression).Method.Name == "FirstOrDefault")
+            {
+                var subexpression = ((MethodCallExpression)expression).Arguments[0];
+                return new SubtreeEvaluator(new Nominator(fnCanBeEvaluated).Nominate(subexpression)).Eval(expression);
+            }
+            
             return new SubtreeEvaluator(new Nominator(fnCanBeEvaluated).Nominate(expression)).Eval(expression);
         }
     

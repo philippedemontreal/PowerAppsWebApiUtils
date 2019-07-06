@@ -53,12 +53,27 @@ namespace PowerAppsWebApiUtils.Linq
                         return m;
 
                     case "Select":
-                        var projection = new ColumnProjector().ProjectColumns(m.Arguments[1], _row);
-                        _sbSelectClause.Append($"$select={projection.Columns}");
+                        var p1 = new ColumnProjector().ProjectColumns(m.Arguments[1], _row);
+                        _sbSelectClause.Append($"$select={p1.Columns}");
                         Visit(m.Arguments[0]);
-                        _projection = projection;
+                        _projection = p1;
 
                         return m;
+                    case "FirstOrDefault":
+                        _sbSelectClause.Append($"$top=1");
+                        var select = m.Arguments.Where(p => p.NodeType == ExpressionType.Call && ((MethodCallExpression)p).Method.Name == "Select").FirstOrDefault();
+                        if (select != null)
+                        {
+                            var p2 = new ColumnProjector().ProjectColumns(select, _row);
+                            
+                            if (p2.Columns.Length > 0)
+                                _sbSelectClause.Append($"&$select={p2.Columns}");
+                            _projection = p2;
+                        }
+
+                        Visit(m.Arguments[0]);
+                        return m;
+
                 }
             }
 

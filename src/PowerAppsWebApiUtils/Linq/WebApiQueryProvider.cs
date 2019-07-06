@@ -28,9 +28,56 @@ namespace PowerAppsWebApiUtils.Linq
             
         public override T Execute<T>(Expression expression)
         {
-            var webapi = new GenericRepository<T>(_authenticationMessageHandler);
-            var command = Translate(expression);
-            return webapi.Retrieve(command).GetAwaiter().GetResult();
+            var methodCallExpression = expression as MethodCallExpression;
+            if (methodCallExpression != null && methodCallExpression.Method.Name == "FirstOrDefault")
+            {
+                methodCallExpression = methodCallExpression.Arguments[0] as MethodCallExpression;
+            }
+            
+            Type elementType = null;
+            if (methodCallExpression != null && methodCallExpression.Arguments.Count > 0)
+                elementType = TypeSystem.GetElementType(methodCallExpression.Arguments[0].Type);
+            else    
+                elementType = TypeSystem.GetElementType(expression.Type);
+
+            var webapi = Activator.CreateInstance(
+                typeof(GenericRepository<>).MakeGenericType(elementType),            
+                BindingFlags.Instance | BindingFlags.Public,
+                null,
+                new object[] { _authenticationMessageHandler },
+                null);
+                
+            var genericRepositoryType = webapi.GetType();    
+            var command = Translate(methodCallExpression ?? expression);
+
+            try
+            {
+                var methodCall = genericRepositoryType.GetMethod("RetrieveMultiple").Invoke(webapi, new object[]{ command } );
+                var result = ((IEnumerable<object>)methodCall.GetType().GetProperty("Result").GetGetMethod().Invoke(methodCall, null)).FirstOrDefault();
+
+                if (methodCallExpression == null)
+                    return (T)result;
+                
+                if (methodCallExpression.Method.Name == "Select")
+                {
+                    var operand = (methodCallExpression.Arguments[1] as UnaryExpression).Operand as LambdaExpression;
+                    if (operand?.ReturnType != elementType)
+                    {
+                        if (operand.ReturnType.GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).FirstOrDefault() != null &&
+                            operand.ReturnType.FullName.Contains("AnonymousType"))
+                        {
+                            var fn = operand.Compile();
+                            result = fn.DynamicInvoke(result);
+                        }
+                    }
+                }
+
+                return (T)result;               
+            }
+            finally
+            {
+                genericRepositoryType.GetMethod("Dispose").Invoke(webapi, null);                
+            }
         }
 
         public override string GetQueryText(Expression expression)
