@@ -38,11 +38,11 @@ namespace PowerAppsWebApiUtils.Linq
     /// </summary>
     internal class SubtreeEvaluator: ExpressionVisitor
     {
-        HashSet<Expression> candidates;
+        HashSet<Expression> _candidates;
 
         internal SubtreeEvaluator(HashSet<Expression> candidates) 
         {
-            this.candidates = candidates;
+            _candidates = candidates;
         }
 
         internal Expression Eval(Expression exp) 
@@ -53,14 +53,14 @@ namespace PowerAppsWebApiUtils.Linq
             if (exp == null) 
                 return null;
 
-            if (candidates.Contains(exp)) 
+            if (_candidates.Contains(exp)) 
                 return Evaluate(exp);
 
             return base.Visit(exp);
         }
 
         protected override Expression VisitMemberInit(MemberInitExpression exp)
-            => throw new NotSupportedException();
+            => base.VisitMemberInit(exp);
             
         private Expression Evaluate(Expression e) 
         {
@@ -79,20 +79,30 @@ namespace PowerAppsWebApiUtils.Linq
     /// </summary>
     internal class Nominator : ExpressionVisitor 
     {
-        Func<Expression, bool> fnCanBeEvaluated;
-        HashSet<Expression> candidates;
+        private Func<Expression, bool> _fnCanBeEvaluated;
+        private HashSet<Expression> _candidates;
+        private Type _returnType;
         bool cannotBeEvaluated;
  
         internal Nominator(Func<Expression, bool> fnCanBeEvaluated) 
         {
-            this.fnCanBeEvaluated = fnCanBeEvaluated;
+            _fnCanBeEvaluated = fnCanBeEvaluated;
         }
  
         internal HashSet<Expression> Nominate(Expression expression) 
         {
-            this.candidates = new HashSet<Expression>();
-            this.Visit(expression);
-            return this.candidates;
+            var methodCallExpression = expression as MethodCallExpression;
+            if (methodCallExpression != null && methodCallExpression.Arguments.Count > 0)
+                _returnType = TypeSystem.GetElementType(methodCallExpression.Arguments[0].Type);
+            else    
+                _returnType = TypeSystem.GetElementType(expression.Type);
+
+
+            _candidates = new HashSet<Expression>();
+
+            Visit(expression);
+
+            return _candidates;
         }
  
         public override Expression Visit(Expression expression) 
@@ -100,20 +110,23 @@ namespace PowerAppsWebApiUtils.Linq
             if (expression != null) 
             {
                 bool saveCannotBeEvaluated = this.cannotBeEvaluated;
-                this.cannotBeEvaluated = false;
+                cannotBeEvaluated = false;
+                
                 base.Visit(expression);
-                if (!this.cannotBeEvaluated) 
+                
+                if (!cannotBeEvaluated) 
                 {
-                    if (this.fnCanBeEvaluated(expression)) 
+                    if (_fnCanBeEvaluated(expression))  
                     {
-                        this.candidates.Add(expression);
+                        if ((expression.NodeType != ExpressionType.New || expression.Type != _returnType))
+                            _candidates.Add(expression);
                     }
                     else 
                     {
-                        this.cannotBeEvaluated = true;
+                        cannotBeEvaluated = true;
                     }
                 }
-                this.cannotBeEvaluated |= saveCannotBeEvaluated;
+                cannotBeEvaluated |= saveCannotBeEvaluated;
             }
             return expression;
         }

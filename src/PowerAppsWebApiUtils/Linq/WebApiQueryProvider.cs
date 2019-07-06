@@ -59,8 +59,11 @@ namespace PowerAppsWebApiUtils.Linq
             {
                 var methodCall = genericRepositoryType.GetMethod("RetrieveMultiple").Invoke(webapi, new object[]{ command } );
                 var result = methodCall.GetType().GetProperty("Result").GetGetMethod().Invoke(methodCall, null);
+
+                if (methodCallExpression == null)
+                    return result;
                 
-                if (methodCallExpression?.Method?.Name == "Select")
+                if (methodCallExpression.Method.Name == "Select")
                 {
                     var operand = (methodCallExpression.Arguments[1] as UnaryExpression).Operand as LambdaExpression;
                     if (operand?.ReturnType != elementType)

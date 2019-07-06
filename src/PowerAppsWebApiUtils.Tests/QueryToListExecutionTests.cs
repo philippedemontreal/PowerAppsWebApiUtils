@@ -83,7 +83,6 @@ namespace PowerAppsWebApiUtils.Tests
             }
 
             [TestMethod]
-            [ExpectedException(typeof(NotSupportedException))]
             public void ToListTest5()
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
