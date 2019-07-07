@@ -19,17 +19,162 @@ using PowerAppsWebApiUtils.Linq;
 
 namespace PowerAppsWebApiUtils.Repositories
 {
-    public class GenericRepository<T>: IDisposable  
+    public class GenericRepository: IDisposable
     {
         private readonly AuthenticationMessageHandler _tokenProvider;
         
         public const string ApplicationJson = "application/json";
 
-
-        public readonly string OdataEntityName;
         public GenericRepository(AuthenticationMessageHandler tokenProvider)
         {
             _tokenProvider = tokenProvider;
+        }        
+
+        public async Task<Guid> Create(crmbaseentity entity)
+        {
+            using (var client = GetHttpClient())
+            {
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var request = new HttpRequestMessage(HttpMethod.Post, entity.EntityCollectionName)
+                {
+                    Content =
+                        new StringContent(
+                            json,
+                            Encoding.Default,
+                            ApplicationJson)
+                };
+
+                var response = await client.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    using (var reader = response.Content)
+                    {
+                        var content = await reader.ReadAsStringAsync();
+                        var exData = JObject.Parse(content);
+                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
+                    }
+                }
+
+                var entityId = response.Headers.GetValues("OData-EntityId").FirstOrDefault();
+                return Guid.Parse(entityId.Split('(', ')')[1]);            
+            }            
+        }
+
+        public async Task Update(crmbaseentity entity)
+        {
+            using (var client = GetHttpClient())
+            {
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id))
+                {
+                    Content =
+                        new StringContent(
+                            json,
+                            Encoding.Default,
+                            ApplicationJson)
+                };
+
+                var response = await client.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    using (var reader = response.Content)
+                    {
+                        var content = await reader.ReadAsStringAsync();
+                        var exData = JObject.Parse(content);
+                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
+                    }
+                }
+
+            }
+        }
+
+        public async Task Delete(crmbaseentity entity)
+        {
+            using (var client = GetHttpClient())
+            {
+                var request = new HttpRequestMessage(new HttpMethod("DELETE"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id));
+                var response = await client.SendAsync(request);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    using (var reader = response.Content)
+                    {
+                        var content = await reader.ReadAsStringAsync();
+                        var exData = JObject.Parse(content);
+                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
+                    }
+                }
+            }
+        }
+
+
+        protected HttpClient GetHttpClient()
+        {  
+            var httpClient = new HttpClient(_tokenProvider, false)
+            {
+                BaseAddress = new Uri(_tokenProvider.ApiUrl),
+                Timeout = new TimeSpan(0, 2, 0),
+                DefaultRequestHeaders = 
+                {
+                    {"OData-MaxVersion", "4.0"},
+                    {"OData-Version", "4.0"},
+                    {"Prefer", "odata.include-annotations=\"*\"" }
+                }
+            };
+
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJson));
+
+            return httpClient;
+        }        
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects).
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        // ~GenericRepository()
+        // {
+        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+        //   Dispose(false);
+        // }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            // GC.SuppressFinalize(this);
+        }
+        #endregion
+
+
+    }
+    public class GenericRepository<T>: GenericRepository  
+    {
+
+
+        public readonly string OdataEntityName;
+        public GenericRepository(AuthenticationMessageHandler tokenProvider)
+        : base(tokenProvider)
+        {
             OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
         }
 
@@ -125,6 +270,7 @@ namespace PowerAppsWebApiUtils.Repositories
                 var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
                 return await DeserializeContent<T>(response);
             }
+            
         }
 
         public async Task<T> Retrieve(string selector)
@@ -143,66 +289,6 @@ namespace PowerAppsWebApiUtils.Repositories
                 var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
                 var result = await DeserializeContent<RootObject<T>>(response);
                 return result.Value ?? new List<T>();
-            }
-        }
-
-        public async Task<Guid> Create(T entity)
-        {
-            using (var client = GetHttpClient())
-            {
-                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
-                var request = new HttpRequestMessage(HttpMethod.Post, OdataEntityName)
-                {
-                    Content =
-                        new StringContent(
-                            json,
-                            Encoding.Default,
-                            ApplicationJson)
-                };
-
-                var response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    using (var reader = response.Content)
-                    {
-                        var content = await reader.ReadAsStringAsync();
-                        var exData = JObject.Parse(content);
-                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                    }
-                }
-
-                var entityId = response.Headers.GetValues("OData-EntityId").FirstOrDefault();
-                return Guid.Parse(entityId.Split('(', ')')[1]);            
-            }            
-        }
-
-        public async Task Update(T entity)
-        {
-            using (var client = GetHttpClient())
-            {
-                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
-                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", OdataEntityName, (entity as crmbaseentity).Id))
-                {
-                    Content =
-                        new StringContent(
-                            json,
-                            Encoding.Default,
-                            ApplicationJson)
-                };
-
-                var response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    using (var reader = response.Content)
-                    {
-                        var content = await reader.ReadAsStringAsync();
-                        var exData = JObject.Parse(content);
-                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                    }
-                }
-
             }
         }
         private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
@@ -269,60 +355,6 @@ namespace PowerAppsWebApiUtils.Repositories
             }
             return result;
         }
-
-        private HttpClient GetHttpClient()
-        {  
-            var httpClient = new HttpClient(_tokenProvider, false)
-            {
-                BaseAddress = new Uri(_tokenProvider.ApiUrl),
-                Timeout = new TimeSpan(0, 2, 0),
-                DefaultRequestHeaders = 
-                {
-                    {"OData-MaxVersion", "4.0"},
-                    {"OData-Version", "4.0"},
-                    {"Prefer", "odata.include-annotations=\"*\"" }
-                }
-            };
-
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJson));
-
-            return httpClient;
-        }
-        #region IDisposable Support
-        private bool disposedValue = false; // To detect redundant calls
-
-        protected virtual void Dispose(bool disposing)
-        {
-            if (!disposedValue)
-            {
-                if (disposing)
-                {
-                    // TODO: dispose managed state (managed objects).
-                }
-
-                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
-                // TODO: set large fields to null.
-
-                disposedValue = true;
-            }
-        }
-
-        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        // ~GenericRepository()
-        // {
-        //   // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-        //   Dispose(false);
-        // }
-
-        // This code added to correctly implement the disposable pattern.
-        public void Dispose()
-        {
-            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
-            // TODO: uncomment the following line if the finalizer is overridden above.
-            // GC.SuppressFinalize(this);
-        }
-        #endregion
 
     }
 

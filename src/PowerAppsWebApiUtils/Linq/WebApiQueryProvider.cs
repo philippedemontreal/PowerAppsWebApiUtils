@@ -5,6 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
 
@@ -35,8 +36,21 @@ namespace PowerAppsWebApiUtils.Linq
             }
             
             Type elementType = null;
-            if (methodCallExpression != null && methodCallExpression.Arguments.Count > 0)
-                elementType = TypeSystem.GetElementType(methodCallExpression.Arguments[0].Type);
+            if (methodCallExpression != null)
+            {
+                var mc = methodCallExpression;
+                do 
+                {
+                    if (mc == null || methodCallExpression.Arguments.Count == 0)
+                        break;
+                    elementType = TypeSystem.GetElementType(mc.Arguments[0].Type);
+                    if (typeof(crmbaseentity).IsAssignableFrom(elementType))
+                        break;
+                    mc = mc.Arguments[0] as MethodCallExpression;
+
+                } while (true);
+                //methodCallExpression = mc;
+            }
             else    
                 elementType = TypeSystem.GetElementType(expression.Type);
 
@@ -63,12 +77,8 @@ namespace PowerAppsWebApiUtils.Linq
                     var operand = (methodCallExpression.Arguments[1] as UnaryExpression).Operand as LambdaExpression;
                     if (operand?.ReturnType != elementType)
                     {
-                        if (operand.ReturnType.GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).FirstOrDefault() != null &&
-                            operand.ReturnType.FullName.Contains("AnonymousType"))
-                        {
-                            var fn = operand.Compile();
-                            result = fn.DynamicInvoke(result);
-                        }
+                        var fn = operand.Compile();
+                        result = fn.DynamicInvoke(result);
                     }
                 }
 
@@ -115,17 +125,13 @@ namespace PowerAppsWebApiUtils.Linq
                     var operand = (methodCallExpression.Arguments[1] as UnaryExpression).Operand as LambdaExpression;
                     if (operand?.ReturnType != elementType)
                     {
-                        if (operand.ReturnType.GetCustomAttributes(typeof(CompilerGeneratedAttribute), false).FirstOrDefault() != null &&
-                            operand.ReturnType.FullName.Contains("AnonymousType"))
+                        var resultWithLambdaInvoked = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(operand.ReturnType));
+                        var fn = operand.Compile();
+                        foreach (var item in (IEnumerable)result)
                         {
-                            var resultWithLambdaInvoked = (IList)Activator.CreateInstance(typeof(List<>).MakeGenericType(operand.ReturnType));
-                            var fn = operand.Compile();
-                            foreach (var item in (IEnumerable)result)
-                            {
-                                resultWithLambdaInvoked.Add(fn.DynamicInvoke(item));
-                            }
-                            result = resultWithLambdaInvoked;
+                            resultWithLambdaInvoked.Add(fn.DynamicInvoke(item));
                         }
+                        result = resultWithLambdaInvoked;
                     }
                 }
 

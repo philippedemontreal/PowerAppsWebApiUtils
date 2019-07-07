@@ -103,9 +103,16 @@ namespace PowerAppsWebApiUtils.Linq
                         _sbFilterClause.Append($"'{c.Value}'");
                         break;
                     case TypeCode.Object:
-                        if (c.Value.GetType() != typeof(NavigationProperty))
+                        if (c.Value.GetType() == typeof(Guid))
+                        {
+                            _sbFilterClause.Append($"'{c.Value}'");
+                        }
+                        else if (c.Value.GetType() == typeof(NavigationProperty))
+                        {
+                            _sbFilterClause.Append($"'{((NavigationProperty)c.Value).Id}'");
+                        }
+                        else
                             throw new NotSupportedException(string.Format("The constant for '{0}' is not supported", c.Value));
-                        _sbFilterClause.Append($"'{((NavigationProperty)c.Value).Id}'");
                         break;
                     default:
                         _sbFilterClause.Append(c.Value);
@@ -168,6 +175,14 @@ namespace PowerAppsWebApiUtils.Linq
             if (m.Expression != null && m.Expression.NodeType == ExpressionType.Parameter) 
             {
                 var attr = m.Member.GetCustomAttribute<DataMemberAttribute>();
+                // Case of Id (overriden attribute), propertyInfo is from the base class crmbaseentity so we do not get the DataMemberAttribute. 
+                //Lets find the DataMemberAttribute in the overriding class
+                if (attr == null) 
+                {
+                    var property = m.Expression.Type.GetProperty(m.Member.Name);
+                    attr = property.GetCustomAttribute<DataMemberAttribute>();
+                }
+
                 if (attr == null)
                     throw new NotSupportedException(string.Format("The member '{0}' has no attribute of type DataMember which is not supported", m.Member.Name));
 

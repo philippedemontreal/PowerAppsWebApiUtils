@@ -37,7 +37,7 @@ namespace PowerAppsWebApiUtils.Tests
                     var account = 
                         context
                         .CreateQuery<Account>()
-                        .Where(p => p.Address1_City == "Montreal")
+                        .Where(p => p.Address1_City == "Montréal")
                         .FirstOrDefault();
                     Assert.IsNotNull(account);
                 }
@@ -60,7 +60,7 @@ namespace PowerAppsWebApiUtils.Tests
                     
                     Assert.IsNotNull(account);
                     Assert.IsNotNull(account.Id);
-                    Assert.AreEqual("Montreal", account.Address1_City);
+                    Assert.AreEqual("Montréal", account.Address1_City);
                     Assert.AreEqual(account_statecode.Active, account.StateCode);
                 }
             }
@@ -76,14 +76,14 @@ namespace PowerAppsWebApiUtils.Tests
                     var account = 
                         context
                         .CreateQuery<Account>()
-                        .Where(p => p.Address1_City == "Montreal")
+                        .Where(p => p.Address1_City == "Montréal")
                         .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
                         .FirstOrDefault();
 
                     Assert.IsNotNull(account);
                     Assert.IsNotNull(account.Id);
                     Assert.IsNotNull(account.Address1_Composite);
-                    Assert.IsTrue(account.Address1_Composite.Contains("Montreal"));
+                    Assert.IsTrue(account.Address1_Composite.Contains("Montréal"));
                 }                    
             }
 
@@ -98,14 +98,14 @@ namespace PowerAppsWebApiUtils.Tests
                     var query = context.CreateQuery<Account>();
                     var account = 
                         query                        
-                        .Where(p => p.Address1_City == "Montreal")
-                        .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
+                        .Where(p => p.Address1_City == "Montréal")
+                        .Select(p => new { Id = p.Id, AddressComposite = p.Address1_Composite, City = p.Address1_City, Fax = p.Address1_Fax })
                         .FirstOrDefault();
 
                     Assert.IsNotNull(account);
                     Assert.IsNotNull(account.Id);
-                    Assert.IsNotNull(account.Address1_Composite);
-                    Assert.IsTrue(account.Address1_Composite.Contains("Montreal"));
+                    Assert.IsNotNull(account.AddressComposite);
+                    Assert.IsTrue(account.City.Contains("Montréal"));
                 }                    
             }
 
@@ -120,15 +120,15 @@ namespace PowerAppsWebApiUtils.Tests
                     var account = 
                         context
                         .CreateQuery<Account>()
-                        .Where(p => p.Address1_City == "Montreal")
+                        .Where(p => p.Address1_City == "Montréal")
                         .Select(p => new Account { Id = p.Id, Address1_City = p.Address1_City })
                         .FirstOrDefault();
 
                     Assert.IsNotNull(account);
                     Assert.IsNotNull(account.Id);
-                    Assert.AreEqual("Montreal", account.Address1_City);
+                    Assert.AreEqual("Montréal", account.Address1_City);
                     Assert.IsNotNull(account.Address1_Composite);
-                    Assert.IsTrue(account.Address1_Composite.Contains("Montreal"));
+                    Assert.IsTrue(account.Address1_Composite.Contains("Montréal"));
                 }
             }
         }

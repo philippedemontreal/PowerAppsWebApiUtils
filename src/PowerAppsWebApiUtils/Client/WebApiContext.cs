@@ -1,7 +1,10 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Linq;
+using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
 
 namespace PowerAppsWebApiUtils.Client
@@ -9,14 +12,25 @@ namespace PowerAppsWebApiUtils.Client
     public class WebApiContext : IDisposable
     {
         private readonly WebApiQueryProvider _queryProvider;
+        private readonly GenericRepository _genericRepository;
+        
         public WebApiContext(AuthenticationMessageHandler authenticationMessageHandler)
         {
-            _queryProvider = new WebApiQueryProvider(authenticationMessageHandler);            
+            _queryProvider = new WebApiQueryProvider(authenticationMessageHandler);  
+            _genericRepository = new GenericRepository(authenticationMessageHandler);          
         }
 
         public IQueryable<T> CreateQuery<T>()
             => new Query<T>(_queryProvider);
+
+        public Task<Guid> Create(crmbaseentity entity)
+            => _genericRepository.Create(entity);
+
+        public Task Update(crmbaseentity entity)
+            => _genericRepository.Update(entity);
         
+        public Task Delete(crmbaseentity entity)
+            => _genericRepository.Delete(entity);        
         public string GetQueryText(Expression expression)
             => _queryProvider.GetQueryText(expression);
         
@@ -29,6 +43,7 @@ namespace PowerAppsWebApiUtils.Client
             {
                 if (disposing)
                 {
+                    _genericRepository.Dispose();
                     // TODO: dispose managed state (managed objects).
                 }
 
