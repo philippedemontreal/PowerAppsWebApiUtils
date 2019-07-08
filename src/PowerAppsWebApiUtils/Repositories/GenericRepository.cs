@@ -109,7 +109,6 @@ namespace PowerAppsWebApiUtils.Repositories
             }
         }
 
-
         protected HttpClient GetHttpClient()
         {  
             var httpClient = new HttpClient(_tokenProvider, false)
@@ -164,8 +163,6 @@ namespace PowerAppsWebApiUtils.Repositories
             // GC.SuppressFinalize(this);
         }
         #endregion
-
-
     }
     public class GenericRepository<T>: GenericRepository  
     {
@@ -178,7 +175,7 @@ namespace PowerAppsWebApiUtils.Repositories
             OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
         }
 
-          public async Task<List<T>> GetList()
+        public async Task<List<T>> GetList()
         {
             List<T> result = null;
 
@@ -246,23 +243,6 @@ namespace PowerAppsWebApiUtils.Repositories
                 }
             }
 
-
-
-            // foreach (MemberBinding binding in ((MemberInitExpression)expr.Body).Bindings)
-            // {
-            //     if (fields.Length > 0)
-            //         fields.Append(",");
-
-            //     var field = typeT.GetProperty(binding.Member.Name);
-            //     if (field == null)
-            //         throw new InvalidOperationException();
-                
-            //     var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
-            //     if (dm == null)
-            //         throw new InvalidOperationException();                
-
-            //     fields.Append(dm.Name);
-            // }
 
             var getQuery = exprs == null ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
             using (var client = GetHttpClient())

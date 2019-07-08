@@ -18,9 +18,9 @@ namespace PowerAppsWebApiUtils.Security
                 get { return _configuration.ApiUrl; }
             }
 
-        private readonly PowerAppsConfiguration _configuration;
+        private readonly PowerAppsAuthenticationSettings _configuration;
 
-        public AuthenticationMessageHandler(PowerAppsConfiguration configuration) : 
+        public AuthenticationMessageHandler(PowerAppsAuthenticationSettings configuration) : 
             base(new HttpClientHandler())
         {
             _configuration = configuration;

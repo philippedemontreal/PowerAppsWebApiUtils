@@ -5,14 +5,14 @@ using System.Threading.Tasks;
 
 namespace PowerAppsWebApiUtils.Repositories
 {
-    public class EntityMetadataRepository : GenericRepository<EntityMetadata>
+    internal class EntityMetadataRepository : GenericRepository<EntityMetadata>
     {
-        public EntityMetadataRepository(AuthenticationMessageHandler tokenProvider) : 
+        internal EntityMetadataRepository(AuthenticationMessageHandler tokenProvider) : 
         base(tokenProvider)
         {
         }
                     
-        public async Task<EntityMetadata> GetByLogicalName(string logicalName)
+        internal async Task<EntityMetadata> GetByLogicalName(string logicalName)
         {
             return await Retrieve($"{OdataEntityName}(LogicalName='{logicalName}')?$expand=Attributes,Keys,ManyToManyRelationships,ManyToOneRelationships,OneToManyRelationships");     
         }

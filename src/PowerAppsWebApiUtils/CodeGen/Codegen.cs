@@ -8,6 +8,7 @@ using System.IO;
 using PowerAppsWebApiUtils.Entities;
 using System.Text.RegularExpressions;
 using Microsoft.Dynamics.CRM;
+using PowerAppsWebApiUtils.Configuration;
 
 namespace PowerAppsWebApiUtils.Codegen
 {
@@ -207,13 +208,13 @@ namespace PowerAppsWebApiUtils.Codegen
 
 
 
-        public void Execute(string namespacename, List<EntityMetadata> entitMetadatas, Dictionary<string, PicklistAttributeMetadata> picklists)
+        public void Execute(CodeGenSettings config, List<EntityMetadata> entitMetadatas, Dictionary<string, PicklistAttributeMetadata> picklists)
         {
 
             var provider = new Microsoft.CSharp.CSharpCodeProvider();                             
             var codeGeneratorOptions = new CodeGeneratorOptions();
 
-            var ns = CreateNameSpace(namespacename);
+            var ns = CreateNameSpace(config.Namespace);
             foreach (var entitMetadata in entitMetadatas.OrderBy(p => p.SchemaName))
             {
                 MakeEntity(entitMetadata, ns, picklists);
@@ -242,7 +243,7 @@ namespace PowerAppsWebApiUtils.Codegen
             provider.GenerateCodeFromCompileUnit(cu, stringWriter, codeGeneratorOptions);
 
             var result = code.ToString().Replace("PowerAppsWebApiUtils.Entities.", "");
-            System.IO.File.WriteAllText(@"C:\Users\Philippe\Documents\Projects\Ts\DynCEWebApiEarlyBound\src\PowerAppsWebApiUtils.Tests\account.cs", result);
+            System.IO.File.WriteAllText(config.FileName, result);
 
         }
 

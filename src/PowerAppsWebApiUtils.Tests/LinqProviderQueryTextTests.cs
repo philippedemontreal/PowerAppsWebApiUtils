@@ -1,8 +1,8 @@
 using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Client;
-using webapi.entities;
 
 namespace PowerAppsWebApiUtils.Tests
 {

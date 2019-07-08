@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace webapi.entities
+namespace PawauBeta01.Data
 {
    using System;
    using System.Runtime.Serialization;
@@ -6514,20 +6514,6 @@ namespace webapi.entities
       Mail = 5,
    }
    /// <summary>
-   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
-   /// <para>Display Name: Shipping Method</para>
-   /// </summary>
-   public enum customeraddress_shippingmethodcode
-   {
-      Airborne = 1,
-      DHL = 2,
-      FedEx = 3,
-      UPS = 4,
-      PostalMail = 5,
-      FullLoad = 6,
-      WillCall = 7,
-   }
-   /// <summary>
    /// <para>Description: Select a shipping method for deliveries sent to the account's address to designate the preferred carrier or other delivery option.</para>
    /// <para>Display Name: Shipping Method</para>
    /// </summary>
@@ -6542,6 +6528,20 @@ namespace webapi.entities
    public enum contact_shippingmethodcode
    {
       DefaultValue = 1,
+   }
+   /// <summary>
+   /// <para>Description: Select a shipping method for deliveries sent to this address.</para>
+   /// <para>Display Name: Shipping Method</para>
+   /// </summary>
+   public enum customeraddress_shippingmethodcode
+   {
+      Airborne = 1,
+      DHL = 2,
+      FedEx = 3,
+      UPS = 4,
+      PostalMail = 5,
+      FullLoad = 6,
+      WillCall = 7,
    }
    /// <summary>
    /// <para>Description: Shows whether the account is active or inactive. Inactive accounts are read-only and can't be edited unless they are reactivated.</para>
