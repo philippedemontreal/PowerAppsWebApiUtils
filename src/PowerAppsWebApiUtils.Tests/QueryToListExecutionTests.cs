@@ -18,7 +18,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var accounts = context.CreateQuery<Account>().ToList();
@@ -31,7 +31,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var accounts = 
@@ -48,7 +48,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var accounts = 
@@ -67,7 +67,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var query = context.CreateQuery<Account>();
@@ -87,7 +87,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var accounts = 

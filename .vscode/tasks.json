@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/PowerAppsWebApiUtils/PowerAppsWebApiUtils.csproj"
+                "${workspaceFolder}/src/PowerAppsWebApiUtils.Console/PowerAppsWebApiUtils.Console.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -17,7 +17,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/src/PowerAppsWebApiUtils/PowerAppsWebApiUtils.csproj"
+                "${workspaceFolder}/src/PowerAppsWebApiUtils.Console/PowerAppsWebApiUtils.Console.csproj"
             ],
             "problemMatcher": "$tsc"
         },
@@ -28,7 +28,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/src/PowerAppsWebApiUtils/PowerAppsWebApiUtils.csproj"
+                "${workspaceFolder}/src/PowerAppsWebApiUtils.Console/PowerAppsWebApiUtils.Console.csproj"
             ],
             "problemMatcher": "$tsc",
             "group": {

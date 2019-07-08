@@ -19,7 +19,7 @@ namespace PowerAppsWebApiUtils.Tests
         public async Task GetOneTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
-            var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings);
+            var tokenProvider = new AuthenticationMessageHandler(config);
 
             var repo = new GenericRepository<Account>(tokenProvider);
             var entityId = Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af");
@@ -58,7 +58,7 @@ namespace PowerAppsWebApiUtils.Tests
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
-            using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
             {
                 var accounts = await repo.GetList();
@@ -72,7 +72,7 @@ namespace PowerAppsWebApiUtils.Tests
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
-            using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
             {
                 var account = new Account 
@@ -128,7 +128,7 @@ namespace PowerAppsWebApiUtils.Tests
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
-            using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<CustomerAddress>(tokenProvider))
             {
                 var address = 
@@ -148,7 +148,7 @@ namespace PowerAppsWebApiUtils.Tests
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
-            using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+            using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = new GenericRepository<Account>(tokenProvider))
             {
                 var addresses = await repo.GetList();

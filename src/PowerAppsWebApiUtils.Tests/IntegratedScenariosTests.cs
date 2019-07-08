@@ -19,7 +19,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var accounts = context.CreateQuery<Account>().Where(p => p.Address1_City == "Montreal").Select(p => p.Id).ToList();
@@ -41,7 +41,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var account =  new Account{ Name  = $"John Doe Ltd {Guid.NewGuid()}" };

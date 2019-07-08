@@ -18,7 +18,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var account = context.CreateQuery<Account>().FirstOrDefault();
@@ -31,7 +31,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var account = 
@@ -48,7 +48,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var account = 
@@ -70,7 +70,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var account = 
@@ -92,7 +92,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var query = context.CreateQuery<Account>();
@@ -114,7 +114,7 @@ namespace PowerAppsWebApiUtils.Tests
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
-                using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
                 using(var context = new WebApiContext(tokenProvider))
                 {
                     var account = 
