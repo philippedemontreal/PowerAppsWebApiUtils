@@ -37,7 +37,7 @@ namespace PowerAppsWebApiUtils.Tests
 
 
             [TestMethod]
-            public async Task ScenariosTest12()
+            public async Task ScenariosTest2()
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
 
@@ -52,8 +52,7 @@ namespace PowerAppsWebApiUtils.Tests
 
                     var parentaccount = context.CreateQuery<Contact>().Where(p => p.Id == contact.Id).Select(p => p.ParentCustomerId).FirstOrDefault();
 
-                    await context.Delete(contact);
-                    await context.Delete(account);
+                   Task.WaitAll(context.Delete(contact), context.Delete(account));
 
                     Assert.AreEqual(account.Name, parentaccount.Name);
                     account = context.CreateQuery<Account>().Where(p => p.Id == account.Id).FirstOrDefault();
@@ -61,6 +60,18 @@ namespace PowerAppsWebApiUtils.Tests
                     contact = context.CreateQuery<Contact>().Where(p => p.Id == contact.Id).FirstOrDefault();
                     Assert.IsNull(contact);
 
+                }
+            }
+
+            [TestMethod]
+            public void ScenariosTest3()
+            {
+                var config = PowerAppsConfigurationReader.GetConfiguration();
+
+                using (var tokenProvider = new AuthenticationMessageHandler(config))
+                using(var context = new WebApiContext(tokenProvider))
+                {
+                    var accounts = context.CreateQuery<Account>().Select(p => p.Id).ToList();
                 }
             }
 

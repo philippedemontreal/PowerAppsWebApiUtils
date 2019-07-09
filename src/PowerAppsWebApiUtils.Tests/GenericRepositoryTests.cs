@@ -23,22 +23,24 @@ namespace PowerAppsWebApiUtils.Tests
 
             var repo = new GenericRepository<Account>(tokenProvider);
             var entityId = Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af");
-            var account = await repo.GetById(entityId, //null
-            new Expression<Func<Account, object>>[]
-            {
-                p => p.Id, 
-                p => p.StateCode, 
-                p => p.StatusCode,
-                p => p.LastOnHoldTime,
-                p => p.ModifiedOn,
-                p => p.CreatedOn,
-                p => p.CreatedBy,
-                p => p.OwnerId,
-                p => p.ParentAccountId,
-                p => p.Telephone1,
-                p => p.Name,
-            }
-            );
+            var account = 
+                await repo.GetById(entityId, 
+                p =>
+                new 
+                {
+                    Id = p.Id, 
+                    StateCode = p.StateCode, 
+                    StatusCode = p.StatusCode,
+                    LastOnHoldTime = p.LastOnHoldTime,
+                    ModifiedOn = p.ModifiedOn,
+                    CreatedOn = p.CreatedOn,
+                    CreatedBy = p.CreatedBy,
+                    OwnerId = p.OwnerId,
+                    ParentAccountId = p.ParentAccountId,
+                    Telephone1 = p.Telephone1,
+                    Name = p.Name,
+                });
+
             Assert.IsNotNull(account);
             Assert.IsNotNull(account.Name);
             Assert.IsNotNull(account.CreatedBy);
@@ -103,19 +105,20 @@ namespace PowerAppsWebApiUtils.Tests
                 //var 
                 account = 
                     await repo.GetById(
-                        accountid, //Guid.Parse("72e4bfa0-836a-e911-a98a-000d3af49373"), 
-                        new Expression<Func<Account, object>>[]
+                        accountid,
+                        p =>
+                        new 
                         {
-                            p => p.Id, 
-                            p => p.StateCode, 
-                            p => p.StatusCode,
-                            p => p.LastOnHoldTime,
-                            p => p.ModifiedOn,
-                            p => p.CreatedOn,
-                            p => p.CreatedBy,
-                            p => p.OwnerId,
-                            p => p.ParentAccountId,
-                            p => p.Telephone1,
+                            Id = p.Id, 
+                            StateCode = p.StateCode, 
+                            StatusCode = p.StatusCode,
+                            LastOnHoldTime = p.LastOnHoldTime,
+                            ModifiedOn = p.ModifiedOn,
+                            CreatedOn = p.CreatedOn,
+                            CreatedBy = p.CreatedBy,
+                            OwnerId = p.OwnerId,
+                            ParentAccountId = p.ParentAccountId,
+                            Telephone1 = p.Telephone1,
                         });
 
                 var owner = account.OwnerId;

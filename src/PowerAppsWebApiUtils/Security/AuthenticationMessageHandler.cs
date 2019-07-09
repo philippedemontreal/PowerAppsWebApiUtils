@@ -5,8 +5,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 using System.Collections.Concurrent;
-using System.Security.Claims;
-using System.Security.Principal;
 
 namespace PowerAppsWebApiUtils.Security
 {
@@ -60,6 +58,9 @@ namespace PowerAppsWebApiUtils.Security
                         });
 
             }
+
+            if (authenticationResult == null || string.IsNullOrEmpty(authenticationResult.AccessToken))
+                throw new AuthenticationException();
 
             request.Headers.Authorization = new AuthenticationHeaderValue(authenticationResult.AccessTokenType, authenticationResult.AccessToken);
 

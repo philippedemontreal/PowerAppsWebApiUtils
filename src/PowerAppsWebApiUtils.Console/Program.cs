@@ -17,14 +17,15 @@ namespace PowerappsWebApiUtils
         {
             var config =  PowerAppsConfigurationReader.GetConfiguration();
             
-            using (var tokenProvider = new AuthenticationMessageHandler(config.AuthenticationSettings))
-            using (var entityDefinitionRepository = new EntityMetadataRepository(tokenProvider))
-            using (var picklistRepository = new OptionSetMetadataRepository(tokenProvider))
+            using (var authenticationHandler = new AuthenticationMessageHandler(config.AuthenticationSettings))
+            using (var entityDefinitionRepository = new EntityMetadataRepository(authenticationHandler))
+            using (var picklistRepository = new OptionSetMetadataRepository(authenticationHandler))
             {
-                var pickLists = new Dictionary<string, Task<PicklistAttributeMetadata>>();
-                var tasks = config.Entities.Select(p => entityDefinitionRepository.GetByLogicalName(p)).ToArray();
+                var tasks = config.Entities.GroupBy(p => p).Select(p => p.First()).Select(p => entityDefinitionRepository.GetByLogicalName(p)).ToArray();
                 Task.WaitAll(tasks);
                 var entities = tasks.Select(p => p.Result).ToList();
+                
+                var pickLists = new Dictionary<string, Task<PicklistAttributeMetadata>>();
                 entities.ForEach(
                     p => 
                     {

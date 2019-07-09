@@ -12,7 +12,7 @@ using PowerAppsWebApiUtils.Configuration;
 
 namespace PowerAppsWebApiUtils.Codegen
 {
-    public class CodeGen
+    internal sealed class CodeGen
     {
         private readonly Dictionary<AttributeTypeCode, Type> _refMap;
 
@@ -39,7 +39,7 @@ namespace PowerAppsWebApiUtils.Codegen
                 }); 
 
         }
-        private CodeNamespace CreateNameSpace (string nameSpaceName)
+        private CodeNamespace CreateNameSpace(string nameSpaceName)
         {
             var returnValue = new CodeNamespace(nameSpaceName);
             returnValue.Imports.Add(new CodeNamespaceImport ("System"));
@@ -49,7 +49,7 @@ namespace PowerAppsWebApiUtils.Codegen
         }
 
 
-        public CodeTypeDeclaration CreateType (EntityMetadata entitMetadata)
+        public CodeTypeDeclaration CreateType(EntityMetadata entitMetadata)
         {
             var result =  new CodeTypeDeclaration(entitMetadata.SchemaName)
             {
@@ -202,11 +202,8 @@ namespace PowerAppsWebApiUtils.Codegen
             result.Comments.Add(new CodeCommentStatement($"<para>Display Name: {attributeMetadata.DisplayName?.UserLocalizedLabel?.Label}</para>", true));
             result.Comments.Add(new CodeCommentStatement("</summary>", true));
 
-
             return result;
         }      
-
-
 
         public void Execute(CodeGenSettings config, List<EntityMetadata> entitMetadatas, Dictionary<string, PicklistAttributeMetadata> picklists)
         {
@@ -229,7 +226,6 @@ namespace PowerAppsWebApiUtils.Codegen
                 MakOptionSet(picklist, ns);
             }
 
-
             var cu = new CodeCompileUnit();
             cu.Namespaces.Add(ns);
         
@@ -237,14 +233,12 @@ namespace PowerAppsWebApiUtils.Codegen
             codeGeneratorOptions.BracingStyle = "C";
             codeGeneratorOptions.IndentString = "   "; 
             
-
             var code = new StringBuilder();
             var stringWriter = new StringWriter(code);
             provider.GenerateCodeFromCompileUnit(cu, stringWriter, codeGeneratorOptions);
 
             var result = code.ToString().Replace("PowerAppsWebApiUtils.Entities.", "");
             System.IO.File.WriteAllText(config.FileName, result);
-
         }
 
         private string Sanitize(string enumName)
@@ -286,7 +280,6 @@ namespace PowerAppsWebApiUtils.Codegen
             var primary = entitMetadata.Attributes.Where(p => p.IsPrimaryId).FirstOrDefault();
             var prop = CreateProperty(primary, typeof(Guid));
             genType.Members.Add(prop);
-
 
             foreach (var attribute in entitMetadata.Attributes.OrderBy(p => p.SchemaName.ToLowerInvariant()))
             {            

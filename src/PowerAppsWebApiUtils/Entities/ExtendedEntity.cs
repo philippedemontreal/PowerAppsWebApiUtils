@@ -8,21 +8,19 @@ namespace PowerAppsWebApiUtils.Entities
     public class ExtendedEntity: crmbaseentity 
     {
         public ExtendedEntity()
-        {           
-            Attributes = new Dictionary<string, object>();
-        }
+            => Attributes = new Dictionary<string, object>();
 
         public ExtendedEntity(Guid id)
         : this()
-        {
-            Id = id;
-        }
+            =>  Id = id;
     
         [IgnoreDataMember]
         public Dictionary<string, object> Attributes { get; set; }
    
         public NavigationProperty ToNavigationProperty()
-            => new NavigationProperty { Id = Id, EntityLogicalName = EntityLogicalName, LogicalCollectionName = EntityCollectionName };
+            => string.IsNullOrEmpty(EntityCollectionName) ? 
+                throw new InvalidOperationException("EntityCollectionName is not set") : 
+                new NavigationProperty { Id = Id, EntityLogicalName = EntityLogicalName, LogicalCollectionName = EntityCollectionName };
 
         protected NavigationProperty GetNavigationAttribute(string key) 
         {
@@ -42,10 +40,10 @@ namespace PowerAppsWebApiUtils.Entities
                 };
         }
 
-        protected void SetNavigationAttribute(string key, NavigationProperty value) 
+        protected void SetNavigationAttribute(string key, NavigationProperty result) 
         {
                         
-            var navigationProperty = value as NavigationProperty;
+            var navigationProperty = result as NavigationProperty;
             
             SetAttributeValue<Guid?>($"{key}", navigationProperty?.Id);
             SetAttributeValue<string>($"{key}@OData.Community.Display.V1.FormattedValue", navigationProperty?.Name);
@@ -60,34 +58,34 @@ namespace PowerAppsWebApiUtils.Entities
                 return default(T);
                         
             var typeOfKey = typeof(T);
-            var value = Attributes[key];
+            var result = Attributes[key];
 
-            if (value.GetType() == typeOfKey || (typeOfKey.IsGenericType &&  typeOfKey.GenericTypeArguments[0] == value.GetType()))
-                return (T)value;
+            if (result.GetType() == typeOfKey || (typeOfKey.IsGenericType &&  typeOfKey.GenericTypeArguments[0] == result.GetType()))
+                return (T)result;
 
             if (typeOfKey == typeof(string))
-                return (T)((object)Convert.ToString(value));
+                return (T)((object)Convert.ToString(result));
 
             if (typeOfKey == typeof(int)|| typeOfKey == typeof(int?))
-                return (T)((object)Convert.ToInt32(value));
+                return (T)((object)Convert.ToInt32(result));
 
             if (typeOfKey == typeof(long)|| typeOfKey == typeof(long?))
-                return (T)((object)Convert.ToInt64(value));
+                return (T)((object)Convert.ToInt64(result));
 
             if (typeOfKey == typeof(bool)|| typeOfKey == typeof(bool?))
-                return (T)((object)Convert.ToBoolean(value));
+                return (T)((object)Convert.ToBoolean(result));
 
             if (typeOfKey == typeof(decimal)|| typeOfKey == typeof(decimal?))
-                return (T)((object)Convert.ToDecimal(value));
+                return (T)((object)Convert.ToDecimal(result));
 
             if (typeOfKey == typeof(double)|| typeOfKey == typeof(double?))
-                return (T)((object)Convert.ToDouble(value));
+                return (T)((object)Convert.ToDouble(result));
 
             if (typeOfKey == typeof(DateTime)|| typeOfKey == typeof(DateTime?))
-                return (T)((object)Convert.ToDateTime(value));
+                return (T)((object)Convert.ToDateTime(result));
 
             if (typeOfKey.BaseType != null && typeOfKey.BaseType == typeof(ValueType) && typeOfKey.GenericTypeArguments.Length == 1)
-                return (T)(Enum.ToObject(typeOfKey.GenericTypeArguments[0], value));
+                return (T)(Enum.ToObject(typeOfKey.GenericTypeArguments[0], result));
 
             return  default(T);
         } 

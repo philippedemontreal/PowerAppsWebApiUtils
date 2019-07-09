@@ -34,31 +34,19 @@ namespace PowerAppsWebApiUtils.Repositories
         {
             using (var client = GetHttpClient())
             {
-                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
-                var request = new HttpRequestMessage(HttpMethod.Post, entity.EntityCollectionName)
-                {
-                    Content =
-                        new StringContent(
-                            json,
-                            Encoding.Default,
-                            ApplicationJson)
-                };
+                var json = JObject.FromObject(entity, new JsonSerializer { ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var request = 
+                    new HttpRequestMessage(HttpMethod.Post, entity.EntityCollectionName)
+                    {
+                        Content = new StringContent(json, Encoding.Default, ApplicationJson)
+                    };
 
                 var response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    using (var reader = response.Content)
-                    {
-                        var content = await reader.ReadAsStringAsync();
-                        var exData = JObject.Parse(content);
-                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                    }
-                }
+                await EnsureSuccessStatusCode(response);
 
                 var entityId = response.Headers.GetValues("OData-EntityId").FirstOrDefault();
-                return Guid.Parse(entityId.Split('(', ')')[1]);            
-            }            
+                return Guid.Parse(entityId.Split('(', ')')[1]);
+            }
         }
 
         public async Task Update(crmbaseentity entity)
@@ -66,27 +54,14 @@ namespace PowerAppsWebApiUtils.Repositories
             using (var client = GetHttpClient())
             {
                 var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
-                var request = new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id))
-                {
-                    Content =
-                        new StringContent(
-                            json,
-                            Encoding.Default,
-                            ApplicationJson)
-                };
+                var request = 
+                    new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id))
+                    {
+                        Content = new StringContent(json, Encoding.Default, ApplicationJson)
+                    };
 
                 var response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    using (var reader = response.Content)
-                    {
-                        var content = await reader.ReadAsStringAsync();
-                        var exData = JObject.Parse(content);
-                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                    }
-                }
-
+                await EnsureSuccessStatusCode(response);
             }
         }
 
@@ -96,16 +71,7 @@ namespace PowerAppsWebApiUtils.Repositories
             {
                 var request = new HttpRequestMessage(new HttpMethod("DELETE"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id));
                 var response = await client.SendAsync(request);
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    using (var reader = response.Content)
-                    {
-                        var content = await reader.ReadAsStringAsync();
-                        var exData = JObject.Parse(content);
-                        throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                    }
-                }
+                await EnsureSuccessStatusCode(response);
             }
         }
 
@@ -126,7 +92,20 @@ namespace PowerAppsWebApiUtils.Repositories
             httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJson));
 
             return httpClient;
-        }        
+        }       
+
+        protected static async Task EnsureSuccessStatusCode(HttpResponseMessage response)
+        {
+            if (!response.IsSuccessStatusCode)
+            {
+                using (var reader = response.Content)
+                {
+                    var content = await reader.ReadAsStringAsync();
+                    var exData = JObject.Parse(content);
+                    throw new PAWAUException(response.StatusCode, exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
+                }
+            }
+        } 
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
@@ -193,70 +172,87 @@ namespace PowerAppsWebApiUtils.Repositories
                             result.AddRange(rootValues.Value);
                     }
                     else
-                        throw new Exception("RootValues not set");
+                        throw new PAWAUException("RootValues not set");
             }
 
             return result;            
         }
 
-        public async Task<T> GetById(Guid entityId, Expression<Func<T, object>>[] exprs = null)
+        public async Task<T> GetById<TResult>(Guid entityId, Expression<Func<T, TResult>> expr)
         {
             var fields = new StringBuilder();
             var typeT = typeof(T);
 
-            if (exprs != null)
-            {
-                foreach (var expr in exprs)
-                {
-                    var propName = "";
-
-                    if (expr.Body is UnaryExpression)
-                    {
-                        var binding = (UnaryExpression)expr.Body;
-                        propName = ((MemberExpression)binding.Operand).Member.Name;
-                    }
-                    else if (expr.Body is MemberExpression)
-                    {
-                        propName = ((MemberExpression)expr.Body).Member.Name;
-                    }
-                    else 
-                    {
-                        throw new NotImplementedException();
-                    }
-
-
-                    var field = typeT.GetProperty(propName);
-                    if (field == null)
-                        throw new InvalidOperationException();
-                    
-                    var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
-                    if (dm == null)
-                        throw new InvalidOperationException();
-
-                    if (fields.Length > 0)
-                        fields.Append(",");
-
-                    if (field.PropertyType == typeof(NavigationProperty))
-                        fields.Append($"_{dm.Name}_value");
-                    else                    
-                        fields.Append(dm.Name);
-                }
-            }
-
-
-            var getQuery = exprs == null ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
+            var projection = new ColumnProjector().ProjectColumns(expr, Expression.Parameter(typeof(ProjectionRow), "row"));                
+            var getQuery = $"{OdataEntityName}({entityId})?$select={projection.Columns}";
             using (var client = GetHttpClient())
             {
                 var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
-                return await DeserializeContent<T>(response);
+                var result = await DeserializeContent<T>(response);
+                return result;
             }
             
         }
+
+        // public async Task<T> GetById(Guid entityId, Expression<Func<T, object>>[] exprs = null)
+        // {
+        //     var fields = new StringBuilder();
+        //     var typeT = typeof(T);
+
+        //     if (exprs != null)
+        //     {
+        //         foreach (var expr in exprs)
+        //         {
+        //             var propName = "";
+
+        //             if (expr.Body is UnaryExpression)
+        //             {
+        //                 var binding = (UnaryExpression)expr.Body;
+        //                 propName = ((MemberExpression)binding.Operand).Member.Name;
+        //             }
+        //             else if (expr.Body is MemberExpression)
+        //             {
+        //                 propName = ((MemberExpression)expr.Body).Member.Name;
+        //             }
+        //             else 
+        //             {
+        //                 throw new NotImplementedException();
+        //             }
+
+
+        //             var field = typeT.GetProperty(propName);
+        //             if (field == null)
+        //                 throw new InvalidOperationException();
+                    
+        //             var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
+        //             if (dm == null)
+        //                 throw new InvalidOperationException();
+
+        //             if (fields.Length > 0)
+        //                 fields.Append(",");
+
+        //             if (field.PropertyType == typeof(NavigationProperty))
+        //                 fields.Append($"_{dm.Name}_value");
+        //             else                    
+        //                 fields.Append(dm.Name);
+        //         }
+        //     }
+
+
+        //     var getQuery = exprs == null ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
+        //     using (var client = GetHttpClient())
+        //     {
+        //         var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
+        //         return await DeserializeContent<T>(response);
+        //     }
+            
+        // }
 
         public async Task<T> Retrieve(string selector)
         {                        
             using (var client = GetHttpClient())
             {
+                
                 var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
                 return await DeserializeContent<T>(response);
             }
@@ -266,26 +262,28 @@ namespace PowerAppsWebApiUtils.Repositories
         {                        
             using (var client = GetHttpClient())
             {
-                var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
-                var result = await DeserializeContent<RootObject<T>>(response);
-                return result.Value ?? new List<T>();
+                var result = new List<T>();
+                do
+                {
+                    var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
+                    var robject = await DeserializeContent<RootObject<T>>(response);
+                    result.AddRange(robject.Value);
+                    selector = robject.NextLink;
+                }  while (!string.IsNullOrEmpty(selector));
+
+                return result;
             }
         }
         private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
         {
             using (var reader = response.Content)
             {
+                if (response.StatusCode == HttpStatusCode.NotFound)
+                    return default(P);
+
+                await EnsureSuccessStatusCode(response);    
+
                 var content = await reader.ReadAsStringAsync();
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    if (response.StatusCode == HttpStatusCode.NotFound)
-                        return default(P);
-
-                    var exData = JObject.Parse(content);
-                    throw new Exception(exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                }
-
                 return JsonConvert.DeserializeObject<P>(content, new JsonSerializerSettings { ContractResolver = ExtendedEntityContractResolver.Instance });
             }
         }
@@ -335,7 +333,5 @@ namespace PowerAppsWebApiUtils.Repositories
             }
             return result;
         }
-
     }
-
 }
