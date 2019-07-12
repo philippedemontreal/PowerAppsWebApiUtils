@@ -10,7 +10,7 @@ namespace PowerAppsWebApiUtils.Json
 
     public class NavigationPropertyContractResolver: DefaultContractResolver
     {
-        public static readonly NavigationPropertyContractResolver Instance = new NavigationPropertyContractResolver();
+        //public static readonly NavigationPropertyContractResolver Instance = new NavigationPropertyContractResolver();
 
         protected override JsonProperty CreateProperty(MemberInfo member, MemberSerialization memberSerialization)
         {
@@ -20,11 +20,11 @@ namespace PowerAppsWebApiUtils.Json
             {                
                 property.ShouldSerialize =
                     instance =>
-                    {                    
+                    {                                                      
                         var attributes = (instance as ExtendedEntity).Attributes;
-                        if (!attributes.ContainsKey(property.PropertyName))
+                        if (!attributes.ContainsKey(property.PropertyName))          
                             return false;
-
+           
                         if (member.Name == "Id" && property.PropertyType == typeof(Guid))
                             return false;
 

@@ -19,7 +19,7 @@ namespace PowerAppsWebApiUtils.Security
         private readonly PowerAppsAuthenticationSettings _configuration;
 
         public AuthenticationMessageHandler(PowerAppsAuthenticationSettings configuration) : 
-            base(new HttpClientHandler())
+            base()
         {
             _configuration = configuration;
             _tokenCache = new ConcurrentDictionary<string, AuthenticationResult>();

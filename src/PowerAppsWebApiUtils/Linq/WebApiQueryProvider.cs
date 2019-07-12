@@ -3,22 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
-using System.Runtime.CompilerServices;
 using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Repositories;
-using PowerAppsWebApiUtils.Security;
+
 
 namespace PowerAppsWebApiUtils.Linq
 {
     public class WebApiQueryProvider: QueryProvider
     {
 
-        private readonly AuthenticationMessageHandler _authenticationMessageHandler;
+        private readonly IServiceProvider _serviceProvider;
    
-        public WebApiQueryProvider(AuthenticationMessageHandler authenticationMessageHandler)
+        public WebApiQueryProvider(IServiceProvider serviceProvider)
         {
-            _authenticationMessageHandler = authenticationMessageHandler;            
+            _serviceProvider = serviceProvider;     
         }
     
         private string Translate(Expression expression)
@@ -54,18 +52,14 @@ namespace PowerAppsWebApiUtils.Linq
             else    
                 elementType = TypeSystem.GetElementType(expression.Type);
 
-            var webapi = Activator.CreateInstance(
-                typeof(GenericRepository<>).MakeGenericType(elementType),            
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new object[] { _authenticationMessageHandler },
-                null);
+            var webapi = _serviceProvider.GetService(typeof(GenericRepository<>).MakeGenericType(elementType));
                 
             var genericRepositoryType = webapi.GetType();    
             var command = Translate(methodCallExpression ?? expression);
 
             try
             {
+                
                 var methodCall = genericRepositoryType.GetMethod("RetrieveMultiple").Invoke(webapi, new object[]{ command } );
                 var result = ((IEnumerable<object>)methodCall.GetType().GetProperty("Result").GetGetMethod().Invoke(methodCall, null)).FirstOrDefault();
 
@@ -102,12 +96,7 @@ namespace PowerAppsWebApiUtils.Linq
             else    
                 elementType = TypeSystem.GetElementType(expression.Type);
 
-            var webapi = Activator.CreateInstance(
-                typeof(GenericRepository<>).MakeGenericType(elementType),            
-                BindingFlags.Instance | BindingFlags.Public,
-                null,
-                new object[] { _authenticationMessageHandler },
-                null);
+            var webapi = _serviceProvider.GetService(typeof(GenericRepository<>).MakeGenericType(elementType));
 
             var genericRepositoryType = webapi.GetType();
             var command = Translate(expression);

@@ -14,7 +14,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void WhereTest1()
             {
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {                                   
                     var guid = Guid.NewGuid();
                     var query = 
@@ -29,7 +29,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void WhereTest2()
             {
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {                                   
                     var guid = Guid.NewGuid();
                     var query = 
@@ -45,7 +45,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void WhereTest3()
             {
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {                                   
                     var guid = Guid.NewGuid();
                     var query = 
@@ -61,7 +61,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void WhereTest4()
             {
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {                                   
                     var guid = Guid.NewGuid();
                     var query = 
@@ -78,7 +78,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void WhereTest5()
             {
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {                                   
                     var guid = Guid.NewGuid();
                     var query = 
@@ -95,7 +95,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void WhereTest6()
             {
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {                                   
                     var guid = Guid.NewGuid();
                     var query = 
@@ -112,7 +112,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void SelectTest1()
             {             
-                using (var context = new WebApiContext(null))
+                using (var context = new WebApiContext(null, null))
                 {
                     var guid = Guid.NewGuid();
                     var query = 

@@ -1,9 +1,11 @@
 using System;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Client;
 using PowerAppsWebApiUtils.Configuration;
+using PowerAppsWebApiUtils.Extensions;
 using PowerAppsWebApiUtils.Security;
 
 namespace PowerAppsWebApiUtils.Tests
@@ -13,13 +15,22 @@ namespace PowerAppsWebApiUtils.Tests
         [TestClass]
         public class QueryToFirstOrDefaultExecutionTests
         {
+            private static ServiceProvider serviceProvider;
+                        
+            [ClassInitialize]
+            public static void Init(TestContext testContext)
+            {
+                var config = PowerAppsConfigurationReader.GetConfiguration();
+                serviceProvider = 
+                    new ServiceCollection()
+                    .AddWebApiContext(config)
+                    .BuildServiceProvider();
+            } 
+
             [TestMethod]
             public void ToFirstAndDefaultTest1()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var account = context.CreateQuery<Account>().FirstOrDefault();
                     Assert.IsNotNull(account);
@@ -29,10 +40,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToFirstAndDefaultTest2()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var account = 
                         context
@@ -46,10 +54,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToFirstAndDefaultTest2bis()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var account = 
                         context
@@ -68,10 +73,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToFirstAndDefaultTest3()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var account = 
                         context
@@ -90,10 +92,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToFirstAndDefaultTest4()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+               var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var query = context.CreateQuery<Account>();
                     var account = 
@@ -112,10 +111,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToFirstAndDefaultTest5()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var account = 
                         context

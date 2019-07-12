@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Linq;
@@ -14,10 +15,10 @@ namespace PowerAppsWebApiUtils.Client
         private readonly WebApiQueryProvider _queryProvider;
         private readonly GenericRepository _genericRepository;
         
-        public WebApiContext(AuthenticationMessageHandler authenticationMessageHandler)
+        public WebApiContext(IHttpClientFactory httpClientFactory, IServiceProvider serviceProvider)
         {
-            _queryProvider = new WebApiQueryProvider(authenticationMessageHandler);  
-            _genericRepository = new GenericRepository(authenticationMessageHandler);          
+            _queryProvider = new WebApiQueryProvider(serviceProvider);  
+            _genericRepository = new GenericRepository(httpClientFactory);          
         }
 
         public IQueryable<T> CreateQuery<T>()

@@ -4,16 +4,13 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Runtime.Serialization;
 using System.Text;
 using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Entities;
-using PowerAppsWebApiUtils.Security;
 using PowerAppsWebApiUtils.Json;
 using PowerAppsWebApiUtils.Linq;
 
@@ -21,20 +18,21 @@ namespace PowerAppsWebApiUtils.Repositories
 {
     public class GenericRepository: IDisposable
     {
-        private readonly AuthenticationMessageHandler _tokenProvider;
+        protected readonly IHttpClientFactory _httpClientFactory;
         
         public const string ApplicationJson = "application/json";
+        protected const string clientName = "webapi";
 
-        public GenericRepository(AuthenticationMessageHandler tokenProvider)
-        {
-            _tokenProvider = tokenProvider;
-        }        
+         public GenericRepository()   
+         {}
+        public GenericRepository(IHttpClientFactory httpClientFactory)
+            => _httpClientFactory = httpClientFactory;              
 
         public async Task<Guid> Create(crmbaseentity entity)
         {
-            using (var client = GetHttpClient())
+           var client = _httpClientFactory.CreateClient(clientName);
             {
-                var json = JObject.FromObject(entity, new JsonSerializer { ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var json = JObject.FromObject(entity, new JsonSerializer { ContractResolver = new NavigationPropertyContractResolver() }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = 
                     new HttpRequestMessage(HttpMethod.Post, entity.EntityCollectionName)
                     {
@@ -42,7 +40,7 @@ namespace PowerAppsWebApiUtils.Repositories
                     };
 
                 var response = await client.SendAsync(request);
-                await EnsureSuccessStatusCode(response);
+                response.EnsureSuccessStatusCode();
 
                 var entityId = response.Headers.GetValues("OData-EntityId").FirstOrDefault();
                 return Guid.Parse(entityId.Split('(', ')')[1]);
@@ -51,61 +49,29 @@ namespace PowerAppsWebApiUtils.Repositories
 
         public async Task Update(crmbaseentity entity)
         {
-            using (var client = GetHttpClient())
+           var client = _httpClientFactory.CreateClient(clientName);
             {
-                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = NavigationPropertyContractResolver.Instance }).ToString(Newtonsoft.Json.Formatting.None);
+                var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = new NavigationPropertyContractResolver() }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = 
-                    new HttpRequestMessage(new HttpMethod("PATCH"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id))
+                    new HttpRequestMessage(HttpMethod.Patch, $"{entity.EntityCollectionName}({entity.Id})")
                     {
                         Content = new StringContent(json, Encoding.Default, ApplicationJson)
                     };
 
                 var response = await client.SendAsync(request);
-                await EnsureSuccessStatusCode(response);
+                response.EnsureSuccessStatusCode();
             }
         }
 
         public async Task Delete(crmbaseentity entity)
         {
-            using (var client = GetHttpClient())
+           var client = _httpClientFactory.CreateClient(clientName);
             {
-                var request = new HttpRequestMessage(new HttpMethod("DELETE"), string.Format("{0}({1})", entity.EntityCollectionName, entity.Id));
+                var request = new HttpRequestMessage(HttpMethod.Delete, $"{entity.EntityCollectionName}({entity.Id})");
                 var response = await client.SendAsync(request);
-                await EnsureSuccessStatusCode(response);
+                response.EnsureSuccessStatusCode();
             }
         }
-
-        protected HttpClient GetHttpClient()
-        {  
-            var httpClient = new HttpClient(_tokenProvider, false)
-            {
-                BaseAddress = new Uri(_tokenProvider.ApiUrl),
-                Timeout = new TimeSpan(0, 2, 0),
-                DefaultRequestHeaders = 
-                {
-                    {"OData-MaxVersion", "4.0"},
-                    {"OData-Version", "4.0"},
-                    {"Prefer", "odata.include-annotations=\"*\"" }
-                }
-            };
-
-            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(ApplicationJson));
-
-            return httpClient;
-        }       
-
-        protected static async Task EnsureSuccessStatusCode(HttpResponseMessage response)
-        {
-            if (!response.IsSuccessStatusCode)
-            {
-                using (var reader = response.Content)
-                {
-                    var content = await reader.ReadAsStringAsync();
-                    var exData = JObject.Parse(content);
-                    throw new PAWAUException(response.StatusCode, exData["error"]?["message"]?.ToString() ?? response.ReasonPhrase);
-                }
-            }
-        } 
 
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
@@ -146,134 +112,66 @@ namespace PowerAppsWebApiUtils.Repositories
     public class GenericRepository<T>: GenericRepository  
     {
 
+        ///Used with NSubstitute mocks 
+        public GenericRepository()
+        :base(null)
+        {}
 
         public readonly string OdataEntityName;
-        public GenericRepository(AuthenticationMessageHandler tokenProvider)
-        : base(tokenProvider)
+        public GenericRepository(IHttpClientFactory httpClientFactory)
+        : base(httpClientFactory)
         {
             OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
         }
 
         public async Task<List<T>> GetList()
-        {
-            List<T> result = null;
-
-           using (var client = GetHttpClient())
-            {
-                    var getQuery = $"{OdataEntityName}";
-                    var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
-                    var rootValues = await DeserializeContent<RootObject<T>>(response);
-                                        
-                    if (rootValues != null)
-                    {
-                        if (result == null)
-                            result = rootValues.Value;
-                        else
-                            result.AddRange(rootValues.Value);
-                    }
-                    else
-                        throw new PAWAUException("RootValues not set");
-            }
-
-            return result;            
-        }
+            => await RetrieveMultiple(OdataEntityName);
 
         public async Task<T> GetById<TResult>(Guid entityId, Expression<Func<T, TResult>> expr)
         {
-            var fields = new StringBuilder();
-            var typeT = typeof(T);
-
             var projection = new ColumnProjector().ProjectColumns(expr, Expression.Parameter(typeof(ProjectionRow), "row"));                
-            var getQuery = $"{OdataEntityName}({entityId})?$select={projection.Columns}";
-            using (var client = GetHttpClient())
-            {
-                var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
-                var result = await DeserializeContent<T>(response);
-                return result;
-            }
-            
+            var query = $"{OdataEntityName}({entityId})?$select={projection.Columns}";
+            return await Retrieve(query);          
         }
 
-        // public async Task<T> GetById(Guid entityId, Expression<Func<T, object>>[] exprs = null)
-        // {
-        //     var fields = new StringBuilder();
-        //     var typeT = typeof(T);
-
-        //     if (exprs != null)
-        //     {
-        //         foreach (var expr in exprs)
-        //         {
-        //             var propName = "";
-
-        //             if (expr.Body is UnaryExpression)
-        //             {
-        //                 var binding = (UnaryExpression)expr.Body;
-        //                 propName = ((MemberExpression)binding.Operand).Member.Name;
-        //             }
-        //             else if (expr.Body is MemberExpression)
-        //             {
-        //                 propName = ((MemberExpression)expr.Body).Member.Name;
-        //             }
-        //             else 
-        //             {
-        //                 throw new NotImplementedException();
-        //             }
-
-
-        //             var field = typeT.GetProperty(propName);
-        //             if (field == null)
-        //                 throw new InvalidOperationException();
-                    
-        //             var dm = field.GetCustomAttributes(typeof(DataMemberAttribute), false).FirstOrDefault() as DataMemberAttribute;
-        //             if (dm == null)
-        //                 throw new InvalidOperationException();
-
-        //             if (fields.Length > 0)
-        //                 fields.Append(",");
-
-        //             if (field.PropertyType == typeof(NavigationProperty))
-        //                 fields.Append($"_{dm.Name}_value");
-        //             else                    
-        //                 fields.Append(dm.Name);
-        //         }
-        //     }
-
-
-        //     var getQuery = exprs == null ? $"{OdataEntityName}({entityId})" : $"{OdataEntityName}({entityId})?$select={fields}";
-        //     using (var client = GetHttpClient())
-        //     {
-        //         var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
-        //         return await DeserializeContent<T>(response);
-        //     }
-            
-        // }
-
-        public async Task<T> Retrieve(string selector)
+        public virtual async Task<T> Retrieve(string query)
         {                        
-            using (var client = GetHttpClient())
-            {
-                
-                var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
-                return await DeserializeContent<T>(response);
-            }
+            var client = _httpClientFactory.CreateClient(clientName);
+            return await SendGetRequest<T>(client, query, new []{ KeyValuePair.Create("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
         }
                 
-        public async Task<List<T>> RetrieveMultiple(string selector)
+        public virtual async Task<List<T>> RetrieveMultiple(string query)
         {                        
-            using (var client = GetHttpClient())
+            var client = _httpClientFactory.CreateClient(clientName);
+            
+            var result = new List<T>();
+            do
             {
-                var result = new List<T>();
-                do
+                var rootObject = await SendGetRequest<RootObject<T>>(client, query, new []{ KeyValuePair.Create("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
+                result.AddRange(rootObject.Value);
+                query = rootObject.NextLink;
+            }  while (!string.IsNullOrEmpty(query));
+
+            return result;            
+        }
+        
+        private async Task<P> SendGetRequest<P>(HttpClient client, string uri, Dictionary<string, string> additionalHeaders = null)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, uri);
+            if (additionalHeaders != null)
+            {
+                foreach (var item in additionalHeaders)
                 {
-                    var response = await client.GetAsync(selector, HttpCompletionOption.ResponseHeadersRead);
-                    var robject = await DeserializeContent<RootObject<T>>(response);
-                    result.AddRange(robject.Value);
-                    selector = robject.NextLink;
-                }  while (!string.IsNullOrEmpty(selector));
-
-                return result;
+                    request.Headers.Add(item.Key, item.Value);
+                }
             }
+
+            var response = await client.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+            response.EnsureSuccessStatusCode();
+
+            return await DeserializeContent<P>(response);
         }
+
         private async Task<P> DeserializeContent<P>(HttpResponseMessage response)
         {
             using (var reader = response.Content)
@@ -281,18 +179,17 @@ namespace PowerAppsWebApiUtils.Repositories
                 if (response.StatusCode == HttpStatusCode.NotFound)
                     return default(P);
 
-                await EnsureSuccessStatusCode(response);    
+                response.EnsureSuccessStatusCode();
 
                 var content = await reader.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<P>(content, new JsonSerializerSettings { ContractResolver = ExtendedEntityContractResolver.Instance });
             }
         }
 
-
         private async Task<List<T>> GetListUsingFetchXml(string fetchXmlQuery)
         {
             List<T> result = null;
-            using (var client = GetHttpClient())
+           var client = _httpClientFactory.CreateClient(clientName);
             {
                 var hasMore = false;
                 string page = null;
@@ -311,8 +208,7 @@ namespace PowerAppsWebApiUtils.Repositories
                     }
 
                     var getQuery = $"{OdataEntityName}?fetchXml={WebUtility.UrlEncode(query)}";
-                    var response = await client.GetAsync(getQuery, HttpCompletionOption.ResponseHeadersRead);
-                    var rootValues = await DeserializeContent<FetchXmlRootObject<T>>(response);
+                    var rootValues = await SendGetRequest<FetchXmlRootObject<T>>(client, query, new []{ KeyValuePair.Create("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
 
                     if (rootValues != null)
                     {

@@ -1,11 +1,13 @@
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Configuration;
+using PowerAppsWebApiUtils.Extensions;
 using PowerAppsWebApiUtils.Json;
 using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
@@ -19,9 +21,12 @@ namespace PowerAppsWebApiUtils.Tests
         public async Task GetOneTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
-            var tokenProvider = new AuthenticationMessageHandler(config);
+            var serviceProvider = 
+                new ServiceCollection()
+                .AddWebApiContext(config)
+                .BuildServiceProvider();
 
-            var repo = new GenericRepository<Account>(tokenProvider);
+            var repo = serviceProvider.GetService<GenericRepository<Account>>();
             var entityId = Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af");
             var account = 
                 await repo.GetById(entityId, 

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Microsoft.Dynamics.CRM;
+using Newtonsoft.Json;
 
 namespace PowerAppsWebApiUtils.Entities
 {
@@ -15,6 +16,7 @@ namespace PowerAppsWebApiUtils.Entities
             =>  Id = id;
     
         [IgnoreDataMember]
+        [JsonIgnore]
         public Dictionary<string, object> Attributes { get; set; }
    
         public NavigationProperty ToNavigationProperty()

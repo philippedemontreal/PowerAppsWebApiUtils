@@ -1,11 +1,13 @@
 using System;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Configuration;
+using PowerAppsWebApiUtils.Extensions;
 using PowerAppsWebApiUtils.Json;
 using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
@@ -15,13 +17,23 @@ namespace PowerAppsWebApiUtils.Tests
     [TestClass]
     public class GenericRepositoryTests
     {
+        private static ServiceProvider serviceProvider;
+        
+        [ClassInitialize]
+        public static void Init(TestContext testContext)
+        {
+            var config = PowerAppsConfigurationReader.GetConfiguration();
+            serviceProvider = 
+                new ServiceCollection()
+                .AddWebApiContext(config)
+                .BuildServiceProvider();
+        }
+
         [TestMethod]
         public async Task GetOneTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
-            var tokenProvider = new AuthenticationMessageHandler(config);
-
-            var repo = new GenericRepository<Account>(tokenProvider);
+            var repo = serviceProvider.GetService<GenericRepository<Account>>();
             var entityId = Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af");
             var account = 
                 await repo.GetById(entityId, 
@@ -61,7 +73,7 @@ namespace PowerAppsWebApiUtils.Tests
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
-            using(var repo = new GenericRepository<Account>(tokenProvider))
+            using(var repo = serviceProvider.GetService<GenericRepository<Account>>())
             {
                 var accounts = await repo.GetList();
                 Assert.IsNotNull(accounts);
@@ -75,7 +87,7 @@ namespace PowerAppsWebApiUtils.Tests
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
-            using(var repo = new GenericRepository<Account>(tokenProvider))
+            using(var repo = serviceProvider.GetService<GenericRepository<Account>>())
             {
                 var account = new Account 
                 {
@@ -132,7 +144,7 @@ namespace PowerAppsWebApiUtils.Tests
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
-            using(var repo = new GenericRepository<CustomerAddress>(tokenProvider))
+            using(var repo = serviceProvider.GetService<GenericRepository<Account>>())
             {
                 var address = 
                     new CustomerAddress(Guid.Parse("83ca70b4-0d9a-e911-a98c-000d3af49373"))
@@ -152,7 +164,7 @@ namespace PowerAppsWebApiUtils.Tests
             var config = PowerAppsConfigurationReader.GetConfiguration();
 
             using (var tokenProvider = new AuthenticationMessageHandler(config))
-            using(var repo = new GenericRepository<Account>(tokenProvider))
+            using(var repo = serviceProvider.GetService<GenericRepository<Account>>())
             {
                 var addresses = await repo.GetList();
             }

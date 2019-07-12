@@ -1,9 +1,11 @@
 using System;
 using System.Linq;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Client;
 using PowerAppsWebApiUtils.Configuration;
+using PowerAppsWebApiUtils.Extensions;
 using PowerAppsWebApiUtils.Security;
 
 namespace PowerAppsWebApiUtils.Tests
@@ -13,13 +15,22 @@ namespace PowerAppsWebApiUtils.Tests
         [TestClass]
         public class QueryToListExecutionTests
         {
+                        private static ServiceProvider serviceProvider;
+                        
+            [ClassInitialize]
+            public static void Init(TestContext testContext)
+            {
+                var config = PowerAppsConfigurationReader.GetConfiguration();
+                serviceProvider = 
+                    new ServiceCollection()
+                    .AddWebApiContext(config)
+                    .BuildServiceProvider();
+            } 
+
             [TestMethod]
             public void ToListTest1()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var accounts = context.CreateQuery<Account>().ToList();
                     Assert.IsNotNull(accounts);
@@ -29,10 +40,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToListTest2()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var accounts = 
                         context
@@ -46,10 +54,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToListTest3()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var accounts = 
                         context
@@ -65,10 +70,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToListTest4()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var query = context.CreateQuery<Account>();
                     var accounts = 
@@ -85,10 +87,7 @@ namespace PowerAppsWebApiUtils.Tests
             [TestMethod]
             public void ToListTest5()
             {
-                var config = PowerAppsConfigurationReader.GetConfiguration();
-
-                using (var tokenProvider = new AuthenticationMessageHandler(config))
-                using(var context = new WebApiContext(tokenProvider))
+                var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var accounts = 
                         context

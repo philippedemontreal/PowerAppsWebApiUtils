@@ -8,7 +8,7 @@ namespace PowerAppsWebApiUtils.Json
 
     public class ExtendedEntityContractResolver: NavigationPropertyContractResolver
     {
-        public static new readonly ExtendedEntityContractResolver Instance = new ExtendedEntityContractResolver();
+        public static readonly ExtendedEntityContractResolver Instance = new ExtendedEntityContractResolver();
 
 
         protected override JsonContract CreateContract(Type objectType)
@@ -24,8 +24,6 @@ namespace PowerAppsWebApiUtils.Json
             {
                 contract.Converter = new AttributeMetadataConverter();
             }
-            
-                
 
             return contract;
         }

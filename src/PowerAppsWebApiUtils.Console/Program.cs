@@ -5,8 +5,9 @@ using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Codegen;
 using PowerAppsWebApiUtils.Configuration;
 using PowerAppsWebApiUtils.Repositories;
-using PowerAppsWebApiUtils.Security;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using PowerAppsWebApiUtils.Extensions;
 
 namespace PowerappsWebApiUtils
 {
@@ -16,10 +17,16 @@ namespace PowerappsWebApiUtils
      static void Main(string[] args)
         {
             var config =  PowerAppsConfigurationReader.GetConfiguration();
+
+            var serviceProvider = 
+                new ServiceCollection()            
+                .AddWebApiContext(config.AuthenticationSettings)
+                .AddTransient<EntityMetadataRepository>()
+                .AddTransient<OptionSetMetadataRepository>()
+                .BuildServiceProvider();
             
-            using (var authenticationHandler = new AuthenticationMessageHandler(config.AuthenticationSettings))
-            using (var entityDefinitionRepository = new EntityMetadataRepository(authenticationHandler))
-            using (var picklistRepository = new OptionSetMetadataRepository(authenticationHandler))
+            using (var entityDefinitionRepository = serviceProvider.GetRequiredService<EntityMetadataRepository>())
+            using (var picklistRepository = serviceProvider.GetRequiredService<OptionSetMetadataRepository>())
             {
                 var tasks = config.Entities.GroupBy(p => p).Select(p => p.First()).Select(p => entityDefinitionRepository.GetByLogicalName(p)).ToArray();
                 Task.WaitAll(tasks);

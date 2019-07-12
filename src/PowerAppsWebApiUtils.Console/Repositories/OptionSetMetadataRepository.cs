@@ -1,14 +1,15 @@
 using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Security;
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
 namespace PowerAppsWebApiUtils.Repositories
 {
     internal class OptionSetMetadataRepository : GenericRepository<PicklistAttributeMetadata>
     {
-        internal OptionSetMetadataRepository(AuthenticationMessageHandler tokenProvider) : 
-        base(tokenProvider)
+        internal OptionSetMetadataRepository(IHttpClientFactory httpClientFactory) : 
+        base(httpClientFactory)
         {
         }
                     
