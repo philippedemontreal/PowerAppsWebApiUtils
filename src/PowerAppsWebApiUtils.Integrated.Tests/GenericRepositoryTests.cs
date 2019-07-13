@@ -1,8 +1,6 @@
 using System;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PawauBeta01.Data;
@@ -11,16 +9,15 @@ using PowerAppsWebApiUtils.Extensions;
 using PowerAppsWebApiUtils.Json;
 using PowerAppsWebApiUtils.Repositories;
 using PowerAppsWebApiUtils.Security;
+using Xunit;
 
 namespace PowerAppsWebApiUtils.Tests
 {
-    [TestClass]
     public class GenericRepositoryTests
     {
         private static ServiceProvider serviceProvider;
         
-        [ClassInitialize]
-        public static void Init(TestContext testContext)
+        static GenericRepositoryTests()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
             serviceProvider = 
@@ -29,7 +26,7 @@ namespace PowerAppsWebApiUtils.Tests
                 .BuildServiceProvider();
         }
 
-        [TestMethod]
+        [Fact]
         public async Task GetOneTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
@@ -53,21 +50,21 @@ namespace PowerAppsWebApiUtils.Tests
                     Name = p.Name,
                 });
 
-            Assert.IsNotNull(account);
-            Assert.IsNotNull(account.Name);
-            Assert.IsNotNull(account.CreatedBy);
-            Assert.IsNotNull(account.OwnerId);
-            Assert.AreEqual(entityId, account.Id);
-            Assert.AreEqual<account_statecode?>(account_statecode.Active, account.StateCode);            
-            Assert.AreEqual<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
-            Assert.IsNotNull(account.LastOnHoldTime);
-            Assert.IsNotNull(account.ModifiedOn);
-            Assert.IsNotNull(account.CreatedOn);
+            Assert.NotNull(account);
+            Assert.NotNull(account.Name);
+            Assert.NotNull(account.CreatedBy);
+            Assert.NotNull(account.OwnerId);
+            Assert.Equal(entityId, account.Id);
+            Assert.Equal<account_statecode?>(account_statecode.Active, account.StateCode);            
+            Assert.Equal<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
+            Assert.NotNull(account.LastOnHoldTime);
+            Assert.NotNull(account.ModifiedOn);
+            Assert.NotNull(account.CreatedOn);
 
             var json = JObject.FromObject(account, new JsonSerializer{ ContractResolver = new NavigationPropertyContractResolver() });
         }
 
-        [TestMethod]
+        [Fact]
         public async Task GetMultipleTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
@@ -76,12 +73,12 @@ namespace PowerAppsWebApiUtils.Tests
             using(var repo = serviceProvider.GetService<GenericRepository<Account>>())
             {
                 var accounts = await repo.GetList();
-                Assert.IsNotNull(accounts);
+                Assert.NotNull(accounts);
             }
         }
 
         
-        [TestMethod]
+        [Fact]
         public async Task CreateAccountTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
@@ -113,8 +110,7 @@ namespace PowerAppsWebApiUtils.Tests
 
                 var accountid = await repo.Create(account);
 
-                Assert.IsNotNull(accountid);
-                //var 
+                Assert.NotEqual(Guid.Empty, accountid);
                 account = 
                     await repo.GetById(
                         accountid,
@@ -138,7 +134,7 @@ namespace PowerAppsWebApiUtils.Tests
 
         }
 
-         [TestMethod]
+         [Fact]
         public async Task UpdateAdressParentAccountTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
@@ -158,7 +154,7 @@ namespace PowerAppsWebApiUtils.Tests
             }
         }
     
-        [TestMethod]
+        [Fact]
         public async Task GetcustomerAddressesTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();

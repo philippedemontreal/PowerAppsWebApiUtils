@@ -8,7 +8,7 @@ namespace PowerAppsWebApiUtils.Repositories
 {
     internal class EntityMetadataRepository : GenericRepository<EntityMetadata>
     {
-        internal EntityMetadataRepository(IHttpClientFactory httpClientFactory) : 
+        public EntityMetadataRepository(IHttpClientFactory httpClientFactory) : 
         base(httpClientFactory)
         {
         }

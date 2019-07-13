@@ -1,24 +1,21 @@
 using System;
 using System.Linq;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Client;
 using PowerAppsWebApiUtils.Configuration;
 using PowerAppsWebApiUtils.Extensions;
-using PowerAppsWebApiUtils.Security;
+using Xunit;
 
 namespace PowerAppsWebApiUtils.Tests
 {
     namespace PowerAppsWebApiUtils.Tests
     {
-        [TestClass]
         public class QueryToListExecutionTests
         {
-                        private static ServiceProvider serviceProvider;
+            private static ServiceProvider serviceProvider;
                         
-            [ClassInitialize]
-            public static void Init(TestContext testContext)
+            static QueryToListExecutionTests()
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
                 serviceProvider = 
@@ -27,17 +24,17 @@ namespace PowerAppsWebApiUtils.Tests
                     .BuildServiceProvider();
             } 
 
-            [TestMethod]
+            [Fact]
             public void ToListTest1()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
                 {
                     var accounts = context.CreateQuery<Account>().ToList();
-                    Assert.IsNotNull(accounts);
+                    Assert.NotNull(accounts);
                 }
             }
 
-            [TestMethod]
+            [Fact]
             public void ToListTest2()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
@@ -47,11 +44,11 @@ namespace PowerAppsWebApiUtils.Tests
                         .CreateQuery<Account>()
                         .Where(p => p.Address1_City == "Montreal")
                         .ToList();
-                    Assert.IsNotNull(accounts);
+                    Assert.NotNull(accounts);
                 }
             }
 
-            [TestMethod]
+            [Fact]
             public void ToListTest3()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
@@ -63,11 +60,11 @@ namespace PowerAppsWebApiUtils.Tests
                         .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
                         .ToList();
 
-                    Assert.IsNotNull(accounts);
+                    Assert.NotNull(accounts);
                 }                    
             }
 
-            [TestMethod]
+            [Fact]
             public void ToListTest4()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
@@ -79,12 +76,12 @@ namespace PowerAppsWebApiUtils.Tests
                         .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
                         .ToList();
 
-                    Assert.IsNotNull(accounts);
-                    Assert.AreNotEqual(0, accounts.Count);
+                    Assert.NotNull(accounts);
+                    Assert.NotEmpty(accounts);
                 }                    
             }
 
-            [TestMethod]
+            [Fact]
             public void ToListTest5()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
@@ -96,7 +93,7 @@ namespace PowerAppsWebApiUtils.Tests
                         .Select(p => new Account { Id = p.Id, Address1_City = p.Address1_City })
                         .ToList();
 
-                    Assert.IsNotNull(accounts);
+                    Assert.NotNull(accounts);
                 }
             }
         }

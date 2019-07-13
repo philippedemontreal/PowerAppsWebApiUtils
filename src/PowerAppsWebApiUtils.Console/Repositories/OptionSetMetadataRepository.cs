@@ -8,7 +8,7 @@ namespace PowerAppsWebApiUtils.Repositories
 {
     internal class OptionSetMetadataRepository : GenericRepository<PicklistAttributeMetadata>
     {
-        internal OptionSetMetadataRepository(IHttpClientFactory httpClientFactory) : 
+        public OptionSetMetadataRepository(IHttpClientFactory httpClientFactory) : 
         base(httpClientFactory)
         {
         }

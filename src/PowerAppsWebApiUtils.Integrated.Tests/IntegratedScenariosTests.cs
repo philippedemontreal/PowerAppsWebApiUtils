@@ -2,24 +2,22 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Client;
 using PowerAppsWebApiUtils.Configuration;
 using PowerAppsWebApiUtils.Extensions;
+using Xunit;
 
 namespace PowerAppsWebApiUtils.Tests
 {
     namespace PowerAppsWebApiUtils.Tests
     {
 
-        [TestClass]
         public class IntegratedScenariosTests
         {
             private static ServiceProvider serviceProvider;
             
-            [ClassInitialize]
-            public static void Init(TestContext testContext)
+            static IntegratedScenariosTests()
             {
                 var config = PowerAppsConfigurationReader.GetConfiguration();
                 serviceProvider = 
@@ -28,27 +26,27 @@ namespace PowerAppsWebApiUtils.Tests
                     .BuildServiceProvider();
             } 
 
-            [TestMethod]
+            [Fact]
             public void ScenariosTest1()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
 
                 {
                     var accounts = context.CreateQuery<Account>().Where(p => p.Address1_City == "Montreal").Select(p => p.Id).ToList();
-                    Assert.IsNotNull(accounts);
-                    Assert.IsTrue(accounts.Count > 0);
+                    Assert.NotNull(accounts);
+                    Assert.True(accounts.Count > 0);
 
                     var account = context.CreateQuery<Account>().Where(p => p.Address1_City == "Montreal").FirstOrDefault();
                     var updatedAccount = new Account(account.Id) { Address1_City  = "Montréal" };
                     context.Update(updatedAccount);
 
                     account = context.CreateQuery<Account>().Where(p => p.Id == account.Id).Select(p => new Account{ Address1_City = p.Address1_City }).FirstOrDefault();
-                    Assert.AreEqual("Montréal", account.Address1_City);               
+                    Assert.Equal("Montréal", account.Address1_City);               
                 }
             }
 
 
-            [TestMethod]
+            [Fact]
             public async Task ScenariosTest2()
             {
 
@@ -64,16 +62,16 @@ namespace PowerAppsWebApiUtils.Tests
 
                     Task.WaitAll(context.Delete(contact), context.Delete(account));
 
-                    Assert.AreEqual(account.Name, parentaccount.Name);
+                    Assert.Equal(account.Name, parentaccount.Name);
                     account = context.CreateQuery<Account>().Where(p => p.Id == account.Id).FirstOrDefault();
-                    Assert.IsNull(account);
+                    Assert.Null(account);
                     contact = context.CreateQuery<Contact>().Where(p => p.Id == contact.Id).FirstOrDefault();
-                    Assert.IsNull(contact);
+                    Assert.Null(contact);
 
                 }
             }
 
-            [TestMethod]
+            [Fact]
             public void ScenariosTest3()
             {
 

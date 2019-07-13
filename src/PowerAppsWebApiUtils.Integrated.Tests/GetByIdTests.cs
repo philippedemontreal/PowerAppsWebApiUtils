@@ -1,8 +1,6 @@
 using System;
-using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PawauBeta01.Data;
@@ -10,14 +8,13 @@ using PowerAppsWebApiUtils.Configuration;
 using PowerAppsWebApiUtils.Extensions;
 using PowerAppsWebApiUtils.Json;
 using PowerAppsWebApiUtils.Repositories;
-using PowerAppsWebApiUtils.Security;
+using Xunit;
 
 namespace PowerAppsWebApiUtils.Tests
 {
-    [TestClass]
     public class GetByIdTests
     {
-        [TestMethod]
+        [Fact]
         public async Task GetOneTest()
         {
             var config = PowerAppsConfigurationReader.GetConfiguration();
@@ -47,17 +44,17 @@ namespace PowerAppsWebApiUtils.Tests
                     Name = p.Name,
                 });
 
-            Assert.IsNotNull(account);
-            Assert.IsNotNull(account.Name);
-            Assert.IsNotNull(account.CreatedBy);
-            Assert.IsNotNull(account.OwnerId);
-            Assert.AreEqual(entityId, account.Id);
-            Assert.AreEqual<account_statecode?>(account_statecode.Active, account.StateCode);            
-            Assert.AreEqual<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
-            Assert.IsNotNull(account.Address1_Composite);
-            Assert.IsNotNull(account.LastOnHoldTime);
-            Assert.IsNotNull(account.ModifiedOn);
-            Assert.IsNotNull(account.CreatedOn);
+            Assert.NotNull(account);
+            Assert.NotNull(account.Name);
+            Assert.NotNull(account.CreatedBy);
+            Assert.NotNull(account.OwnerId);
+            Assert.Equal(entityId, account.Id);
+            Assert.Equal<account_statecode?>(account_statecode.Active, account.StateCode);            
+            Assert.Equal<account_statuscode?>(account_statuscode.Active, account.StatusCode);            
+            Assert.NotNull(account.Address1_Composite);
+            Assert.NotNull(account.LastOnHoldTime);
+            Assert.NotNull(account.ModifiedOn);
+            Assert.NotNull(account.CreatedOn);
 
             var json = JObject.FromObject(account, new JsonSerializer{ ContractResolver = new NavigationPropertyContractResolver() });
         }

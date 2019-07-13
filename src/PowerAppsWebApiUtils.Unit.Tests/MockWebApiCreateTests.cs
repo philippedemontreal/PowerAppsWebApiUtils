@@ -1,40 +1,21 @@
 using System;
 using System.Net;
 using System.Net.Http;
-using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NSubstitute;
 using PawauBeta01.Data;
 using PowerAppsWebApiUtils.Entities;
 using PowerAppsWebApiUtils.Repositories;
+using Xunit;
 
 namespace PowerAppsWebApiUtils.Tests
 {
-    public class FakeHttpMessageHandler : DelegatingHandler
-    {
-        public string Content { get; private set; }
-        public HttpRequestMessage Request { get; private set; }
-        public HttpResponseMessage Response { get; set; }
-
-
-        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            Request = request;
-            Content = await request.Content.ReadAsStringAsync();
-            return await Task.FromResult(Response);
-        }
-    }
-
-    [TestClass]
     public class MockWebApiCreateTests
     {       
         private static FakeHttpMessageHandler fakeHttpMessageHandler;
         private static IHttpClientFactory factory;
         
-        [ClassInitialize]
-        public static void Init(TestContext testContext)
+         static MockWebApiCreateTests()
         {
             factory = Substitute.For<IHttpClientFactory>();
 
@@ -47,7 +28,7 @@ namespace PowerAppsWebApiUtils.Tests
             factory.CreateClient(Arg.Any<string>()).Returns(fakeHttpClient);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task MockWebApiCreateTest1()
         {
             
@@ -56,11 +37,13 @@ namespace PowerAppsWebApiUtils.Tests
 
             await repository.Create(new CustomerAddress{ ParentId = new Account(guid).ToNavigationProperty() });
             
-            Assert.AreEqual(HttpMethod.Post, fakeHttpMessageHandler.Request.Method);
-            Assert.AreEqual($"{{\"parentid_account@odata.bind\":\"/accounts({guid})\"}}",  fakeHttpMessageHandler.Content);
+          
+           
+            Assert.Equal(HttpMethod.Post, fakeHttpMessageHandler.Request.Method);
+            Assert.Equal($"{{\"parentid_account@odata.bind\":\"/accounts({guid})\"}}",  fakeHttpMessageHandler.Content);
         }
 
-        [TestMethod]
+        [Fact]
         public async Task MockWebApiCreateTest2()
         {
             var repository =new GenericRepository(factory);
@@ -68,12 +51,12 @@ namespace PowerAppsWebApiUtils.Tests
 
             await repository.Create(new CustomerAddress{ ParentId = new Contact(guid).ToNavigationProperty() });
             
-            Assert.AreEqual(HttpMethod.Post, fakeHttpMessageHandler.Request.Method);            
-            Assert.AreEqual($"{{\"parentid_contact@odata.bind\":\"/contacts({guid})\"}}", fakeHttpMessageHandler.Content);
+            Assert.Equal(HttpMethod.Post, fakeHttpMessageHandler.Request.Method);            
+            Assert.Equal($"{{\"parentid_contact@odata.bind\":\"/contacts({guid})\"}}", fakeHttpMessageHandler.Content);
         }   
 
         
-        [TestMethod]
+        [Fact]
         public async Task MockWebApiCreateTest3()
         {
            
@@ -90,8 +73,8 @@ namespace PowerAppsWebApiUtils.Tests
                     ParentCustomerId = new Account(parentcustomerid).ToNavigationProperty() 
                 });
             
-            Assert.AreEqual(HttpMethod.Post, fakeHttpMessageHandler.Request.Method);
-            Assert.AreEqual($"{{\"firstname\":\"First Name\",\"lastname\":\"LastName\",\"ownerid_systemuser@odata.bind\":\"/systemusers({ownerid})\",\"parentcustomerid_account@odata.bind\":\"/accounts({parentcustomerid})\"}}", fakeHttpMessageHandler.Content);
+            Assert.Equal(HttpMethod.Post, fakeHttpMessageHandler.Request.Method);
+            Assert.Equal($"{{\"firstname\":\"First Name\",\"lastname\":\"LastName\",\"ownerid_systemuser@odata.bind\":\"/systemusers({ownerid})\",\"parentcustomerid_account@odata.bind\":\"/accounts({parentcustomerid})\"}}", fakeHttpMessageHandler.Content);
         }       
    
     }
