@@ -21,14 +21,14 @@ namespace PowerAppsWebApiUtils.Processes
             var serviceProvider = 
                 new ServiceCollection()
                 .AddLogging(p => p.AddConsole()) 
-                .Configure<LoggerFilterOptions>(p => p.AddFilter((provider, category, logLevel) => category.Contains(nameof(CodeGenProcess))))
+                .Configure<LoggerFilterOptions>(p => p.AddFilter((category, logLevel) => category.Contains(nameof(CodeGenProcess))))
                 .AddPowerAppsWebApiConfiguration(settings.AuthenticationSettings)
                 .AddTransient<EntityMetadataRepository>()
                 .AddTransient<OptionSetMetadataRepository>()
                 .BuildServiceProvider();
 
             var logger = serviceProvider.GetRequiredService<ILogger<CodeGenProcess>>();
-            logger.LogInformation("Service configured. Ready to start.");
+            logger.LogInformation($"{nameof(CodeGenProcess)}. Starting process.");
             logger.LogInformation($"PowerAspps Url: {settings.AuthenticationSettings.ResourceUrl}");
             logger.LogInformation($"Entities: {string.Join(", ", settings.Entities)}");
             var now = DateTime.Now;
@@ -77,6 +77,7 @@ namespace PowerAppsWebApiUtils.Processes
                 new CodeGen().Execute(settings, entities, pickLists.ToDictionary(p => p.Key, p => p.Value.Result));
                 logger.LogInformation($"Code generated in file {settings.FileName}");
                 logger.LogInformation($"Processing time: {(DateTime.Now - now).ToString("c")}");
+            logger.LogInformation($"{nameof(CodeGenProcess)}. Ending process.");
             }            
         }
 

@@ -22,6 +22,18 @@
             "problemMatcher": "$tsc"
         },
         {
+            "label": "pack",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "pack",
+                "-o",
+                "${workspaceFolder}/nupkgs",
+                "${workspaceFolder}/src/PowerAppsWebApiUtils/PowerAppsWebApiUtils.csproj"
+            ],
+            "problemMatcher": "$tsc"
+        },        
+        {
             "label": "watch",
             "command": "dotnet",
             "type": "process",
