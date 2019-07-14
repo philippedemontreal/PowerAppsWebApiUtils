@@ -20,7 +20,7 @@ namespace PowerAppsWebApiUtils.Tests
             var config = PowerAppsConfigurationReader.GetConfiguration();
             var serviceProvider = 
                 new ServiceCollection()
-                .AddWebApiContext(config)
+                .AddPowerAppsWebApiConfiguration(config)
                 .BuildServiceProvider();
 
             var repo = serviceProvider.GetService<GenericRepository<Account>>();

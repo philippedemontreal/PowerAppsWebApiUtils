@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9E032BC0-F232-4037-A0DA-0497507A3E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerAppsWebApiUtils.Console", "src\PowerAppsWebApiUtils.Console\PowerAppsWebApiUtils.Console.csproj", "{81BF39A2-C0FB-4B76-A4CA-05E133636C9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerAppsWebApiUtils.Console", "src\Console\Core\PowerAppsWebApiUtils.Console\PowerAppsWebApiUtils.Console.csproj", "{81BF39A2-C0FB-4B76-A4CA-05E133636C9B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerAppsWebApiUtilsTests", "src\PowerAppsWebApiUtils.Integrated.Tests\PowerAppsWebApiUtils.Integrated.Tests.csproj", "{64F06AE1-4117-4E93-9021-96512B018E6F}"
 EndProject
@@ -14,6 +14,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerAppsWebApiUtils.Unit.Tests", "src\PowerAppsWebApiUtils.Unit.Tests\PowerAppsWebApiUtils.Unit.Tests.csproj", "{54762BF9-5B03-4DF8-8B04-586116EE340E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerAppsWebApiUtils.Generated", "src\PowerAppsWebApiUtils.Generated\PowerAppsWebApiUtils.Generated.csproj", "{2F36B91A-961F-45F0-B25E-A65337D7DFEE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{F1ABDE40-EC4D-4B04-8ECD-BFC4BA65ABF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PowerAppsWebApiUtils.CodeGen", "src\Console\PowerAppsWebApiUtils.CodeGen\PowerAppsWebApiUtils.CodeGen.csproj", "{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}"
 EndProject
 Global
 	GlobalSection(SolutionProperties) = preSolution
@@ -88,6 +92,18 @@ Global
 		{2F36B91A-961F-45F0-B25E-A65337D7DFEE}.Release|x64.Build.0 = Release|Any CPU
 		{2F36B91A-961F-45F0-B25E-A65337D7DFEE}.Release|x86.ActiveCfg = Release|Any CPU
 		{2F36B91A-961F-45F0-B25E-A65337D7DFEE}.Release|x86.Build.0 = Release|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Debug|x64.Build.0 = Debug|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Debug|x86.Build.0 = Debug|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Release|x64.ActiveCfg = Release|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Release|x64.Build.0 = Release|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Release|x86.ActiveCfg = Release|Any CPU
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{81BF39A2-C0FB-4B76-A4CA-05E133636C9B} = {9E032BC0-F232-4037-A0DA-0497507A3E65}
@@ -95,5 +111,7 @@ Global
 		{9F4E9155-4A73-468D-9A70-CC4FF169B469} = {9E032BC0-F232-4037-A0DA-0497507A3E65}
 		{54762BF9-5B03-4DF8-8B04-586116EE340E} = {9E032BC0-F232-4037-A0DA-0497507A3E65}
 		{2F36B91A-961F-45F0-B25E-A65337D7DFEE} = {9E032BC0-F232-4037-A0DA-0497507A3E65}
+		{F1ABDE40-EC4D-4B04-8ECD-BFC4BA65ABF6} = {9E032BC0-F232-4037-A0DA-0497507A3E65}
+		{7D9A9CB8-5412-4248-A025-8C4F7E0502A1} = {F1ABDE40-EC4D-4B04-8ECD-BFC4BA65ABF6}
 	EndGlobalSection
 EndGlobal

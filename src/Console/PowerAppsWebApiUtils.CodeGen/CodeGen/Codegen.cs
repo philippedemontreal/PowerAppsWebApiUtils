@@ -18,8 +18,8 @@ namespace PowerAppsWebApiUtils.Codegen
 
         public CodeGen()
         {
-            _refMap = new Dictionary<AttributeTypeCode, Type>( 
-                new []
+            _refMap =
+                new KeyValuePair<AttributeTypeCode, Type>[]
                 {
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Boolean, typeof(bool?)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.DateTime, typeof(DateTime?)),
@@ -36,7 +36,7 @@ namespace PowerAppsWebApiUtils.Codegen
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Owner, typeof(NavigationProperty)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Money, typeof(decimal?)),
                     new KeyValuePair<AttributeTypeCode, Type>(AttributeTypeCode.Uniqueidentifier, typeof(Guid?)),
-                }); 
+                }.ToDictionary(p => p.Key, p => p.Value); 
 
         }
         private CodeNamespace CreateNameSpace(string nameSpaceName)

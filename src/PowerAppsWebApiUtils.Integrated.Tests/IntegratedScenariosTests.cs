@@ -22,7 +22,7 @@ namespace PowerAppsWebApiUtils.Tests
                 var config = PowerAppsConfigurationReader.GetConfiguration();
                 serviceProvider = 
                     new ServiceCollection()
-                    .AddWebApiContext(config)
+                    .AddPowerAppsWebApiConfiguration(config)
                     .BuildServiceProvider();
             } 
 

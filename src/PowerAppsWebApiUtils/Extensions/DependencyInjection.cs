@@ -9,7 +9,7 @@ namespace PowerAppsWebApiUtils.Extensions
 
     public static class DependencyInjectionExtensions
     {
-        public static IServiceCollection AddWebApiContext(this IServiceCollection services, PowerAppsAuthenticationSettings authenticationSettings)
+        public static IServiceCollection AddPowerAppsWebApiConfiguration(this IServiceCollection services, PowerAppsAuthenticationSettings authenticationSettings)
         {           
             services
                 .AddSingleton<PowerAppsAuthenticationSettings>(p => authenticationSettings)
@@ -24,7 +24,6 @@ namespace PowerAppsWebApiUtils.Extensions
                             p.Timeout = new TimeSpan(0, 2, 0);
                             p.DefaultRequestHeaders.Add("OData-MaxVersion", "4.0");
                             p.DefaultRequestHeaders.Add("OData-Version", "4.0");
-                            //p.DefaultRequestHeaders.Add("Prefer", "odata.include-annotations=\"*\"");
 
                     })           
                 .AddHttpMessageHandler<AuthenticationMessageHandler>(); 

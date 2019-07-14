@@ -53,7 +53,7 @@ namespace PowerAppsWebApiUtils.Repositories
             {
                 var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = new NavigationPropertyContractResolver() }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = 
-                    new HttpRequestMessage(HttpMethod.Patch, $"{entity.EntityCollectionName}({entity.Id})")
+                    new HttpRequestMessage(new HttpMethod("PATCH"), $"{entity.EntityCollectionName}({entity.Id})")
                     {
                         Content = new StringContent(json, Encoding.Default, ApplicationJson)
                     };
@@ -137,7 +137,7 @@ namespace PowerAppsWebApiUtils.Repositories
         public virtual async Task<T> Retrieve(string query)
         {                        
             var client = _httpClientFactory.CreateClient(clientName);
-            return await SendGetRequest<T>(client, query, new []{ KeyValuePair.Create("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
+            return await SendGetRequest<T>(client, query, new []{ new KeyValuePair<string, string>("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
         }
                 
         public virtual async Task<List<T>> RetrieveMultiple(string query)
@@ -147,7 +147,7 @@ namespace PowerAppsWebApiUtils.Repositories
             var result = new List<T>();
             do
             {
-                var rootObject = await SendGetRequest<RootObject<T>>(client, query, new []{ KeyValuePair.Create("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
+                var rootObject = await SendGetRequest<RootObject<T>>(client, query, new []{ new KeyValuePair<string, string>("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
                 result.AddRange(rootObject.Value);
                 query = rootObject.NextLink;
             }  while (!string.IsNullOrEmpty(query));
@@ -208,7 +208,7 @@ namespace PowerAppsWebApiUtils.Repositories
                     }
 
                     var getQuery = $"{OdataEntityName}?fetchXml={WebUtility.UrlEncode(query)}";
-                    var rootValues = await SendGetRequest<FetchXmlRootObject<T>>(client, query, new []{ KeyValuePair.Create("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
+                    var rootValues = await SendGetRequest<FetchXmlRootObject<T>>(client, query, new []{ new KeyValuePair<string, string>("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
 
                     if (rootValues != null)
                     {
