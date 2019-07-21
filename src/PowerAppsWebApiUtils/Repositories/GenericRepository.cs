@@ -186,48 +186,48 @@ namespace PowerAppsWebApiUtils.Repositories
             }
         }
 
-        private async Task<List<T>> GetListUsingFetchXml(string fetchXmlQuery)
-        {
-            List<T> result = null;
-           var client = _httpClientFactory.CreateClient(clientName);
-            {
-                var hasMore = false;
-                string page = null;
-                string cookie = null;
-                do
-                {
-                    var query = fetchXmlQuery;
-                    if (!string.IsNullOrEmpty(page) && !string.IsNullOrEmpty(cookie))
-                    {
-                        var xml = new XmlDocument();
-                        xml.LoadXml(query);
-                        var node = xml.FirstChild.NextSibling;
-                        node.Attributes.Append(xml.CreateAttribute("page")).Value = page;
-                        node.Attributes.Append(xml.CreateAttribute("paging-cookie")).Value = WebUtility.UrlDecode(WebUtility.UrlDecode(cookie));
-                        query = xml.OuterXml;
-                    }
+        // private async Task<List<T>> GetListUsingFetchXml(string fetchXmlQuery)
+        // {
+        //     List<T> result = null;
+        //    var client = _httpClientFactory.CreateClient(clientName);
+        //     {
+        //         var hasMore = false;
+        //         string page = null;
+        //         string cookie = null;
+        //         do
+        //         {
+        //             var query = fetchXmlQuery;
+        //             if (!string.IsNullOrEmpty(page) && !string.IsNullOrEmpty(cookie))
+        //             {
+        //                 var xml = new XmlDocument();
+        //                 xml.LoadXml(query);
+        //                 var node = xml.FirstChild.NextSibling;
+        //                 node.Attributes.Append(xml.CreateAttribute("page")).Value = page;
+        //                 node.Attributes.Append(xml.CreateAttribute("paging-cookie")).Value = WebUtility.UrlDecode(WebUtility.UrlDecode(cookie));
+        //                 query = xml.OuterXml;
+        //             }
 
-                    var getQuery = $"{OdataEntityName}?fetchXml={WebUtility.UrlEncode(query)}";
-                    var rootValues = await SendGetRequest<FetchXmlRootObject<T>>(client, query, new []{ new KeyValuePair<string, string>("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
+        //             var getQuery = $"{OdataEntityName}?fetchXml={WebUtility.UrlEncode(query)}";
+        //             var rootValues = await SendGetRequest<FetchXmlRootObject<T>>(client, query, new []{ new KeyValuePair<string, string>("Prefer", "odata.include-annotations=\"*\"") }.ToDictionary(p => p.Key, p => p.Value));
 
-                    if (rootValues != null)
-                    {
-                        if (result == null)
-                            result = rootValues.Value;
-                        else
-                            result.AddRange(rootValues.Value);
-                    }
-                    else
-                        throw new Exception("RootValues not set");
+        //             if (rootValues != null)
+        //             {
+        //                 if (result == null)
+        //                     result = rootValues.Value;
+        //                 else
+        //                     result.AddRange(rootValues.Value);
+        //             }
+        //             else
+        //                 throw new Exception("RootValues not set");
 
-                    hasMore = !string.IsNullOrEmpty(rootValues.FetchXmlPagingCookie);
+        //             hasMore = !string.IsNullOrEmpty(rootValues.FetchXmlPagingCookie);
 
-                    if (hasMore)
-                        rootValues.GetPagingInfo(out page, out cookie);
+        //             if (hasMore)
+        //                 rootValues.GetPagingInfo(out page, out cookie);
 
-                } while (hasMore);
-            }
-            return result;
-        }
+        //         } while (hasMore);
+        //     }
+        //     return result;
+        // }
     }
 }

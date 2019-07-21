@@ -3,7 +3,7 @@
   <metadata>
   
     <id>PowerAppsWebApiUtils</id>
-    <version>0.0.0.1</version>
+    <version>0.0.0.2</version>
     <description>
       This is an API to work with PowerApps and Dynamics 365 Web API
     </description>    
@@ -11,11 +11,12 @@
     <authors>Philippe Dufag</authors>
     <owners>Philippe Dufag</owners>
     <license type="expression">MIT</license>
-    <projectUrl>https://github.com/philippedemontreal/PowerApps.WebApi.Utils</projectUrl>
+    <projectUrl>https://github.com/philippedemontreal/PowerAppsWebApiUtils</projectUrl>
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
     0.0.0.1 Initial release. .net core app to generate early bound classes. Api exposes in .netstandard 2.0 supportin all CRUD operations and limited Linq support (ToList and FirstOrDefault)
+    0.0.0.2 Include missing file PowerAppsWebApiUtils.Console.runtimeconfig.json
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>PowerApps WebApi .NetCore EarlyBound CodeGen Linq</tags>
@@ -28,6 +29,7 @@
   <files>
     <file src="src\PowerAppsWebApiUtils\bin\Release\netstandard2.0\PowerAppsWebApiUtils.dll" target="lib\netstandard2.0" />
     <file src="src\Console\Core\PowerAppsWebApiUtils.Console\bin\release\netcoreapp2.2\publish\*.dll" target="lib\earlybound\netcoreapp2.0" />
+    <file src="src\Console\Core\PowerAppsWebApiUtils.Console\bin\release\netcoreapp2.2\publish\*.runtimeconfig.json" target="lib\earlybound\netcoreapp2.0" />
     <file src="src\Console\Core\Content\appsettings.json" target="lib\earlybound\netcoreapp2.0" />
   </files>
 </package>
