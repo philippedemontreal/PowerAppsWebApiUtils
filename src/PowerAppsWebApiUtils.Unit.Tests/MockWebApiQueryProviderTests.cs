@@ -132,6 +132,5 @@ namespace PowerAppsWebApiUtils.Tests
 
             await repository.Received().RetrieveMultiple($"{CustomerAddress.CollectionName}?$select=customeraddressid,_parentid_value,exchangerate&$filter=(_parentid_value eq '{guid}')");
         }    
-
     }
 }

@@ -16,15 +16,17 @@ namespace PowerAppsWebApiUtils.Linq
         private StringBuilder _sbSelectClause;
 
         private ParameterExpression _row;
+        private Type _elementType;
 
 
         private ColumnProjection _projection;
-        public string Translate(Expression expression)
+        public string Translate(Expression expression, Type elementType)
         {
             _sbMainClause = new StringBuilder();
             _sbFilterClause = new StringBuilder();
             _sbSelectClause = new StringBuilder();
             _row = Expression.Parameter(typeof(ProjectionRow), "row");
+            _elementType = elementType;
 
             Visit(expression);
 
@@ -53,27 +55,46 @@ namespace PowerAppsWebApiUtils.Linq
                         return m;
 
                     case "Select":
-                        var p1 = new ColumnProjector().ProjectColumns(m.Arguments[1], _row);
+                        var p1 = new ColumnProjector().ProjectColumns(m.Arguments[1], _row, _elementType);
+                        if (_sbSelectClause.Length > 0)
+                            _sbSelectClause.Append("&");
                         _sbSelectClause.Append($"$select={p1.Columns}");
                         Visit(m.Arguments[0]);
                         _projection = p1;
 
                         return m;
                     case "FirstOrDefault":
+                    {
+                        if (_sbSelectClause.Length > 0)
+                            _sbSelectClause.Append("&");                        
                         _sbSelectClause.Append($"$top=1");
                         var select = m.Arguments.Where(p => p.NodeType == ExpressionType.Call && ((MethodCallExpression)p).Method.Name == "Select").FirstOrDefault();
                         if (select != null)
-                        {
-                            var p2 = new ColumnProjector().ProjectColumns(select, _row);
-                            
-                            if (p2.Columns.Length > 0)
-                                _sbSelectClause.Append($"&$select={p2.Columns}");
-                            _projection = p2;
-                        }
+                            Visit(select);
 
-                        Visit(m.Arguments[0]);
+                        if (select == null || select != m.Arguments[0])                        
+                            Visit(m.Arguments[0]);
+                        
                         return m;
+                }
 
+                    case "OrderBy":
+                    case "OrderByDescending":
+                    {
+                        var p2 = new ColumnProjector().ProjectColumns(m.Arguments[1], _row, _elementType);
+                        if (_sbSelectClause.Length > 0)
+                            _sbSelectClause.Append("&");                        
+                        _sbSelectClause.Append($"$orderby={string.Join($" {(m.Method.Name == "OrderBy" ? "asc" : "desc")}, ", p2.Columns?.Split(','))} { (m.Method.Name == "OrderBy" ? "asc" : "desc") }");
+
+                        var select = m.Arguments.Where(p => p.NodeType == ExpressionType.Call && ((MethodCallExpression)p).Method.Name == "Select").FirstOrDefault();
+                        if (select != null)
+                            Visit(select);
+
+                        if (select == null || select != m.Arguments[0])                        
+                            Visit(m.Arguments[0]);                     
+                        return m;   
+                    }
+                    
                 }
             }
 
@@ -179,7 +200,7 @@ namespace PowerAppsWebApiUtils.Linq
                 //Lets find the DataMemberAttribute in the overriding class
                 if (attr == null) 
                 {
-                    var property = m.Expression.Type.GetProperty(m.Member.Name);
+                    var property = (_elementType ?? m.Expression.Type).GetProperty(m.Member.Name);
                     attr = property.GetCustomAttribute<DataMemberAttribute>();
                 }
 

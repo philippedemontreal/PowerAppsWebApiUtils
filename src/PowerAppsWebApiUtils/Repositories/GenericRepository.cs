@@ -110,6 +110,7 @@ namespace PowerAppsWebApiUtils.Repositories
         #endregion
     }
     public class GenericRepository<T>: GenericRepository  
+        where T: crmbaseentity
     {
 
         ///Used with NSubstitute mocks 

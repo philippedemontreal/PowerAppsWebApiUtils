@@ -23,6 +23,7 @@ namespace PowerAppsWebApiUtils.Linq
         private StringBuilder _sb;
         private int _iColumn;
         private ParameterExpression _row;
+        private Type _elementType;
         private static MethodInfo miGetValue => 
             typeof(ProjectionRow).GetMethod("GetValue");
     
@@ -30,11 +31,12 @@ namespace PowerAppsWebApiUtils.Linq
         {
         }
     
-        internal ColumnProjection ProjectColumns(Expression expression, ParameterExpression row) 
+        internal ColumnProjection ProjectColumns(Expression expression, ParameterExpression row, Type elementType = null) 
         {
             _sb = new StringBuilder();
             _row = row;
-            Expression selector = Visit(expression);
+            _elementType = elementType;
+            var selector = Visit(expression);
             return new ColumnProjection { Columns = _sb.ToString(), Selector = selector };
         }
     
@@ -50,7 +52,7 @@ namespace PowerAppsWebApiUtils.Linq
                 //Lets find the DataMemberAttribute in the overriding class
                 if (attr == null) 
                 {
-                    var property = m.Expression.Type.GetProperty(m.Member.Name);
+                    var property = (_elementType ?? m.Expression.Type).GetProperty(m.Member.Name);
                     attr = property.GetCustomAttribute<DataMemberAttribute>();
                 }
 
