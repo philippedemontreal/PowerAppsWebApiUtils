@@ -76,7 +76,7 @@ namespace PowerAppsWebApiUtils.Linq
                             Visit(m.Arguments[0]);
                         
                         return m;
-                }
+                    }
 
                     case "OrderBy":
                     case "OrderByDescending":
@@ -94,8 +94,44 @@ namespace PowerAppsWebApiUtils.Linq
                             Visit(m.Arguments[0]);                     
                         return m;   
                     }
-                    
+                  
                 }
+            }
+            else
+            {                               
+                switch (m.Method.Name)
+                {
+                                        
+                    case "StartsWith":
+                    {
+                        _sbFilterClause.Append("startswith(");
+                        Visit(m.Object);
+                        _sbFilterClause.Append(",");
+                        Visit(m.Arguments[0]);
+                        _sbFilterClause.Append(")");
+                        return m;   
+                    } 
+                                        
+                    case "EndsWith":
+                    {
+                        _sbFilterClause.Append("endswith(");
+                        Visit(m.Object);
+                        _sbFilterClause.Append(",");
+                        Visit(m.Arguments[0]);
+                        _sbFilterClause.Append(")");
+                        return m;   
+                    }                     
+                    case "Contains":
+                    {
+                        _sbFilterClause.Append("contains(");
+                        Visit(m.Object);
+                        _sbFilterClause.Append(",");
+                        Visit(m.Arguments[0]);
+                        _sbFilterClause.Append(")");
+                        return m;   
+                    }                    
+                }
+
             }
 
             throw new NotSupportedException(string.Format("The method '{0}' is not supported", m.Method.Name));

@@ -3,7 +3,7 @@
   <metadata>
   
     <id>PowerAppsWebApiUtils</id>
-    <version>0.0.0.2</version>
+    <version>0.0.0.4</version>
     <description>
       This is an API to work with PowerApps and Dynamics 365 Web API
     </description>    
@@ -15,21 +15,24 @@
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
-    0.0.0.1 Initial release. .net core app to generate early bound classes. Api exposes in .netstandard 2.0 supportin all CRUD operations and limited Linq support (ToList and FirstOrDefault)
+    0.0.0.4 Standard OData string query functions support (BeginsWith, EndsWith, Contains)
+            Azure Functions have changed their dependency on Newtonsoft [Newtonsoft.Json (>= 11.0.2)], so integration with Azure Functions will be simplier now  https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/1.0.30-beta1 
+    0.0.0.3 OrderBy / OrderByDescending support - Readme.md having few examples
     0.0.0.2 Include missing file PowerAppsWebApiUtils.Console.runtimeconfig.json
+    0.0.0.1 Initial release. .net core app to generate early bound classes. Api exposes in .netstandard 2.0 supportin all CRUD operations and limited Linq support (ToList and FirstOrDefault)
     </releaseNotes>
     <copyright>Copyright 2019</copyright>
     <tags>PowerApps WebApi .NetCore EarlyBound CodeGen Linq</tags>
     <dependencies>
       <dependency id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="5.0.5" />
-      <dependency id="Newtonsoft.Json" version="12.0.2" />
+      <dependency id="Newtonsoft.Json" version="11.0.2" />
       <dependency id="Microsoft.Extensions.Http" version="2.2.0" />
     </dependencies>
   </metadata>
   <files>
-    <file src="src\PowerAppsWebApiUtils\bin\Release\netstandard2.0\PowerAppsWebApiUtils.dll" target="lib\netstandard2.0" />
-    <file src="src\Console\Core\PowerAppsWebApiUtils.Console\bin\release\netcoreapp2.2\publish\*.dll" target="lib\earlybound\netcoreapp2.0" />
-    <file src="src\Console\Core\PowerAppsWebApiUtils.Console\bin\release\netcoreapp2.2\publish\*.runtimeconfig.json" target="lib\earlybound\netcoreapp2.0" />
+    <file src="src\PowerAppsWebApiUtils\bin\publish\netstandard2.0\PowerAppsWebApiUtils.dll" target="lib\netstandard2.0" />
+    <file src="src\Console\Core\PowerAppsWebApiUtils.Console\bin\publish\netcoreapp2.2\*.dll" target="lib\earlybound\netcoreapp2.0" />
+    <file src="src\Console\Core\PowerAppsWebApiUtils.Console\bin\publish\netcoreapp2.2\*.runtimeconfig.json" target="lib\earlybound\netcoreapp2.0" />
     <file src="src\Console\Core\Content\appsettings.json" target="lib\earlybound\netcoreapp2.0" />
   </files>
 </package>

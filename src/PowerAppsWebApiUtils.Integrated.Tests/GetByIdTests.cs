@@ -24,7 +24,11 @@ namespace PowerAppsWebApiUtils.Tests
                 .BuildServiceProvider();
 
             var repo = serviceProvider.GetService<GenericRepository<Account>>();
-            var entityId = Guid.Parse("48cf55d9-6e9f-e911-a982-000d3af3b3af");
+            var list = await repo.GetList();
+            if (list.Count == 0)
+                return;
+
+            var entityId =list[0].Id;
             var account = 
                 await repo.GetById(entityId, 
                 p => 

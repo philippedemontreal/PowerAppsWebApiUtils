@@ -82,6 +82,56 @@ namespace PowerAppsWebApiUtils.Tests
             }
 
             [Fact]
+            public void ToListContainsTest4()
+            {
+                var context = serviceProvider.GetService<WebApiContext>();
+                {
+                    var query = context.CreateQuery<Account>();
+                    var accounts = 
+                        query                        
+                        .Where(p => p.Address1_City.Contains("Mont"))
+                        .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
+                        .ToList();
+
+                    Assert.NotNull(accounts);
+                    Assert.NotEmpty(accounts);
+                }                    
+            }
+
+            [Fact]
+            public void ToListStartWithsTest4()
+            {
+                var context = serviceProvider.GetService<WebApiContext>();
+                {
+                    var query = context.CreateQuery<Account>();
+                    var accounts = 
+                        query                        
+                        .Where(p => p.Address1_City.StartsWith("Mont"))
+                        .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
+                        .ToList();
+
+                    Assert.NotNull(accounts);
+                    Assert.NotEmpty(accounts);
+                }                    
+            }
+
+            [Fact]
+            public void ToListEndsWithTest4()
+            {
+                var context = serviceProvider.GetService<WebApiContext>();
+                {
+                    var query = context.CreateQuery<Account>();
+                    var accounts = 
+                        query                        
+                        .Where(p => p.Address1_City.EndsWith("al"))
+                        .Select(p => new { Id = p.Id, Address1_Composite = p.Address1_Composite, Address1_Fax = p.Address1_Fax })
+                        .ToList();
+
+                    Assert.NotNull(accounts);
+                    Assert.NotEmpty(accounts);
+                }                    
+            }
+            [Fact]
             public void ToListTest5()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
