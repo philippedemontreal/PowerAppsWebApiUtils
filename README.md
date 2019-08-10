@@ -5,11 +5,15 @@ Design goals include
 Early bound classes for web api
 Simple Linq provider for web api.
 
-Targets .netcore 2.0 and (soon) .net framework 4.7
+Targets .netcore 2.0 and .net framework 4.7
 Integrate well with Azure Active Directory 
 
 Feedback and contributions welcome...
 
+How tos:
+=================================================================
+Setup an application user for PowerAppsWebApiUtils: https://www.linkedin.com/pulse/how-setup-application-user-powerappswebapiutils-philippe-dufag
+Generate early bound classes and setup a project to use PowerAppsWebApiUtils: https://www.linkedin.com/pulse/powerappswebapiutils-howto-philippe-dufag
 
 Examples of supported Linq queries:
 =================================================================

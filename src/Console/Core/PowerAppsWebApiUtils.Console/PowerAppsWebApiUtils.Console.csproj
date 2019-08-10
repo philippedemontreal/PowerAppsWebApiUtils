@@ -4,6 +4,7 @@
     <AssemblyOriginatorKeyFile>pdm.pawau.snk</AssemblyOriginatorKeyFile>    
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+  <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="appsettings.json">
@@ -13,4 +14,15 @@
   <ItemGroup>
     <ProjectReference Include="..\..\PowerAppsWebApiUtils.CodeGen\PowerAppsWebApiUtils.CodeGen.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Clients.ActiveDirectory" Version="5.0.5"/>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2"/>
+    <PackageReference Include="System.CodeDom" Version="4.5.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.2.0"/>
+  </ItemGroup>  
 </Project>
