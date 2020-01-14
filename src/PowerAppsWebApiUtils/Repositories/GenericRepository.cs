@@ -23,6 +23,10 @@ namespace PowerAppsWebApiUtils.Repositories
         public const string ApplicationJson = "application/json";
         protected const string clientName = "webapi";
 
+        public Guid CallerObjectId { get; set; }
+        public Guid MSCRMCallerID { get; set; }
+
+
          public GenericRepository()   
          {}
         public GenericRepository(IHttpClientFactory httpClientFactory)
@@ -31,13 +35,19 @@ namespace PowerAppsWebApiUtils.Repositories
         public async Task<Guid> Create(crmbaseentity entity)
         {
            var client = _httpClientFactory.CreateClient(clientName);
+
             {
                 var json = JObject.FromObject(entity, new JsonSerializer { ContractResolver = new NavigationPropertyContractResolver() }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = 
                     new HttpRequestMessage(HttpMethod.Post, entity.EntityCollectionName)
                     {
-                        Content = new StringContent(json, Encoding.Default, ApplicationJson)
+                        Content = new StringContent(json, Encoding.Default, ApplicationJson)                       
                     };
+
+                if (CallerObjectId != Guid.Empty)
+                    request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                if (MSCRMCallerID != Guid.Empty)
+                    request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
 
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
@@ -58,6 +68,11 @@ namespace PowerAppsWebApiUtils.Repositories
                         Content = new StringContent(json, Encoding.Default, ApplicationJson)
                     };
 
+                if (CallerObjectId != Guid.Empty)
+                    request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                if (MSCRMCallerID != Guid.Empty)
+                    request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
+
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
             }
@@ -68,6 +83,11 @@ namespace PowerAppsWebApiUtils.Repositories
            var client = _httpClientFactory.CreateClient(clientName);
             {
                 var request = new HttpRequestMessage(HttpMethod.Delete, $"{entity.EntityCollectionName}({entity.Id})");
+                if (CallerObjectId != Guid.Empty)
+                    request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                if (MSCRMCallerID != Guid.Empty)
+                    request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
+
                 var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
             }
@@ -159,6 +179,11 @@ namespace PowerAppsWebApiUtils.Repositories
         private async Task<P> SendGetRequest<P>(HttpClient client, string uri, Dictionary<string, string> additionalHeaders = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
+            if (CallerObjectId != Guid.Empty)
+                request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                if (MSCRMCallerID != Guid.Empty)
+                    request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
+
             if (additionalHeaders != null)
             {
                 foreach (var item in additionalHeaders)

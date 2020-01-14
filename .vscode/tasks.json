@@ -8,6 +8,7 @@
             "args": [
                 "build",
                 "${workspaceFolder}/src/Console/Core/PowerAppsWebApiUtils.Console/PowerAppsWebApiUtils.Console.csproj"
+                //"${workspaceFolder}/sample/azurefunc/azurefunc.csproj",
             ],
             "problemMatcher": "$tsc"
         },

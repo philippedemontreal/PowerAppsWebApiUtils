@@ -3,7 +3,7 @@
   <metadata>
   
     <id>PowerAppsWebApiUtils</id>
-    <version>0.0.0.5</version>
+    <version>0.0.0.7</version>
     <description>
       This is an API to work with PowerApps and Dynamics 365 Web API
     </description>    
@@ -15,6 +15,8 @@
     <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
+    0.0.0.7 Impersonation (new properties CallerObjectId and MSCRMCallerID on WebApiContext and GenericRepository. see Microsoft docs https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/webapi/impersonate-another-user-web-api).
+    0.0.0.6 Modification to service registration (Scoped -> Transient) to ease integration with Azure Functions.
     0.0.0.5 Add missing nuget assemblies in "earlybound" folder.
             Change PowerAppsWebApiUtils.Console to tools folder. 
             From docs.microsoft.com, "The tools folder is added to the PATH environment variable for the Package Manager Console only"

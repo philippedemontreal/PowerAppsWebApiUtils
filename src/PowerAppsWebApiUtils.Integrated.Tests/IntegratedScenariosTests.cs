@@ -30,6 +30,7 @@ namespace PowerAppsWebApiUtils.Tests
             public void ScenariosTest1()
             {
                 var context = serviceProvider.GetService<WebApiContext>();
+                context.MSCRMCallerID = Guid.Parse("BFC5064F-C69E-42B4-884D-83E3A9900945");
 
                 {
                     var accounts = context.CreateQuery<Account>().Where(p => p.Address1_City == "Montreal").Select(p => p.Id).ToList();
@@ -52,6 +53,7 @@ namespace PowerAppsWebApiUtils.Tests
 
                 var context = serviceProvider.GetService<WebApiContext>();
                 {
+                    context.MSCRMCallerID = Guid.Parse("BFC5064F-C69E-42B4-884D-83E3A9900945");
                     var account =  new Account{ Name  = $"John Doe Ltd {Guid.NewGuid()}" };
                     account.Id = await context.Create(account);
 
@@ -60,7 +62,8 @@ namespace PowerAppsWebApiUtils.Tests
 
                     var parentaccount = context.CreateQuery<Contact>().Where(p => p.Id == contact.Id).Select(p => p.ParentCustomerId).FirstOrDefault();
 
-                    Task.WaitAll(context.Delete(contact), context.Delete(account));
+                    await context.Delete(contact);
+                    await context.Delete(account);
 
                     Assert.Equal(account.Name, parentaccount.Name);
                     account = context.CreateQuery<Account>().Where(p => p.Id == account.Id).FirstOrDefault();

@@ -21,6 +21,9 @@ namespace PowerAppsWebApiUtils.Client
             _genericRepository = new GenericRepository(httpClientFactory);          
         }
 
+        public Guid MSCRMCallerID { get => _genericRepository.MSCRMCallerID; set => _genericRepository.MSCRMCallerID = value; }
+        public Guid CallerObjectId { get => _genericRepository.CallerObjectId; set => _genericRepository.CallerObjectId = value; }
+
         public IQueryable<T> CreateQuery<T>()
             => new Query<T>(_queryProvider);
 

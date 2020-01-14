@@ -42,6 +42,23 @@ namespace PowerAppsWebApiUtils.Tests
                     Assert.Equal("accounts?$filter=(name eq 'Test')", command);
                 }
             }
+            [Fact]
+            public void WhereTest2Var()
+            {
+                using (var context = new WebApiContext(null, null))
+                {                                   
+                    var guid = Guid.NewGuid();
+                   // var request = new HttpRequest();
+                    var name = "Test";
+                    var query = 
+                        context.CreateQuery<Account>()
+                    .Where(p => p.Name == name);
+
+                    var command = context.GetQueryText(query.Expression);
+
+                    Assert.Equal("accounts?$filter=(name eq 'Test')", command);
+                }
+            }
 
             [Fact]
             public void WhereTest3()

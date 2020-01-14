@@ -89,6 +89,9 @@ namespace PowerAppsWebApiUtils.Tests
             using (var tokenProvider = new AuthenticationMessageHandler(config))
             using(var repo = serviceProvider.GetService<GenericRepository<Account>>())
             {
+                                    
+                repo.MSCRMCallerID = Guid.Parse("BFC5064F-C69E-42B4-884D-83E3A9900945");
+
                 var account = new Account 
                 {
                     Name = Guid.NewGuid().ToString(),

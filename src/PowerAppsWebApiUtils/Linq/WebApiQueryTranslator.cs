@@ -151,7 +151,8 @@ namespace PowerAppsWebApiUtils.Linq
             }
             else 
             {
-                switch (Type.GetTypeCode(c.Value.GetType())) 
+                var typecode = Type.GetTypeCode(c.Value.GetType());
+                switch (typecode) 
                 {
                     case TypeCode.Int32:
                         _sbFilterClause.Append((int)c.Value);
@@ -169,7 +170,7 @@ namespace PowerAppsWebApiUtils.Linq
                             _sbFilterClause.Append($"'{((NavigationProperty)c.Value).Id}'");
                         }
                         else
-                            throw new NotSupportedException(string.Format("The constant for '{0}' is not supported", c.Value));
+                            throw new NotSupportedException(string.Format("The constant for type '{0}' is not supported (value: '{1}')", c.Value.GetType(), c.Value));
                         break;
                     default:
                         _sbFilterClause.Append(c.Value);

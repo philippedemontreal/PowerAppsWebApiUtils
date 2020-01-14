@@ -13,9 +13,9 @@ namespace PowerAppsWebApiUtils.Extensions
         {           
             services
                 .AddSingleton<PowerAppsAuthenticationSettings>(p => authenticationSettings)
-                .AddSingleton<AuthenticationMessageHandler>()
-                .AddScoped<WebApiContext>()
-                .AddScoped(typeof(GenericRepository<>))
+                .AddTransient<AuthenticationMessageHandler>()
+                .AddTransient<WebApiContext>()
+                .AddTransient(typeof(GenericRepository<>))
                 .AddHttpClient(
                     "webapi",
                     p => 
