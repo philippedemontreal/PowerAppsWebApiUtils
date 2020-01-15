@@ -28,11 +28,11 @@ namespace PowerAppsWebApiUtils.Entities
         {
                 if (!Attributes.ContainsKey(key))
                     return null;
-                
+                               
                 var id = Attributes[key]; 
                 if (id == null)
                     return null;
-
+                
                 return new NavigationProperty 
                 { 
                     Id = (Guid)Attributes[key],

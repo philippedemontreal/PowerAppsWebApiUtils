@@ -49,6 +49,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Account</para>
       /// </summary>
       [DataMember(Name="accountid")]
+      [NavigationPropertyAttribute(SchemaName="accountid")]
       public override System.Guid Id
       {
          get
@@ -65,6 +66,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Category</para>
       /// </summary>
       [DataMember(Name="accountcategorycode")]
+      [NavigationPropertyAttribute(SchemaName="accountcategorycode")]
       public account_accountcategorycode? AccountCategoryCode
       {
          get
@@ -81,6 +83,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Classification</para>
       /// </summary>
       [DataMember(Name="accountclassificationcode")]
+      [NavigationPropertyAttribute(SchemaName="accountclassificationcode")]
       public account_accountclassificationcode? AccountClassificationCode
       {
          get
@@ -97,6 +100,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Account Number</para>
       /// </summary>
       [DataMember(Name="accountnumber")]
+      [NavigationPropertyAttribute(SchemaName="accountnumber")]
       public string AccountNumber
       {
          get
@@ -113,6 +117,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Account Rating</para>
       /// </summary>
       [DataMember(Name="accountratingcode")]
+      [NavigationPropertyAttribute(SchemaName="accountratingcode")]
       public account_accountratingcode? AccountRatingCode
       {
          get
@@ -129,6 +134,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Address Type</para>
       /// </summary>
       [DataMember(Name="address1_addresstypecode")]
+      [NavigationPropertyAttribute(SchemaName="address1_addresstypecode")]
       public account_address1_addresstypecode? Address1_AddressTypeCode
       {
          get
@@ -145,6 +151,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: City</para>
       /// </summary>
       [DataMember(Name="address1_city")]
+      [NavigationPropertyAttribute(SchemaName="address1_city")]
       public string Address1_City
       {
          get
@@ -161,6 +168,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1</para>
       /// </summary>
       [DataMember(Name="address1_composite")]
+      [NavigationPropertyAttribute(SchemaName="address1_composite")]
       public string Address1_Composite
       {
          get
@@ -173,6 +181,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Country/Region</para>
       /// </summary>
       [DataMember(Name="address1_country")]
+      [NavigationPropertyAttribute(SchemaName="address1_country")]
       public string Address1_Country
       {
          get
@@ -189,6 +198,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: County</para>
       /// </summary>
       [DataMember(Name="address1_county")]
+      [NavigationPropertyAttribute(SchemaName="address1_county")]
       public string Address1_County
       {
          get
@@ -205,6 +215,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Fax</para>
       /// </summary>
       [DataMember(Name="address1_fax")]
+      [NavigationPropertyAttribute(SchemaName="address1_fax")]
       public string Address1_Fax
       {
          get
@@ -221,6 +232,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Freight Terms</para>
       /// </summary>
       [DataMember(Name="address1_freighttermscode")]
+      [NavigationPropertyAttribute(SchemaName="address1_freighttermscode")]
       public account_address1_freighttermscode? Address1_FreightTermsCode
       {
          get
@@ -237,6 +249,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Latitude</para>
       /// </summary>
       [DataMember(Name="address1_latitude")]
+      [NavigationPropertyAttribute(SchemaName="address1_latitude")]
       public System.Nullable<double> Address1_Latitude
       {
          get
@@ -253,6 +266,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Street 1</para>
       /// </summary>
       [DataMember(Name="address1_line1")]
+      [NavigationPropertyAttribute(SchemaName="address1_line1")]
       public string Address1_Line1
       {
          get
@@ -269,6 +283,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Street 2</para>
       /// </summary>
       [DataMember(Name="address1_line2")]
+      [NavigationPropertyAttribute(SchemaName="address1_line2")]
       public string Address1_Line2
       {
          get
@@ -285,6 +300,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Street 3</para>
       /// </summary>
       [DataMember(Name="address1_line3")]
+      [NavigationPropertyAttribute(SchemaName="address1_line3")]
       public string Address1_Line3
       {
          get
@@ -301,6 +317,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Longitude</para>
       /// </summary>
       [DataMember(Name="address1_longitude")]
+      [NavigationPropertyAttribute(SchemaName="address1_longitude")]
       public System.Nullable<double> Address1_Longitude
       {
          get
@@ -317,6 +334,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Name</para>
       /// </summary>
       [DataMember(Name="address1_name")]
+      [NavigationPropertyAttribute(SchemaName="address1_name")]
       public string Address1_Name
       {
          get
@@ -333,6 +351,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: ZIP/Postal Code</para>
       /// </summary>
       [DataMember(Name="address1_postalcode")]
+      [NavigationPropertyAttribute(SchemaName="address1_postalcode")]
       public string Address1_PostalCode
       {
          get
@@ -349,6 +368,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Post Office Box</para>
       /// </summary>
       [DataMember(Name="address1_postofficebox")]
+      [NavigationPropertyAttribute(SchemaName="address1_postofficebox")]
       public string Address1_PostOfficeBox
       {
          get
@@ -365,6 +385,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Primary Contact Name</para>
       /// </summary>
       [DataMember(Name="address1_primarycontactname")]
+      [NavigationPropertyAttribute(SchemaName="address1_primarycontactname")]
       public string Address1_PrimaryContactName
       {
          get
@@ -381,6 +402,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Shipping Method</para>
       /// </summary>
       [DataMember(Name="address1_shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="address1_shippingmethodcode")]
       public account_address1_shippingmethodcode? Address1_ShippingMethodCode
       {
          get
@@ -397,6 +419,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: State/Province</para>
       /// </summary>
       [DataMember(Name="address1_stateorprovince")]
+      [NavigationPropertyAttribute(SchemaName="address1_stateorprovince")]
       public string Address1_StateOrProvince
       {
          get
@@ -413,6 +436,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address Phone</para>
       /// </summary>
       [DataMember(Name="address1_telephone1")]
+      [NavigationPropertyAttribute(SchemaName="address1_telephone1")]
       public string Address1_Telephone1
       {
          get
@@ -429,6 +453,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Telephone 2</para>
       /// </summary>
       [DataMember(Name="address1_telephone2")]
+      [NavigationPropertyAttribute(SchemaName="address1_telephone2")]
       public string Address1_Telephone2
       {
          get
@@ -445,6 +470,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Telephone 3</para>
       /// </summary>
       [DataMember(Name="address1_telephone3")]
+      [NavigationPropertyAttribute(SchemaName="address1_telephone3")]
       public string Address1_Telephone3
       {
          get
@@ -461,6 +487,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: UPS Zone</para>
       /// </summary>
       [DataMember(Name="address1_upszone")]
+      [NavigationPropertyAttribute(SchemaName="address1_upszone")]
       public string Address1_UPSZone
       {
          get
@@ -477,6 +504,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: UTC Offset</para>
       /// </summary>
       [DataMember(Name="address1_utcoffset")]
+      [NavigationPropertyAttribute(SchemaName="address1_utcoffset")]
       public System.Nullable<int> Address1_UTCOffset
       {
          get
@@ -493,6 +521,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Address Type</para>
       /// </summary>
       [DataMember(Name="address2_addresstypecode")]
+      [NavigationPropertyAttribute(SchemaName="address2_addresstypecode")]
       public account_address2_addresstypecode? Address2_AddressTypeCode
       {
          get
@@ -509,6 +538,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: City</para>
       /// </summary>
       [DataMember(Name="address2_city")]
+      [NavigationPropertyAttribute(SchemaName="address2_city")]
       public string Address2_City
       {
          get
@@ -525,6 +555,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2</para>
       /// </summary>
       [DataMember(Name="address2_composite")]
+      [NavigationPropertyAttribute(SchemaName="address2_composite")]
       public string Address2_Composite
       {
          get
@@ -537,6 +568,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Country/Region</para>
       /// </summary>
       [DataMember(Name="address2_country")]
+      [NavigationPropertyAttribute(SchemaName="address2_country")]
       public string Address2_Country
       {
          get
@@ -553,6 +585,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: County</para>
       /// </summary>
       [DataMember(Name="address2_county")]
+      [NavigationPropertyAttribute(SchemaName="address2_county")]
       public string Address2_County
       {
          get
@@ -569,6 +602,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Fax</para>
       /// </summary>
       [DataMember(Name="address2_fax")]
+      [NavigationPropertyAttribute(SchemaName="address2_fax")]
       public string Address2_Fax
       {
          get
@@ -585,6 +619,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Freight Terms</para>
       /// </summary>
       [DataMember(Name="address2_freighttermscode")]
+      [NavigationPropertyAttribute(SchemaName="address2_freighttermscode")]
       public account_address2_freighttermscode? Address2_FreightTermsCode
       {
          get
@@ -601,6 +636,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Latitude</para>
       /// </summary>
       [DataMember(Name="address2_latitude")]
+      [NavigationPropertyAttribute(SchemaName="address2_latitude")]
       public System.Nullable<double> Address2_Latitude
       {
          get
@@ -617,6 +653,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Street 1</para>
       /// </summary>
       [DataMember(Name="address2_line1")]
+      [NavigationPropertyAttribute(SchemaName="address2_line1")]
       public string Address2_Line1
       {
          get
@@ -633,6 +670,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Street 2</para>
       /// </summary>
       [DataMember(Name="address2_line2")]
+      [NavigationPropertyAttribute(SchemaName="address2_line2")]
       public string Address2_Line2
       {
          get
@@ -649,6 +687,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Street 3</para>
       /// </summary>
       [DataMember(Name="address2_line3")]
+      [NavigationPropertyAttribute(SchemaName="address2_line3")]
       public string Address2_Line3
       {
          get
@@ -665,6 +704,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Longitude</para>
       /// </summary>
       [DataMember(Name="address2_longitude")]
+      [NavigationPropertyAttribute(SchemaName="address2_longitude")]
       public System.Nullable<double> Address2_Longitude
       {
          get
@@ -681,6 +721,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Name</para>
       /// </summary>
       [DataMember(Name="address2_name")]
+      [NavigationPropertyAttribute(SchemaName="address2_name")]
       public string Address2_Name
       {
          get
@@ -697,6 +738,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: ZIP/Postal Code</para>
       /// </summary>
       [DataMember(Name="address2_postalcode")]
+      [NavigationPropertyAttribute(SchemaName="address2_postalcode")]
       public string Address2_PostalCode
       {
          get
@@ -713,6 +755,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Post Office Box</para>
       /// </summary>
       [DataMember(Name="address2_postofficebox")]
+      [NavigationPropertyAttribute(SchemaName="address2_postofficebox")]
       public string Address2_PostOfficeBox
       {
          get
@@ -729,6 +772,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Primary Contact Name</para>
       /// </summary>
       [DataMember(Name="address2_primarycontactname")]
+      [NavigationPropertyAttribute(SchemaName="address2_primarycontactname")]
       public string Address2_PrimaryContactName
       {
          get
@@ -745,6 +789,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Shipping Method</para>
       /// </summary>
       [DataMember(Name="address2_shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="address2_shippingmethodcode")]
       public account_address2_shippingmethodcode? Address2_ShippingMethodCode
       {
          get
@@ -761,6 +806,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: State/Province</para>
       /// </summary>
       [DataMember(Name="address2_stateorprovince")]
+      [NavigationPropertyAttribute(SchemaName="address2_stateorprovince")]
       public string Address2_StateOrProvince
       {
          get
@@ -777,6 +823,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Telephone 1</para>
       /// </summary>
       [DataMember(Name="address2_telephone1")]
+      [NavigationPropertyAttribute(SchemaName="address2_telephone1")]
       public string Address2_Telephone1
       {
          get
@@ -793,6 +840,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Telephone 2</para>
       /// </summary>
       [DataMember(Name="address2_telephone2")]
+      [NavigationPropertyAttribute(SchemaName="address2_telephone2")]
       public string Address2_Telephone2
       {
          get
@@ -809,6 +857,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Telephone 3</para>
       /// </summary>
       [DataMember(Name="address2_telephone3")]
+      [NavigationPropertyAttribute(SchemaName="address2_telephone3")]
       public string Address2_Telephone3
       {
          get
@@ -825,6 +874,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: UPS Zone</para>
       /// </summary>
       [DataMember(Name="address2_upszone")]
+      [NavigationPropertyAttribute(SchemaName="address2_upszone")]
       public string Address2_UPSZone
       {
          get
@@ -841,6 +891,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: UTC Offset</para>
       /// </summary>
       [DataMember(Name="address2_utcoffset")]
+      [NavigationPropertyAttribute(SchemaName="address2_utcoffset")]
       public System.Nullable<int> Address2_UTCOffset
       {
          get
@@ -857,6 +908,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 30</para>
       /// </summary>
       [DataMember(Name="aging30")]
+      [NavigationPropertyAttribute(SchemaName="aging30")]
       public System.Nullable<decimal> Aging30
       {
          get
@@ -869,6 +921,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 30 (Base)</para>
       /// </summary>
       [DataMember(Name="aging30_base")]
+      [NavigationPropertyAttribute(SchemaName="aging30_base")]
       public System.Nullable<decimal> Aging30_Base
       {
          get
@@ -881,6 +934,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 60</para>
       /// </summary>
       [DataMember(Name="aging60")]
+      [NavigationPropertyAttribute(SchemaName="aging60")]
       public System.Nullable<decimal> Aging60
       {
          get
@@ -893,6 +947,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 60 (Base)</para>
       /// </summary>
       [DataMember(Name="aging60_base")]
+      [NavigationPropertyAttribute(SchemaName="aging60_base")]
       public System.Nullable<decimal> Aging60_Base
       {
          get
@@ -905,6 +960,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 90</para>
       /// </summary>
       [DataMember(Name="aging90")]
+      [NavigationPropertyAttribute(SchemaName="aging90")]
       public System.Nullable<decimal> Aging90
       {
          get
@@ -917,6 +973,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 90 (Base)</para>
       /// </summary>
       [DataMember(Name="aging90_base")]
+      [NavigationPropertyAttribute(SchemaName="aging90_base")]
       public System.Nullable<decimal> Aging90_Base
       {
          get
@@ -929,6 +986,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Business Type</para>
       /// </summary>
       [DataMember(Name="businesstypecode")]
+      [NavigationPropertyAttribute(SchemaName="businesstypecode")]
       public account_businesstypecode? BusinessTypeCode
       {
          get
@@ -945,6 +1003,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By</para>
       /// </summary>
       [DataMember(Name="createdby")]
+      [NavigationPropertyAttribute(SchemaName="createdby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedBy
       {
@@ -958,6 +1017,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By (External Party)</para>
       /// </summary>
       [DataMember(Name="createdbyexternalparty")]
+      [NavigationPropertyAttribute(SchemaName="createdbyexternalparty")]
       [NavigationPropertyTargets("externalparty")]
       public NavigationProperty CreatedByExternalParty
       {
@@ -971,6 +1031,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created On</para>
       /// </summary>
       [DataMember(Name="createdon")]
+      [NavigationPropertyAttribute(SchemaName="createdon")]
       public System.Nullable<System.DateTime> CreatedOn
       {
          get
@@ -983,6 +1044,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
       [DataMember(Name="createdonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="createdonbehalfby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedOnBehalfBy
       {
@@ -996,6 +1058,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Credit Limit</para>
       /// </summary>
       [DataMember(Name="creditlimit")]
+      [NavigationPropertyAttribute(SchemaName="creditlimit")]
       public System.Nullable<decimal> CreditLimit
       {
          get
@@ -1012,6 +1075,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Credit Limit (Base)</para>
       /// </summary>
       [DataMember(Name="creditlimit_base")]
+      [NavigationPropertyAttribute(SchemaName="creditlimit_base")]
       public System.Nullable<decimal> CreditLimit_Base
       {
          get
@@ -1024,6 +1088,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Credit Hold</para>
       /// </summary>
       [DataMember(Name="creditonhold")]
+      [NavigationPropertyAttribute(SchemaName="creditonhold")]
       public System.Nullable<bool> CreditOnHold
       {
          get
@@ -1040,6 +1105,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Customer Size</para>
       /// </summary>
       [DataMember(Name="customersizecode")]
+      [NavigationPropertyAttribute(SchemaName="customersizecode")]
       public account_customersizecode? CustomerSizeCode
       {
          get
@@ -1056,6 +1122,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Relationship Type</para>
       /// </summary>
       [DataMember(Name="customertypecode")]
+      [NavigationPropertyAttribute(SchemaName="customertypecode")]
       public account_customertypecode? CustomerTypeCode
       {
          get
@@ -1072,6 +1139,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Price List</para>
       /// </summary>
       [DataMember(Name="defaultpricelevelid")]
+      [NavigationPropertyAttribute(SchemaName="defaultpricelevelid")]
       [NavigationPropertyTargets("pricelevel")]
       public NavigationProperty DefaultPriceLevelId
       {
@@ -1089,6 +1157,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Description</para>
       /// </summary>
       [DataMember(Name="description")]
+      [NavigationPropertyAttribute(SchemaName="description")]
       public string Description
       {
          get
@@ -1105,6 +1174,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Bulk Emails</para>
       /// </summary>
       [DataMember(Name="donotbulkemail")]
+      [NavigationPropertyAttribute(SchemaName="donotbulkemail")]
       public System.Nullable<bool> DoNotBulkEMail
       {
          get
@@ -1121,6 +1191,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Bulk Mails</para>
       /// </summary>
       [DataMember(Name="donotbulkpostalmail")]
+      [NavigationPropertyAttribute(SchemaName="donotbulkpostalmail")]
       public System.Nullable<bool> DoNotBulkPostalMail
       {
          get
@@ -1137,6 +1208,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Emails</para>
       /// </summary>
       [DataMember(Name="donotemail")]
+      [NavigationPropertyAttribute(SchemaName="donotemail")]
       public System.Nullable<bool> DoNotEMail
       {
          get
@@ -1153,6 +1225,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Faxes</para>
       /// </summary>
       [DataMember(Name="donotfax")]
+      [NavigationPropertyAttribute(SchemaName="donotfax")]
       public System.Nullable<bool> DoNotFax
       {
          get
@@ -1169,6 +1242,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Phone Calls</para>
       /// </summary>
       [DataMember(Name="donotphone")]
+      [NavigationPropertyAttribute(SchemaName="donotphone")]
       public System.Nullable<bool> DoNotPhone
       {
          get
@@ -1185,6 +1259,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Mails</para>
       /// </summary>
       [DataMember(Name="donotpostalmail")]
+      [NavigationPropertyAttribute(SchemaName="donotpostalmail")]
       public System.Nullable<bool> DoNotPostalMail
       {
          get
@@ -1201,6 +1276,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Send Marketing Materials</para>
       /// </summary>
       [DataMember(Name="donotsendmm")]
+      [NavigationPropertyAttribute(SchemaName="donotsendmm")]
       public System.Nullable<bool> DoNotSendMM
       {
          get
@@ -1217,6 +1293,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Email</para>
       /// </summary>
       [DataMember(Name="emailaddress1")]
+      [NavigationPropertyAttribute(SchemaName="emailaddress1")]
       public string EMailAddress1
       {
          get
@@ -1233,6 +1310,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Email Address 2</para>
       /// </summary>
       [DataMember(Name="emailaddress2")]
+      [NavigationPropertyAttribute(SchemaName="emailaddress2")]
       public string EMailAddress2
       {
          get
@@ -1249,6 +1327,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Email Address 3</para>
       /// </summary>
       [DataMember(Name="emailaddress3")]
+      [NavigationPropertyAttribute(SchemaName="emailaddress3")]
       public string EMailAddress3
       {
          get
@@ -1265,6 +1344,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: </para>
       /// </summary>
       [DataMember(Name="entityimage_timestamp")]
+      [NavigationPropertyAttribute(SchemaName="entityimage_timestamp")]
       public System.Nullable<long> EntityImage_Timestamp
       {
          get
@@ -1277,6 +1357,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: </para>
       /// </summary>
       [DataMember(Name="entityimage_url")]
+      [NavigationPropertyAttribute(SchemaName="entityimage_url")]
       public string EntityImage_URL
       {
          get
@@ -1289,6 +1370,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Entity Image Id</para>
       /// </summary>
       [DataMember(Name="entityimageid")]
+      [NavigationPropertyAttribute(SchemaName="entityimageid")]
       public System.Nullable<System.Guid> EntityImageId
       {
          get
@@ -1301,6 +1383,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Exchange Rate</para>
       /// </summary>
       [DataMember(Name="exchangerate")]
+      [NavigationPropertyAttribute(SchemaName="exchangerate")]
       public System.Nullable<decimal> ExchangeRate
       {
          get
@@ -1313,6 +1396,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Fax</para>
       /// </summary>
       [DataMember(Name="fax")]
+      [NavigationPropertyAttribute(SchemaName="fax")]
       public string Fax
       {
          get
@@ -1329,6 +1413,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Follow Email Activity</para>
       /// </summary>
       [DataMember(Name="followemail")]
+      [NavigationPropertyAttribute(SchemaName="followemail")]
       public System.Nullable<bool> FollowEmail
       {
          get
@@ -1345,6 +1430,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: FTP Site</para>
       /// </summary>
       [DataMember(Name="ftpsiteurl")]
+      [NavigationPropertyAttribute(SchemaName="ftpsiteurl")]
       public string FtpSiteURL
       {
          get
@@ -1361,6 +1447,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Import Sequence Number</para>
       /// </summary>
       [DataMember(Name="importsequencenumber")]
+      [NavigationPropertyAttribute(SchemaName="importsequencenumber")]
       public System.Nullable<int> ImportSequenceNumber
       {
          get
@@ -1377,6 +1464,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Industry</para>
       /// </summary>
       [DataMember(Name="industrycode")]
+      [NavigationPropertyAttribute(SchemaName="industrycode")]
       public account_industrycode? IndustryCode
       {
          get
@@ -1393,6 +1481,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last On Hold Time</para>
       /// </summary>
       [DataMember(Name="lastonholdtime")]
+      [NavigationPropertyAttribute(SchemaName="lastonholdtime")]
       public System.Nullable<System.DateTime> LastOnHoldTime
       {
          get
@@ -1409,6 +1498,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last Date Included in Campaign</para>
       /// </summary>
       [DataMember(Name="lastusedincampaign")]
+      [NavigationPropertyAttribute(SchemaName="lastusedincampaign")]
       public System.Nullable<System.DateTime> LastUsedInCampaign
       {
          get
@@ -1425,6 +1515,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Market Capitalization</para>
       /// </summary>
       [DataMember(Name="marketcap")]
+      [NavigationPropertyAttribute(SchemaName="marketcap")]
       public System.Nullable<decimal> MarketCap
       {
          get
@@ -1441,6 +1532,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Market Capitalization (Base)</para>
       /// </summary>
       [DataMember(Name="marketcap_base")]
+      [NavigationPropertyAttribute(SchemaName="marketcap_base")]
       public System.Nullable<decimal> MarketCap_Base
       {
          get
@@ -1453,6 +1545,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Marketing Only</para>
       /// </summary>
       [DataMember(Name="marketingonly")]
+      [NavigationPropertyAttribute(SchemaName="marketingonly")]
       public System.Nullable<bool> MarketingOnly
       {
          get
@@ -1469,6 +1562,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Master ID</para>
       /// </summary>
       [DataMember(Name="masterid")]
+      [NavigationPropertyAttribute(SchemaName="masterid")]
       [NavigationPropertyTargets("account")]
       public NavigationProperty MasterId
       {
@@ -1482,6 +1576,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Merged</para>
       /// </summary>
       [DataMember(Name="merged")]
+      [NavigationPropertyAttribute(SchemaName="merged")]
       public System.Nullable<bool> Merged
       {
          get
@@ -1494,6 +1589,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By</para>
       /// </summary>
       [DataMember(Name="modifiedby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedBy
       {
@@ -1507,6 +1603,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By (External Party)</para>
       /// </summary>
       [DataMember(Name="modifiedbyexternalparty")]
+      [NavigationPropertyAttribute(SchemaName="modifiedbyexternalparty")]
       [NavigationPropertyTargets("externalparty")]
       public NavigationProperty ModifiedByExternalParty
       {
@@ -1520,6 +1617,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified On</para>
       /// </summary>
       [DataMember(Name="modifiedon")]
+      [NavigationPropertyAttribute(SchemaName="modifiedon")]
       public System.Nullable<System.DateTime> ModifiedOn
       {
          get
@@ -1532,6 +1630,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
       [DataMember(Name="modifiedonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedonbehalfby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedOnBehalfBy
       {
@@ -1545,6 +1644,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Account Name</para>
       /// </summary>
       [DataMember(Name="name")]
+      [NavigationPropertyAttribute(SchemaName="name")]
       public string Name
       {
          get
@@ -1561,6 +1661,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Number of Employees</para>
       /// </summary>
       [DataMember(Name="numberofemployees")]
+      [NavigationPropertyAttribute(SchemaName="numberofemployees")]
       public System.Nullable<int> NumberOfEmployees
       {
          get
@@ -1577,6 +1678,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: On Hold Time (Minutes)</para>
       /// </summary>
       [DataMember(Name="onholdtime")]
+      [NavigationPropertyAttribute(SchemaName="onholdtime")]
       public System.Nullable<int> OnHoldTime
       {
          get
@@ -1589,6 +1691,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Deals</para>
       /// </summary>
       [DataMember(Name="opendeals")]
+      [NavigationPropertyAttribute(SchemaName="opendeals")]
       public System.Nullable<int> OpenDeals
       {
          get
@@ -1601,6 +1704,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Deals (Last Updated On)</para>
       /// </summary>
       [DataMember(Name="opendeals_date")]
+      [NavigationPropertyAttribute(SchemaName="opendeals_date")]
       public System.Nullable<System.DateTime> OpenDeals_Date
       {
          get
@@ -1613,6 +1717,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Deals (State)</para>
       /// </summary>
       [DataMember(Name="opendeals_state")]
+      [NavigationPropertyAttribute(SchemaName="opendeals_state")]
       public System.Nullable<int> OpenDeals_State
       {
          get
@@ -1625,6 +1730,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Revenue</para>
       /// </summary>
       [DataMember(Name="openrevenue")]
+      [NavigationPropertyAttribute(SchemaName="openrevenue")]
       public System.Nullable<decimal> OpenRevenue
       {
          get
@@ -1637,6 +1743,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Revenue (Base)</para>
       /// </summary>
       [DataMember(Name="openrevenue_base")]
+      [NavigationPropertyAttribute(SchemaName="openrevenue_base")]
       public System.Nullable<decimal> OpenRevenue_Base
       {
          get
@@ -1649,6 +1756,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Revenue (Last Updated On)</para>
       /// </summary>
       [DataMember(Name="openrevenue_date")]
+      [NavigationPropertyAttribute(SchemaName="openrevenue_date")]
       public System.Nullable<System.DateTime> OpenRevenue_Date
       {
          get
@@ -1661,6 +1769,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Open Revenue (State)</para>
       /// </summary>
       [DataMember(Name="openrevenue_state")]
+      [NavigationPropertyAttribute(SchemaName="openrevenue_state")]
       public System.Nullable<int> OpenRevenue_State
       {
          get
@@ -1673,6 +1782,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Originating Lead</para>
       /// </summary>
       [DataMember(Name="originatingleadid")]
+      [NavigationPropertyAttribute(SchemaName="originatingleadid")]
       [NavigationPropertyTargets("lead")]
       public NavigationProperty OriginatingLeadId
       {
@@ -1690,6 +1800,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Record Created On</para>
       /// </summary>
       [DataMember(Name="overriddencreatedon")]
+      [NavigationPropertyAttribute(SchemaName="overriddencreatedon")]
       public System.Nullable<System.DateTime> OverriddenCreatedOn
       {
          get
@@ -1706,6 +1817,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="ownerid")]
+      [NavigationPropertyAttribute(SchemaName="ownerid")]
       [NavigationPropertyTargets("systemuser", "team")]
       public NavigationProperty OwnerId
       {
@@ -1723,6 +1835,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Ownership</para>
       /// </summary>
       [DataMember(Name="ownershipcode")]
+      [NavigationPropertyAttribute(SchemaName="ownershipcode")]
       public account_ownershipcode? OwnershipCode
       {
          get
@@ -1739,6 +1852,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
       [DataMember(Name="owningbusinessunit")]
+      [NavigationPropertyAttribute(SchemaName="owningbusinessunit")]
       [NavigationPropertyTargets("businessunit")]
       public NavigationProperty OwningBusinessUnit
       {
@@ -1752,6 +1866,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning Team</para>
       /// </summary>
       [DataMember(Name="owningteam")]
+      [NavigationPropertyAttribute(SchemaName="owningteam")]
       [NavigationPropertyTargets("team")]
       public NavigationProperty OwningTeam
       {
@@ -1765,6 +1880,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning User</para>
       /// </summary>
       [DataMember(Name="owninguser")]
+      [NavigationPropertyAttribute(SchemaName="owninguser")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty OwningUser
       {
@@ -1778,6 +1894,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Parent Account</para>
       /// </summary>
       [DataMember(Name="parentaccountid")]
+      [NavigationPropertyAttribute(SchemaName="parentaccountid")]
       [NavigationPropertyTargets("account")]
       public NavigationProperty ParentAccountId
       {
@@ -1795,6 +1912,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Participates in Workflow</para>
       /// </summary>
       [DataMember(Name="participatesinworkflow")]
+      [NavigationPropertyAttribute(SchemaName="participatesinworkflow")]
       public System.Nullable<bool> ParticipatesInWorkflow
       {
          get
@@ -1811,6 +1929,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Payment Terms</para>
       /// </summary>
       [DataMember(Name="paymenttermscode")]
+      [NavigationPropertyAttribute(SchemaName="paymenttermscode")]
       public account_paymenttermscode? PaymentTermsCode
       {
          get
@@ -1827,6 +1946,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Day</para>
       /// </summary>
       [DataMember(Name="preferredappointmentdaycode")]
+      [NavigationPropertyAttribute(SchemaName="preferredappointmentdaycode")]
       public account_preferredappointmentdaycode? PreferredAppointmentDayCode
       {
          get
@@ -1843,6 +1963,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Time</para>
       /// </summary>
       [DataMember(Name="preferredappointmenttimecode")]
+      [NavigationPropertyAttribute(SchemaName="preferredappointmenttimecode")]
       public account_preferredappointmenttimecode? PreferredAppointmentTimeCode
       {
          get
@@ -1859,6 +1980,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Method of Contact</para>
       /// </summary>
       [DataMember(Name="preferredcontactmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="preferredcontactmethodcode")]
       public account_preferredcontactmethodcode? PreferredContactMethodCode
       {
          get
@@ -1875,6 +1997,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Facility/Equipment</para>
       /// </summary>
       [DataMember(Name="preferredequipmentid")]
+      [NavigationPropertyAttribute(SchemaName="preferredequipmentid")]
       [NavigationPropertyTargets("equipment")]
       public NavigationProperty PreferredEquipmentId
       {
@@ -1892,6 +2015,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Service</para>
       /// </summary>
       [DataMember(Name="preferredserviceid")]
+      [NavigationPropertyAttribute(SchemaName="preferredserviceid")]
       [NavigationPropertyTargets("service")]
       public NavigationProperty PreferredServiceId
       {
@@ -1909,6 +2033,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred User</para>
       /// </summary>
       [DataMember(Name="preferredsystemuserid")]
+      [NavigationPropertyAttribute(SchemaName="preferredsystemuserid")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty PreferredSystemUserId
       {
@@ -1926,6 +2051,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Primary Contact</para>
       /// </summary>
       [DataMember(Name="primarycontactid")]
+      [NavigationPropertyAttribute(SchemaName="primarycontactid")]
       [NavigationPropertyTargets("contact")]
       public NavigationProperty PrimaryContactId
       {
@@ -1943,6 +2069,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Primary Satori ID</para>
       /// </summary>
       [DataMember(Name="primarysatoriid")]
+      [NavigationPropertyAttribute(SchemaName="primarysatoriid")]
       public string PrimarySatoriId
       {
          get
@@ -1959,6 +2086,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Primary Twitter ID</para>
       /// </summary>
       [DataMember(Name="primarytwitterid")]
+      [NavigationPropertyAttribute(SchemaName="primarytwitterid")]
       public string PrimaryTwitterId
       {
          get
@@ -1975,6 +2103,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Process</para>
       /// </summary>
       [DataMember(Name="processid")]
+      [NavigationPropertyAttribute(SchemaName="processid")]
       public System.Nullable<System.Guid> ProcessId
       {
          get
@@ -1991,6 +2120,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Annual Revenue</para>
       /// </summary>
       [DataMember(Name="revenue")]
+      [NavigationPropertyAttribute(SchemaName="revenue")]
       public System.Nullable<decimal> Revenue
       {
          get
@@ -2007,6 +2137,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Annual Revenue (Base)</para>
       /// </summary>
       [DataMember(Name="revenue_base")]
+      [NavigationPropertyAttribute(SchemaName="revenue_base")]
       public System.Nullable<decimal> Revenue_Base
       {
          get
@@ -2019,6 +2150,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Shares Outstanding</para>
       /// </summary>
       [DataMember(Name="sharesoutstanding")]
+      [NavigationPropertyAttribute(SchemaName="sharesoutstanding")]
       public System.Nullable<int> SharesOutstanding
       {
          get
@@ -2035,6 +2167,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Shipping Method</para>
       /// </summary>
       [DataMember(Name="shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="shippingmethodcode")]
       public account_shippingmethodcode? ShippingMethodCode
       {
          get
@@ -2051,6 +2184,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: SIC Code</para>
       /// </summary>
       [DataMember(Name="sic")]
+      [NavigationPropertyAttribute(SchemaName="sic")]
       public string SIC
       {
          get
@@ -2067,6 +2201,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: SLA</para>
       /// </summary>
       [DataMember(Name="slaid")]
+      [NavigationPropertyAttribute(SchemaName="slaid")]
       [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAId
       {
@@ -2084,6 +2219,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last SLA applied</para>
       /// </summary>
       [DataMember(Name="slainvokedid")]
+      [NavigationPropertyAttribute(SchemaName="slainvokedid")]
       [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAInvokedId
       {
@@ -2097,6 +2233,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: (Deprecated) Process Stage</para>
       /// </summary>
       [DataMember(Name="stageid")]
+      [NavigationPropertyAttribute(SchemaName="stageid")]
       public System.Nullable<System.Guid> StageId
       {
          get
@@ -2113,6 +2250,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Status</para>
       /// </summary>
       [DataMember(Name="statecode")]
+      [NavigationPropertyAttribute(SchemaName="statecode")]
       public account_statecode? StateCode
       {
          get
@@ -2129,6 +2267,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Status Reason</para>
       /// </summary>
       [DataMember(Name="statuscode")]
+      [NavigationPropertyAttribute(SchemaName="statuscode")]
       public account_statuscode? StatusCode
       {
          get
@@ -2145,6 +2284,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Stock Exchange</para>
       /// </summary>
       [DataMember(Name="stockexchange")]
+      [NavigationPropertyAttribute(SchemaName="stockexchange")]
       public string StockExchange
       {
          get
@@ -2161,6 +2301,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: TeamsFollowed</para>
       /// </summary>
       [DataMember(Name="teamsfollowed")]
+      [NavigationPropertyAttribute(SchemaName="teamsfollowed")]
       public System.Nullable<int> TeamsFollowed
       {
          get
@@ -2177,6 +2318,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Main Phone</para>
       /// </summary>
       [DataMember(Name="telephone1")]
+      [NavigationPropertyAttribute(SchemaName="telephone1")]
       public string Telephone1
       {
          get
@@ -2193,6 +2335,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Other Phone</para>
       /// </summary>
       [DataMember(Name="telephone2")]
+      [NavigationPropertyAttribute(SchemaName="telephone2")]
       public string Telephone2
       {
          get
@@ -2209,6 +2352,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Telephone 3</para>
       /// </summary>
       [DataMember(Name="telephone3")]
+      [NavigationPropertyAttribute(SchemaName="telephone3")]
       public string Telephone3
       {
          get
@@ -2225,6 +2369,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Territory Code</para>
       /// </summary>
       [DataMember(Name="territorycode")]
+      [NavigationPropertyAttribute(SchemaName="territorycode")]
       public account_territorycode? TerritoryCode
       {
          get
@@ -2241,6 +2386,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Territory</para>
       /// </summary>
       [DataMember(Name="territoryid")]
+      [NavigationPropertyAttribute(SchemaName="territoryid")]
       [NavigationPropertyTargets("territory")]
       public NavigationProperty TerritoryId
       {
@@ -2258,6 +2404,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Ticker Symbol</para>
       /// </summary>
       [DataMember(Name="tickersymbol")]
+      [NavigationPropertyAttribute(SchemaName="tickersymbol")]
       public string TickerSymbol
       {
          get
@@ -2274,6 +2421,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Time Spent by me</para>
       /// </summary>
       [DataMember(Name="timespentbymeonemailandmeetings")]
+      [NavigationPropertyAttribute(SchemaName="timespentbymeonemailandmeetings")]
       public string TimeSpentByMeOnEmailAndMeetings
       {
          get
@@ -2286,6 +2434,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Time Zone Rule Version Number</para>
       /// </summary>
       [DataMember(Name="timezoneruleversionnumber")]
+      [NavigationPropertyAttribute(SchemaName="timezoneruleversionnumber")]
       public System.Nullable<int> TimeZoneRuleVersionNumber
       {
          get
@@ -2302,6 +2451,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Currency</para>
       /// </summary>
       [DataMember(Name="transactioncurrencyid")]
+      [NavigationPropertyAttribute(SchemaName="transactioncurrencyid")]
       [NavigationPropertyTargets("transactioncurrency")]
       public NavigationProperty TransactionCurrencyId
       {
@@ -2319,6 +2469,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: (Deprecated) Traversed Path</para>
       /// </summary>
       [DataMember(Name="traversedpath")]
+      [NavigationPropertyAttribute(SchemaName="traversedpath")]
       public string TraversedPath
       {
          get
@@ -2335,6 +2486,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: UTC Conversion Time Zone Code</para>
       /// </summary>
       [DataMember(Name="utcconversiontimezonecode")]
+      [NavigationPropertyAttribute(SchemaName="utcconversiontimezonecode")]
       public System.Nullable<int> UTCConversionTimeZoneCode
       {
          get
@@ -2351,6 +2503,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Version Number</para>
       /// </summary>
       [DataMember(Name="versionnumber")]
+      [NavigationPropertyAttribute(SchemaName="versionnumber")]
       public System.Nullable<long> VersionNumber
       {
          get
@@ -2363,6 +2516,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Website</para>
       /// </summary>
       [DataMember(Name="websiteurl")]
+      [NavigationPropertyAttribute(SchemaName="websiteurl")]
       public string WebSiteURL
       {
          get
@@ -2379,6 +2533,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Yomi Account Name</para>
       /// </summary>
       [DataMember(Name="yominame")]
+      [NavigationPropertyAttribute(SchemaName="yominame")]
       public string YomiName
       {
          get
@@ -2426,6 +2581,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Contact</para>
       /// </summary>
       [DataMember(Name="contactid")]
+      [NavigationPropertyAttribute(SchemaName="contactid")]
       public override System.Guid Id
       {
          get
@@ -2442,6 +2598,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Account</para>
       /// </summary>
       [DataMember(Name="accountid")]
+      [NavigationPropertyAttribute(SchemaName="accountid")]
       [NavigationPropertyTargets("account")]
       public NavigationProperty AccountId
       {
@@ -2455,6 +2612,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Role</para>
       /// </summary>
       [DataMember(Name="accountrolecode")]
+      [NavigationPropertyAttribute(SchemaName="accountrolecode")]
       public contact_accountrolecode? AccountRoleCode
       {
          get
@@ -2471,6 +2629,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Address Type</para>
       /// </summary>
       [DataMember(Name="address1_addresstypecode")]
+      [NavigationPropertyAttribute(SchemaName="address1_addresstypecode")]
       public contact_address1_addresstypecode? Address1_AddressTypeCode
       {
          get
@@ -2487,6 +2646,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: City</para>
       /// </summary>
       [DataMember(Name="address1_city")]
+      [NavigationPropertyAttribute(SchemaName="address1_city")]
       public string Address1_City
       {
          get
@@ -2503,6 +2663,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1</para>
       /// </summary>
       [DataMember(Name="address1_composite")]
+      [NavigationPropertyAttribute(SchemaName="address1_composite")]
       public string Address1_Composite
       {
          get
@@ -2515,6 +2676,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Country/Region</para>
       /// </summary>
       [DataMember(Name="address1_country")]
+      [NavigationPropertyAttribute(SchemaName="address1_country")]
       public string Address1_Country
       {
          get
@@ -2531,6 +2693,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: County</para>
       /// </summary>
       [DataMember(Name="address1_county")]
+      [NavigationPropertyAttribute(SchemaName="address1_county")]
       public string Address1_County
       {
          get
@@ -2547,6 +2710,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Fax</para>
       /// </summary>
       [DataMember(Name="address1_fax")]
+      [NavigationPropertyAttribute(SchemaName="address1_fax")]
       public string Address1_Fax
       {
          get
@@ -2563,6 +2727,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Freight Terms</para>
       /// </summary>
       [DataMember(Name="address1_freighttermscode")]
+      [NavigationPropertyAttribute(SchemaName="address1_freighttermscode")]
       public contact_address1_freighttermscode? Address1_FreightTermsCode
       {
          get
@@ -2579,6 +2744,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Latitude</para>
       /// </summary>
       [DataMember(Name="address1_latitude")]
+      [NavigationPropertyAttribute(SchemaName="address1_latitude")]
       public System.Nullable<double> Address1_Latitude
       {
          get
@@ -2595,6 +2761,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Street 1</para>
       /// </summary>
       [DataMember(Name="address1_line1")]
+      [NavigationPropertyAttribute(SchemaName="address1_line1")]
       public string Address1_Line1
       {
          get
@@ -2611,6 +2778,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Street 2</para>
       /// </summary>
       [DataMember(Name="address1_line2")]
+      [NavigationPropertyAttribute(SchemaName="address1_line2")]
       public string Address1_Line2
       {
          get
@@ -2627,6 +2795,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Street 3</para>
       /// </summary>
       [DataMember(Name="address1_line3")]
+      [NavigationPropertyAttribute(SchemaName="address1_line3")]
       public string Address1_Line3
       {
          get
@@ -2643,6 +2812,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Longitude</para>
       /// </summary>
       [DataMember(Name="address1_longitude")]
+      [NavigationPropertyAttribute(SchemaName="address1_longitude")]
       public System.Nullable<double> Address1_Longitude
       {
          get
@@ -2659,6 +2829,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Name</para>
       /// </summary>
       [DataMember(Name="address1_name")]
+      [NavigationPropertyAttribute(SchemaName="address1_name")]
       public string Address1_Name
       {
          get
@@ -2675,6 +2846,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: ZIP/Postal Code</para>
       /// </summary>
       [DataMember(Name="address1_postalcode")]
+      [NavigationPropertyAttribute(SchemaName="address1_postalcode")]
       public string Address1_PostalCode
       {
          get
@@ -2691,6 +2863,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Post Office Box</para>
       /// </summary>
       [DataMember(Name="address1_postofficebox")]
+      [NavigationPropertyAttribute(SchemaName="address1_postofficebox")]
       public string Address1_PostOfficeBox
       {
          get
@@ -2707,6 +2880,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Primary Contact Name</para>
       /// </summary>
       [DataMember(Name="address1_primarycontactname")]
+      [NavigationPropertyAttribute(SchemaName="address1_primarycontactname")]
       public string Address1_PrimaryContactName
       {
          get
@@ -2723,6 +2897,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Shipping Method</para>
       /// </summary>
       [DataMember(Name="address1_shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="address1_shippingmethodcode")]
       public contact_address1_shippingmethodcode? Address1_ShippingMethodCode
       {
          get
@@ -2739,6 +2914,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: State/Province</para>
       /// </summary>
       [DataMember(Name="address1_stateorprovince")]
+      [NavigationPropertyAttribute(SchemaName="address1_stateorprovince")]
       public string Address1_StateOrProvince
       {
          get
@@ -2755,6 +2931,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Phone</para>
       /// </summary>
       [DataMember(Name="address1_telephone1")]
+      [NavigationPropertyAttribute(SchemaName="address1_telephone1")]
       public string Address1_Telephone1
       {
          get
@@ -2771,6 +2948,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Telephone 2</para>
       /// </summary>
       [DataMember(Name="address1_telephone2")]
+      [NavigationPropertyAttribute(SchemaName="address1_telephone2")]
       public string Address1_Telephone2
       {
          get
@@ -2787,6 +2965,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: Telephone 3</para>
       /// </summary>
       [DataMember(Name="address1_telephone3")]
+      [NavigationPropertyAttribute(SchemaName="address1_telephone3")]
       public string Address1_Telephone3
       {
          get
@@ -2803,6 +2982,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: UPS Zone</para>
       /// </summary>
       [DataMember(Name="address1_upszone")]
+      [NavigationPropertyAttribute(SchemaName="address1_upszone")]
       public string Address1_UPSZone
       {
          get
@@ -2819,6 +2999,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 1: UTC Offset</para>
       /// </summary>
       [DataMember(Name="address1_utcoffset")]
+      [NavigationPropertyAttribute(SchemaName="address1_utcoffset")]
       public System.Nullable<int> Address1_UTCOffset
       {
          get
@@ -2835,6 +3016,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Address Type</para>
       /// </summary>
       [DataMember(Name="address2_addresstypecode")]
+      [NavigationPropertyAttribute(SchemaName="address2_addresstypecode")]
       public contact_address2_addresstypecode? Address2_AddressTypeCode
       {
          get
@@ -2851,6 +3033,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: City</para>
       /// </summary>
       [DataMember(Name="address2_city")]
+      [NavigationPropertyAttribute(SchemaName="address2_city")]
       public string Address2_City
       {
          get
@@ -2867,6 +3050,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2</para>
       /// </summary>
       [DataMember(Name="address2_composite")]
+      [NavigationPropertyAttribute(SchemaName="address2_composite")]
       public string Address2_Composite
       {
          get
@@ -2879,6 +3063,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Country/Region</para>
       /// </summary>
       [DataMember(Name="address2_country")]
+      [NavigationPropertyAttribute(SchemaName="address2_country")]
       public string Address2_Country
       {
          get
@@ -2895,6 +3080,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: County</para>
       /// </summary>
       [DataMember(Name="address2_county")]
+      [NavigationPropertyAttribute(SchemaName="address2_county")]
       public string Address2_County
       {
          get
@@ -2911,6 +3097,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Fax</para>
       /// </summary>
       [DataMember(Name="address2_fax")]
+      [NavigationPropertyAttribute(SchemaName="address2_fax")]
       public string Address2_Fax
       {
          get
@@ -2927,6 +3114,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Freight Terms</para>
       /// </summary>
       [DataMember(Name="address2_freighttermscode")]
+      [NavigationPropertyAttribute(SchemaName="address2_freighttermscode")]
       public contact_address2_freighttermscode? Address2_FreightTermsCode
       {
          get
@@ -2943,6 +3131,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Latitude</para>
       /// </summary>
       [DataMember(Name="address2_latitude")]
+      [NavigationPropertyAttribute(SchemaName="address2_latitude")]
       public System.Nullable<double> Address2_Latitude
       {
          get
@@ -2959,6 +3148,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Street 1</para>
       /// </summary>
       [DataMember(Name="address2_line1")]
+      [NavigationPropertyAttribute(SchemaName="address2_line1")]
       public string Address2_Line1
       {
          get
@@ -2975,6 +3165,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Street 2</para>
       /// </summary>
       [DataMember(Name="address2_line2")]
+      [NavigationPropertyAttribute(SchemaName="address2_line2")]
       public string Address2_Line2
       {
          get
@@ -2991,6 +3182,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Street 3</para>
       /// </summary>
       [DataMember(Name="address2_line3")]
+      [NavigationPropertyAttribute(SchemaName="address2_line3")]
       public string Address2_Line3
       {
          get
@@ -3007,6 +3199,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Longitude</para>
       /// </summary>
       [DataMember(Name="address2_longitude")]
+      [NavigationPropertyAttribute(SchemaName="address2_longitude")]
       public System.Nullable<double> Address2_Longitude
       {
          get
@@ -3023,6 +3216,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Name</para>
       /// </summary>
       [DataMember(Name="address2_name")]
+      [NavigationPropertyAttribute(SchemaName="address2_name")]
       public string Address2_Name
       {
          get
@@ -3039,6 +3233,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: ZIP/Postal Code</para>
       /// </summary>
       [DataMember(Name="address2_postalcode")]
+      [NavigationPropertyAttribute(SchemaName="address2_postalcode")]
       public string Address2_PostalCode
       {
          get
@@ -3055,6 +3250,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Post Office Box</para>
       /// </summary>
       [DataMember(Name="address2_postofficebox")]
+      [NavigationPropertyAttribute(SchemaName="address2_postofficebox")]
       public string Address2_PostOfficeBox
       {
          get
@@ -3071,6 +3267,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Primary Contact Name</para>
       /// </summary>
       [DataMember(Name="address2_primarycontactname")]
+      [NavigationPropertyAttribute(SchemaName="address2_primarycontactname")]
       public string Address2_PrimaryContactName
       {
          get
@@ -3087,6 +3284,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Shipping Method</para>
       /// </summary>
       [DataMember(Name="address2_shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="address2_shippingmethodcode")]
       public contact_address2_shippingmethodcode? Address2_ShippingMethodCode
       {
          get
@@ -3103,6 +3301,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: State/Province</para>
       /// </summary>
       [DataMember(Name="address2_stateorprovince")]
+      [NavigationPropertyAttribute(SchemaName="address2_stateorprovince")]
       public string Address2_StateOrProvince
       {
          get
@@ -3119,6 +3318,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Telephone 1</para>
       /// </summary>
       [DataMember(Name="address2_telephone1")]
+      [NavigationPropertyAttribute(SchemaName="address2_telephone1")]
       public string Address2_Telephone1
       {
          get
@@ -3135,6 +3335,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Telephone 2</para>
       /// </summary>
       [DataMember(Name="address2_telephone2")]
+      [NavigationPropertyAttribute(SchemaName="address2_telephone2")]
       public string Address2_Telephone2
       {
          get
@@ -3151,6 +3352,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: Telephone 3</para>
       /// </summary>
       [DataMember(Name="address2_telephone3")]
+      [NavigationPropertyAttribute(SchemaName="address2_telephone3")]
       public string Address2_Telephone3
       {
          get
@@ -3167,6 +3369,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: UPS Zone</para>
       /// </summary>
       [DataMember(Name="address2_upszone")]
+      [NavigationPropertyAttribute(SchemaName="address2_upszone")]
       public string Address2_UPSZone
       {
          get
@@ -3183,6 +3386,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 2: UTC Offset</para>
       /// </summary>
       [DataMember(Name="address2_utcoffset")]
+      [NavigationPropertyAttribute(SchemaName="address2_utcoffset")]
       public System.Nullable<int> Address2_UTCOffset
       {
          get
@@ -3199,6 +3403,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Address Type</para>
       /// </summary>
       [DataMember(Name="address3_addresstypecode")]
+      [NavigationPropertyAttribute(SchemaName="address3_addresstypecode")]
       public contact_address3_addresstypecode? Address3_AddressTypeCode
       {
          get
@@ -3215,6 +3420,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: City</para>
       /// </summary>
       [DataMember(Name="address3_city")]
+      [NavigationPropertyAttribute(SchemaName="address3_city")]
       public string Address3_City
       {
          get
@@ -3231,6 +3437,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3</para>
       /// </summary>
       [DataMember(Name="address3_composite")]
+      [NavigationPropertyAttribute(SchemaName="address3_composite")]
       public string Address3_Composite
       {
          get
@@ -3243,6 +3450,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address3: Country/Region</para>
       /// </summary>
       [DataMember(Name="address3_country")]
+      [NavigationPropertyAttribute(SchemaName="address3_country")]
       public string Address3_Country
       {
          get
@@ -3259,6 +3467,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: County</para>
       /// </summary>
       [DataMember(Name="address3_county")]
+      [NavigationPropertyAttribute(SchemaName="address3_county")]
       public string Address3_County
       {
          get
@@ -3275,6 +3484,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Fax</para>
       /// </summary>
       [DataMember(Name="address3_fax")]
+      [NavigationPropertyAttribute(SchemaName="address3_fax")]
       public string Address3_Fax
       {
          get
@@ -3291,6 +3501,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Freight Terms</para>
       /// </summary>
       [DataMember(Name="address3_freighttermscode")]
+      [NavigationPropertyAttribute(SchemaName="address3_freighttermscode")]
       public contact_address3_freighttermscode? Address3_FreightTermsCode
       {
          get
@@ -3307,6 +3518,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Latitude</para>
       /// </summary>
       [DataMember(Name="address3_latitude")]
+      [NavigationPropertyAttribute(SchemaName="address3_latitude")]
       public System.Nullable<double> Address3_Latitude
       {
          get
@@ -3323,6 +3535,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address3: Street 1</para>
       /// </summary>
       [DataMember(Name="address3_line1")]
+      [NavigationPropertyAttribute(SchemaName="address3_line1")]
       public string Address3_Line1
       {
          get
@@ -3339,6 +3552,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address3: Street 2</para>
       /// </summary>
       [DataMember(Name="address3_line2")]
+      [NavigationPropertyAttribute(SchemaName="address3_line2")]
       public string Address3_Line2
       {
          get
@@ -3355,6 +3569,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address3: Street 3</para>
       /// </summary>
       [DataMember(Name="address3_line3")]
+      [NavigationPropertyAttribute(SchemaName="address3_line3")]
       public string Address3_Line3
       {
          get
@@ -3371,6 +3586,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Longitude</para>
       /// </summary>
       [DataMember(Name="address3_longitude")]
+      [NavigationPropertyAttribute(SchemaName="address3_longitude")]
       public System.Nullable<double> Address3_Longitude
       {
          get
@@ -3387,6 +3603,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Name</para>
       /// </summary>
       [DataMember(Name="address3_name")]
+      [NavigationPropertyAttribute(SchemaName="address3_name")]
       public string Address3_Name
       {
          get
@@ -3403,6 +3620,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address3: ZIP/Postal Code</para>
       /// </summary>
       [DataMember(Name="address3_postalcode")]
+      [NavigationPropertyAttribute(SchemaName="address3_postalcode")]
       public string Address3_PostalCode
       {
          get
@@ -3419,6 +3637,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Post Office Box</para>
       /// </summary>
       [DataMember(Name="address3_postofficebox")]
+      [NavigationPropertyAttribute(SchemaName="address3_postofficebox")]
       public string Address3_PostOfficeBox
       {
          get
@@ -3435,6 +3654,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Primary Contact Name</para>
       /// </summary>
       [DataMember(Name="address3_primarycontactname")]
+      [NavigationPropertyAttribute(SchemaName="address3_primarycontactname")]
       public string Address3_PrimaryContactName
       {
          get
@@ -3451,6 +3671,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Shipping Method</para>
       /// </summary>
       [DataMember(Name="address3_shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="address3_shippingmethodcode")]
       public contact_address3_shippingmethodcode? Address3_ShippingMethodCode
       {
          get
@@ -3467,6 +3688,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address3: State/Province</para>
       /// </summary>
       [DataMember(Name="address3_stateorprovince")]
+      [NavigationPropertyAttribute(SchemaName="address3_stateorprovince")]
       public string Address3_StateOrProvince
       {
          get
@@ -3483,6 +3705,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Telephone1</para>
       /// </summary>
       [DataMember(Name="address3_telephone1")]
+      [NavigationPropertyAttribute(SchemaName="address3_telephone1")]
       public string Address3_Telephone1
       {
          get
@@ -3499,6 +3722,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Telephone2</para>
       /// </summary>
       [DataMember(Name="address3_telephone2")]
+      [NavigationPropertyAttribute(SchemaName="address3_telephone2")]
       public string Address3_Telephone2
       {
          get
@@ -3515,6 +3739,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: Telephone3</para>
       /// </summary>
       [DataMember(Name="address3_telephone3")]
+      [NavigationPropertyAttribute(SchemaName="address3_telephone3")]
       public string Address3_Telephone3
       {
          get
@@ -3531,6 +3756,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: UPS Zone</para>
       /// </summary>
       [DataMember(Name="address3_upszone")]
+      [NavigationPropertyAttribute(SchemaName="address3_upszone")]
       public string Address3_UPSZone
       {
          get
@@ -3547,6 +3773,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address 3: UTC Offset</para>
       /// </summary>
       [DataMember(Name="address3_utcoffset")]
+      [NavigationPropertyAttribute(SchemaName="address3_utcoffset")]
       public System.Nullable<int> Address3_UTCOffset
       {
          get
@@ -3563,6 +3790,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 30</para>
       /// </summary>
       [DataMember(Name="aging30")]
+      [NavigationPropertyAttribute(SchemaName="aging30")]
       public System.Nullable<decimal> Aging30
       {
          get
@@ -3575,6 +3803,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 30 (Base)</para>
       /// </summary>
       [DataMember(Name="aging30_base")]
+      [NavigationPropertyAttribute(SchemaName="aging30_base")]
       public System.Nullable<decimal> Aging30_Base
       {
          get
@@ -3587,6 +3816,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 60</para>
       /// </summary>
       [DataMember(Name="aging60")]
+      [NavigationPropertyAttribute(SchemaName="aging60")]
       public System.Nullable<decimal> Aging60
       {
          get
@@ -3599,6 +3829,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 60 (Base)</para>
       /// </summary>
       [DataMember(Name="aging60_base")]
+      [NavigationPropertyAttribute(SchemaName="aging60_base")]
       public System.Nullable<decimal> Aging60_Base
       {
          get
@@ -3611,6 +3842,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 90</para>
       /// </summary>
       [DataMember(Name="aging90")]
+      [NavigationPropertyAttribute(SchemaName="aging90")]
       public System.Nullable<decimal> Aging90
       {
          get
@@ -3623,6 +3855,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Aging 90 (Base)</para>
       /// </summary>
       [DataMember(Name="aging90_base")]
+      [NavigationPropertyAttribute(SchemaName="aging90_base")]
       public System.Nullable<decimal> Aging90_Base
       {
          get
@@ -3635,6 +3868,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Anniversary</para>
       /// </summary>
       [DataMember(Name="anniversary")]
+      [NavigationPropertyAttribute(SchemaName="anniversary")]
       public System.Nullable<System.DateTime> Anniversary
       {
          get
@@ -3651,6 +3885,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Annual Income</para>
       /// </summary>
       [DataMember(Name="annualincome")]
+      [NavigationPropertyAttribute(SchemaName="annualincome")]
       public System.Nullable<decimal> AnnualIncome
       {
          get
@@ -3667,6 +3902,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Annual Income (Base)</para>
       /// </summary>
       [DataMember(Name="annualincome_base")]
+      [NavigationPropertyAttribute(SchemaName="annualincome_base")]
       public System.Nullable<decimal> AnnualIncome_Base
       {
          get
@@ -3679,6 +3915,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Assistant</para>
       /// </summary>
       [DataMember(Name="assistantname")]
+      [NavigationPropertyAttribute(SchemaName="assistantname")]
       public string AssistantName
       {
          get
@@ -3695,6 +3932,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Assistant Phone</para>
       /// </summary>
       [DataMember(Name="assistantphone")]
+      [NavigationPropertyAttribute(SchemaName="assistantphone")]
       public string AssistantPhone
       {
          get
@@ -3711,6 +3949,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Birthday</para>
       /// </summary>
       [DataMember(Name="birthdate")]
+      [NavigationPropertyAttribute(SchemaName="birthdate")]
       public System.Nullable<System.DateTime> BirthDate
       {
          get
@@ -3727,6 +3966,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Business Phone 2</para>
       /// </summary>
       [DataMember(Name="business2")]
+      [NavigationPropertyAttribute(SchemaName="business2")]
       public string Business2
       {
          get
@@ -3739,10 +3979,45 @@ namespace PawauBeta01.Data
          }
       }
       /// <summary>
+      /// <para>Description: Stores Image of the Business Card</para>
+      /// <para>Display Name: Business Card</para>
+      /// </summary>
+      [DataMember(Name="businesscard")]
+      [NavigationPropertyAttribute(SchemaName="businesscard")]
+      public string BusinessCard
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("businesscard");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("businesscard", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Stores Business Card Control Properties.</para>
+      /// <para>Display Name: BusinessCardAttributes</para>
+      /// </summary>
+      [DataMember(Name="businesscardattributes")]
+      [NavigationPropertyAttribute(SchemaName="businesscardattributes")]
+      public string BusinessCardAttributes
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("businesscardattributes");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("businesscardattributes", value);
+         }
+      }
+      /// <summary>
       /// <para>Description: Type a callback phone number for this contact.</para>
       /// <para>Display Name: Callback Number</para>
       /// </summary>
       [DataMember(Name="callback")]
+      [NavigationPropertyAttribute(SchemaName="callback")]
       public string Callback
       {
          get
@@ -3759,6 +4034,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Children's Names</para>
       /// </summary>
       [DataMember(Name="childrensnames")]
+      [NavigationPropertyAttribute(SchemaName="childrensnames")]
       public string ChildrensNames
       {
          get
@@ -3775,6 +4051,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Company Phone</para>
       /// </summary>
       [DataMember(Name="company")]
+      [NavigationPropertyAttribute(SchemaName="company")]
       public string Company
       {
          get
@@ -3791,6 +4068,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By</para>
       /// </summary>
       [DataMember(Name="createdby")]
+      [NavigationPropertyAttribute(SchemaName="createdby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedBy
       {
@@ -3804,6 +4082,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By (External Party)</para>
       /// </summary>
       [DataMember(Name="createdbyexternalparty")]
+      [NavigationPropertyAttribute(SchemaName="createdbyexternalparty")]
       [NavigationPropertyTargets("externalparty")]
       public NavigationProperty CreatedByExternalParty
       {
@@ -3817,6 +4096,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created On</para>
       /// </summary>
       [DataMember(Name="createdon")]
+      [NavigationPropertyAttribute(SchemaName="createdon")]
       public System.Nullable<System.DateTime> CreatedOn
       {
          get
@@ -3829,6 +4109,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
       [DataMember(Name="createdonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="createdonbehalfby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedOnBehalfBy
       {
@@ -3842,6 +4123,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Credit Limit</para>
       /// </summary>
       [DataMember(Name="creditlimit")]
+      [NavigationPropertyAttribute(SchemaName="creditlimit")]
       public System.Nullable<decimal> CreditLimit
       {
          get
@@ -3858,6 +4140,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Credit Limit (Base)</para>
       /// </summary>
       [DataMember(Name="creditlimit_base")]
+      [NavigationPropertyAttribute(SchemaName="creditlimit_base")]
       public System.Nullable<decimal> CreditLimit_Base
       {
          get
@@ -3870,6 +4153,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Credit Hold</para>
       /// </summary>
       [DataMember(Name="creditonhold")]
+      [NavigationPropertyAttribute(SchemaName="creditonhold")]
       public System.Nullable<bool> CreditOnHold
       {
          get
@@ -3886,6 +4170,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Customer Size</para>
       /// </summary>
       [DataMember(Name="customersizecode")]
+      [NavigationPropertyAttribute(SchemaName="customersizecode")]
       public contact_customersizecode? CustomerSizeCode
       {
          get
@@ -3902,6 +4187,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Relationship Type</para>
       /// </summary>
       [DataMember(Name="customertypecode")]
+      [NavigationPropertyAttribute(SchemaName="customertypecode")]
       public contact_customertypecode? CustomerTypeCode
       {
          get
@@ -3918,6 +4204,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Price List</para>
       /// </summary>
       [DataMember(Name="defaultpricelevelid")]
+      [NavigationPropertyAttribute(SchemaName="defaultpricelevelid")]
       [NavigationPropertyTargets("pricelevel")]
       public NavigationProperty DefaultPriceLevelId
       {
@@ -3935,6 +4222,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Department</para>
       /// </summary>
       [DataMember(Name="department")]
+      [NavigationPropertyAttribute(SchemaName="department")]
       public string Department
       {
          get
@@ -3951,6 +4239,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Description</para>
       /// </summary>
       [DataMember(Name="description")]
+      [NavigationPropertyAttribute(SchemaName="description")]
       public string Description
       {
          get
@@ -3967,6 +4256,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Bulk Emails</para>
       /// </summary>
       [DataMember(Name="donotbulkemail")]
+      [NavigationPropertyAttribute(SchemaName="donotbulkemail")]
       public System.Nullable<bool> DoNotBulkEMail
       {
          get
@@ -3983,6 +4273,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Bulk Mails</para>
       /// </summary>
       [DataMember(Name="donotbulkpostalmail")]
+      [NavigationPropertyAttribute(SchemaName="donotbulkpostalmail")]
       public System.Nullable<bool> DoNotBulkPostalMail
       {
          get
@@ -3999,6 +4290,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Emails</para>
       /// </summary>
       [DataMember(Name="donotemail")]
+      [NavigationPropertyAttribute(SchemaName="donotemail")]
       public System.Nullable<bool> DoNotEMail
       {
          get
@@ -4015,6 +4307,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Faxes</para>
       /// </summary>
       [DataMember(Name="donotfax")]
+      [NavigationPropertyAttribute(SchemaName="donotfax")]
       public System.Nullable<bool> DoNotFax
       {
          get
@@ -4031,6 +4324,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Phone Calls</para>
       /// </summary>
       [DataMember(Name="donotphone")]
+      [NavigationPropertyAttribute(SchemaName="donotphone")]
       public System.Nullable<bool> DoNotPhone
       {
          get
@@ -4047,6 +4341,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Do not allow Mails</para>
       /// </summary>
       [DataMember(Name="donotpostalmail")]
+      [NavigationPropertyAttribute(SchemaName="donotpostalmail")]
       public System.Nullable<bool> DoNotPostalMail
       {
          get
@@ -4063,6 +4358,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Send Marketing Materials</para>
       /// </summary>
       [DataMember(Name="donotsendmm")]
+      [NavigationPropertyAttribute(SchemaName="donotsendmm")]
       public System.Nullable<bool> DoNotSendMM
       {
          get
@@ -4079,6 +4375,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Education</para>
       /// </summary>
       [DataMember(Name="educationcode")]
+      [NavigationPropertyAttribute(SchemaName="educationcode")]
       public contact_educationcode? EducationCode
       {
          get
@@ -4095,6 +4392,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Email</para>
       /// </summary>
       [DataMember(Name="emailaddress1")]
+      [NavigationPropertyAttribute(SchemaName="emailaddress1")]
       public string EMailAddress1
       {
          get
@@ -4111,6 +4409,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Email Address 2</para>
       /// </summary>
       [DataMember(Name="emailaddress2")]
+      [NavigationPropertyAttribute(SchemaName="emailaddress2")]
       public string EMailAddress2
       {
          get
@@ -4127,6 +4426,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Email Address 3</para>
       /// </summary>
       [DataMember(Name="emailaddress3")]
+      [NavigationPropertyAttribute(SchemaName="emailaddress3")]
       public string EMailAddress3
       {
          get
@@ -4143,6 +4443,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Employee</para>
       /// </summary>
       [DataMember(Name="employeeid")]
+      [NavigationPropertyAttribute(SchemaName="employeeid")]
       public string EmployeeId
       {
          get
@@ -4159,6 +4460,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: </para>
       /// </summary>
       [DataMember(Name="entityimage_timestamp")]
+      [NavigationPropertyAttribute(SchemaName="entityimage_timestamp")]
       public System.Nullable<long> EntityImage_Timestamp
       {
          get
@@ -4171,6 +4473,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: </para>
       /// </summary>
       [DataMember(Name="entityimage_url")]
+      [NavigationPropertyAttribute(SchemaName="entityimage_url")]
       public string EntityImage_URL
       {
          get
@@ -4183,6 +4486,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Entity Image Id</para>
       /// </summary>
       [DataMember(Name="entityimageid")]
+      [NavigationPropertyAttribute(SchemaName="entityimageid")]
       public System.Nullable<System.Guid> EntityImageId
       {
          get
@@ -4195,6 +4499,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Exchange Rate</para>
       /// </summary>
       [DataMember(Name="exchangerate")]
+      [NavigationPropertyAttribute(SchemaName="exchangerate")]
       public System.Nullable<decimal> ExchangeRate
       {
          get
@@ -4207,6 +4512,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: External User Identifier</para>
       /// </summary>
       [DataMember(Name="externaluseridentifier")]
+      [NavigationPropertyAttribute(SchemaName="externaluseridentifier")]
       public string ExternalUserIdentifier
       {
          get
@@ -4223,6 +4529,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Marital Status</para>
       /// </summary>
       [DataMember(Name="familystatuscode")]
+      [NavigationPropertyAttribute(SchemaName="familystatuscode")]
       public contact_familystatuscode? FamilyStatusCode
       {
          get
@@ -4239,6 +4546,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Fax</para>
       /// </summary>
       [DataMember(Name="fax")]
+      [NavigationPropertyAttribute(SchemaName="fax")]
       public string Fax
       {
          get
@@ -4255,6 +4563,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: First Name</para>
       /// </summary>
       [DataMember(Name="firstname")]
+      [NavigationPropertyAttribute(SchemaName="firstname")]
       public string FirstName
       {
          get
@@ -4271,6 +4580,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Follow Email Activity</para>
       /// </summary>
       [DataMember(Name="followemail")]
+      [NavigationPropertyAttribute(SchemaName="followemail")]
       public System.Nullable<bool> FollowEmail
       {
          get
@@ -4287,6 +4597,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: FTP Site</para>
       /// </summary>
       [DataMember(Name="ftpsiteurl")]
+      [NavigationPropertyAttribute(SchemaName="ftpsiteurl")]
       public string FtpSiteUrl
       {
          get
@@ -4303,6 +4614,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Full Name</para>
       /// </summary>
       [DataMember(Name="fullname")]
+      [NavigationPropertyAttribute(SchemaName="fullname")]
       public string FullName
       {
          get
@@ -4315,6 +4627,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Gender</para>
       /// </summary>
       [DataMember(Name="gendercode")]
+      [NavigationPropertyAttribute(SchemaName="gendercode")]
       public contact_gendercode? GenderCode
       {
          get
@@ -4331,6 +4644,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Government</para>
       /// </summary>
       [DataMember(Name="governmentid")]
+      [NavigationPropertyAttribute(SchemaName="governmentid")]
       public string GovernmentId
       {
          get
@@ -4347,6 +4661,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Has Children</para>
       /// </summary>
       [DataMember(Name="haschildrencode")]
+      [NavigationPropertyAttribute(SchemaName="haschildrencode")]
       public contact_haschildrencode? HasChildrenCode
       {
          get
@@ -4363,6 +4678,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Home Phone 2</para>
       /// </summary>
       [DataMember(Name="home2")]
+      [NavigationPropertyAttribute(SchemaName="home2")]
       public string Home2
       {
          get
@@ -4379,6 +4695,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Import Sequence Number</para>
       /// </summary>
       [DataMember(Name="importsequencenumber")]
+      [NavigationPropertyAttribute(SchemaName="importsequencenumber")]
       public System.Nullable<int> ImportSequenceNumber
       {
          get
@@ -4395,6 +4712,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Back Office Customer</para>
       /// </summary>
       [DataMember(Name="isbackofficecustomer")]
+      [NavigationPropertyAttribute(SchemaName="isbackofficecustomer")]
       public System.Nullable<bool> IsBackofficeCustomer
       {
          get
@@ -4411,6 +4729,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Job Title</para>
       /// </summary>
       [DataMember(Name="jobtitle")]
+      [NavigationPropertyAttribute(SchemaName="jobtitle")]
       public string JobTitle
       {
          get
@@ -4427,6 +4746,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last Name</para>
       /// </summary>
       [DataMember(Name="lastname")]
+      [NavigationPropertyAttribute(SchemaName="lastname")]
       public string LastName
       {
          get
@@ -4443,6 +4763,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last On Hold Time</para>
       /// </summary>
       [DataMember(Name="lastonholdtime")]
+      [NavigationPropertyAttribute(SchemaName="lastonholdtime")]
       public System.Nullable<System.DateTime> LastOnHoldTime
       {
          get
@@ -4459,6 +4780,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last Date Included in Campaign</para>
       /// </summary>
       [DataMember(Name="lastusedincampaign")]
+      [NavigationPropertyAttribute(SchemaName="lastusedincampaign")]
       public System.Nullable<System.DateTime> LastUsedInCampaign
       {
          get
@@ -4475,6 +4797,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Lead Source</para>
       /// </summary>
       [DataMember(Name="leadsourcecode")]
+      [NavigationPropertyAttribute(SchemaName="leadsourcecode")]
       public contact_leadsourcecode? LeadSourceCode
       {
          get
@@ -4491,6 +4814,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Manager</para>
       /// </summary>
       [DataMember(Name="managername")]
+      [NavigationPropertyAttribute(SchemaName="managername")]
       public string ManagerName
       {
          get
@@ -4507,6 +4831,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Manager Phone</para>
       /// </summary>
       [DataMember(Name="managerphone")]
+      [NavigationPropertyAttribute(SchemaName="managerphone")]
       public string ManagerPhone
       {
          get
@@ -4523,6 +4848,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Marketing Only</para>
       /// </summary>
       [DataMember(Name="marketingonly")]
+      [NavigationPropertyAttribute(SchemaName="marketingonly")]
       public System.Nullable<bool> MarketingOnly
       {
          get
@@ -4539,6 +4865,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Master ID</para>
       /// </summary>
       [DataMember(Name="masterid")]
+      [NavigationPropertyAttribute(SchemaName="masterid")]
       [NavigationPropertyTargets("contact")]
       public NavigationProperty MasterId
       {
@@ -4552,6 +4879,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Merged</para>
       /// </summary>
       [DataMember(Name="merged")]
+      [NavigationPropertyAttribute(SchemaName="merged")]
       public System.Nullable<bool> Merged
       {
          get
@@ -4564,6 +4892,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Middle Name</para>
       /// </summary>
       [DataMember(Name="middlename")]
+      [NavigationPropertyAttribute(SchemaName="middlename")]
       public string MiddleName
       {
          get
@@ -4580,6 +4909,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Mobile Phone</para>
       /// </summary>
       [DataMember(Name="mobilephone")]
+      [NavigationPropertyAttribute(SchemaName="mobilephone")]
       public string MobilePhone
       {
          get
@@ -4596,6 +4926,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By</para>
       /// </summary>
       [DataMember(Name="modifiedby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedBy
       {
@@ -4609,6 +4940,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By (External Party)</para>
       /// </summary>
       [DataMember(Name="modifiedbyexternalparty")]
+      [NavigationPropertyAttribute(SchemaName="modifiedbyexternalparty")]
       [NavigationPropertyTargets("externalparty")]
       public NavigationProperty ModifiedByExternalParty
       {
@@ -4622,6 +4954,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified On</para>
       /// </summary>
       [DataMember(Name="modifiedon")]
+      [NavigationPropertyAttribute(SchemaName="modifiedon")]
       public System.Nullable<System.DateTime> ModifiedOn
       {
          get
@@ -4634,6 +4967,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
       [DataMember(Name="modifiedonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedonbehalfby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedOnBehalfBy
       {
@@ -4647,6 +4981,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: GDPR Optout</para>
       /// </summary>
       [DataMember(Name="msdyn_gdproptout")]
+      [NavigationPropertyAttribute(SchemaName="msdyn_gdproptout")]
       public System.Nullable<bool> msdyn_gdproptout
       {
          get
@@ -4660,9 +4995,10 @@ namespace PawauBeta01.Data
       }
       /// <summary>
       /// <para>Description: Whether or not the contact belongs to the associated account</para>
-      /// <para>Display Name: Org Change Status</para>
+      /// <para>Display Name: Not at Company Flag</para>
       /// </summary>
       [DataMember(Name="msdyn_orgchangestatus")]
+      [NavigationPropertyAttribute(SchemaName="msdyn_orgchangestatus")]
       public contact_msdyn_orgchangestatus? msdyn_orgchangestatus
       {
          get
@@ -4679,6 +5015,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Nickname</para>
       /// </summary>
       [DataMember(Name="nickname")]
+      [NavigationPropertyAttribute(SchemaName="nickname")]
       public string NickName
       {
          get
@@ -4695,6 +5032,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: No. of Children</para>
       /// </summary>
       [DataMember(Name="numberofchildren")]
+      [NavigationPropertyAttribute(SchemaName="numberofchildren")]
       public System.Nullable<int> NumberOfChildren
       {
          get
@@ -4711,6 +5049,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: On Hold Time (Minutes)</para>
       /// </summary>
       [DataMember(Name="onholdtime")]
+      [NavigationPropertyAttribute(SchemaName="onholdtime")]
       public System.Nullable<int> OnHoldTime
       {
          get
@@ -4723,6 +5062,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Originating Lead</para>
       /// </summary>
       [DataMember(Name="originatingleadid")]
+      [NavigationPropertyAttribute(SchemaName="originatingleadid")]
       [NavigationPropertyTargets("lead")]
       public NavigationProperty OriginatingLeadId
       {
@@ -4740,6 +5080,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Record Created On</para>
       /// </summary>
       [DataMember(Name="overriddencreatedon")]
+      [NavigationPropertyAttribute(SchemaName="overriddencreatedon")]
       public System.Nullable<System.DateTime> OverriddenCreatedOn
       {
          get
@@ -4756,6 +5097,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="ownerid")]
+      [NavigationPropertyAttribute(SchemaName="ownerid")]
       [NavigationPropertyTargets("systemuser", "team")]
       public NavigationProperty OwnerId
       {
@@ -4773,6 +5115,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
       [DataMember(Name="owningbusinessunit")]
+      [NavigationPropertyAttribute(SchemaName="owningbusinessunit")]
       [NavigationPropertyTargets("businessunit")]
       public NavigationProperty OwningBusinessUnit
       {
@@ -4786,6 +5129,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning Team</para>
       /// </summary>
       [DataMember(Name="owningteam")]
+      [NavigationPropertyAttribute(SchemaName="owningteam")]
       [NavigationPropertyTargets("team")]
       public NavigationProperty OwningTeam
       {
@@ -4799,6 +5143,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning User</para>
       /// </summary>
       [DataMember(Name="owninguser")]
+      [NavigationPropertyAttribute(SchemaName="owninguser")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty OwningUser
       {
@@ -4812,6 +5157,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Pager</para>
       /// </summary>
       [DataMember(Name="pager")]
+      [NavigationPropertyAttribute(SchemaName="pager")]
       public string Pager
       {
          get
@@ -4828,6 +5174,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Parent Contact</para>
       /// </summary>
       [DataMember(Name="parentcontactid")]
+      [NavigationPropertyAttribute(SchemaName="parentcontactid")]
       [NavigationPropertyTargets("contact")]
       public NavigationProperty ParentContactId
       {
@@ -4841,6 +5188,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Company Name</para>
       /// </summary>
       [DataMember(Name="parentcustomerid")]
+      [NavigationPropertyAttribute(SchemaName="parentcustomerid")]
       [NavigationPropertyTargets("account", "contact")]
       public NavigationProperty ParentCustomerId
       {
@@ -4858,6 +5206,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Participates in Workflow</para>
       /// </summary>
       [DataMember(Name="participatesinworkflow")]
+      [NavigationPropertyAttribute(SchemaName="participatesinworkflow")]
       public System.Nullable<bool> ParticipatesInWorkflow
       {
          get
@@ -4874,6 +5223,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Payment Terms</para>
       /// </summary>
       [DataMember(Name="paymenttermscode")]
+      [NavigationPropertyAttribute(SchemaName="paymenttermscode")]
       public contact_paymenttermscode? PaymentTermsCode
       {
          get
@@ -4890,6 +5240,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Day</para>
       /// </summary>
       [DataMember(Name="preferredappointmentdaycode")]
+      [NavigationPropertyAttribute(SchemaName="preferredappointmentdaycode")]
       public contact_preferredappointmentdaycode? PreferredAppointmentDayCode
       {
          get
@@ -4906,6 +5257,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Time</para>
       /// </summary>
       [DataMember(Name="preferredappointmenttimecode")]
+      [NavigationPropertyAttribute(SchemaName="preferredappointmenttimecode")]
       public contact_preferredappointmenttimecode? PreferredAppointmentTimeCode
       {
          get
@@ -4922,6 +5274,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Method of Contact</para>
       /// </summary>
       [DataMember(Name="preferredcontactmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="preferredcontactmethodcode")]
       public contact_preferredcontactmethodcode? PreferredContactMethodCode
       {
          get
@@ -4938,6 +5291,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Facility/Equipment</para>
       /// </summary>
       [DataMember(Name="preferredequipmentid")]
+      [NavigationPropertyAttribute(SchemaName="preferredequipmentid")]
       [NavigationPropertyTargets("equipment")]
       public NavigationProperty PreferredEquipmentId
       {
@@ -4955,6 +5309,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred Service</para>
       /// </summary>
       [DataMember(Name="preferredserviceid")]
+      [NavigationPropertyAttribute(SchemaName="preferredserviceid")]
       [NavigationPropertyTargets("service")]
       public NavigationProperty PreferredServiceId
       {
@@ -4972,6 +5327,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Preferred User</para>
       /// </summary>
       [DataMember(Name="preferredsystemuserid")]
+      [NavigationPropertyAttribute(SchemaName="preferredsystemuserid")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty PreferredSystemUserId
       {
@@ -4989,6 +5345,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Process</para>
       /// </summary>
       [DataMember(Name="processid")]
+      [NavigationPropertyAttribute(SchemaName="processid")]
       public System.Nullable<System.Guid> ProcessId
       {
          get
@@ -5005,6 +5362,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Salutation</para>
       /// </summary>
       [DataMember(Name="salutation")]
+      [NavigationPropertyAttribute(SchemaName="salutation")]
       public string Salutation
       {
          get
@@ -5021,6 +5379,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Shipping Method</para>
       /// </summary>
       [DataMember(Name="shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="shippingmethodcode")]
       public contact_shippingmethodcode? ShippingMethodCode
       {
          get
@@ -5037,6 +5396,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: SLA</para>
       /// </summary>
       [DataMember(Name="slaid")]
+      [NavigationPropertyAttribute(SchemaName="slaid")]
       [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAId
       {
@@ -5054,6 +5414,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Last SLA applied</para>
       /// </summary>
       [DataMember(Name="slainvokedid")]
+      [NavigationPropertyAttribute(SchemaName="slainvokedid")]
       [NavigationPropertyTargets("sla")]
       public NavigationProperty SLAInvokedId
       {
@@ -5067,6 +5428,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Spouse/Partner Name</para>
       /// </summary>
       [DataMember(Name="spousesname")]
+      [NavigationPropertyAttribute(SchemaName="spousesname")]
       public string SpousesName
       {
          get
@@ -5083,6 +5445,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: (Deprecated) Process Stage</para>
       /// </summary>
       [DataMember(Name="stageid")]
+      [NavigationPropertyAttribute(SchemaName="stageid")]
       public System.Nullable<System.Guid> StageId
       {
          get
@@ -5099,6 +5462,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Status</para>
       /// </summary>
       [DataMember(Name="statecode")]
+      [NavigationPropertyAttribute(SchemaName="statecode")]
       public contact_statecode? StateCode
       {
          get
@@ -5115,6 +5479,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Status Reason</para>
       /// </summary>
       [DataMember(Name="statuscode")]
+      [NavigationPropertyAttribute(SchemaName="statuscode")]
       public contact_statuscode? StatusCode
       {
          get
@@ -5131,6 +5496,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Suffix</para>
       /// </summary>
       [DataMember(Name="suffix")]
+      [NavigationPropertyAttribute(SchemaName="suffix")]
       public string Suffix
       {
          get
@@ -5147,6 +5513,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: TeamsFollowed</para>
       /// </summary>
       [DataMember(Name="teamsfollowed")]
+      [NavigationPropertyAttribute(SchemaName="teamsfollowed")]
       public System.Nullable<int> TeamsFollowed
       {
          get
@@ -5163,6 +5530,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Business Phone</para>
       /// </summary>
       [DataMember(Name="telephone1")]
+      [NavigationPropertyAttribute(SchemaName="telephone1")]
       public string Telephone1
       {
          get
@@ -5179,6 +5547,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Home Phone</para>
       /// </summary>
       [DataMember(Name="telephone2")]
+      [NavigationPropertyAttribute(SchemaName="telephone2")]
       public string Telephone2
       {
          get
@@ -5195,6 +5564,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Telephone 3</para>
       /// </summary>
       [DataMember(Name="telephone3")]
+      [NavigationPropertyAttribute(SchemaName="telephone3")]
       public string Telephone3
       {
          get
@@ -5211,6 +5581,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Territory</para>
       /// </summary>
       [DataMember(Name="territorycode")]
+      [NavigationPropertyAttribute(SchemaName="territorycode")]
       public contact_territorycode? TerritoryCode
       {
          get
@@ -5227,6 +5598,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Time Spent by me</para>
       /// </summary>
       [DataMember(Name="timespentbymeonemailandmeetings")]
+      [NavigationPropertyAttribute(SchemaName="timespentbymeonemailandmeetings")]
       public string TimeSpentByMeOnEmailAndMeetings
       {
          get
@@ -5239,6 +5611,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Time Zone Rule Version Number</para>
       /// </summary>
       [DataMember(Name="timezoneruleversionnumber")]
+      [NavigationPropertyAttribute(SchemaName="timezoneruleversionnumber")]
       public System.Nullable<int> TimeZoneRuleVersionNumber
       {
          get
@@ -5255,6 +5628,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Currency</para>
       /// </summary>
       [DataMember(Name="transactioncurrencyid")]
+      [NavigationPropertyAttribute(SchemaName="transactioncurrencyid")]
       [NavigationPropertyTargets("transactioncurrency")]
       public NavigationProperty TransactionCurrencyId
       {
@@ -5272,6 +5646,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: (Deprecated) Traversed Path</para>
       /// </summary>
       [DataMember(Name="traversedpath")]
+      [NavigationPropertyAttribute(SchemaName="traversedpath")]
       public string TraversedPath
       {
          get
@@ -5288,6 +5663,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: UTC Conversion Time Zone Code</para>
       /// </summary>
       [DataMember(Name="utcconversiontimezonecode")]
+      [NavigationPropertyAttribute(SchemaName="utcconversiontimezonecode")]
       public System.Nullable<int> UTCConversionTimeZoneCode
       {
          get
@@ -5304,6 +5680,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Version Number</para>
       /// </summary>
       [DataMember(Name="versionnumber")]
+      [NavigationPropertyAttribute(SchemaName="versionnumber")]
       public System.Nullable<long> VersionNumber
       {
          get
@@ -5316,6 +5693,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Website</para>
       /// </summary>
       [DataMember(Name="websiteurl")]
+      [NavigationPropertyAttribute(SchemaName="websiteurl")]
       public string WebSiteUrl
       {
          get
@@ -5332,6 +5710,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Yomi First Name</para>
       /// </summary>
       [DataMember(Name="yomifirstname")]
+      [NavigationPropertyAttribute(SchemaName="yomifirstname")]
       public string YomiFirstName
       {
          get
@@ -5348,6 +5727,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Yomi Full Name</para>
       /// </summary>
       [DataMember(Name="yomifullname")]
+      [NavigationPropertyAttribute(SchemaName="yomifullname")]
       public string YomiFullName
       {
          get
@@ -5360,6 +5740,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Yomi Last Name</para>
       /// </summary>
       [DataMember(Name="yomilastname")]
+      [NavigationPropertyAttribute(SchemaName="yomilastname")]
       public string YomiLastName
       {
          get
@@ -5376,6 +5757,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Yomi Middle Name</para>
       /// </summary>
       [DataMember(Name="yomimiddlename")]
+      [NavigationPropertyAttribute(SchemaName="yomimiddlename")]
       public string YomiMiddleName
       {
          get
@@ -5423,6 +5805,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address</para>
       /// </summary>
       [DataMember(Name="customeraddressid")]
+      [NavigationPropertyAttribute(SchemaName="customeraddressid")]
       public override System.Guid Id
       {
          get
@@ -5439,6 +5822,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address Number</para>
       /// </summary>
       [DataMember(Name="addressnumber")]
+      [NavigationPropertyAttribute(SchemaName="addressnumber")]
       public System.Nullable<int> AddressNumber
       {
          get
@@ -5455,6 +5839,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address Type</para>
       /// </summary>
       [DataMember(Name="addresstypecode")]
+      [NavigationPropertyAttribute(SchemaName="addresstypecode")]
       public customeraddress_addresstypecode? AddressTypeCode
       {
          get
@@ -5471,6 +5856,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: City</para>
       /// </summary>
       [DataMember(Name="city")]
+      [NavigationPropertyAttribute(SchemaName="city")]
       public string City
       {
          get
@@ -5487,6 +5873,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address</para>
       /// </summary>
       [DataMember(Name="composite")]
+      [NavigationPropertyAttribute(SchemaName="composite")]
       public string Composite
       {
          get
@@ -5499,6 +5886,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Country/Region</para>
       /// </summary>
       [DataMember(Name="country")]
+      [NavigationPropertyAttribute(SchemaName="country")]
       public string Country
       {
          get
@@ -5515,6 +5903,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: County</para>
       /// </summary>
       [DataMember(Name="county")]
+      [NavigationPropertyAttribute(SchemaName="county")]
       public string County
       {
          get
@@ -5531,6 +5920,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By</para>
       /// </summary>
       [DataMember(Name="createdby")]
+      [NavigationPropertyAttribute(SchemaName="createdby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedBy
       {
@@ -5544,6 +5934,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created On</para>
       /// </summary>
       [DataMember(Name="createdon")]
+      [NavigationPropertyAttribute(SchemaName="createdon")]
       public System.Nullable<System.DateTime> CreatedOn
       {
          get
@@ -5556,6 +5947,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Created By (Delegate)</para>
       /// </summary>
       [DataMember(Name="createdonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="createdonbehalfby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty CreatedOnBehalfBy
       {
@@ -5569,6 +5961,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Exchange Rate</para>
       /// </summary>
       [DataMember(Name="exchangerate")]
+      [NavigationPropertyAttribute(SchemaName="exchangerate")]
       public System.Nullable<decimal> ExchangeRate
       {
          get
@@ -5581,6 +5974,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Fax</para>
       /// </summary>
       [DataMember(Name="fax")]
+      [NavigationPropertyAttribute(SchemaName="fax")]
       public string Fax
       {
          get
@@ -5597,6 +5991,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Freight Terms</para>
       /// </summary>
       [DataMember(Name="freighttermscode")]
+      [NavigationPropertyAttribute(SchemaName="freighttermscode")]
       public customeraddress_freighttermscode? FreightTermsCode
       {
          get
@@ -5613,6 +6008,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Import Sequence Number</para>
       /// </summary>
       [DataMember(Name="importsequencenumber")]
+      [NavigationPropertyAttribute(SchemaName="importsequencenumber")]
       public System.Nullable<int> ImportSequenceNumber
       {
          get
@@ -5629,6 +6025,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Latitude</para>
       /// </summary>
       [DataMember(Name="latitude")]
+      [NavigationPropertyAttribute(SchemaName="latitude")]
       public System.Nullable<double> Latitude
       {
          get
@@ -5645,6 +6042,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Street 1</para>
       /// </summary>
       [DataMember(Name="line1")]
+      [NavigationPropertyAttribute(SchemaName="line1")]
       public string Line1
       {
          get
@@ -5661,6 +6059,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Street 2</para>
       /// </summary>
       [DataMember(Name="line2")]
+      [NavigationPropertyAttribute(SchemaName="line2")]
       public string Line2
       {
          get
@@ -5677,6 +6076,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Street 3</para>
       /// </summary>
       [DataMember(Name="line3")]
+      [NavigationPropertyAttribute(SchemaName="line3")]
       public string Line3
       {
          get
@@ -5693,6 +6093,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Longitude</para>
       /// </summary>
       [DataMember(Name="longitude")]
+      [NavigationPropertyAttribute(SchemaName="longitude")]
       public System.Nullable<double> Longitude
       {
          get
@@ -5709,6 +6110,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By</para>
       /// </summary>
       [DataMember(Name="modifiedby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedBy
       {
@@ -5722,6 +6124,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified On</para>
       /// </summary>
       [DataMember(Name="modifiedon")]
+      [NavigationPropertyAttribute(SchemaName="modifiedon")]
       public System.Nullable<System.DateTime> ModifiedOn
       {
          get
@@ -5734,6 +6137,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Modified By (Delegate)</para>
       /// </summary>
       [DataMember(Name="modifiedonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedonbehalfby")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty ModifiedOnBehalfBy
       {
@@ -5747,6 +6151,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address Name</para>
       /// </summary>
       [DataMember(Name="name")]
+      [NavigationPropertyAttribute(SchemaName="name")]
       public string Name
       {
          get
@@ -5763,6 +6168,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Object Type </para>
       /// </summary>
       [DataMember(Name="objecttypecode")]
+      [NavigationPropertyAttribute(SchemaName="objecttypecode")]
       public string ObjectTypeCode
       {
          get
@@ -5779,6 +6185,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Record Created On</para>
       /// </summary>
       [DataMember(Name="overriddencreatedon")]
+      [NavigationPropertyAttribute(SchemaName="overriddencreatedon")]
       public System.Nullable<System.DateTime> OverriddenCreatedOn
       {
          get
@@ -5795,6 +6202,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="ownerid")]
+      [NavigationPropertyAttribute(SchemaName="ownerid")]
       [NavigationPropertyTargets("systemuser", "team")]
       public NavigationProperty OwnerId
       {
@@ -5808,6 +6216,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owning Business Unit</para>
       /// </summary>
       [DataMember(Name="owningbusinessunit")]
+      [NavigationPropertyAttribute(SchemaName="owningbusinessunit")]
       [NavigationPropertyTargets("businessunit")]
       public NavigationProperty OwningBusinessUnit
       {
@@ -5821,6 +6230,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Owner</para>
       /// </summary>
       [DataMember(Name="owninguser")]
+      [NavigationPropertyAttribute(SchemaName="owninguser")]
       [NavigationPropertyTargets("systemuser")]
       public NavigationProperty OwningUser
       {
@@ -5834,6 +6244,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Parent</para>
       /// </summary>
       [DataMember(Name="parentid")]
+      [NavigationPropertyAttribute(SchemaName="parentid")]
       [NavigationPropertyTargets("account", "contact")]
       public NavigationProperty ParentId
       {
@@ -5851,6 +6262,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: ZIP/Postal Code</para>
       /// </summary>
       [DataMember(Name="postalcode")]
+      [NavigationPropertyAttribute(SchemaName="postalcode")]
       public string PostalCode
       {
          get
@@ -5867,6 +6279,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Post Office Box</para>
       /// </summary>
       [DataMember(Name="postofficebox")]
+      [NavigationPropertyAttribute(SchemaName="postofficebox")]
       public string PostOfficeBox
       {
          get
@@ -5883,6 +6296,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Address Contact</para>
       /// </summary>
       [DataMember(Name="primarycontactname")]
+      [NavigationPropertyAttribute(SchemaName="primarycontactname")]
       public string PrimaryContactName
       {
          get
@@ -5899,6 +6313,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Shipping Method</para>
       /// </summary>
       [DataMember(Name="shippingmethodcode")]
+      [NavigationPropertyAttribute(SchemaName="shippingmethodcode")]
       public customeraddress_shippingmethodcode? ShippingMethodCode
       {
          get
@@ -5915,6 +6330,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: State/Province</para>
       /// </summary>
       [DataMember(Name="stateorprovince")]
+      [NavigationPropertyAttribute(SchemaName="stateorprovince")]
       public string StateOrProvince
       {
          get
@@ -5931,6 +6347,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Main Phone</para>
       /// </summary>
       [DataMember(Name="telephone1")]
+      [NavigationPropertyAttribute(SchemaName="telephone1")]
       public string Telephone1
       {
          get
@@ -5947,6 +6364,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Phone 2</para>
       /// </summary>
       [DataMember(Name="telephone2")]
+      [NavigationPropertyAttribute(SchemaName="telephone2")]
       public string Telephone2
       {
          get
@@ -5963,6 +6381,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Telephone 3</para>
       /// </summary>
       [DataMember(Name="telephone3")]
+      [NavigationPropertyAttribute(SchemaName="telephone3")]
       public string Telephone3
       {
          get
@@ -5979,6 +6398,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Time Zone Rule Version Number</para>
       /// </summary>
       [DataMember(Name="timezoneruleversionnumber")]
+      [NavigationPropertyAttribute(SchemaName="timezoneruleversionnumber")]
       public System.Nullable<int> TimeZoneRuleVersionNumber
       {
          get
@@ -5995,6 +6415,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Currency</para>
       /// </summary>
       [DataMember(Name="transactioncurrencyid")]
+      [NavigationPropertyAttribute(SchemaName="transactioncurrencyid")]
       [NavigationPropertyTargets("transactioncurrency")]
       public NavigationProperty TransactionCurrencyId
       {
@@ -6012,6 +6433,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: UPS Zone</para>
       /// </summary>
       [DataMember(Name="upszone")]
+      [NavigationPropertyAttribute(SchemaName="upszone")]
       public string UPSZone
       {
          get
@@ -6028,6 +6450,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: UTC Conversion Time Zone Code</para>
       /// </summary>
       [DataMember(Name="utcconversiontimezonecode")]
+      [NavigationPropertyAttribute(SchemaName="utcconversiontimezonecode")]
       public System.Nullable<int> UTCConversionTimeZoneCode
       {
          get
@@ -6044,6 +6467,7 @@ namespace PawauBeta01.Data
       /// <para>Display Name: UTC Offset</para>
       /// </summary>
       [DataMember(Name="utcoffset")]
+      [NavigationPropertyAttribute(SchemaName="utcoffset")]
       public System.Nullable<int> UTCOffset
       {
          get
@@ -6060,6 +6484,669 @@ namespace PawauBeta01.Data
       /// <para>Display Name: Version Number</para>
       /// </summary>
       [DataMember(Name="versionnumber")]
+      [NavigationPropertyAttribute(SchemaName="versionnumber")]
+      public System.Nullable<long> VersionNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<long>>("versionnumber");
+         }
+      }
+   }
+   /// <summary>
+   /// <para>Description: </para>
+   /// <para>Display Name: Child</para>
+   /// </summary>
+   [DataContract(Name="new_child")]
+   public partial class new_child : ExtendedEntity
+   {
+      public const string EntityName = "new_child";
+      public const string CollectionName = "new_children";
+      public new_child()
+      {
+      }
+      public new_child(System.Guid id) : 
+            base(id)
+      {
+      }
+      public override string EntityLogicalName
+      {
+         get
+         {
+            return EntityName;
+         }
+      }
+      public override string EntityCollectionName
+      {
+         get
+         {
+            return CollectionName;
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for entity instances</para>
+      /// <para>Display Name: Child</para>
+      /// </summary>
+      [DataMember(Name="new_childid")]
+      [NavigationPropertyAttribute(SchemaName="new_childid")]
+      public override System.Guid Id
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Guid>("new_childid");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Guid>("new_childid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the user who created the record.</para>
+      /// <para>Display Name: Created By</para>
+      /// </summary>
+      [DataMember(Name="createdby")]
+      [NavigationPropertyAttribute(SchemaName="createdby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty CreatedBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("createdby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time when the record was created.</para>
+      /// <para>Display Name: Created On</para>
+      /// </summary>
+      [DataMember(Name="createdon")]
+      [NavigationPropertyAttribute(SchemaName="createdon")]
+      public System.Nullable<System.DateTime> CreatedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the delegate user who created the record.</para>
+      /// <para>Display Name: Created By (Delegate)</para>
+      /// </summary>
+      [DataMember(Name="createdonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="createdonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty CreatedOnBehalfBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("createdonbehalfby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Sequence number of the import that created this record.</para>
+      /// <para>Display Name: Import Sequence Number</para>
+      /// </summary>
+      [DataMember(Name="importsequencenumber")]
+      [NavigationPropertyAttribute(SchemaName="importsequencenumber")]
+      public System.Nullable<int> ImportSequenceNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("importsequencenumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the user who modified the record.</para>
+      /// <para>Display Name: Modified By</para>
+      /// </summary>
+      [DataMember(Name="modifiedby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty ModifiedBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("modifiedby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time when the record was modified.</para>
+      /// <para>Display Name: Modified On</para>
+      /// </summary>
+      [DataMember(Name="modifiedon")]
+      [NavigationPropertyAttribute(SchemaName="modifiedon")]
+      public System.Nullable<System.DateTime> ModifiedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the delegate user who modified the record.</para>
+      /// <para>Display Name: Modified By (Delegate)</para>
+      /// </summary>
+      [DataMember(Name="modifiedonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty ModifiedOnBehalfBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("modifiedonbehalfby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: The name of the custom entity.</para>
+      /// <para>Display Name: Name</para>
+      /// </summary>
+      [DataMember(Name="new_name")]
+      [NavigationPropertyAttribute(SchemaName="new_name")]
+      public string new_name
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("new_name");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("new_name", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: </para>
+      /// <para>Display Name: Parent</para>
+      /// </summary>
+      [DataMember(Name="new_parentid")]
+      [NavigationPropertyAttribute(SchemaName="new_parentId")]
+      [NavigationPropertyTargets("new_parent")]
+      public NavigationProperty new_parentId
+      {
+         get
+         {
+            return base.GetNavigationAttribute("new_parentid");
+         }
+         set
+         {
+            base.SetNavigationAttribute("new_parentid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time that the record was migrated.</para>
+      /// <para>Display Name: Record Created On</para>
+      /// </summary>
+      [DataMember(Name="overriddencreatedon")]
+      [NavigationPropertyAttribute(SchemaName="overriddencreatedon")]
+      public System.Nullable<System.DateTime> OverriddenCreatedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Owner Id</para>
+      /// <para>Display Name: Owner</para>
+      /// </summary>
+      [DataMember(Name="ownerid")]
+      [NavigationPropertyAttribute(SchemaName="ownerid")]
+      [NavigationPropertyTargets("systemuser", "team")]
+      public NavigationProperty OwnerId
+      {
+         get
+         {
+            return base.GetNavigationAttribute("ownerid");
+         }
+         set
+         {
+            base.SetNavigationAttribute("ownerid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for the business unit that owns the record</para>
+      /// <para>Display Name: Owning Business Unit</para>
+      /// </summary>
+      [DataMember(Name="owningbusinessunit")]
+      [NavigationPropertyAttribute(SchemaName="owningbusinessunit")]
+      [NavigationPropertyTargets("businessunit")]
+      public NavigationProperty OwningBusinessUnit
+      {
+         get
+         {
+            return base.GetNavigationAttribute("owningbusinessunit");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for the team that owns the record.</para>
+      /// <para>Display Name: Owning Team</para>
+      /// </summary>
+      [DataMember(Name="owningteam")]
+      [NavigationPropertyAttribute(SchemaName="owningteam")]
+      [NavigationPropertyTargets("team")]
+      public NavigationProperty OwningTeam
+      {
+         get
+         {
+            return base.GetNavigationAttribute("owningteam");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for the user that owns the record.</para>
+      /// <para>Display Name: Owning User</para>
+      /// </summary>
+      [DataMember(Name="owninguser")]
+      [NavigationPropertyAttribute(SchemaName="owninguser")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty OwningUser
+      {
+         get
+         {
+            return base.GetNavigationAttribute("owninguser");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Status of the Child</para>
+      /// <para>Display Name: Status</para>
+      /// </summary>
+      [DataMember(Name="statecode")]
+      [NavigationPropertyAttribute(SchemaName="statecode")]
+      public new_child_statecode? statecode
+      {
+         get
+         {
+            return base.GetAttributeValue<new_child_statecode?>("statecode");
+         }
+         set
+         {
+            base.SetAttributeValue<new_child_statecode?>("statecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Reason for the status of the Child</para>
+      /// <para>Display Name: Status Reason</para>
+      /// </summary>
+      [DataMember(Name="statuscode")]
+      [NavigationPropertyAttribute(SchemaName="statuscode")]
+      public new_child_statuscode? statuscode
+      {
+         get
+         {
+            return base.GetAttributeValue<new_child_statuscode?>("statuscode");
+         }
+         set
+         {
+            base.SetAttributeValue<new_child_statuscode?>("statuscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: Time Zone Rule Version Number</para>
+      /// </summary>
+      [DataMember(Name="timezoneruleversionnumber")]
+      [NavigationPropertyAttribute(SchemaName="timezoneruleversionnumber")]
+      public System.Nullable<int> TimeZoneRuleVersionNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Time zone code that was in use when the record was created.</para>
+      /// <para>Display Name: UTC Conversion Time Zone Code</para>
+      /// </summary>
+      [DataMember(Name="utcconversiontimezonecode")]
+      [NavigationPropertyAttribute(SchemaName="utcconversiontimezonecode")]
+      public System.Nullable<int> UTCConversionTimeZoneCode
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Version Number</para>
+      /// <para>Display Name: Version Number</para>
+      /// </summary>
+      [DataMember(Name="versionnumber")]
+      [NavigationPropertyAttribute(SchemaName="versionnumber")]
+      public System.Nullable<long> VersionNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<long>>("versionnumber");
+         }
+      }
+   }
+   /// <summary>
+   /// <para>Description: </para>
+   /// <para>Display Name: Parent</para>
+   /// </summary>
+   [DataContract(Name="new_parent")]
+   public partial class new_parent : ExtendedEntity
+   {
+      public const string EntityName = "new_parent";
+      public const string CollectionName = "new_parents";
+      public new_parent()
+      {
+      }
+      public new_parent(System.Guid id) : 
+            base(id)
+      {
+      }
+      public override string EntityLogicalName
+      {
+         get
+         {
+            return EntityName;
+         }
+      }
+      public override string EntityCollectionName
+      {
+         get
+         {
+            return CollectionName;
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for entity instances</para>
+      /// <para>Display Name: Parent</para>
+      /// </summary>
+      [DataMember(Name="new_parentid")]
+      [NavigationPropertyAttribute(SchemaName="new_parentid")]
+      public override System.Guid Id
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Guid>("new_parentid");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Guid>("new_parentid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the user who created the record.</para>
+      /// <para>Display Name: Created By</para>
+      /// </summary>
+      [DataMember(Name="createdby")]
+      [NavigationPropertyAttribute(SchemaName="createdby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty CreatedBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("createdby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time when the record was created.</para>
+      /// <para>Display Name: Created On</para>
+      /// </summary>
+      [DataMember(Name="createdon")]
+      [NavigationPropertyAttribute(SchemaName="createdon")]
+      public System.Nullable<System.DateTime> CreatedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the delegate user who created the record.</para>
+      /// <para>Display Name: Created By (Delegate)</para>
+      /// </summary>
+      [DataMember(Name="createdonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="createdonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty CreatedOnBehalfBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("createdonbehalfby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Sequence number of the import that created this record.</para>
+      /// <para>Display Name: Import Sequence Number</para>
+      /// </summary>
+      [DataMember(Name="importsequencenumber")]
+      [NavigationPropertyAttribute(SchemaName="importsequencenumber")]
+      public System.Nullable<int> ImportSequenceNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("importsequencenumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the user who modified the record.</para>
+      /// <para>Display Name: Modified By</para>
+      /// </summary>
+      [DataMember(Name="modifiedby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty ModifiedBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("modifiedby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time when the record was modified.</para>
+      /// <para>Display Name: Modified On</para>
+      /// </summary>
+      [DataMember(Name="modifiedon")]
+      [NavigationPropertyAttribute(SchemaName="modifiedon")]
+      public System.Nullable<System.DateTime> ModifiedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier of the delegate user who modified the record.</para>
+      /// <para>Display Name: Modified By (Delegate)</para>
+      /// </summary>
+      [DataMember(Name="modifiedonbehalfby")]
+      [NavigationPropertyAttribute(SchemaName="modifiedonbehalfby")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty ModifiedOnBehalfBy
+      {
+         get
+         {
+            return base.GetNavigationAttribute("modifiedonbehalfby");
+         }
+      }
+      /// <summary>
+      /// <para>Description: The name of the custom entity.</para>
+      /// <para>Display Name: Name</para>
+      /// </summary>
+      [DataMember(Name="new_name")]
+      [NavigationPropertyAttribute(SchemaName="new_name")]
+      public string new_name
+      {
+         get
+         {
+            return base.GetAttributeValue<string>("new_name");
+         }
+         set
+         {
+            base.SetAttributeValue<string>("new_name", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Date and time that the record was migrated.</para>
+      /// <para>Display Name: Record Created On</para>
+      /// </summary>
+      [DataMember(Name="overriddencreatedon")]
+      [NavigationPropertyAttribute(SchemaName="overriddencreatedon")]
+      public System.Nullable<System.DateTime> OverriddenCreatedOn
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Owner Id</para>
+      /// <para>Display Name: Owner</para>
+      /// </summary>
+      [DataMember(Name="ownerid")]
+      [NavigationPropertyAttribute(SchemaName="ownerid")]
+      [NavigationPropertyTargets("systemuser", "team")]
+      public NavigationProperty OwnerId
+      {
+         get
+         {
+            return base.GetNavigationAttribute("ownerid");
+         }
+         set
+         {
+            base.SetNavigationAttribute("ownerid", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for the business unit that owns the record</para>
+      /// <para>Display Name: Owning Business Unit</para>
+      /// </summary>
+      [DataMember(Name="owningbusinessunit")]
+      [NavigationPropertyAttribute(SchemaName="owningbusinessunit")]
+      [NavigationPropertyTargets("businessunit")]
+      public NavigationProperty OwningBusinessUnit
+      {
+         get
+         {
+            return base.GetNavigationAttribute("owningbusinessunit");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for the team that owns the record.</para>
+      /// <para>Display Name: Owning Team</para>
+      /// </summary>
+      [DataMember(Name="owningteam")]
+      [NavigationPropertyAttribute(SchemaName="owningteam")]
+      [NavigationPropertyTargets("team")]
+      public NavigationProperty OwningTeam
+      {
+         get
+         {
+            return base.GetNavigationAttribute("owningteam");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Unique identifier for the user that owns the record.</para>
+      /// <para>Display Name: Owning User</para>
+      /// </summary>
+      [DataMember(Name="owninguser")]
+      [NavigationPropertyAttribute(SchemaName="owninguser")]
+      [NavigationPropertyTargets("systemuser")]
+      public NavigationProperty OwningUser
+      {
+         get
+         {
+            return base.GetNavigationAttribute("owninguser");
+         }
+      }
+      /// <summary>
+      /// <para>Description: Status of the Parent</para>
+      /// <para>Display Name: Status</para>
+      /// </summary>
+      [DataMember(Name="statecode")]
+      [NavigationPropertyAttribute(SchemaName="statecode")]
+      public new_parent_statecode? statecode
+      {
+         get
+         {
+            return base.GetAttributeValue<new_parent_statecode?>("statecode");
+         }
+         set
+         {
+            base.SetAttributeValue<new_parent_statecode?>("statecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Reason for the status of the Parent</para>
+      /// <para>Display Name: Status Reason</para>
+      /// </summary>
+      [DataMember(Name="statuscode")]
+      [NavigationPropertyAttribute(SchemaName="statuscode")]
+      public new_parent_statuscode? statuscode
+      {
+         get
+         {
+            return base.GetAttributeValue<new_parent_statuscode?>("statuscode");
+         }
+         set
+         {
+            base.SetAttributeValue<new_parent_statuscode?>("statuscode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: For internal use only.</para>
+      /// <para>Display Name: Time Zone Rule Version Number</para>
+      /// </summary>
+      [DataMember(Name="timezoneruleversionnumber")]
+      [NavigationPropertyAttribute(SchemaName="timezoneruleversionnumber")]
+      public System.Nullable<int> TimeZoneRuleVersionNumber
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Time zone code that was in use when the record was created.</para>
+      /// <para>Display Name: UTC Conversion Time Zone Code</para>
+      /// </summary>
+      [DataMember(Name="utcconversiontimezonecode")]
+      [NavigationPropertyAttribute(SchemaName="utcconversiontimezonecode")]
+      public System.Nullable<int> UTCConversionTimeZoneCode
+      {
+         get
+         {
+            return base.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+         }
+         set
+         {
+            base.SetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode", value);
+         }
+      }
+      /// <summary>
+      /// <para>Description: Version Number</para>
+      /// <para>Display Name: Version Number</para>
+      /// </summary>
+      [DataMember(Name="versionnumber")]
+      [NavigationPropertyAttribute(SchemaName="versionnumber")]
       public System.Nullable<long> VersionNumber
       {
          get
@@ -6400,12 +7487,12 @@ namespace PawauBeta01.Data
    }
    /// <summary>
    /// <para>Description: Whether or not the contact belongs to the associated account</para>
-   /// <para>Display Name: Org Change Status</para>
+   /// <para>Display Name: Not at Company Flag</para>
    /// </summary>
    public enum contact_msdyn_orgchangestatus
    {
-      No = 0,
-      Yes = 1,
+      NoFeedback = 0,
+      NotatCompany = 1,
       Ignore = 2,
    }
    /// <summary>
@@ -6562,6 +7649,24 @@ namespace PawauBeta01.Data
       Inactive = 1,
    }
    /// <summary>
+   /// <para>Description: Status of the Parent</para>
+   /// <para>Display Name: Status</para>
+   /// </summary>
+   public enum new_parent_statecode
+   {
+      Active = 0,
+      Inactive = 1,
+   }
+   /// <summary>
+   /// <para>Description: Status of the Child</para>
+   /// <para>Display Name: Status</para>
+   /// </summary>
+   public enum new_child_statecode
+   {
+      Active = 0,
+      Inactive = 1,
+   }
+   /// <summary>
    /// <para>Description: Select the account's status.</para>
    /// <para>Display Name: Status Reason</para>
    /// </summary>
@@ -6575,6 +7680,24 @@ namespace PawauBeta01.Data
    /// <para>Display Name: Status Reason</para>
    /// </summary>
    public enum contact_statuscode
+   {
+      Active = 1,
+      Inactive = 2,
+   }
+   /// <summary>
+   /// <para>Description: Reason for the status of the Parent</para>
+   /// <para>Display Name: Status Reason</para>
+   /// </summary>
+   public enum new_parent_statuscode
+   {
+      Active = 1,
+      Inactive = 2,
+   }
+   /// <summary>
+   /// <para>Description: Reason for the status of the Child</para>
+   /// <para>Display Name: Status Reason</para>
+   /// </summary>
+   public enum new_child_statuscode
    {
       Active = 1,
       Inactive = 2,

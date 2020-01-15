@@ -125,6 +125,27 @@ namespace PowerAppsWebApiUtils.Tests
 
                 }
             }
+                        
+                       
+                        
+            [Fact]
+            public  async Task ScenariosTest5()
+            {
+
+                var context = serviceProvider.GetService<WebApiContext>();
+                {
+                    var account = context.CreateQuery<Account>().FirstOrDefault();
+                    await context.Create(new CustomerAddress{ ParentId = account.ToNavigationProperty() });
+
+                    var parent = new new_parent{ new_name = "Test"};
+                    parent.Id = await context.Create(parent);
+                    var child = new new_child { new_name = "Test", new_parentId = parent.ToNavigationProperty() };
+                    child.Id = await context.Create(child);
+                    var result = context.CreateQuery<new_child>().Where(p => p.new_parentId == parent.ToNavigationProperty()).FirstOrDefault();
+                    Assert.NotNull(result);
+                    Assert.NotNull(result.new_parentId);
+                }
+            }
 
 
         }

@@ -29,7 +29,9 @@ namespace PowerAppsWebApiUtils.Json
                             return false;
 
                         if ((member as PropertyInfo).PropertyType == typeof(NavigationProperty))
-                        {
+                        {                            
+                            var schemaAttribute = member.GetCustomAttribute<NavigationPropertyAttribute>();
+                            property.PropertyName = schemaAttribute.SchemaName;
                             var attr = member.GetCustomAttribute<NavigationPropertyTargetsAttribute>();
                             if (attr != null)
                             {

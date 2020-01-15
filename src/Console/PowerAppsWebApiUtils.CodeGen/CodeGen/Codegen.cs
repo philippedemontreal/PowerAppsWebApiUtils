@@ -115,6 +115,8 @@ namespace PowerAppsWebApiUtils.Codegen
             if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
                 return null;
 
+            var isMavigationProperty = propertyType == typeof(NavigationProperty).FullName;
+
             var attributeName = attributeMetadata.LogicalName;
 
             var result = new CodeMemberProperty()
@@ -126,7 +128,11 @@ namespace PowerAppsWebApiUtils.Codegen
 
                     new CodeAttributeDeclaration(
                         "DataMember", 
-                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName)))
+                        new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName))),
+                    new CodeAttributeDeclaration(
+                        "NavigationPropertyAttribute", 
+                        new CodeAttributeArgument("SchemaName", new CodePrimitiveExpression(attributeMetadata.AttributeType == AttributeTypeCode.Lookup && attributeMetadata.IsCustomAttribute ? attributeMetadata.SchemaName : attributeMetadata.LogicalName)))
+
                 }                    
             };
 
@@ -136,7 +142,7 @@ namespace PowerAppsWebApiUtils.Codegen
                 result.Attributes =  MemberAttributes.Public | MemberAttributes.Override;
              }
 
-            if (propertyType == typeof(NavigationProperty).FullName)
+            if (isMavigationProperty)
             {
                 var lookup = attributeMetadata as LookupAttributeMetadata;
 

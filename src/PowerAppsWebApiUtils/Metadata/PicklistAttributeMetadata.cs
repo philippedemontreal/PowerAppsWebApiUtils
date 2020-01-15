@@ -41,7 +41,7 @@ namespace Microsoft.Dynamics.CRM
         public int ColumnNumber { get; set; }
 
         //The default form value for the attribute.
-        public int DefaultFormValue { get; set; }
+        public int? DefaultFormValue { get; set; }
 
         //The Microsoft Dynamics 365 version that the attribute was deprecated in.
         public string DeprecatedVersion { get; set; }

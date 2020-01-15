@@ -45,7 +45,7 @@ namespace PowerAppsWebApiUtils.Repositories
                     };
 
                 if (CallerObjectId != Guid.Empty)
-                    request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                    request.Headers.Add("CallerObjectId", $"{CallerObjectId}");
                 if (MSCRMCallerID != Guid.Empty)
                     request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
 
@@ -69,7 +69,7 @@ namespace PowerAppsWebApiUtils.Repositories
                     };
 
                 if (CallerObjectId != Guid.Empty)
-                    request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                    request.Headers.Add("CallerObjectId", $"{CallerObjectId}");
                 if (MSCRMCallerID != Guid.Empty)
                     request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
 
@@ -84,7 +84,7 @@ namespace PowerAppsWebApiUtils.Repositories
             {
                 var request = new HttpRequestMessage(HttpMethod.Delete, $"{entity.EntityCollectionName}({entity.Id})");
                 if (CallerObjectId != Guid.Empty)
-                    request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                    request.Headers.Add("CallerObjectId", $"{CallerObjectId}");
                 if (MSCRMCallerID != Guid.Empty)
                     request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
 
@@ -180,7 +180,7 @@ namespace PowerAppsWebApiUtils.Repositories
         {
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
             if (CallerObjectId != Guid.Empty)
-                request.Headers.Add("CallerObjectId", $"{MSCRMCallerID}");
+                request.Headers.Add("CallerObjectId", $"{CallerObjectId}");
                 if (MSCRMCallerID != Guid.Empty)
                     request.Headers.Add("MSCRMCallerID", $"{MSCRMCallerID}");
 
