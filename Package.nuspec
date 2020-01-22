@@ -3,7 +3,7 @@
   <metadata>
   
     <id>PowerAppsWebApiUtils</id>
-    <version>0.0.0.8</version>
+    <version>0.0.0.10</version>
     <description>
       This is an API to work with PowerApps and Dynamics 365 Web API
     </description>    
@@ -12,12 +12,18 @@
     <owners>Philippe Dufag</owners>
     <license type="expression">MIT</license>
     <projectUrl>https://github.com/philippedemontreal/PowerAppsWebApiUtils</projectUrl>
-    <iconUrl>https://nuget.org/Content/Images/packageDefaultIcon-50x50.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <releaseNotes>
+    0.0.0.10 Fix issue with Linq Provider serializing "not" instead of "ne"
+             Fix issue with Json Serialization for lookups (NavigationProperty) when set to null in Create and Update operations
+    0.0.0.9 Diassociate function now available
+            Code Generation [Early bound classes need to be regenerated]:
+              Refactor attribute NavigationPropertyAttributeTargets into NavigationPropertyAttributeTarget (used with Diassociate)
+              Fix issue with PrimaryId generation in some situation
     0.0.0.8 Fix issue with CallerObjectId.
-            Fix issue in codegen with picklist. EntityMetadata DefaultFormValue is optional.
-            Fix issue with lookup. Lookup are now using schemaType for 'Create' and 'Update' operations and LogicalName for 'Read' operation
+            Code Generation [Early bound classes need to be regenerated]:
+              Fix issue in codegen with picklist. EntityMetadata DefaultFormValue is optional.
+              Fix issue with lookup. Lookups are now using SchemaName for json serialization for 'Create' and 'Update' operations when attribute isCustomType and attributeType is 'Lookup', otherwise it uses LogicalName
     0.0.0.7 Impersonation (new properties CallerObjectId and MSCRMCallerID on WebApiContext and GenericRepository. see Microsoft docs https://docs.microsoft.com/en-us/powerapps/developer/common-data-service/webapi/impersonate-another-user-web-api).
     0.0.0.6 Modification to service registration (Scoped -> Transient) to ease integration with Azure Functions.
     0.0.0.5 Add missing nuget assemblies in "earlybound" folder.
@@ -30,7 +36,7 @@
     0.0.0.2 Include missing file PowerAppsWebApiUtils.Console.runtimeconfig.json
     0.0.0.1 Initial release. .net core app to generate early bound classes. Api exposes in .netstandard 2.0 supportin all CRUD operations and limited Linq support (ToList and FirstOrDefault)
     </releaseNotes>
-    <copyright>Copyright 2019</copyright>
+    <copyright>Copyright 2019-2020</copyright>
     <tags>PowerApps WebApi .NetCore EarlyBound CodeGen Linq</tags>
     <dependencies>
       <dependency id="Microsoft.IdentityModel.Clients.ActiveDirectory" version="5.0.5" />

@@ -13,6 +13,8 @@ using Microsoft.Dynamics.CRM;
 using PowerAppsWebApiUtils.Entities;
 using PowerAppsWebApiUtils.Json;
 using PowerAppsWebApiUtils.Linq;
+using System.Reflection;
+using System.Diagnostics;
 
 namespace PowerAppsWebApiUtils.Repositories
 {
@@ -57,10 +59,51 @@ namespace PowerAppsWebApiUtils.Repositories
             }
         }
 
+        private object[] GetCustomAttributes<T>(Expression<Func<T, NavigationProperty>> expression)
+        {
+
+            var body = expression.Body as MemberExpression ?? (expression.Body as UnaryExpression)?.Operand as MemberExpression;
+            return body?.Member.GetCustomAttributes(false);
+
+            // var navigationPropertyAttribute = body.Member.GetCustomAttributes(false);
+            //     .Where(x => x is NavigationPropertyAttribute)
+            //     .FirstOrDefault() as NavigationPropertyAttribute;
+
+            // return navigationPropertyAttribute?.RelationSchemaName;
+        }
+
+        public async Task Diassociate<T>(T entity, Expression<Func<T, NavigationProperty>> expression)
+        where T:crmbaseentity
+        {           
+            var navigationProperty = expression.Compile().Invoke(entity) as NavigationProperty;
+            if (navigationProperty == null)
+                return;
+
+            var attributes = GetCustomAttributes<T>(expression);
+            var navigationPropertyAttribute = attributes.FirstOrDefault(p => p is NavigationPropertyAttribute) as NavigationPropertyAttribute;
+            if (navigationPropertyAttribute == null)
+                throw new InvalidOperationException("Unable to find an attribute of type NavigationPropertyAttribute on this NavigationProperty.");
+
+            var navigationPropertyTargetAttribute = 
+                attributes
+                .FirstOrDefault(p => (p is NavigationPropertyTargetAttribute) && ((NavigationPropertyTargetAttribute)p).Target == navigationProperty.EntityLogicalName) as NavigationPropertyTargetAttribute;
+            
+            if (navigationPropertyTargetAttribute == null)
+                throw new InvalidOperationException("Unable to find an attribute of type NavigationPropertyTargetAttribute on this NavigationProperty that matches the logicalname of the target entity.");
+
+            var client = _httpClientFactory.CreateClient(clientName);
+            {
+                var requestUri = $"{navigationPropertyTargetAttribute.CollectionName}({navigationProperty.Id})/{navigationPropertyAttribute.RelationSchemaName}({entity.Id})/$ref";
+                var request = new HttpRequestMessage(HttpMethod.Delete, requestUri);
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+            }
+        }
+
         public async Task Update(crmbaseentity entity)
         {
            var client = _httpClientFactory.CreateClient(clientName);
-            {
+           {
                 var json = JObject.FromObject(entity, new JsonSerializer{ ContractResolver = new NavigationPropertyContractResolver() }).ToString(Newtonsoft.Json.Formatting.None);
                 var request = 
                     new HttpRequestMessage(new HttpMethod("PATCH"), $"{entity.EntityCollectionName}({entity.Id})")
@@ -141,9 +184,7 @@ namespace PowerAppsWebApiUtils.Repositories
         public readonly string OdataEntityName;
         public GenericRepository(IHttpClientFactory httpClientFactory)
         : base(httpClientFactory)
-        {
-            OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
-        }
+            =>  OdataEntityName = (Activator.CreateInstance<T>() as crmbaseentity).EntityCollectionName;
 
         public async Task<List<T>> GetList()
             => await RetrieveMultiple(OdataEntityName);
@@ -175,7 +216,7 @@ namespace PowerAppsWebApiUtils.Repositories
 
             return result;            
         }
-        
+
         private async Task<P> SendGetRequest<P>(HttpClient client, string uri, Dictionary<string, string> additionalHeaders = null)
         {
             var request = new HttpRequestMessage(HttpMethod.Get, uri);
@@ -208,6 +249,7 @@ namespace PowerAppsWebApiUtils.Repositories
                 response.EnsureSuccessStatusCode();
 
                 var content = await reader.ReadAsStringAsync();
+                //Trace.TraceInformation($"Content: {content}");
                 return JsonConvert.DeserializeObject<P>(content, new JsonSerializerSettings { ContractResolver = ExtendedEntityContractResolver.Instance });
             }
         }

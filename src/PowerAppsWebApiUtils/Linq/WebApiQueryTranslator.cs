@@ -201,7 +201,10 @@ namespace PowerAppsWebApiUtils.Linq
                     break;
 
                 case ExpressionType.NotEqual:
-                    _sbFilterClause.Append(" not ");
+                   // if (b.Left.Type == typeof(NavigationProperty))
+                            _sbFilterClause.Append(" ne ");
+                        // else
+                        //     _sbFilterClause.Append(" not ");
                     break;
 
                 case ExpressionType.LessThan:

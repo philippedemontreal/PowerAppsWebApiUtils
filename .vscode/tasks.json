@@ -8,9 +8,12 @@
             "args": [
                 "build",
                 "${workspaceFolder}/src/Console/Core/PowerAppsWebApiUtils.Console/PowerAppsWebApiUtils.Console.csproj"
-                //"${workspaceFolder}/sample/azurefunc/azurefunc.csproj",
             ],
-            "problemMatcher": "$tsc"
+            "problemMatcher": "$tsc",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
         },
         {
             "label": "publish",
@@ -33,7 +36,7 @@
                 "${workspaceFolder}/src/PowerAppsWebApiUtils/PowerAppsWebApiUtils.csproj"
             ],
             "problemMatcher": "$tsc"
-        },        
+        },
         {
             "label": "watch",
             "command": "dotnet",
@@ -44,10 +47,7 @@
                 "${workspaceFolder}/src/Console/Core/PowerAppsWebApiUtils.Console/PowerAppsWebApiUtils.Console.csproj"
             ],
             "problemMatcher": "$tsc",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
+            "group": "build"
         }
     ]
 }

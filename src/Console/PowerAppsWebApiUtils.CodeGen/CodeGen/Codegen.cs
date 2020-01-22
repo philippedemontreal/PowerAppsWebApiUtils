@@ -105,17 +105,25 @@ namespace PowerAppsWebApiUtils.Codegen
         }
 
 
-        public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, Type propertyType)
-            => CreateProperty(attributeMetadata, propertyType.FullName);
+        public CodeMemberProperty CreateProperty(
+            EntityMetadata entityMetadata, 
+            AttributeMetadata attributeMetadata, 
+            Type propertyType, 
+            Dictionary<string, string> referencedEntities)
+            => CreateProperty(entityMetadata, attributeMetadata, propertyType.FullName, referencedEntities);
 
-        public CodeMemberProperty CreateProperty(AttributeMetadata attributeMetadata, string propertyType) 
+
+        public CodeMemberProperty CreateProperty(
+            EntityMetadata entityMetadata, 
+            AttributeMetadata attributeMetadata, 
+            string propertyType,
+            Dictionary<string, string> referencedEntities) 
         {
             var schemaName = attributeMetadata.SchemaName;
            
             if (!schemaName.StartsWith("Yomi") && schemaName.Contains("Yomi"))
                 return null;
 
-            var isMavigationProperty = propertyType == typeof(NavigationProperty).FullName;
 
             var attributeName = attributeMetadata.LogicalName;
 
@@ -129,10 +137,6 @@ namespace PowerAppsWebApiUtils.Codegen
                     new CodeAttributeDeclaration(
                         "DataMember", 
                         new CodeAttributeArgument("Name", new CodePrimitiveExpression(attributeName))),
-                    new CodeAttributeDeclaration(
-                        "NavigationPropertyAttribute", 
-                        new CodeAttributeArgument("SchemaName", new CodePrimitiveExpression(attributeMetadata.AttributeType == AttributeTypeCode.Lookup && attributeMetadata.IsCustomAttribute ? attributeMetadata.SchemaName : attributeMetadata.LogicalName)))
-
                 }                    
             };
 
@@ -142,15 +146,60 @@ namespace PowerAppsWebApiUtils.Codegen
                 result.Attributes =  MemberAttributes.Public | MemberAttributes.Override;
              }
 
-            if (isMavigationProperty)
+            var isNavigationProperty = propertyType == typeof(NavigationProperty).FullName;
+            if (isNavigationProperty && attributeMetadata.IsValidForUpdate)
             {
                 var lookup = attributeMetadata as LookupAttributeMetadata;
+                var relation = entityMetadata.ManyToOneRelationships.Where(p => p.ReferencingAttribute == attributeName).ToList();
+ 
+                foreach (var target in lookup.Targets)
+                {
+                    result.CustomAttributes.Add(
+                        new CodeAttributeDeclaration(
+                            "NavigationPropertyTarget",
+                            new CodeAttributeArgument[] {
+                                new CodeAttributeArgument("Target", new CodePrimitiveExpression(target)),
+                                new CodeAttributeArgument("CollectionName", new CodePrimitiveExpression(referencedEntities.FirstOrDefault(p => p.Key == target).Value))
+                            }));                        
+                }
+                        
+                    
+                var codeAttributeArguments = new List<CodeAttributeArgument>();
+                codeAttributeArguments.Add(
+                    new CodeAttributeArgument(
+                            "DataMemberForWrite", 
+                            new CodePrimitiveExpression(attributeMetadata.AttributeType == AttributeTypeCode.Lookup && attributeMetadata.IsCustomAttribute ? attributeMetadata.SchemaName : attributeMetadata.LogicalName))
+                            );
+
+                if (relation.Count > 0)
+                {
+                    codeAttributeArguments.Add(
+                        new CodeAttributeArgument(
+                                "RelationSchemaName", 
+                                new CodePrimitiveExpression(relation.FirstOrDefault()?.SchemaName))
+                                );
+
+                    codeAttributeArguments.Add(
+                        new CodeAttributeArgument(
+                                "MultipleTargets", 
+                                new CodePrimitiveExpression(lookup.Targets.Length > 1))
+                                );
+                } else {
+
+                }
+
+                if (relation.Count > 1)
+                {
+
+                }
+
 
                 result.CustomAttributes.Add(                    
                     new CodeAttributeDeclaration(
-                        "NavigationPropertyTargets", 
-                        lookup.Targets.Select(p => new CodeAttributeArgument(new CodePrimitiveExpression(p))).ToArray()));
-           }
+                        "NavigationPropertyAttribute",
+                        codeAttributeArguments.ToArray()));
+
+            }
 
 
             if (attributeMetadata.IsValidForRead || attributeMetadata.IsValidForCreate || attributeMetadata.IsValidForUpdate)
@@ -211,7 +260,12 @@ namespace PowerAppsWebApiUtils.Codegen
             return result;
         }      
 
-        public void Execute(CodeGenSettings config, List<EntityMetadata> entitMetadatas, Dictionary<string, PicklistAttributeMetadata> picklists)
+        public void Execute(
+            CodeGenSettings config, 
+            List<EntityMetadata> entitMetadatas, 
+            Dictionary<string, PicklistAttributeMetadata> picklists,
+            Dictionary<string, string> referencedEntities
+            )
         {
 
             var provider = new Microsoft.CSharp.CSharpCodeProvider();                             
@@ -220,7 +274,7 @@ namespace PowerAppsWebApiUtils.Codegen
             var ns = CreateNameSpace(config.Namespace);
             foreach (var entitMetadata in entitMetadatas.OrderBy(p => p.SchemaName))
             {
-                MakeEntity(entitMetadata, ns, picklists);
+                MakeEntity(entitMetadata, ns, picklists, referencedEntities);
             }
 
             var generatedOptionsets = new List<string>();
@@ -280,11 +334,15 @@ namespace PowerAppsWebApiUtils.Codegen
            ns.Types.Add(result);
          }
 
-        private void MakeEntity(EntityMetadata entitMetadata, CodeNamespace ns,  Dictionary<string, PicklistAttributeMetadata> picklists)
+        private void MakeEntity(
+            EntityMetadata entitMetadata, 
+            CodeNamespace ns,  
+            Dictionary<string, PicklistAttributeMetadata> picklists,
+            Dictionary<string, string> referencedEntities)
         {
             var genType = CreateType(entitMetadata);
-            var primary = entitMetadata.Attributes.Where(p => p.IsPrimaryId).FirstOrDefault();
-            var prop = CreateProperty(primary, typeof(Guid));
+            var primary = entitMetadata.Attributes.Where(p => p.IsPrimaryId).OrderBy(p => p.ColumnNumber).FirstOrDefault();
+            var prop = CreateProperty(entitMetadata, primary, typeof(Guid), referencedEntities);
             genType.Members.Add(prop);
 
             foreach (var attribute in entitMetadata.Attributes.OrderBy(p => p.SchemaName.ToLowerInvariant()))
@@ -301,13 +359,13 @@ namespace PowerAppsWebApiUtils.Codegen
                         if (picklist == null)
                             throw new InvalidOperationException();
                             
-                        genType.Members.Add(CreateProperty(attribute, $"{picklist.OptionSet.Name}?"));
+                        genType.Members.Add(CreateProperty(entitMetadata, attribute, $"{picklist.OptionSet.Name}?", referencedEntities));
                         break;
 
                     default:
                         if (!_refMap.ContainsKey(attribute.AttributeType))
                             continue;
-                        var genProp = CreateProperty(attribute, _refMap[attribute.AttributeType]);
+                        var genProp = CreateProperty(entitMetadata, attribute, _refMap[attribute.AttributeType], referencedEntities);
                         if (genProp != null)
                             genType.Members.Add(genProp);
 

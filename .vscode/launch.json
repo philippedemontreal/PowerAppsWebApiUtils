@@ -9,6 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
+            "enableStepFiltering":true,
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/Console/Core/PowerAppsWebApiUtils.Console/bin/Debug/netcoreapp2.2/PowerAppsWebApiUtils.Console.dll",
             "args": [],

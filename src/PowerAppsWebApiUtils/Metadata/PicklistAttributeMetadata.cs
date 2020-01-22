@@ -6,12 +6,9 @@ namespace Microsoft.Dynamics.CRM
     ///<chref="https://docs.microsoft.com/en-us/dynamics365/customer-engagement/web-api/picklistattributemetadata?view=dynamics-ce-odata-9" />
     public sealed class PicklistAttributeMetadata: crmbaseentity
     {
-         public override string EntityCollectionName
+        public override string EntityCollectionName
         {
-            get
-            {
-                return "EntityDefinitions";
-            }
+            get => "EntityDefinitions";            
         } 
     
         //The name of the attribute that this attribute extends.

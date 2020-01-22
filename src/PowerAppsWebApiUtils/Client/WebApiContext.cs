@@ -4,9 +4,9 @@ using System.Linq.Expressions;
 using System.Net.Http;
 using System.Threading.Tasks;
 using Microsoft.Dynamics.CRM;
+using PowerAppsWebApiUtils.Entities;
 using PowerAppsWebApiUtils.Linq;
 using PowerAppsWebApiUtils.Repositories;
-using PowerAppsWebApiUtils.Security;
 
 namespace PowerAppsWebApiUtils.Client
 {
@@ -37,6 +37,11 @@ namespace PowerAppsWebApiUtils.Client
             => _genericRepository.Delete(entity);        
         public string GetQueryText(Expression expression)
             => _queryProvider.GetQueryText(expression);
+    
+        public async Task Diassociate<T>(T entity, Expression<Func<T, NavigationProperty>> expression)       
+            where T:  crmbaseentity
+            => await _genericRepository.Diassociate(entity, expression);
+
         
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls

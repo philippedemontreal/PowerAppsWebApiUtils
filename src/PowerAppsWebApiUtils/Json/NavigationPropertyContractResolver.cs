@@ -29,20 +29,29 @@ namespace PowerAppsWebApiUtils.Json
                             return false;
 
                         if ((member as PropertyInfo).PropertyType == typeof(NavigationProperty))
-                        {                            
-                            var schemaAttribute = member.GetCustomAttribute<NavigationPropertyAttribute>();
-                            property.PropertyName = schemaAttribute.SchemaName;
-                            var attr = member.GetCustomAttribute<NavigationPropertyTargetsAttribute>();
-                            if (attr != null)
+                        {   
+                            var navigationProperty = (member as PropertyInfo).GetGetMethod().Invoke(instance, null) as NavigationProperty; 
+                            if (navigationProperty == null)
                             {
-                                if (attr.Targets.Length > 1)
-                                {
-                                    var navigationProperty = (member as PropertyInfo).GetGetMethod().Invoke(instance, null) as NavigationProperty;
-                                    property.PropertyName +=  $"_{navigationProperty.EntityLogicalName}";
-                                }
-                            }
+                                property.PropertyName =  $"_{property.PropertyName}_value";
 
-                            property.PropertyName +=  "@odata.bind";
+                            }
+                            else 
+                            {
+                                var attr = member.GetCustomAttribute<NavigationPropertyAttribute>();
+                                if (attr != null)
+                                {
+                                    property.PropertyName = attr.DataMemberForWrite;
+                                    if (attr.MultipleTargets)
+                                    {
+                                        
+                                        if (navigationProperty != null)
+                                            property.PropertyName +=  $"_{navigationProperty.EntityLogicalName}";
+                                    }
+                                }
+
+                                property.PropertyName +=  "@odata.bind";
+                            }
                         }                     
 
                         return true;

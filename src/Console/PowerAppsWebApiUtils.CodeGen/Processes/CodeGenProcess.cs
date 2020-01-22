@@ -51,6 +51,7 @@ namespace PowerAppsWebApiUtils.Processes
                 
                 logger.LogInformation($"Entities metadata done. Ready to fetch picklists metadata.");
                 var pickLists = new Dictionary<string, Task<PicklistAttributeMetadata>>();
+                var referencedEntities = new Dictionary<string, Task<string>>();
                 entities.ForEach(
                     p => 
                     {
@@ -67,14 +68,41 @@ namespace PowerAppsWebApiUtils.Processes
                                     return;
 
                                 logger.LogInformation($"Fetching metadata of picklist '{key}'");
-                                pickLists.Add(key, picklistRepository.GetOptionsetMetadata(q));
+                                pickLists.Add(key, picklistRepository.GetOptionsetMetadata(q));                           
                             });
+
+                        p.Attributes
+                        .Where(q => q.AttributeType == AttributeTypeCode.Lookup)
+                        .GroupBy(q => q.LogicalName)
+                        .Select(q => q.First())
+                        .ToList()
+                        .ForEach(
+                            q => 
+                            {                            
+                                foreach (var target in ((LookupAttributeMetadata)q).Targets)
+                                {
+                                    if (referencedEntities.ContainsKey(target))
+                                        return;
+                                    referencedEntities.Add(target, entityDefinitionRepository.GetLogicalCollectionName(target));                                        
+                                }
+                        
+                            });                            
+
+
                     });
 
                 Task.WaitAll(pickLists.Select(p => p.Value).ToArray());
+                Task.WaitAll(referencedEntities.Select(p => p.Value).ToArray());
+
 
                 logger.LogInformation($"Fechting metadata done. Ready to generate code");
-                new CodeGen().Execute(settings, entities, pickLists.ToDictionary(p => p.Key, p => p.Value.Result));
+                new CodeGen()
+                .Execute(
+                    settings, 
+                    entities, 
+                    pickLists.ToDictionary(p => p.Key, p => p.Value.Result),
+                    referencedEntities.ToDictionary(p => p.Key, p => p.Value.Result)
+                    );
                 logger.LogInformation($"Code generated in file {settings.FileName}");
                 logger.LogInformation($"Processing time: {(DateTime.Now - now).ToString("c")}");
             logger.LogInformation($"{nameof(CodeGenProcess)}. Ending process.");

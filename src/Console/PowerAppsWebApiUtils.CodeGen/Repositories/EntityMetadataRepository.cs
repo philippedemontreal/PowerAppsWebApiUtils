@@ -18,5 +18,11 @@ namespace PowerAppsWebApiUtils.Repositories
             return await Retrieve($"{OdataEntityName}(LogicalName='{logicalName}')?$expand=Attributes,Keys,ManyToManyRelationships,ManyToOneRelationships,OneToManyRelationships");     
         }
 
+        internal async Task<string> GetLogicalCollectionName(string logicalName)
+        {
+            var entityMetadata = await Retrieve($"{OdataEntityName}(LogicalName='{logicalName}')/?$select=LogicalCollectionName");     
+            return entityMetadata?.LogicalCollectionName;
+        }
+
     }
 }
