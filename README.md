@@ -10,13 +10,14 @@ Feedback and contributions welcome...
 
 How tos:
 =================================================================
-Setup an application user for PowerAppsWebApiUtils: https://www.linkedin.com/pulse/how-setup-application-user-powerappswebapiutils-philippe-dufag
-Generate early bound classes and setup a project to use PowerAppsWebApiUtils: https://www.linkedin.com/pulse/powerappswebapiutils-howto-philippe-dufag
+- [Setup an application user for PowerAppsWebApiUtils](https://www.linkedin.com/pulse/how-setup-application-user-powerappswebapiutils-philippe-dufag)
+- [Generate early bound classes and setup a project to use PowerAppsWebApiUtils](https://www.linkedin.com/pulse/powerappswebapiutils-howto-philippe-dufag)
 
 Examples of supported Linq queries:
 =================================================================
 
-To get the service context:
+## To get the service context:
+```csharp
 var config = 
     new PowerAppsAuthenticationSettings                     
     {
@@ -31,8 +32,10 @@ serviceProvider =
     new ServiceCollection()
     .AddPowerAppsWebApiConfiguration(config)
     .BuildServiceProvider();
+```
 
-//To impersonate, create, query, diassociate and delete
+## To impersonate, create, query, diassociate and delete
+```csharp
 using (var context = serviceProvider.GetService<WebApiContext>())
 {      
     context.CallerObjectId = Guid.Parse("cabfad08-d910-4c38-9873-ee9bec791238");
@@ -87,8 +90,9 @@ using (var context = serviceProvider.GetService<WebApiContext>())
     Assert.NotNull(contact.ParentCustomerId);
     Assert.Equal(account.Id, contact.ParentCustomerId.Id);
 }
-
-//Sample queries:
+```
+## Sample queries:
+```csharp
 {
     context.CreateQuery<Account>().Where(p => p.Address1_Country  == "Canada").Select(p => new Account(p.Id) { Name = p.Name}).OrderBy(p => p.Name).ToList();
     context.CreateQuery<Account>().ToList(); 
@@ -119,11 +123,14 @@ using (var context = serviceProvider.GetService<WebApiContext>())
     context.CreateQuery<Account>().Where(p => p.Name == "John" || p.Name == "Doe").Where(p => p.StateCode == account_statecode.Active).OrderByDescending(p => p.Name).Select(p => new { Id = p.Id, CustomerTypeCode = p.CustomerTypeCode, ExchangeRate = p.ExchangeRate }).ToList();
     context.CreateQuery<Account>().Where(p => p.StateCode == account_statecode.Active).Select(p => new { Id = p.Id, CreatedBy = p.CreatedBy }).ToList();
 }
+```
 
 
 =================================================================
 You can still override the webapi request using the following method for operation not supported by webapi or use the async/await pattern:
 
+```csharp
 var repository = serviceProvider.GetRequiredService<GenericRepository<Contact>>();
 var querystring = $"{config.ApiUrl}{Contact.CollectionName}?$select=firstname,lastname,_parentcustomerid_value,address1_city&$filter=address1_city eq 'Redmond'&$orderby=lastname";
 var contacts = await repository.RetrieveMultiple(querystring);
+```
